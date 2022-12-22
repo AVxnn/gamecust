@@ -1,0 +1,45 @@
+@import "/styles/variables.scss";
+
+.header {
+  display: flex;
+  align-items: center;
+  background-color: $d_main_white_color;
+  gap: 24px;
+  height: 60px;
+
+  .leftColumn {
+    min-width: 272px;
+
+    .logotype{
+      cursor: pointer;
+      width: 127px;
+
+      svg:active {
+
+        path {
+          transition: all 80ms ease-in-out;
+          fill: $d_main_gray_color;
+        }
+      }
+    }
+  }
+
+  .middleColumn {
+    width: 100%;
+
+    .search {
+      font-size: 16px;
+      font-weight: 500;
+      padding: 11.5px 24px;
+      border-radius: 99px;
+      border: 1px solid $d_main_gray_color;
+    }
+  }
+
+  .rightColumn {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    min-width: 296px;
+  }
+}

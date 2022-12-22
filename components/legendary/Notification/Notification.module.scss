@@ -1,0 +1,14 @@
+@import "/styles/variables.scss";
+
+.notification {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+
+  &:hover {
+    path {
+      transition: all 0.1s ease-in-out;
+      fill: $d_main_color;
+    }
+  }
+}
