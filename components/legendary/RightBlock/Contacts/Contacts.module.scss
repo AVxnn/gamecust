@@ -1,0 +1,35 @@
+@import "/styles/variables.scss";
+
+.contacts {
+  padding: 16px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  .title {
+    margin: 0;
+    font-size: 16px;
+    color: $d_main_black_color;
+  }
+
+  .item {
+    display: flex;
+    align-items: center;
+    a {
+      text-decoration: none;
+      color: $d_main_black_color;
+      font-size: 12px;
+      padding-bottom: 2px;
+      margin-top: 2px;
+      border-bottom: 1px dashed rgba(0, 0, 0, 0);
+
+      &:hover {
+        border-bottom: 1px dashed $d_main_black_color;
+      }
+    }
+    svg {
+      margin-top: -1px;
+      margin-right: 4px;
+    }
+  }
+}

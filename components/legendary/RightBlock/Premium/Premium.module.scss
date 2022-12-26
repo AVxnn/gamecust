@@ -1,0 +1,41 @@
+@import "/styles/variables.scss";
+
+.premium {
+  display: flex;
+  width: 100%;
+  box-sizing: border-box;
+  flex-direction: column;
+  background-color: $d_main_white_color;
+  border-radius: 8px;
+  gap: 16px;
+  align-items: center;
+
+  .promoImg {
+    width: 100%;
+    height: 130px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 8px;
+    background: linear-gradient(96.19deg, #7CA1FF 8.76%, #B073FF 95.43%);
+
+    .title {
+      font-size: 44px;
+      margin: 0 0 0 24px;
+      color: $d_main_white_color;
+    }
+    .subtitle {
+      font-size: 15px;
+      margin: 0 33px 0 0;
+      width: 148px;
+      color: $d_main_white_color;
+    }
+  }
+
+  .container {
+    box-sizing: border-box;
+    padding: 0 24px 16px;
+    width: 100%;
+  }
+
+}

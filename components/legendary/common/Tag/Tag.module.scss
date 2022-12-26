@@ -1,0 +1,30 @@
+@import "/styles/variables.scss";
+
+.tag,
+.important,
+.postDay {
+  padding: 4px 8px;
+  font-size: 10px;
+  color: $d_main_white_color;
+  background-color: #4A7EE1;
+  border-radius: 99px;
+}
+
+.important {
+  background-color: $d_main_red;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+
+  svg {
+    width: 12px;
+    height: 12px;
+    path {
+      fill: $d_main_white_color;
+    }
+  }
+}
+
+.postDay {
+  background: linear-gradient(96.56deg, #8146FF 0%, #F282EE 100%);
+}

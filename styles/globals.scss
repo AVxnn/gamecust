@@ -1,0 +1,64 @@
+@import "/styles/variables.scss";
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto", sans-serif;
+}
+
+input {
+    outline: none;
+    border: none;
+}
+
+#__next {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    background-color: $d_main_white20_color;
+}
+
+
+.slick-slide {
+    width: 274px;
+    height: 111px;
+    position: relative;
+    float: left;
+    background-color: #f0fafa;
+    box-sizing: border-box;
+    cursor: pointer;
+    outline: none;
+}
+
+.slick-list {
+    border-radius: 8px;
+}
+
+.slick-track {
+    border-radius: 8px;
+}
+
+.slick-dots {
+    bottom: -12px;
+
+    ul {
+        padding: 0;
+    }
+
+    li {
+        height: 4px;
+        margin: 0 4px;
+    }
+
+    .slick-active {
+        width: 30px;
+        height: 4px;
+        border-radius: 99px;
+        background-color: $d_main_color;
+
+        div {
+            background-color: $d_main_color !important;
+        }
+    }
+}

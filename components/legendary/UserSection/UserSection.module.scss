@@ -3,6 +3,7 @@
 .user {
   display: flex;
   cursor: pointer;
+  margin-right: 16px;
 
   .avatar {
     width: 42px;
@@ -59,5 +60,37 @@
         fill: $d_main_gray_color
       }
     }
+  }
+}
+
+.userFixed {
+  width: 296px;
+  opacity: 0;
+  display: flex;
+  border-radius: 8px;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 4px 16px 4px 0;
+  box-sizing: border-box;
+  top: -200px;
+  position: fixed;
+  animation: anim 1s ease-in-out forwards;
+  z-index: 999;
+  background: rgba(255, 255, 255, 0.7); // Make sure this color has an opacity of less than 1
+  backdrop-filter: blur(8px); // This be the blur
+  box-shadow: 0 28px 20px -19px rgb(30 50 54 / 10%);
+
+  .user {
+    margin: 0 0 0 32px;
+  }
+}
+
+@keyframes anim {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    top: 0;
   }
 }

@@ -1,0 +1,28 @@
+@import "/styles/variables.scss";
+
+.userLeft {
+  padding: 9px 20px;
+  border-radius: 99px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 4px;
+
+  &:hover {
+    background-color: $d_main-Bg-color-hover;
+  }
+
+  &:active {
+    background-color: $d_main_white_color;
+  }
+
+  .avatar {
+    border-radius: 99px;
+    width: 32px;
+    height: 32px;
+    margin-right: 8px;
+  }
+  .name {
+    font-size: 16px;
+    color: $d_main_black_color;
+  }
+}

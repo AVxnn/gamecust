@@ -1,0 +1,40 @@
+@import "/styles/variables.scss";
+
+.newsSliderSmall {
+  position: relative;
+  width: 296px;
+  border-radius: 8px;
+
+  .slideItem {
+    position: relative;
+    width: 100%;
+    height: 111px;
+    border-radius: 8px;
+    background-repeat: no-repeat;
+    background-position: center center;
+
+    .background {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+    .shadow {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      border-radius: 8px;
+      height: 111px;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #1F1F1F 100%);
+    }
+    .subtitle {
+      position: absolute;
+      left: 24px;
+      right: 24px;
+      bottom: 12px;
+      font-size: 10px;
+      color: $d_main_white_color;
+      z-index: 2;
+    }
+  }
+}

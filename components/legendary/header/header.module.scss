@@ -2,7 +2,9 @@
 
 .header {
   display: flex;
+  width: 100%;
   align-items: center;
+  justify-content: center;
   background-color: $d_main_white_color;
   gap: 24px;
   height: 60px;
@@ -11,6 +13,8 @@
     min-width: 272px;
 
     .logotype{
+      margin-top: 5px;
+      margin-left: 16px;
       cursor: pointer;
       width: 127px;
 
@@ -20,6 +24,28 @@
           transition: all 80ms ease-in-out;
           fill: $d_main_gray_color;
         }
+      }
+    }
+
+    .logotypeFixed {
+      width: 272px;
+      top: 0;
+      position: fixed;
+
+      .logotype {
+        position: relative;
+        width: 100%;
+        box-sizing: border-box;
+        top: -200px;
+        opacity: 0;
+
+        animation: anim 1s ease-in-out forwards;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.7); // Make sure this color has an opacity of less than 1
+        backdrop-filter: blur(8px); // This be the blur
+        padding: 6px 0 6px 16px;
+        margin: 0;
+
       }
     }
   }
@@ -39,7 +65,18 @@
   .rightColumn {
     display: flex;
     align-items: center;
+    justify-content: flex-end;
     gap: 32px;
     min-width: 296px;
+  }
+}
+
+@keyframes anim {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    top: 0;
   }
 }

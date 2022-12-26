@@ -1,25 +1,24 @@
 import React from 'react';
 import styles from './header.module.scss'
-import Logotype from '../../../public/img/svg/Logotype'
 import Input from "../input";
-import Notification from "../Notification";
 import UserSection from "../UserSection";
+import Layout from "../../layout";
+import Logotype from "../common/Logotype";
 
 const Header = () => {
   return (
     <div className={styles.header}>
-      <div className={styles.leftColumn}>
-        <div className={styles.logotype}>
+      <Layout>
+        <div className={styles.leftColumn}>
           <Logotype />
         </div>
-      </div>
-      <div className={styles.middleColumn}>
-        <Input />
-      </div>
-      <div className={styles.rightColumn}>
-        <Notification />
-        <UserSection />
-      </div>
+        <div className={styles.middleColumn}>
+          <Input width={300}/>
+        </div>
+        <div className={styles.rightColumn}>
+          <UserSection />
+        </div>
+      </Layout>
     </div>
   );
 };

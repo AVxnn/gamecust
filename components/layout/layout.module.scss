@@ -1,4 +1,9 @@
+@import "/styles/variables.scss";
 
 .layout {
+  position: relative;
   width: 1256px;
+  gap: 24px;
+  justify-content: flex-end;
+  display: flex;
 }

@@ -1,0 +1,54 @@
+@import "/styles/variables.scss";
+
+.button,
+.primary,
+.secondary {
+  padding: 11px 16px 12px 16px;
+  border: 1px solid $d_main_color;
+  border-radius: 99px;
+  background-color: rgba(0, 0, 0, 0);
+  font-size: 14px;
+  color: $d_main_color;
+  transition: all 0.1s ease-in-out;
+  cursor: pointer;
+}
+
+.primary {
+  background-color: $d_main_color;
+  border: 1px solid $d_main_color;
+  color: $d_main_white_color;
+
+  &:hover {
+    background-color: $d_main_hover;
+    border: 1px solid $d_main_hover;
+  }
+  &:active {
+    background-color: $d_main_active;
+    border: 1px solid $d_main_active;
+  }
+}
+
+.secondary {
+  border: 1px solid $d_main_color;
+  color: $d_main_color;
+
+  &:hover {
+    border: 1px solid $d_main_hover;
+    color: $d_main_hover;
+  }
+  &:active {
+    color: $d_main_active;
+    border: 1px solid $d_main_active;
+  }
+}
+
+.small {
+  padding: 8px 16px 8px 16px;
+}
+.big {
+  padding: 14px 20px 14px 20px;
+}
+
+.full {
+  width: 100%;
+}

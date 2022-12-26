@@ -1,0 +1,217 @@
+@import "/styles/variables.scss";
+
+.postPreview {
+  width: 100%;
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
+  background-color: $d_main_white_color;
+  border-radius: 8px;
+  padding: 16px 24px;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+
+    .leftBlock {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+
+      .avatar {
+        position: relative;
+        width: 32px;
+        height: 32px;
+        border-radius: 99px;
+        cursor: pointer;
+      }
+      .name {
+        display: flex;
+        align-items: center;
+        font-size: 14px;
+        margin-left: 8px;
+        font-weight: 600;
+
+        svg {
+          margin-left: 2px;
+        }
+      }
+      .date {
+        color: $d_main_gray_color;
+        font-size: 12px;
+        margin-left: 12px;
+        cursor: default;
+      }
+    }
+  }
+  .tags {
+    display: flex;
+    margin: 12px 0 8px 0;
+    gap: 12px;
+  }
+
+  .mainInfo {
+    cursor: pointer;
+
+    .title {
+      font-size: 20px;
+      margin: 0;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .img {
+      width: 100%;
+    }
+  }
+
+  .hashList {
+    display: flex;
+    gap: 8px;
+
+    .hashtag {
+      font-size: 12px;
+      margin: 12px 0;
+      font-weight: 600;
+      color: $d_main_color;
+      border-bottom: 1px dashed $d_main_white_color;
+      cursor: pointer;
+
+      &:hover {
+        border-bottom: 1px dashed $d_main_color;
+      }
+    }
+  }
+
+  .toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .leftBlock {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+      .views {
+        display: flex;
+        align-items: center;
+        svg {
+          width: 20px;
+          height: 20px;
+        }
+        .title {
+          margin-left: 6px;
+          margin-top: 1px;
+          font-size: 14px;
+          font-weight: 500;
+          color: $d_main_black_color;
+          cursor: default;
+        }
+      }
+
+      .mark {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+
+        svg {
+          width: 20px;
+          height: 20px;
+        }
+
+        &:hover {
+          path {
+            transition: all 0.1s ease-in-out;
+            fill: $d_main_color;
+          }
+        }
+      }
+    }
+
+    .rightBlock {
+      display: flex;
+      gap: 32px;
+      .comments {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+
+        svg {
+          width: 20px;
+          height: 20px;
+        }
+
+        &:hover {
+          .title {
+            color: $d_main_color;
+          }
+          path {
+            transition: all 0.1s ease-in-out;
+            fill: $d_main_color;
+          }
+        }
+
+        .title {
+          margin-top: 1px;
+          font-size: 14px;
+          margin-left: 6px;
+          font-weight: 500;
+          color: $d_main_black_color;
+        }
+      }
+
+      .counter {
+        display: flex;
+        align-items: center;
+        height: 24px;
+        .like {
+          transform: rotate(180deg);
+          margin-top: -6px;
+          margin-left: 4px;
+          cursor: pointer;
+          transition: all 0.1s ease-in-out;
+
+          &:hover {
+            path {
+              fill: #3FC344;
+            }
+          }
+          &:hover ~ .title {
+            color: #3FC344;
+          }
+
+          svg {
+            width: 20px;
+            height: 20px;
+          }
+        }
+        .dislike {
+          margin-top: 2px;
+          margin-right: 1px;
+          cursor: pointer;
+
+          &:hover {
+            path {
+              fill: #F05353;
+            }
+          }
+          &:hover ~ .title {
+            color: #F05353;
+          }
+
+          svg {
+            width: 20px;
+            height: 20px;
+          }
+        }
+        .title {
+          font-size: 14px;
+          font-weight: 500;
+          color: $d_main_black_color;
+        }
+      }
+
+    }
+
+  }
+
+}

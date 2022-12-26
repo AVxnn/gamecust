@@ -1,0 +1,87 @@
+@import "/styles/variables.scss";
+
+.createPost {
+  width: 100%;
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
+  background-color: $d_main_white_color;
+  border-radius: 8px;
+  gap: 16px;
+  align-items: center;
+  padding: 16px 24px;
+
+  .header {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    .title {
+      margin: 0;
+    }
+    .notepad {
+      display: flex;
+      align-items: center;
+      font-weight: 500;
+      font-size: 12px;
+      color: $d_main_color;
+      cursor: pointer;
+
+      &:hover {
+        color: $d_main_hover;
+        path {
+          fill: $d_main_hover;
+        }
+      }
+      &:active {
+        color: $d_main_active;
+        path {
+          fill: $d_main_active;
+        }
+      }
+
+      svg {
+        margin-right: 4px;
+      }
+    }
+  }
+
+  .list {
+    width: 216px;
+    justify-content: space-between;
+    display: flex;
+
+    .item {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      cursor: pointer;
+
+
+      &:hover {
+        .img {
+          background-color: $d_main_hover;
+        }
+      }
+      &:active {
+        .img {
+          background-color: $d_main_active;
+        }
+      }
+
+      .img {
+        padding: 16px;
+        width: 24px;
+        height: 24px;
+        border-radius: 99px;
+        transition: all 0.1s ease-in-out;
+        background-color: $d_main_color;
+      }
+
+      .text {
+        margin-top: 6px;
+      }
+    }
+  }
+}
