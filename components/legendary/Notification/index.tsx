@@ -1,12 +1,18 @@
-import React from 'react';
+import React, {useState} from 'react';
 import NotificationIcon from '../../../public/img/svg/Notification'
 import styles from './Notification.module.scss'
 
 const Notification = () => {
-  return (
-    <div className={styles.notification}>
-      <NotificationIcon />
-    </div>
+
+    const [openMenu, setOpenMenu] = useState(true)
+
+    return (
+    <>
+        <div onClick={() => setOpenMenu(!openMenu)} className={styles.notification}>
+            <NotificationIcon />
+        </div>
+        <div onMouseLeave={() => setOpenMenu(true)} className={`${styles.menu} ${openMenu && styles.menuItem}`}></div>
+    </>
   );
 };
 

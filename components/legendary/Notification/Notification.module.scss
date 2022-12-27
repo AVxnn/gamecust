@@ -12,3 +12,35 @@
     }
   }
 }
+
+.menu {
+  position: absolute;
+  width: 400px;
+  height: 200px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  transition: all 0.2s ease-in-out;
+  right: 190px;
+  top: 62px;
+  z-index: 2;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 10px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}
+
+.menuItem {
+  height: 0px;
+  width: 0px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0 10px 36px 0, rgba(0, 0, 0, 0.06) 0 0 0 1px;
+  position: absolute;
+  animation: anim 1s ease-in-out forwards;
+  animation-fill-mode: backwards;
+}
+
+@keyframes anim {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    top: 0;
+  }
+}
