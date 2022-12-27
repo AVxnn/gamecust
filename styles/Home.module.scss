@@ -63,9 +63,11 @@
 }
 
 .rightColumnFixed {
+  display: flex;
   user-select: none;
   z-index: -2;
-  margin-top: -850px;
+  justify-self: flex-end;
+  margin-top: -911px;
   background-color: $d_main_white20_color;
   position: fixed;
 }

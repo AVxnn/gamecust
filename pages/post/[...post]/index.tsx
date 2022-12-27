@@ -60,15 +60,15 @@ const MyComponent = () => {
           <NewsSliderSmall />
           <TopGroup />
           <Contacts />
-        </div>
-        <div style={{opacity: showFixedMenu ? 1 : 0, zIndex: showFixedMenu ? 1 : -2}} className={styles.rightColumnFixed}>
-          <LoginRight />
-          <CreatePostRight />
-          <Premium />
-          <TopUsers />
-          <NewsSliderSmall />
-          <TopGroup />
-          <Contacts />
+          <div style={{opacity: showFixedMenu ? 1 : 0, zIndex: showFixedMenu ? 1 : -2}} className={styles.rightColumnFixed}>
+            <LoginRight />
+            <CreatePostRight />
+            <Premium />
+            <TopUsers />
+            <NewsSliderSmall />
+            <TopGroup />
+            <Contacts />
+          </div>
         </div>
       </Layout>
     </>
