@@ -3,35 +3,25 @@ import Head from "next/head";
 import Header from "../../components/legendary/header";
 import Layout from "../../components/layout";
 import styles from './newArticle.module.scss'
-import Post from "../../components/legendary/common/Post";
-import LoginRight from "../../components/legendary/RightBlock/LoginRight";
-import CreatePostRight from "../../components/legendary/RightBlock/CreatePostRight";
-import Premium from "../../components/legendary/RightBlock/Premium";
-import TopUsers from "../../components/legendary/RightBlock/TopUsers";
-import NewsSliderSmall from "../../components/legendary/RightBlock/NewsSliderSmall";
-import TopGroup from "../../components/legendary/RightBlock/TopGroup";
-import Contacts from "../../components/legendary/RightBlock/Contacts";
-import UserLeft from "../../components/legendary/LeftBlock/UserLeft";
-import newArticleBlock from "../../components/legendary/MiddleBlock/newArticleBlock";
 import NewArticleBlock from "../../components/legendary/MiddleBlock/newArticleBlock";
 
 const newArticle = () => {
 
-  const [showFixedMenu, setShowFixedMenu] = useState<boolean>(false);
-  const menuRef = useRef<HTMLUListElement>(null);
-
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      window.addEventListener('scroll', () => {
-
-        if (menuRef.current && menuRef.current.getBoundingClientRect().top <= 0) {
-          setShowFixedMenu(true)
-        } else {
-          setShowFixedMenu(false)
-        }
-      })
-    }
-  })
+  // const [showFixedMenu, setShowFixedMenu] = useState<boolean>(false);
+  // const menuRef = useRef<HTMLUListElement>(null);
+  //
+  // useEffect(() => {
+  //   if (typeof window !== 'undefined') {
+  //     window.addEventListener('scroll', () => {
+  //
+  //       if (menuRef.current && menuRef.current.getBoundingClientRect().top <= 0) {
+  //         setShowFixedMenu(true)
+  //       } else {
+  //         setShowFixedMenu(false)
+  //       }
+  //     })
+  //   }
+  // })
 
   return (
     <>
@@ -47,13 +37,13 @@ const newArticle = () => {
       </Head>
       <Header />
       <Layout>
-        <div className={styles.leftColumn}>
-        </div>
-        <div className={styles.middleColumn}>
-          <NewArticleBlock />
-        </div>
-        <div className={styles.rightColumn}>
-        </div>
+        {/*<div className={styles.leftColumn}>*/}
+        {/*</div>*/}
+        {/*<div className={styles.middleColumn}>*/}
+        {/*  <NewArticleBlock />*/}
+        {/*</div>*/}
+        {/*<div className={styles.rightColumn}>*/}
+        {/*</div>*/}
       </Layout>
     </>
   );
