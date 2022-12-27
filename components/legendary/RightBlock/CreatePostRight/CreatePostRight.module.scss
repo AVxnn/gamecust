@@ -52,6 +52,10 @@
     justify-content: space-between;
     display: flex;
 
+    a {
+      text-decoration: none;
+    }
+
     .item {
       display: flex;
       align-items: center;
@@ -80,6 +84,8 @@
       }
 
       .text {
+        color: $d_main_black_color;
+
         margin-top: 6px;
       }
     }

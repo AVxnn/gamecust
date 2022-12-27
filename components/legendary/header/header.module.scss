@@ -10,7 +10,8 @@
   height: 60px;
 
   .leftColumn {
-    min-width: 272px;
+    max-width: 272px;
+    width: 100%;
 
     .logotype{
       margin-top: 5px;
@@ -28,21 +29,18 @@
     }
 
     .logotypeFixed {
-      width: 272px;
+      width: 1256px;
       top: 0;
       position: fixed;
+      z-index: 123;
 
       .logotype {
         position: relative;
         width: 100%;
         box-sizing: border-box;
-        top: -200px;
-        opacity: 0;
-
-        animation: anim 1s ease-in-out forwards;
         border-radius: 8px;
-        background: rgba(255, 255, 255, 0.7); // Make sure this color has an opacity of less than 1
-        backdrop-filter: blur(8px); // This be the blur
+        background: rgba(255, 255, 255, 0.5);
+        backdrop-filter: blur(8px);
         padding: 6px 0 6px 16px;
         margin: 0;
 
@@ -52,6 +50,12 @@
 
   .middleColumn {
     width: 100%;
+
+    input {
+      @media (max-width: 740px) {
+        display: none;
+      }
+    }
 
     .search {
       font-size: 16px;
@@ -67,16 +71,7 @@
     align-items: center;
     justify-content: flex-end;
     gap: 32px;
-    min-width: 296px;
-  }
-}
-
-@keyframes anim {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-    top: 0;
+    max-width: 296px;
+    width: 100%;
   }
 }

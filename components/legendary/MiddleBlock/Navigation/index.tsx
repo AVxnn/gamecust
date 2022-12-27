@@ -23,7 +23,6 @@ const Navigation = () => {
   const [showFixedMenu, setShowFixedMenu] = useState<boolean>(false);
   const menuRef = useRef<HTMLUListElement>(null);
 
-
   const changePage = (index : number) => {
     setActive(index)
   }

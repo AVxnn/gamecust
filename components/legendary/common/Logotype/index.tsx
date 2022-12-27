@@ -1,6 +1,7 @@
 import React, {useEffect, useRef, useState} from 'react';
 import styles from "../../header/header.module.scss";
 import LogotypeIcon from '../../../../public/img/svg/Logotype'
+import Link from "next/link";
 
 const Logotype = () => {
 
@@ -23,13 +24,17 @@ const Logotype = () => {
   return (
     <>
       <div ref={menuRef} className={styles.logotype}>
-        <LogotypeIcon />
+        <Link href={'/'}>
+          <LogotypeIcon />
+        </Link>
       </div>
       {
         showFixedMenu && (
           <div className={styles.logotypeFixed}>
             <div className={styles.logotype}>
-              <LogotypeIcon />
+              <Link href={'/'}>
+                <LogotypeIcon />
+              </Link>
             </div>
           </div>
         )

@@ -1,14 +1,44 @@
 @import "/styles/variables.scss";
 
-.search,
-.active {
-  font-size: 16px;
-  font-weight: 500;
-  padding: 12px 24px;
-  border-radius: 99px;
-  border: 1px solid $d_main_gray_color;
+
+.containerInput {
+  display: flex;
+  flex-direction: column;
+
+  .title {
+    color: $d_main_black_color;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+
+  .search,
+  .active {
+    font-size: 16px;
+    box-sizing: border-box;
+    font-weight: 500;
+    padding: 12px 24px;
+    border-radius: 8px;
+    background-color: $d_main-Bg-color-hover;
+    border: 1px solid $d_main-Bg-color-hover;
+    transition: all 0.1s ease-in-out;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0);
+      border-color: $d_main_color;
+    }
+  }
+
+  .active {
+    background-color: rgba(0, 0, 0, 0);
+    border-color: $d_main_black_color;
+  }
 }
 
-.active {
-  border-color: $d_main_black_color;
+.big {
+  height: 60px;
+}
+
+.small {
+  height: 32px;
 }

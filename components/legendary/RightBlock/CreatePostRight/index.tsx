@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './CreatePostRight.module.scss'
 import Notepad from "../../../../public/img/svg/Notepad";
+import Link from "next/link";
 
 const CreatePostRight = () => {
   return (
@@ -10,14 +11,16 @@ const CreatePostRight = () => {
         <span className={styles.notepad}> <Notepad /> Черновик(2)</span>
       </div>
       <div className={styles.list}>
-        <div className={styles.item}>
-          <div className={styles.img}>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M19.045 7.401C19.423 7.023 19.631 6.521 19.631 5.987C19.631 5.453 19.423 4.951 19.045 4.573L17.459 2.987C17.081 2.609 16.579 2.401 16.045 2.401C15.511 2.401 15.009 2.609 14.632 2.986L4 13.585V18H8.413L19.045 7.401ZM16.045 4.401L17.632 5.986L16.042 7.57L14.456 5.985L16.045 4.401ZM6 16V14.415L13.04 7.397L14.626 8.983L7.587 16H6ZM4 20H20V22H4V20Z" fill="white"/>
-            </svg>
+        <Link href={'/newArticle'}>
+          <div className={styles.item}>
+            <div className={styles.img}>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M19.045 7.401C19.423 7.023 19.631 6.521 19.631 5.987C19.631 5.453 19.423 4.951 19.045 4.573L17.459 2.987C17.081 2.609 16.579 2.401 16.045 2.401C15.511 2.401 15.009 2.609 14.632 2.986L4 13.585V18H8.413L19.045 7.401ZM16.045 4.401L17.632 5.986L16.042 7.57L14.456 5.985L16.045 4.401ZM6 16V14.415L13.04 7.397L14.626 8.983L7.587 16H6ZM4 20H20V22H4V20Z" fill="white"/>
+              </svg>
+            </div>
+            <span className={styles.text}>Пост</span>
           </div>
-          <span className={styles.text}>Пост</span>
-        </div>
+        </Link>
         <div className={styles.item}>
           <div className={styles.img}>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

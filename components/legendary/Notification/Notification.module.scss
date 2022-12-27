@@ -19,10 +19,12 @@
   height: 200px;
   background-color: #ffffff;
   border-radius: 8px;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.1s ease-in-out;
   right: 190px;
-  top: 62px;
+  margin-top: 10px;
+  top: 50px;
   z-index: 2;
+  animation: anim 0.2s ease-in-out forwards;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 10px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
 }
 
@@ -41,6 +43,5 @@
   }
   100% {
     opacity: 1;
-    top: 0;
   }
 }

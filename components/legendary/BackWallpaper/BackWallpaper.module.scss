@@ -1,0 +1,22 @@
+
+
+.backWallpaper {
+  position: relative;
+  height: 320px;
+  width: 100%;
+
+  img {
+    height: 320px;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .shadow {
+    top: 0;
+    position: absolute;
+    width: 100%;
+    height: 320px;
+    opacity: 0.6;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 100%);
+  }
+}

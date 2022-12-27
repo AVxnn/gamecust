@@ -19,23 +19,9 @@
   z-index: 9999;
   top: 0;
   .navigation {
-    opacity: 0;
+    opacity: 1;
     position: absolute;
     margin-top: 0;
-    top: -200px;
-    background: rgba(255, 255, 255, 0.7); // Make sure this color has an opacity of less than 1
-    backdrop-filter: blur(8px); // This be the blur
-    animation: anim 1s ease-in-out forwards;
     box-shadow: 0 28px 20px -19px rgb(30 50 54 / 10%);
-  }
-}
-
-@keyframes anim {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-    top: 0;
   }
 }

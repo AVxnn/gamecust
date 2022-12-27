@@ -1,11 +1,15 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styles from './header.module.scss'
 import Input from "../input";
 import UserSection from "../UserSection";
 import Layout from "../../layout";
 import Logotype from "../common/Logotype";
+import UnAuthProfile from "../UnAuthProfile";
 
 const Header = () => {
+
+  const [auth, setAuth] = useState(true)
+
   return (
     <div className={styles.header}>
       <Layout>
@@ -13,10 +17,16 @@ const Header = () => {
           <Logotype />
         </div>
         <div className={styles.middleColumn}>
-          <Input width={300}/>
+          <Input placeholder={'Поиск'} width={300}/>
         </div>
         <div className={styles.rightColumn}>
-          <UserSection />
+          {
+            auth ? (
+              <UserSection />
+            ) : (
+              <UnAuthProfile />
+            )
+          }
         </div>
       </Layout>
     </div>

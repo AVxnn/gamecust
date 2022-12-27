@@ -1,0 +1,67 @@
+@import "/styles/variables.scss";
+
+.leftColumn {
+  position: relative;
+  min-width: 40px;
+  max-width: 50px;
+  margin-top: 64px;
+
+  .navigationLeft {
+    position: fixed;
+    min-width: 50px;
+    max-width: 50px;
+    width: 100%;
+  }
+
+  .logotype{
+    cursor: pointer;
+    width: 127px;
+
+    svg:active {
+
+      path {
+        transition: all 80ms ease-in-out;
+        fill: $d_main_gray_color;
+      }
+    }
+  }
+}
+
+.middleColumn {
+  position: relative;
+  width: 100%;
+  max-width: 936px;
+
+  .search {
+    font-size: 16px;
+    font-weight: 500;
+    padding: 11.5px 24px;
+    border-radius: 99px;
+    border: 1px solid $d_main_gray_color;
+  }
+}
+
+.rightColumn,
+.rightColumnFixed {
+  margin-top: 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 296px;
+
+  @media (max-width: 1280px) {
+    display: none;
+  }
+
+  .fixedBar {
+    margin: -12px 0 0 0;
+  }
+}
+
+.rightColumnFixed {
+  user-select: none;
+  z-index: -2;
+  margin-top: -850px;
+  background-color: $d_main_white20_color;
+  position: fixed;
+}

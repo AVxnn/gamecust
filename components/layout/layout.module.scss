@@ -2,8 +2,9 @@
 
 .layout {
   position: relative;
-  width: 1256px;
+  max-width: 1256px;
+  width: 100%;
   gap: 24px;
-  justify-content: flex-end;
+  justify-content: center;
   display: flex;
 }

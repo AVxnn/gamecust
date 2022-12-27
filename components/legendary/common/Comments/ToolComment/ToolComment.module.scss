@@ -1,0 +1,89 @@
+@import "/styles/variables.scss";
+
+.toolComment {
+  display: flex;
+  width: 100%;
+  margin-top: 6px;
+  align-items: center;
+  justify-content: space-between;
+
+  .leftBlock {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+    .views {
+
+      .text {
+        font-size: 16px;
+        font-weight: 500;
+        color: $d_main_color;
+        cursor: pointer;
+
+        &:hover {
+          color: $d_main_hover;
+        }
+        &:active {
+          color: $d_main_active;
+        }
+      }
+    }
+
+    .mark {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+
+      svg {
+        width: 20px;
+        height: 20px;
+      }
+
+      &:hover {
+        path {
+          transition: all 0.1s ease-in-out;
+          fill: $d_main_color;
+        }
+      }
+    }
+  }
+
+  .rightBlock {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+
+    a {
+      text-decoration: none;
+    }
+
+    .comments {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+
+      svg {
+        width: 20px;
+        height: 20px;
+      }
+
+      &:hover {
+        .title {
+          color: $d_main_color;
+        }
+        path {
+          transition: all 0.1s ease-in-out;
+          fill: $d_main_color;
+        }
+      }
+
+      .title {
+        margin-top: 1px;
+        font-size: 14px;
+        margin-left: 6px;
+        font-weight: 500;
+        color: $d_main_black_color;
+      }
+    }
+  }
+
+}

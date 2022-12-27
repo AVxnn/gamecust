@@ -50,7 +50,7 @@ const NewsSliderSmall = () => {
         {
           data.map((item: any, index: number) => {
             return (
-              <div className={styles.slideItem}>
+              <div key={index} className={styles.slideItem}>
                 <img className={styles.background} src={item.background} alt=""/>
                 <div className={styles.shadow}></div>
                 <span className={styles.subtitle}>{item.title}</span>

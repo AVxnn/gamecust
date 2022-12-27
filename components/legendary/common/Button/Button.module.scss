@@ -6,6 +6,7 @@
   padding: 11px 16px 12px 16px;
   border: 1px solid $d_main_color;
   border-radius: 99px;
+  white-space: nowrap;
   background-color: rgba(0, 0, 0, 0);
   font-size: 14px;
   color: $d_main_color;
@@ -43,7 +44,7 @@
 }
 
 .small {
-  padding: 8px 16px 8px 16px;
+  padding: 4px 16px 4px 16px;
 }
 .big {
   padding: 14px 20px 14px 20px;

@@ -1,13 +1,14 @@
 import React from 'react';
 import styles from './NewsSlider.module.scss'
 import Slider from "react-slick";
+import Button from "../../common/Button";
 
 const NewsSlider = () => {
 
   const data = [
     {
       background: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Anime_Girl.png/2560px-Anime_Girl.png',
-      title: 'Странник вернувшийся с пропавшего судна успешно проиграл свой дом...'
+      title: 'Новая ММОРПГ игра основанная на стрельбе и строительстве, реализованная на новом движке UNREAL ENGINE 7'
     },
     {
       background: 'https://assets3.thrillist.com/v1/image/3055763/1200x630/flatten;crop_down;webp=auto;jpeg_quality=70',
@@ -46,16 +47,26 @@ const NewsSlider = () => {
   };
 
   return (
-    <div className={styles.newsSlider}>
+    <div className={styles.newsSlider} id={'newsSlider'}>
       <Slider {...settings}>
         {
-          data.map((item: any, index: number) => {
+          data && data.map((item: any, index: number) => {
             return (
-              <div className={styles.slideItem}>
-                <img className={styles.background} src={item.background} alt=""/>
-                <div className={styles.shadow}></div>
-                <span className={styles.subtitle}>{item.title}</span>
-              </div>
+              <>
+                <div key={index} className={styles.container}>
+                  <div className={styles.slideItem}>
+                    <div className={styles.left}>
+                      <img className={styles.background} src={item.background} alt=""/>
+                      <div className={styles.shadow}></div>
+                      <span className={styles.subtitle}>{item.title}</span>
+                    </div>
+
+                  </div>
+                  <div className={styles.btn}>
+                    <Button type={'secondary'} size={'small'}>Узнать больше</Button>
+                  </div>
+                </div>
+              </>
             )
           })
         }

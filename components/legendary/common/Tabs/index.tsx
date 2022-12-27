@@ -8,7 +8,7 @@ const Tabs = ({children, current, onClick} : any) => {
     <span
       onClick={onClick}
       className={`${styles.tab} ${current && styles.active}`}>
-      <Link href={'/'}>
+      <Link href={'#'}>
         {children}
       </Link>
     </span>

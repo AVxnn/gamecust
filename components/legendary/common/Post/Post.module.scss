@@ -1,0 +1,83 @@
+@import "/styles/variables.scss";
+
+.postContainer {
+  width: 100%;
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
+  background-color: $d_main_white_color;
+  border-radius: 8px;
+  margin-bottom: 64px;
+  padding: 16px 24px;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+
+    .leftBlock {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+
+      .avatar {
+        position: relative;
+        width: 32px;
+        height: 32px;
+        border-radius: 99px;
+        cursor: pointer;
+      }
+
+      .name {
+        display: flex;
+        align-items: center;
+        font-size: 14px;
+        margin-left: 8px;
+        font-weight: 600;
+
+        svg {
+          margin-left: 2px;
+        }
+      }
+
+      .date {
+        color: $d_main_gray_color;
+        font-size: 12px;
+        margin-left: 12px;
+        cursor: default;
+      }
+    }
+  }
+
+  .tags {
+    display: flex;
+    margin: 12px 0 8px 0;
+    gap: 12px;
+  }
+
+  .mainInfo {
+    cursor: pointer;
+
+    .title {
+      font-size: 20px;
+      margin: 0 0 12px 0;
+      line-height: 27px;
+      color: $d_main_black_color;
+      font-weight: 700;
+    }
+
+    .subtitle {
+      font-size: 16px;
+      color: $d_main_black_color;
+      font-weight: 500;
+      line-height: 1.35;
+    }
+    .img {
+      width: 100%;
+    }
+  }
+
+  .hashList {
+    display: flex;
+    gap: 8px;
+  }
+}
