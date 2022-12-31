@@ -13,11 +13,12 @@
   z-index: 9999999;
 
   .image {
-    width: 50%;
-    object-fit: cover;
-    max-height: 100vh;
-    animation: top 0.5s ease-in-out forwards;
+    width: 92%;
+    object-fit: contain;
+    max-height: 90vh;
+    animation: top 0.2s ease-in-out forwards;
   }
+
   .close {
     top: 20px;
     right: 20px;
@@ -46,6 +47,6 @@
     width: 0;
   }
   100% {
-    width: 50%;
+    width: 92%;
   }
 }

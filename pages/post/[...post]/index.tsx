@@ -12,8 +12,6 @@ import Contacts from "../../../components/legendary/RightBlock/Contacts";
 import Post from "../../../components/legendary/common/Post";
 import LoginRight from "../../../components/legendary/RightBlock/LoginRight";
 import PopupImg from "../../../components/legendary/PopupImg";
-import {useSelector} from "react-redux";
-import {RootState} from "../../../store/store";
 
 const MyComponent = () => {
 
