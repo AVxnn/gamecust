@@ -35,8 +35,7 @@ const NewsSlider = () => {
     customPaging: (i: any) => (
       <div
         style={{
-          width: '10px',
-          height: '4px',
+          height: '6px',
           borderRadius: '99px',
           backgroundColor: '#D5B5FF',
         }}

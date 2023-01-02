@@ -16,6 +16,7 @@ const NewsSliderSmall = () => {
 
   const settings = {
     dots: true,
+    dotsClass: "slick-dots slick-thumb",
     arrows: false,
     infinite: true,
     autoplay: true,
@@ -33,8 +34,7 @@ const NewsSliderSmall = () => {
     customPaging: (i: any) => (
       <div
         style={{
-          width: '10px',
-          height: '4px',
+          height: '6px',
           borderRadius: '99px',
           backgroundColor: '#D5B5FF',
         }}

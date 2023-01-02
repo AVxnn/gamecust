@@ -8,10 +8,10 @@ const Counter = ({data} : any) => {
       <div className={styles.dislike}>
         <Arrow />
       </div>
+        <div className={styles.like}>
+            <Arrow />
+        </div>
       <span className={styles.title}>{data.count}</span>
-      <div className={styles.like}>
-        <Arrow />
-      </div>
     </div>
   );
 };

@@ -4,9 +4,11 @@
   display: flex;
   align-items: center;
   height: 24px;
+
   .like {
     transform: rotate(180deg);
     margin-top: -6px;
+    order: 2;
     margin-left: 4px;
     cursor: pointer;
     transition: all 0.1s ease-in-out;

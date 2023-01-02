@@ -35,6 +35,10 @@ input {
 
 .slick-list {
     border-radius: 8px;
+
+    &:hover > .slick-dots  .slick-active div {
+        animation: progressBar 6.1s ease-in-out forwards;
+    }
 }
 
 .slick-track {
@@ -42,25 +46,29 @@ input {
 }
 
 .slick-dots {
-    bottom: -12px;
+    bottom: -14px;
 
     ul {
         padding: 0;
     }
 
     li {
-        height: 4px;
+        height: 6px;
+        width: 6px;
         margin: 0 4px;
     }
 
     .slick-active {
         width: 30px;
-        height: 4px;
+        overflow: hidden;
+        height: 6px;
         border-radius: 99px;
-        background-color: $d_main_color;
+        background-color: $d_main_hover;
 
         div {
             background-color: $d_main_color !important;
+            border-radius: 99px;
+            animation: progressBar 6.1s linear infinite;
         }
     }
 }
@@ -68,5 +76,14 @@ input {
 #newsSlider {
     .slick-list {
         height: 80px;
+    }
+}
+
+@keyframes progressBar {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 100%;
     }
 }

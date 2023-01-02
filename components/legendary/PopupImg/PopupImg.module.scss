@@ -17,6 +17,7 @@
     object-fit: contain;
     max-height: 90vh;
     animation: top 0.2s ease-in-out forwards;
+    animation-fill-mode: backwards;
   }
 
   .close {

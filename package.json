@@ -19,6 +19,7 @@
     "next": "13.1.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-imageloader": "^3.0.0",
     "react-redux": "^8.0.5",
     "react-scroll": "^1.8.9",
     "react-slick": "^0.29.0",
@@ -28,6 +29,7 @@
     "typescript": "4.9.4"
   },
   "devDependencies": {
+    "@types/react-imageloader": "^2.1.12",
     "@types/react-slick": "^0.23.10",
     "@types/react-transition-group": "^4.4.5"
   }
