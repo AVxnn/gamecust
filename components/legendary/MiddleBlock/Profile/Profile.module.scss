@@ -142,8 +142,9 @@
   width: 100%;
   border-radius: 8px;
   max-width: 936px;
-  background: rgba(255, 255, 255, 1);
-  top: -200px;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(8px);
+  top: -199px;
   z-index: 999;
   position: fixed;
   animation: anim 0.2s ease-in-out forwards;
@@ -208,6 +209,6 @@
     top: -50px;
   }
   100% {
-    top: 50px;
+    top: 58px;
   }
 }

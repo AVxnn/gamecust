@@ -15,31 +15,29 @@ const PopupImg = ({data} : any) : JSX.Element => {
     dispatch(close())
   }
 
-  if (count.open) {
-    if (data.type === 'images') {
-      return (
-        <div className={styles.popupImg}>
+  if (data.type === 'images') {
+    return (
+      <div className={styles.popupImg}>
 
+      </div>
+    )
+  }
+  if (data.type === 'img') {
+    return (
+      <div className={`${styles.popupImg} ${count.open && styles.popupImgOpen}`}>
+        <img className={styles.image} src={count.img} alt=""/>
+        <div onClick={() => closePopup()} className={styles.close}>
+          <Plus/>
         </div>
-      )
-    }
-    if (data.type === 'img') {
-      return (
-        <div className={styles.popupImg}>
-          <img className={styles.image} src={count.img} alt=""/>
-          <div onClick={() => closePopup()} className={styles.close}>
-            <Plus/>
-          </div>
-        </div>
-      )
-    }
-    if (data.type === 'video') {
-      return (
-        <div className={styles.popupImg}>
+      </div>
+    )
+  }
+  if (data.type === 'video') {
+    return (
+      <div className={styles.popupImg}>
 
-        </div>
-      )
-    }
+      </div>
+    )
   }
   return <div></div>
 };

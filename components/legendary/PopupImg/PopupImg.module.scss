@@ -5,19 +5,19 @@
   opacity: 0;
   width: 100%;
   display: flex;
+  z-index: -2;
   align-items: center;
   justify-content: center;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.6);
-  animation: anim 0.1s ease-in-out forwards;
-  z-index: 9999999;
+  animation-fill-mode: backwards;
+  transition: all 0.2s ease-in-out;
 
   .image {
     width: 92%;
     object-fit: contain;
     max-height: 90vh;
     animation: top 0.2s ease-in-out forwards;
-    animation-fill-mode: backwards;
   }
 
   .close {
@@ -34,13 +34,10 @@
   }
 }
 
-@keyframes anim {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
+.popupImgOpen {
+  z-index: 9999999;
+  opacity: 1;
+  animation: anim 0.1s ease-in-out forwards;
 }
 
 @keyframes top {

@@ -9,18 +9,28 @@
     align-items: center;
     cursor: pointer;
 
+    .avatarLoader {
+      width: 32px;
+      height: 32px;
+      border-radius: 99px;
+      background-color: $d_main_bg_color;
+    }
+
     a {
       width: 32px;
       height: 32px;
     }
 
     .avatar {
-      position: relative;
-      width: 32px;
-      height: 32px;
-      border-radius: 99px;
-      cursor: pointer;
-      transition: all 0.1s ease-in-out;
+
+      img {
+        position: relative;
+        width: 32px;
+        height: 32px;
+        border-radius: 99px;
+        cursor: pointer;
+        transition: all 0.1s ease-in-out;
+      }
 
       &:hover {
         opacity: 0.8;
