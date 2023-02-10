@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './NewsSlider.module.scss'
 import Slider from "react-slick";
 import Button from "../../common/Button";
+import Image from 'next/image'
 
 const NewsSlider = () => {
 
@@ -55,7 +56,9 @@ const NewsSlider = () => {
                 <div key={index} className={styles.container}>
                   <div className={styles.slideItem}>
                     <div className={styles.left}>
-                      <img className={styles.background} src={item.background} alt=""/>
+                      <div className={styles.contImg}>
+                        <Image layout={'fill'} className={styles.background} src={item.background} alt=""/>
+                      </div>
                       <div className={styles.shadow}></div>
                       <span className={styles.subtitle}>{item.title}</span>
                     </div>

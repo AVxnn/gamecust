@@ -15,6 +15,14 @@
     background-color: $d_main_white_color;
   }
 
+  .imgCont {
+    width: 32px;
+    position: relative;
+    height: 32px;
+    margin-right: 8px;
+    border-radius: 99px;
+  }
+
   .avatar {
     border-radius: 99px;
     width: 32px;

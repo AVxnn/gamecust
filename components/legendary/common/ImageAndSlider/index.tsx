@@ -10,6 +10,7 @@ const ImageAndSlider = ({data}: any) => {
   let settings = {
     className: "",
     dots: false,
+    arrows: false,
     infinite: false,
     slidesToShow: 1,
     speed: 250,
@@ -28,8 +29,8 @@ const ImageAndSlider = ({data}: any) => {
           {
             data.images.map((item: any, index: number) => {
               return (
-                <div className={styles.imgC}>
-                  <Image className={styles.images} layout={'fill'} key={index} src={item} alt=""/>
+                <div key={index} className={styles.imgC}>
+                  <Image className={styles.images} layout={'fill'} src={item} alt=""/>
                 </div>
               )
             })
@@ -40,7 +41,9 @@ const ImageAndSlider = ({data}: any) => {
   }
 
   return (
-    <img className={styles.img} src={data.img} alt=""/>
+    <div className={styles.imgCont}>
+      <Image layout={'fill'} className={styles.img} src={data.img} alt=""/>
+    </div>
   )
 };
 

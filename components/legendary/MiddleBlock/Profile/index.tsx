@@ -47,7 +47,9 @@ const ProfileBlock = () => {
         <div className={styles.header}>
           <div className={styles.left}>
             <div className={styles.avatar}>
-              <img src="https://i.pinimg.com/736x/78/a6/de/78a6dee0461f3a04c067b4198730bfb2.jpg" alt=""/>
+              <div className={styles.contImg}>
+                <img src="https://i.pinimg.com/736x/78/a6/de/78a6dee0461f3a04c067b4198730bfb2.jpg" alt=""/>
+              </div>
               <span className={styles.number}>1</span>
             </div>
           </div>
@@ -91,7 +93,9 @@ const ProfileBlock = () => {
             <div className={styles.header}>
               <div className={styles.left}>
                 <div className={styles.avatar}>
-                  <img src="https://i.pinimg.com/736x/78/a6/de/78a6dee0461f3a04c067b4198730bfb2.jpg" alt=""/>
+                  <div className={styles.contImg}>
+                    <img src="https://i.pinimg.com/736x/78/a6/de/78a6dee0461f3a04c067b4198730bfb2.jpg" alt=""/>
+                  </div>
                   <span className={styles.number}>1</span>
                 </div>
               </div>

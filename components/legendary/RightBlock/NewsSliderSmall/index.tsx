@@ -1,6 +1,8 @@
 import React from 'react';
 import Slider from "react-slick";
 import styles from './NewsSliderSmall.module.scss'
+import Image from 'next/image'
+
 const NewsSliderSmall = () => {
 
   const data = [
@@ -51,7 +53,7 @@ const NewsSliderSmall = () => {
           data.map((item: any, index: number) => {
             return (
               <div key={index} className={styles.slideItem}>
-                <img className={styles.background} src={item.background} alt=""/>
+                <Image layout={'fill'} className={styles.background} src={item.background} alt=""/>
                 <div className={styles.shadow}></div>
                 <span className={styles.subtitle}>{item.title}</span>
               </div>

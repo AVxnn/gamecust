@@ -58,7 +58,7 @@ const PopupImg = ({data} : any) : JSX.Element => {
     return () => {
       window.removeEventListener("wheel", e => catchCombination(e));
     }
-  }, [])
+  }, [catchCombination])
 
   if (data.type === 'images') {
     return (

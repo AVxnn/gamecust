@@ -2,12 +2,13 @@ import React from 'react';
 import styles from './Item.module.scss'
 import ToolComment from "../ToolComment";
 import ImgPopup from "../../ImgPopup";
+import Image from 'next/image'
 
 const Item = ({data} : any) => {
   return (
     <div className={styles.comment}>
       <div className={styles.avatar}>
-        <img src={'https://i.pinimg.com/736x/78/a6/de/78a6dee0461f3a04c067b4198730bfb2.jpg'} alt="ads"/>
+        <Image layout={'fill'} src={'https://i.pinimg.com/736x/78/a6/de/78a6dee0461f3a04c067b4198730bfb2.jpg'} alt="ads"/>
       </div>
       <div className={styles.rightInfo}>
         <span className={styles.name}>{data.name}</span>

@@ -2,7 +2,7 @@ import React, {useEffect, useRef, useState} from 'react';
 import NotificationIcon from '../../../public/img/svg/Notification'
 import styles from './Notification.module.scss'
 
-const Notification = ({openMenus, notifi, setNotifi} : any) => {
+const Notification = ({openMenus, setNotifi} : any) => {
 
     const [openMenu, setOpenMenu] = useState(true)
 
@@ -26,7 +26,7 @@ const Notification = ({openMenus, notifi, setNotifi} : any) => {
 
     useEffect(() => {
         setNotifi(openMenu)
-    }, [openMenu])
+    }, [openMenu, setNotifi])
 
     useEffect(() => {
         if (typeof document !== "undefined" && openMenu) {

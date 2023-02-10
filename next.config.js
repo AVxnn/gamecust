@@ -20,6 +20,34 @@ const nextConfig = {
         protocol: "https",
         hostname: "upload.wikimedia.org",
       },
+      {
+        protocol: "https",
+        hostname: "assets.reedpopcdn.com",
+      },
+      {
+        protocol: "https",
+        hostname: "jw-webmagazine.com",
+      },
+      {
+        protocol: "https",
+        hostname: "i.kinja-img.com",
+      },
+      {
+        protocol: "https",
+        hostname: "assets3.thrillist.com",
+      },
+      {
+        protocol: "https",
+        hostname: "www.pixelstalk.net",
+      },
+      {
+        protocol: "https",
+        hostname: "avatars.mds.yandex.net",
+      },
+      {
+        protocol: "https",
+        hostname: "www.belpressa.ru",
+      },
     ],
     minimumCacheTTL: 15000000,
   },
