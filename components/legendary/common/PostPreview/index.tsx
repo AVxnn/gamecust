@@ -5,9 +5,9 @@ import Link from "next/link";
 import HashTag from "./common/hashtag";
 import Toolbar from "./common/toolbar";
 import HeaderPost from "./common/HeaderPost";
+import ImageAndSlider from "../ImageAndSlider";
 
 const PostPreview = ({data} : any) => {
-
   return (
     <div className={styles.postPreview}>
       <HeaderPost data={data}/>
@@ -22,9 +22,23 @@ const PostPreview = ({data} : any) => {
       </section>
       <Link className={styles.post} href={`/post/${data.link}`}>
         <section className={styles.mainInfo}>
-          <h4 className={styles.title}>{data.title}</h4>
-          <p className={styles.subtitle}>{data.subtitle}</p>
-          <img className={styles.img} src={data.img} alt={''} />
+          {
+            data.container?.map((item: any, index: number) => {
+              if (item.type === 'title') {
+                return (
+                  <h4 className={styles.title}>{item.text}</h4>
+                )
+              } else if (item.type === 'description') {
+                return (
+                  <p className={styles.subtitle}>{item.text}</p>
+                )
+              } else if (item.type === 'image') {
+                return (
+                  <ImageAndSlider data={item} />
+                )
+              }
+            })
+          }
         </section>
       </Link>
       <section className={styles.hashList}>

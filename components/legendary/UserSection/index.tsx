@@ -71,7 +71,13 @@ const UserSection = () => {
           <Arrow />
         </div>
       </div>
-      <div ref={dropdownTypesRef} onMouseLeave={() => setOpenMenu(true)} className={`${styles.menu} ${openMenu && styles.menuItem}`}></div>
+      <div
+        ref={dropdownTypesRef}
+        onMouseLeave={() => setOpenMenu(true)}
+        className={`${styles.menu} ${openMenu && styles.menuItem}`}
+      >
+
+      </div>
       {
         showFixedMenu &&
         <div className={styles.userFixed}>
@@ -93,7 +99,12 @@ const UserSection = () => {
               <Arrow />
             </div>
           </div>
-          <div onMouseLeave={() => setOpenMenu(true)} className={`${styles.menu} ${openMenu && styles.menuItem}`}></div>
+          <div
+            onMouseLeave={() => setOpenMenu(true)}
+            className={`${styles.menu} ${openMenu && styles.menuItem}`}
+          >
+
+          </div>
         </div>
       }
     </>

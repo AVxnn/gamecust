@@ -78,6 +78,19 @@ input {
         height: 80px;
     }
 }
+#postImageSlider {
+    .slick-slider {
+        .slick-list {
+            height: 100% !important;
+            max-height: 300px;
+
+            .slick-slide {
+                height: 300px;
+                object-fit: cover;
+            }
+        }
+    }
+}
 
 @keyframes progressBar {
     0% {

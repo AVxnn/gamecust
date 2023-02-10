@@ -9,6 +9,19 @@
   gap: 24px;
   height: 60px;
 
+  .layout {
+    position: relative;
+    max-width: 1256px;
+    width: 100%;
+    gap: 24px;
+    justify-content: center;
+    display: flex;
+
+    @media (max-width: 1280px) {
+      max-width: 990px;
+    }
+  }
+
   .leftColumn {
     max-width: 272px;
     width: 100%;
@@ -18,6 +31,10 @@
       margin-left: 16px;
       cursor: pointer;
       width: 127px;
+
+      @media (max-width: 720px) {
+        margin-left: 20px;
+      }
 
       svg:active {
 
@@ -34,6 +51,10 @@
       position: fixed;
       z-index: 123;
 
+      @media (max-width: 1280px) {
+        max-width: 975px;
+      }
+
       .logotype {
         position: relative;
         width: 100%;
@@ -44,6 +65,9 @@
         padding: 6px 0 6px 16px;
         margin: 0;
 
+        svg {
+        }
+
       }
     }
   }
@@ -52,7 +76,7 @@
     width: 100%;
 
     input {
-      @media (max-width: 740px) {
+      @media (max-width: 1024px) {
         display: none;
       }
     }
@@ -73,5 +97,35 @@
     gap: 32px;
     max-width: 296px;
     width: 100%;
+
+    .profile {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      max-width: 296px;
+      justify-content: flex-end;
+
+      @media (max-width: 720px) {
+        display: none;
+      }
+    }
+
+    .create {
+      display: none;
+      margin-right: 20px;
+      @media (max-width: 720px) {
+        display: flex;
+      }
+    }
+    .createFixed {
+      position: fixed;
+      display: none;
+      top: 4px;
+      margin-right: 20px;
+      z-index: 123;
+      @media (max-width: 720px) {
+        display: flex;
+      }
+    }
   }
 }

@@ -11,10 +11,7 @@ const data = [
   },
   {
     title: 'Подписки',
-  },
-  {
-    title: 'Категории',
-  },
+  }
 ]
 
 const Navigation = () => {

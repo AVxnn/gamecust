@@ -25,4 +25,14 @@
     background-color: rgba(0, 0, 0, 0);
     box-shadow: 0 28px 20px -19px rgb(30 50 54 / 10%);
   }
+  
+  @media (max-width: 1280px) {
+    top: 58px;
+    .navigation {
+      background: rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(8px);
+    }
+  }
+  
+  
 }

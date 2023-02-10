@@ -13,11 +13,22 @@
   animation-fill-mode: backwards;
   transition: all 0.2s ease-in-out;
 
-  .image {
+  .imgContainer {
+    display: flex;
+    justify-content: center;
     width: 92%;
-    object-fit: contain;
-    max-height: 90vh;
-    animation: top 0.2s ease-in-out forwards;
+    height: 80vh;
+    object-fit: cover;
+    position: fixed;
+    transition: scale .5s;
+
+    .image {
+      width: 92%;
+      position: relative !important;
+      object-fit: contain;
+      max-height: 90vh;
+      animation: top 0.2s ease-in-out forwards;
+    }
   }
 
   .close {
