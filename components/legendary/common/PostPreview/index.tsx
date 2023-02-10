@@ -26,15 +26,15 @@ const PostPreview = ({data} : any) => {
             data.container?.map((item: any, index: number) => {
               if (item.type === 'title') {
                 return (
-                  <h4 className={styles.title}>{item.text}</h4>
+                  <h4 key={index} className={styles.title}>{item.text}</h4>
                 )
               } else if (item.type === 'description') {
                 return (
-                  <p className={styles.subtitle}>{item.text}</p>
+                  <p key={index} className={styles.subtitle}>{item.text}</p>
                 )
               } else if (item.type === 'image') {
                 return (
-                  <ImageAndSlider data={item} />
+                  <ImageAndSlider key={index} data={item} />
                 )
               }
             })
