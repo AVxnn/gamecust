@@ -86,7 +86,7 @@
   }
 
   .info {
-    padding: 24px 24px 0 24px;
+    padding: 76px 24px 0 24px;
     box-sizing: border-box;
     justify-content: space-between;
     height: 100%;
@@ -94,6 +94,7 @@
 
     @media (max-width: 768px) {
       height: auto;
+      padding: 24px 24px 0 24px;
     }
 
     .left {
