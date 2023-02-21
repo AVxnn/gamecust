@@ -15,10 +15,7 @@
     justify-content: center;
     gap: 24px;
   }
-  
-  @media (max-width: 1280px) {
-    max-width: 990px;
-  }
+
 
   .mobileMenu {
     display: none;
@@ -30,7 +27,6 @@
     background: rgba(255, 255, 255, 0.5);
     backdrop-filter: blur(8px);
     width: 100%;
-    z-index: 30;
 
     .link {
       path {

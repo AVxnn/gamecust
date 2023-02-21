@@ -60,6 +60,14 @@ const ProfileBlock = () => {
         </div>
         <div className={styles.info}>
           <div className={styles.left}>
+          <div className={styles.rightMobile}>
+            <span className={styles.name}>MetaVxnn <CheckIcon /></span>
+            <span className={styles.description}>хикикомоэ. соцсетки с рисунками и портфолио </span>
+          </div>
+          <div className={styles.followMobile}>
+            <Button type={'primary'}>Подписаться</Button>
+            <Dots />
+          </div>
             <div className={styles.headers}>
             <span className={styles.subtitle}>
               <Trand />

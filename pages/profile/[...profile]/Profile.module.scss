@@ -43,13 +43,13 @@
 
 .rightColumn,
 .rightColumnFixed {
-  margin-top: 64px;
+  margin-top: 24px;
   display: flex;
   flex-direction: column;
   gap: 16px;
   max-width: 296px;
 
-  @media (max-width: 1280px) {
+  @media (max-width: 1024px) {
     display: none;
   }
 

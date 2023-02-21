@@ -1,7 +1,6 @@
 @import "/styles/variables.scss";
 
 .profileBlock {
-  height: 191px;
   border-radius: 8px;
   background-color: $d_main_white_color;
 
@@ -40,6 +39,11 @@
           overflow: hidden;
           border-radius: 99px;
 
+          @media (max-width: 768px) {
+            width: 100px;
+            height: 100px;
+          }
+
           img {
             width: 100%;
             height: 100%;
@@ -52,6 +56,10 @@
       margin-top: 14px;
       display: flex;
       flex-direction: column;
+
+      @media (max-width: 768px) {
+        display: none;
+      }
 
       .name {
         display: flex;
@@ -84,11 +92,50 @@
     height: 100%;
     display: flex;
 
+    @media (max-width: 768px) {
+      height: auto;
+    }
+
     .left {
       display: flex;
       flex-direction: column;
       align-self: flex-end;
       gap: 12px;
+
+      .followMobile {
+        display: none;
+        @media (max-width: 768px) {
+          display: flex;
+          align-items: center;
+          margin: 12px 0;
+          gap: 24px;
+        }
+      }
+
+      .rightMobile {
+        display: none;
+        @media (max-width: 768px) {
+          display: flex;
+          margin-top: 24px;
+          flex-direction: column;
+        }
+
+        .name {
+          font-size: 24px;
+          gap: 12px;
+          display: flex;
+          align-items: center;
+          margin-bottom: 6px;
+
+          svg {
+            width: 24px;
+            height: 24px;
+          }
+        }
+        .description {
+          font-size: 14px;
+        }
+      }
 
       .headers {
         display: flex;
@@ -125,6 +172,10 @@
       align-items: center;
       align-self: flex-start;
       gap: 32px;
+
+      @media (max-width: 768px) {
+        display: none;
+      }
 
       svg {
         width: 32px;
