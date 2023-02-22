@@ -18,7 +18,7 @@ const ImageAndSlider = ({data}: any) => {
     adaptiveHeight: true,
     beforeChange: (current: any, next: any) => setCountImages(next),
   };
-  console.log(countImages)
+  
   if(data.images.length > 1) {
     return (
       <div id={'postImageSlider'} className={styles.slider_images}>

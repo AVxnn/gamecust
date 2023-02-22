@@ -77,7 +77,7 @@ const UserSection = () => {
         onMouseLeave={() => setOpenMenu(true)}
         className={`${styles.menu} ${openMenu && styles.menuItem}`}
       >
-
+        вшц
       </div>
       {
         showFixedMenu &&
@@ -104,7 +104,6 @@ const UserSection = () => {
             onMouseLeave={() => setOpenMenu(true)}
             className={`${styles.menu} ${openMenu && styles.menuItem}`}
           >
-
           </div>
         </div>
       }

@@ -19,28 +19,29 @@ const PopupImg = ({data} : any) : JSX.Element => {
 
   const closePopup = () => {
     dispatch(close())
+    number = 100
+    setWidthw(number)
+    setSized(0, 0)
   }
 
   let number = 100
 
   let catchCombination = (e : any) => {
-
-    console.log(number)
-    if (e.shiftKey && e.deltaY === -100) {
+    
+    if (e.shiftKey && e.deltaY < -0) {
       if (number < 50) {
         return null
       }
       number -= 10
       setWidthw(number)
-    } else if(e.shiftKey && e.deltaY === 100) {
+    } else if(e.shiftKey && e.deltaY > 0) {
       if (number > 200) {
         return null
       }
       number += 10
       setWidthw(number)
-    } else {
-      return null
     }
+    return null
   }
 
   const moveImage = (e: any) => {

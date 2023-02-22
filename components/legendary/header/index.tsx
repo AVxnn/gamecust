@@ -8,8 +8,6 @@ import Button from "../common/Button";
 
 const Header = () => {
 
-
-
   const [auth, setAuth] = useState(true)
   const [showFixedMenu, setShowFixedMenu] = useState<boolean>(false);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -17,8 +15,7 @@ const Header = () => {
   useEffect(() => {
     if (typeof window !== 'undefined') {
       window.addEventListener('scroll', () => {
-
-        if (menuRef.current && menuRef.current.getBoundingClientRect().top <= 4) {
+        if (menuRef.current && menuRef.current.getBoundingClientRect().top <= 7) {
           setShowFixedMenu(true)
         } else {
           setShowFixedMenu(false)
@@ -47,11 +44,11 @@ const Header = () => {
             }
           </div>
           <div ref={menuRef} className={styles.create}>
-            <Button type={'primary'}>Создать</Button>
+            <Button size='small' type={'primary'}>Создать</Button>
           </div>
           { showFixedMenu &&
             <div className={styles.createFixed}>
-              <Button type={'primary'}>Создать</Button>
+              <Button size='small' type={'primary'}>Создать</Button>
             </div>
           }
         </div>

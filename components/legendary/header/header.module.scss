@@ -33,7 +33,7 @@
       width: 127px;
 
       @media (max-width: 720px) {
-        margin-left: 20px;
+        margin-left: 24px;
       }
 
       svg:active {
@@ -62,7 +62,7 @@
         border-radius: 8px;
         background: rgba(255, 255, 255, 0.5);
         backdrop-filter: blur(8px);
-        padding: 6px 0 6px 16px;
+        padding: 6px 0 6px 24px;
         margin: 0;
 
         svg {
@@ -120,7 +120,7 @@
     .createFixed {
       position: fixed;
       display: none;
-      top: 4px;
+      top: 10px;
       margin-right: 20px;
       z-index: 123;
       @media (max-width: 720px) {

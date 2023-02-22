@@ -10,11 +10,11 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-bottom: 12px;
     cursor: pointer;
 
     .left {
       display: flex;
-      margin-bottom: 12px;
 
       .avatar {
         position: relative;

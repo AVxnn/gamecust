@@ -17,6 +17,7 @@
 .menuItem {
   height: 0px;
   width: 0px;
+  overflow: hidden;
   box-shadow: rgba(0, 0, 0, 0.16) 0 10px 36px 0, rgba(0, 0, 0, 0.06) 0 0 0 1px;
   position: absolute;
   animation-fill-mode: backwards;

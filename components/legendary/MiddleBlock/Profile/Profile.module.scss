@@ -205,6 +205,7 @@
   backdrop-filter: blur(8px);
   top: -199px;
   z-index: 999;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
   position: fixed;
   animation: anim 0.2s ease-in-out forwards;
 
@@ -268,6 +269,6 @@
     top: -50px;
   }
   100% {
-    top: 58px;
+    top: 49px;
   }
 }

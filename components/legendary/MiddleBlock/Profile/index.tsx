@@ -112,7 +112,7 @@ const ProfileBlock = () => {
               </ul>
             </div>
             <div>
-              <Button type={'primary'}>Подписаться</Button>
+              <Button size='small' type={'primary'}>Подписаться</Button>
             </div>
           </div>
         </div>

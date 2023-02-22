@@ -81,12 +81,10 @@ input {
 #postImageSlider {
     .slick-slider {
         .slick-list {
-            height: 100% !important;
-            max-height: 300px;
+            max-height: 500px;
 
             .slick-slide {
-                height: 300px;
-                object-fit: cover;
+                height: 100%;
             }
         }
     }

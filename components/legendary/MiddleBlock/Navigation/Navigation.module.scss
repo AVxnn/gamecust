@@ -27,7 +27,8 @@
   }
   
   @media (max-width: 1280px) {
-    top: 58px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    top: 49px;
     .navigation {
       background: rgba(255, 255, 255, 0.5);
       backdrop-filter: blur(8px);
