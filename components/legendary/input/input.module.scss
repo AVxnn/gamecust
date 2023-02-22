@@ -6,7 +6,7 @@
   flex-direction: column;
 
   .title {
-    color: $d_main_black_color;
+    color: $d_main_text_color;
     font-size: 16px;
     font-weight: 700;
     margin-bottom: 6px;
@@ -19,13 +19,14 @@
     font-weight: 500;
     padding: 12px 24px;
     border-radius: 8px;
-    background-color: $d_main-Bg-color-hover;
+    color: $d_main_text_color;
+    background-color: $d_main_bg_color;
     border: 1px solid $d_main-Bg-color-hover;
     transition: all 0.1s ease-in-out;
 
     &:hover {
       background-color: rgba(0, 0, 0, 0);
-      border-color: $d_main_color;
+      border-color: $d_main_bg_color;
     }
   }
 

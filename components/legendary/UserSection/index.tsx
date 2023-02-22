@@ -4,28 +4,18 @@ import Arrow from '../../../public/img/svg/Arrow'
 import Trand from '../../../public/img/svg/Trand'
 import Notification from "../Notification";
 import Image from 'next/image'
+import Link from "next/link";
+import Cog from "../../../public/img/svg/Cog";
+import Exit from "../../../public/img/svg/Exit";
 
 const UserSection = () => {
 
-  const [openMenu, setOpenMenu] = useState(true)
+  const [openMenu, setOpenMenu] = useState(false)
+  const [theme, setTheme] = useState(false)
   const [notifi, setNotifi] = useState(false)
-  const [showFixedMenu, setShowFixedMenu] = useState<boolean>(false);
   const menuRef = useRef<HTMLDivElement>(null);
 
   const dropdownTypesRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      window.addEventListener('scroll', () => {
-
-        if (menuRef.current && menuRef.current.getBoundingClientRect().top <= 0) {
-          setShowFixedMenu(true)
-        } else {
-          setShowFixedMenu(false)
-        }
-      })
-    }
-  })
 
   const handleClickOutside = (e: any) => {
     if (openMenu) {
@@ -52,6 +42,16 @@ const UserSection = () => {
     }
   })
 
+  function changeTheme() {
+    setTheme(!theme)
+    if (theme) {
+      document.body.setAttribute('dark', '');
+    } else {
+      document.body.removeAttribute('dark');
+    }
+    setOpenMenu(false)
+  }
+
   return (
     <>
       <Notification notifi={notifi} setNotifi={setNotifi} openMenus={openMenu}/>
@@ -72,40 +72,47 @@ const UserSection = () => {
           <Arrow />
         </div>
       </div>
-      <div
-        ref={dropdownTypesRef}
-        onMouseLeave={() => setOpenMenu(true)}
-        className={`${styles.menu} ${openMenu && styles.menuItem}`}
-      >
-        вшц
-      </div>
       {
-        showFixedMenu &&
-        <div className={styles.userFixed}>
-          <Notification notifi={notifi} setNotifi={setNotifi}  openMenus={openMenu} />
+        openMenu && (
           <div
-              onMouseEnter={() => setOpenMenu(!openMenu)}
-              className={styles.user}>
-            <div className={styles.avatar}>
-              <Image layout={'fill'} src={'https://i.pinimg.com/736x/78/a6/de/78a6dee0461f3a04c067b4198730bfb2.jpg'} alt="ads"/>
-            </div>
-            <div className={styles.info}>
-              <h4 className={styles.name}>MetaVxnn</h4>
-              <span className={styles.subtitle}>
-                <Trand />
-                1232
-              </span>
-            </div>
-            <div style={{transform: !openMenu ? 'rotate(180deg)' : ''}} className={styles.arrowDown}>
-              <Arrow />
-            </div>
+            ref={dropdownTypesRef}
+            onMouseLeave={() => setOpenMenu(false)}
+            className={styles.menu}>
+            <h4 className={styles.title}>Мой профиль</h4>
+            <Link href={'#'}>
+              <div className={styles.userMenu}>
+                <div className={styles.avatar}>
+                  <Image layout={'fill'} src={'https://i.pinimg.com/736x/78/a6/de/78a6dee0461f3a04c067b4198730bfb2.jpg'} alt="ads"/>
+                </div>
+                <p className={styles.userName}>MetaVxnn</p>
+              </div>
+            </Link>
+            <Link href={'#'}>
+              <div className={styles.userMenu}>
+                <div className={styles.bgAvatar}>
+                  <Cog/>
+                </div>
+                <p className={styles.userName}>Настройки</p>
+              </div>
+            </Link>
+            <Link onClick={() => changeTheme()} href={'#'}>
+              <div className={styles.userMenu}>
+                <div className={styles.bgAvatar}>
+                  <Cog/>
+                </div>
+                <p className={styles.userName}>Тема</p>
+              </div>
+            </Link>
+            <Link href={'#'}>
+              <div className={styles.userMenu}>
+                <div className={styles.bgAvatar}>
+                  <Exit/>
+                </div>
+                <p className={styles.userName}>Выйти</p>
+              </div>
+            </Link>
           </div>
-          <div
-            onMouseLeave={() => setOpenMenu(true)}
-            className={`${styles.menu} ${openMenu && styles.menuItem}`}
-          >
-          </div>
-        </div>
+        )
       }
     </>
   );

@@ -28,13 +28,13 @@ const PopupImg = ({data} : any) : JSX.Element => {
 
   let catchCombination = (e : any) => {
     
-    if (e.shiftKey && e.deltaY < -0) {
+    if (e.shiftKey && e.deltaY < -100) {
       if (number < 50) {
         return null
       }
       number -= 10
       setWidthw(number)
-    } else if(e.shiftKey && e.deltaY > 0) {
+    } else if(e.shiftKey && e.deltaY > 100) {
       if (number > 200) {
         return null
       }

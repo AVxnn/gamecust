@@ -2,7 +2,7 @@
 
 .profileBlock {
   border-radius: 8px;
-  background-color: $d_main_white_color;
+  background-color: $d_main_subbg_color;
 
   .header {
     display: flex;
@@ -24,6 +24,7 @@
           right: 0;
           font-weight: 700;
           bottom: 12px;
+          color: $d_main_text_color;
           font-size: 24px;
           width: 38px;
           height: 38px;
@@ -64,7 +65,7 @@
       .name {
         display: flex;
         align-items: center;
-        color: $d_main_white_color;
+        color: $const_main_text_color;
         font-weight: 700;
         font-size: 28px;
 
@@ -80,7 +81,7 @@
         text-overflow: ellipsis;
         white-space: nowrap;
         overflow: hidden;
-        color: $d_main_white_color;
+        color: $const_main_text_color;
       }
     }
   }
@@ -105,6 +106,15 @@
 
       .followMobile {
         display: none;
+
+        path {
+          fill: $d_main_text_color;
+        }
+
+        &:hover path {
+          fill: $d_main_text_hover_color;
+        }
+
         @media (max-width: 768px) {
           display: flex;
           align-items: center;
@@ -125,6 +135,7 @@
           font-size: 24px;
           gap: 12px;
           display: flex;
+          color: $d_main_text_color;
           align-items: center;
           margin-bottom: 6px;
 
@@ -135,6 +146,7 @@
         }
         .description {
           font-size: 14px;
+          color: $d_main_text_color;
         }
       }
 
@@ -159,8 +171,11 @@
           }
         }
         .subs {
-          color: $d_main_black_color;
+          color: $d_main_subtext_color;
         }
+      }
+      .date {
+        color: $d_main_subtext_color;
       }
       .navigation {
         display: flex;
@@ -185,11 +200,12 @@
 
         path {
           transition: all 0.1s ease-in-out;
+          fill: $d_main_subtext_color;
         }
 
         &:hover {
           path {
-            fill: $d_main_gray_color;
+            fill: $d_main_text_color;
           }
         }
       }
@@ -201,7 +217,7 @@
   width: 100%;
   border-radius: 8px;
   max-width: 936px;
-  background: rgba(255, 255, 255, 0.5);
+  background: $d_main_subbg_glass_color;
   backdrop-filter: blur(8px);
   top: -199px;
   z-index: 999;
@@ -243,6 +259,7 @@
           justify-content: center;
           position: absolute;
           right: 0;
+          color: $d_main_text_color;
           width: 16px;
           height: 16px;
           border-radius: 99px;
@@ -253,7 +270,7 @@
       .right {
         padding-left: 12px;
         .name {
-
+          color: $d_main_text_color;
         }
         .description {
 
@@ -269,6 +286,6 @@
     top: -50px;
   }
   100% {
-    top: 49px;
+    top: 58px;
   }
 }

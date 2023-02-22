@@ -138,6 +138,9 @@ const data = [
     comments: 32
   },
   {
+    news: true
+  },
+  {
     tags: [{
         title: 'Популярное',
         important: true,

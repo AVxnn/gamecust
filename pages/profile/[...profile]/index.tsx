@@ -11,12 +11,9 @@ import NewsSliderSmall from "../../../components/legendary/RightBlock/NewsSlider
 import TopGroup from "../../../components/legendary/RightBlock/TopGroup";
 import Contacts from "../../../components/legendary/RightBlock/Contacts";
 import BackWallpaper from "../../../components/legendary/BackWallpaper";
-import Post from "../../../components/legendary/common/Post";
 import LoginRight from "../../../components/legendary/RightBlock/LoginRight";
 import ProfileBlock from "../../../components/legendary/MiddleBlock/Profile";
 import PostList from "../../../components/legendary/MiddleBlock/PostList";
-import Navigation from "../../../components/legendary/MiddleBlock/Navigation";
-import Tabs from "../../../components/legendary/common/Tabs";
 
 const Profile = () => {
 
@@ -27,7 +24,7 @@ const Profile = () => {
     if (typeof window !== 'undefined') {
       window.addEventListener('scroll', () => {
 
-        if (menuRef.current && menuRef.current.getBoundingClientRect().top <= 0) {
+        if (menuRef.current && menuRef.current.getBoundingClientRect().top <= -140) {
           setShowFixedMenu(true)
         } else {
           setShowFixedMenu(false)

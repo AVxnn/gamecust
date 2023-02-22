@@ -25,6 +25,9 @@
     svg {
       width: 20px;
       height: 20px;
+      path {
+        fill: $d_main_text_color;
+      }
     }
   }
   .dislike {
@@ -44,11 +47,14 @@
     svg {
       width: 20px;
       height: 20px;
+      path {
+        fill: $d_main_text_color;
+      }
     }
   }
   .title {
     font-size: 14px;
     font-weight: 500;
-    color: $d_main_black_color;
+    color: $d_main_text_color;
   }
 }

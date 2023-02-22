@@ -15,13 +15,17 @@
       svg {
         width: 20px;
         height: 20px;
+
+        path {
+          fill: $d_main_text_color
+        }
       }
       .title {
         margin-left: 6px;
         margin-top: 1px;
         font-size: 14px;
         font-weight: 500;
-        color: $d_main_black_color;
+        color: $d_main_text_color;
         cursor: default;
       }
     }
@@ -34,12 +38,16 @@
       svg {
         width: 20px;
         height: 20px;
+
+        path {
+          fill: $d_main_text_color
+        }
       }
 
       &:hover {
         path {
           transition: all 0.1s ease-in-out;
-          fill: $d_main_color;
+          fill: $d_main_text_hover_color;
         }
       }
     }
@@ -61,16 +69,20 @@
 
       svg {
         width: 20px;
+
         height: 20px;
+        path {
+          fill: $d_main_text_color
+        }
       }
 
       &:hover {
         .title {
-          color: $d_main_color;
+          color: $d_main_text_hover_color;
         }
         path {
           transition: all 0.1s ease-in-out;
-          fill: $d_main_color;
+          fill: $d_main_text_hover_color;
         }
       }
 
@@ -79,7 +91,7 @@
         font-size: 14px;
         margin-left: 6px;
         font-weight: 500;
-        color: $d_main_black_color;
+        color: $d_main_text_color;
       }
     }
   }

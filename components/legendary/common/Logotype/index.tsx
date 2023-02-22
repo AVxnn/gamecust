@@ -28,17 +28,6 @@ const Logotype = () => {
           <LogotypeIcon />
         </Link>
       </div>
-      {
-        showFixedMenu && (
-          <div className={styles.logotypeFixed}>
-            <div className={styles.logotype}>
-              <Link href={'/'}>
-                <LogotypeIcon />
-              </Link>
-            </div>
-          </div>
-        )
-      }
     </>
   );
 };

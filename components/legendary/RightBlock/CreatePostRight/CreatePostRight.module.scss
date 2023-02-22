@@ -5,7 +5,7 @@
   display: flex;
   box-sizing: border-box;
   flex-direction: column;
-  background-color: $d_main_white_color;
+  background-color: $d_main_subbg_color;
   border-radius: 8px;
   gap: 16px;
   align-items: center;
@@ -19,6 +19,7 @@
 
     .title {
       margin: 0;
+      color: $d_main_text_color;
     }
     .notepad {
       display: flex;
@@ -84,7 +85,7 @@
       }
 
       .text {
-        color: $d_main_black_color;
+        color: $d_main_text_color;
 
         margin-top: 6px;
       }

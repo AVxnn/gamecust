@@ -4,9 +4,11 @@
   position: relative;
   max-width: 1256px;
   width: 100%;
+  margin-top: 60px;
   gap: 24px;
   flex-direction: column;
   justify-content: center;
+  z-index: 2;
   display: flex;
 
   .container {
@@ -27,18 +29,18 @@
     align-items: center;
     justify-content: space-around;
     height: 50px;
-    background: rgba(255, 255, 255, 0.5);
+    background: $d_main_subbg_glass_color;
     backdrop-filter: blur(8px);
     width: 100%;
     z-index: 30;
 
     .link {
       path {
-        fill: $d_main_black_color
+        fill: $d_main_text_color
       }
       &:hover {
         path {
-          fill: $d_main_gray_color;
+          fill: $d_main_text_hover_color;
         }
       }
     }

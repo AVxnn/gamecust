@@ -3,10 +3,13 @@
 .header {
   display: flex;
   width: 100%;
+  position: fixed;
   align-items: center;
   justify-content: center;
-  background-color: $d_main_white_color;
+  background-color: $d_main_subbg_glass_color;
   gap: 24px;
+  backdrop-filter: blur(8px);
+  z-index: 6;
   height: 60px;
 
   .layout {
@@ -36,38 +39,16 @@
         margin-left: 24px;
       }
 
+      path {
+        fill: $d_main_text_color;
+      }
+
       svg:active {
 
         path {
           transition: all 80ms ease-in-out;
-          fill: $d_main_gray_color;
+          fill: $d_main_text_color;
         }
-      }
-    }
-
-    .logotypeFixed {
-      width: 1256px;
-      top: 0;
-      position: fixed;
-      z-index: 123;
-
-      @media (max-width: 1280px) {
-        max-width: 975px;
-      }
-
-      .logotype {
-        position: relative;
-        width: 100%;
-        box-sizing: border-box;
-        border-radius: 8px;
-        background: rgba(255, 255, 255, 0.5);
-        backdrop-filter: blur(8px);
-        padding: 6px 0 6px 24px;
-        margin: 0;
-
-        svg {
-        }
-
       }
     }
   }
@@ -86,7 +67,7 @@
       font-weight: 500;
       padding: 11.5px 24px;
       border-radius: 99px;
-      border: 1px solid $d_main_gray_color;
+      border: 1px solid $d_main_text_color;
     }
   }
 

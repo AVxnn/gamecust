@@ -28,7 +28,7 @@ const Navigation = () => {
     if (typeof window !== 'undefined') {
       window.addEventListener('scroll', () => {
 
-        if (menuRef.current && menuRef.current.getBoundingClientRect().top <= 0) {
+        if (menuRef.current && menuRef.current.getBoundingClientRect().top <= 10) {
           setShowFixedMenu(true)
         } else {
           setShowFixedMenu(false)

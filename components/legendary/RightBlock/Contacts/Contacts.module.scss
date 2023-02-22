@@ -9,7 +9,7 @@
   .title {
     margin: 0;
     font-size: 16px;
-    color: $d_main_black_color;
+    color: $d_main_text_color;
   }
 
   .item {
@@ -17,14 +17,14 @@
     align-items: center;
     a {
       text-decoration: none;
-      color: $d_main_black_color;
+      color: $d_main_text_color;
       font-size: 12px;
       padding-bottom: 2px;
       margin-top: 2px;
       border-bottom: 1px dashed rgba(0, 0, 0, 0);
 
       &:hover {
-        border-bottom: 1px dashed $d_main_black_color;
+        border-bottom: 1px dashed $d_main_text_hover_color;
       }
     }
     svg {

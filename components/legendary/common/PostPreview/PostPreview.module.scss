@@ -5,7 +5,7 @@
   display: flex;
   box-sizing: border-box;
   flex-direction: column;
-  background-color: $d_main_white_color;
+  background-color: $d_main_subbg_color;
   border-radius: 8px;
   padding: 16px 24px;
 
@@ -31,14 +31,14 @@
         font-size: 20px;
         margin: 0;
         line-height: 27px;
-        color: $d_main_black_color;
+        color: $d_main_text_color;
         font-weight: 700;
         margin-bottom: 12px;
       }
 
       .subtitle {
         font-size: 16px;
-        color: $d_main_black_color;
+        color: $d_main_text_color;
         font-weight: 500;
         line-height: 1.35;
       }

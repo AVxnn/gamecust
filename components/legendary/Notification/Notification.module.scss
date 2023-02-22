@@ -5,10 +5,14 @@
   height: 24px;
   cursor: pointer;
 
+  path {
+    fill: $d_main_text_color;
+  }
+
   &:hover {
     path {
       transition: all 0.1s ease-in-out;
-      fill: $d_main_color;
+      fill: $d_main_text_hover_color;
     }
   }
 }

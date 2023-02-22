@@ -46,11 +46,6 @@ const Header = () => {
           <div ref={menuRef} className={styles.create}>
             <Button size='small' type={'primary'}>Создать</Button>
           </div>
-          { showFixedMenu &&
-            <div className={styles.createFixed}>
-              <Button size='small' type={'primary'}>Создать</Button>
-            </div>
-          }
         </div>
       </div>
     </div>

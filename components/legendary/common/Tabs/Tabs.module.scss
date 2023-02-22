@@ -4,25 +4,25 @@
 .active {
   position: relative;
   font-size: 16px;
-  color: $d_main_black_color;
+  color: $d_main_text_color;
   transition: all 0.1s ease-in-out;
 
   &:hover {
     a {
-      color: $d_main_gray_color;
+      color: $d_main_text_hover_color;
     }
   }
 
   a {
     text-decoration: none;
-    color: $d_main_black_color;
+    color: $d_main_text_color;
   }
 }
 
 .active {
   &:hover {
     a {
-      color: $d_main_black_color;
+      color: $d_main_text_color;
     }
   }
   &:before {

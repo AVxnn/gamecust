@@ -50,7 +50,7 @@
         align-items: center;
         margin-left: 8px;
         font-size: 16px;
-        color: $d_main_black_color;
+        color: $d_main_text_color;
 
         svg {
           margin-left: 4px;
@@ -61,25 +61,28 @@
       display: flex;
       align-items: center;
       padding: 5px 12px;
-      color: $d_main_white_color;
+      color: $d_main_text_color;
       font-size: 12px;
-      background-color: $d_main_black_color;
+      background-color: $d_main_bg_color;
       border-radius: 99px;
+      rect {
+        fill: $d_main_text_color;
+      }
     }
     .rating {
       display: flex;
       align-items: center;
       padding: 5px 12px;
-      color: $d_main_white_color;
+      color: $d_main_text_color;
       font-size: 12px;
-      background-color: $d_main_black_color;
+      background-color: $d_main_bg_color;
       border-radius: 99px;
 
       svg {
         margin-right: 4px;
 
         path {
-          fill: $d_main_white_color;
+          fill: $d_main_text_color;
         }
       }
     }

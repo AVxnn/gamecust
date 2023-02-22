@@ -5,10 +5,10 @@
   margin: 12px 0;
   font-weight: 600;
   color: $d_main_color;
-  border-bottom: 1px dashed $d_main_white_color;
+  border-bottom: 1px dashed $d_main_color;
   cursor: pointer;
 
   &:hover {
-    border-bottom: 1px dashed $d_main_color;
+    border-bottom: 1px dashed $d_main_hover;
   }
 }

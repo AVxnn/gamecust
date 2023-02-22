@@ -5,7 +5,7 @@
 .postDay {
   padding: 4px 8px;
   font-size: 10px;
-  color: $d_main_white_color;
+  color: $const_main_text_color;
   background-color: #4A7EE1;
   border-radius: 99px;
 }
@@ -20,7 +20,7 @@
     width: 12px;
     height: 12px;
     path {
-      fill: $d_main_white_color;
+      fill: $const_main_text_color;
     }
   }
 }

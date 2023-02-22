@@ -27,7 +27,7 @@ const UserItem = ({data, index, get, set} : any) => {
           data.rating ? (
             <span className={styles.rating}><Trand /> {data.rating}</span>
           ) : (
-            <span className={styles.add}><Plus /> {data.rating}</span>
+            <span className={styles.add}><Plus /></span>
           )
         }
       </header>

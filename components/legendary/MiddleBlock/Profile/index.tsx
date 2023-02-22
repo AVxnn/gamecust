@@ -73,11 +73,11 @@ const ProfileBlock = () => {
               <Trand />
               1232
             </span>
-              <span className={styles.subs}>
+            <span className={styles.subs}>
               699 подписчиков
             </span>
             </div>
-            <div>На проекте с 12 фев 2021</div>
+            <div className={styles.date}>На проекте с 12 фев 2021</div>
             <ul ref={menuRef} className={styles.navigation}>
               {
                 data.map((item : any, index : number) => {

@@ -5,7 +5,7 @@
   width: 100%;
   box-sizing: border-box;
   flex-direction: column;
-  background-color: $d_main_white_color;
+  background-color: $d_main_subbg_color;
   border-radius: 8px;
   gap: 16px;
   align-items: center;
@@ -24,14 +24,14 @@
     .title {
       position: absolute;
       font-size: 44px;
-      color: $d_main_white_color;
+      color: $const_main_text_color;
       animation: left 1s ease-in-out forwards;
     }
     .subtitle {
       position: absolute;
       font-size: 15px;
       width: 148px;
-      color: $d_main_white_color;
+      color: $const_main_text_color;
       animation: right 1s ease-in-out forwards;
     }
   }
