@@ -7,11 +7,13 @@ import Image from 'next/image'
 import Link from "next/link";
 import Cog from "../../../public/img/svg/Cog";
 import Exit from "../../../public/img/svg/Exit";
+import Sun from "../../../public/img/svg/Sun";
+import Moon from "../../../public/img/svg/Moon";
 
 const UserSection = () => {
 
   const [openMenu, setOpenMenu] = useState(false)
-  const [theme, setTheme] = useState(false)
+  const [theme, setTheme] = useState(true)
   const [notifi, setNotifi] = useState(false)
   const menuRef = useRef<HTMLDivElement>(null);
 
@@ -28,10 +30,6 @@ const UserSection = () => {
   }
 
   useEffect(() => {
-    setOpenMenu(true)
-  }, [notifi])
-
-  useEffect(() => {
     if (typeof document !== "undefined" && openMenu) {
       document.addEventListener('click', (e: any) => {
         handleClickOutside(e);
@@ -42,12 +40,20 @@ const UserSection = () => {
     }
   })
 
+  useEffect(() => {
+    setTheme(localStorage.getItem('Theme') !== 'dark')
+    console.log(theme)
+  })
+
   function changeTheme() {
-    setTheme(!theme)
-    if (theme) {
-      document.body.setAttribute('dark', '');
+
+    const Theme = localStorage.getItem('Theme')
+    if (Theme == 'white') {
+      localStorage.setItem('Theme', 'dark');
+      setTheme(false)
     } else {
-      document.body.removeAttribute('dark');
+      localStorage.setItem('Theme', 'white');
+      setTheme(true)
     }
     setOpenMenu(false)
   }
@@ -98,9 +104,18 @@ const UserSection = () => {
             <Link onClick={() => changeTheme()} href={'#'}>
               <div className={styles.userMenu}>
                 <div className={styles.bgAvatar}>
-                  <Cog/>
+                  {
+                    theme ? (
+                      <Sun/>
+                    ) : (
+                      <Moon/>
+                    )
+                  }
                 </div>
-                <p className={styles.userName}>Тема</p>
+                <p className={styles.userName}>Изменить тему</p>
+                <div className={styles.arrow}>
+                  <Arrow/>
+                </div>
               </div>
             </Link>
             <Link href={'#'}>

@@ -4,6 +4,7 @@ import User from '../../public/img/svg/User'
 import Home from '../../public/img/svg/Home'
 import Search from '../../public/img/svg/Search'
 import Link from "next/link";
+import Image from "next/image";
 
 const Layout = ({children}: any) => {
   return (
@@ -19,7 +20,9 @@ const Layout = ({children}: any) => {
           <Home />
         </Link>
         <Link className={styles.link} href={'/profile/metavxnn'}>
-          <User />
+          <div className={styles.avatar}>
+            <Image layout={'fill'} src={'https://i.pinimg.com/736x/78/a6/de/78a6dee0461f3a04c067b4198730bfb2.jpg'} alt="ads"/>
+          </div>
         </Link>
       </div>
     </div>

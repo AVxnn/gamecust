@@ -4,7 +4,7 @@ import Smile from '../../../../public/img/svg/Smile'
 import ImageAdd from '../../../../public/img/svg/ImageAdd'
 import Button from "../Button";
 import Tabs from "../Tabs";
-import ToolComment from "./ToolComment";
+import TextareaAutosize from 'react-textarea-autosize';
 import Item from "./Item";
 
 const list = [
@@ -19,6 +19,7 @@ const list = [
 const Comments = ({data} : any) => {
 
   const [active, setActive] = useState(0)
+  const [value, setValue] = useState('')
 
   const changePage = (index : number) => {
     setActive(index)
@@ -27,14 +28,20 @@ const Comments = ({data} : any) => {
   return (
     <>
       <div className={styles.comments}>
-        <input type="text" placeholder={'Оставьте свой комментарий!'}/>
+        <TextareaAutosize onChange={(e) => setValue(e.currentTarget.value)} placeholder={'Оставьте свой комментарий!'}/>
         <div className={styles.footer}>
           <div className={styles.left}>
-            <Smile />
-            <ImageAdd />
+            <div className={styles.icon}>
+              <Smile />
+            </div>
+            <div className={styles.icon}>
+              <ImageAdd />
+            </div>
           </div>
           <div>
-            <Button type={'primary'} size={'small'}>Отправить</Button>
+            {
+              value && <Button type={'primary'} size={'small'}>Отправить</Button>
+            }
           </div>
         </div>
       </div>

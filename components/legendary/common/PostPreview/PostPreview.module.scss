@@ -7,11 +7,15 @@
   flex-direction: column;
   background-color: $d_main_subbg_color;
   border-radius: 8px;
-  padding: 16px 24px;
+  padding: 16px 0;
+
+  .headerContainer {
+    margin: 0 24px 0 24px;
+  }
 
   .tags {
     display: flex;
-    margin: 12px 0 8px 0;
+    margin: 12px 24px 8px 24px;
     gap: 12px;
   }
 
@@ -29,17 +33,17 @@
 
       .title {
         font-size: 20px;
-        margin: 0;
+        margin: 0 24px 12px 24px;
         line-height: 27px;
         color: $d_main_text_color;
         font-weight: 700;
-        margin-bottom: 12px;
       }
 
       .subtitle {
         font-size: 16px;
         color: $d_main_text_color;
         font-weight: 500;
+        margin: 0 24px 12px 24px;
         line-height: 1.35;
       }
       .img {
@@ -53,6 +57,7 @@
   .hashList {
     display: flex;
     gap: 8px;
+    margin: 0 24px 8px 24px;
 
     .hashtag {
       font-size: 12px;
@@ -66,6 +71,10 @@
         border-bottom: 1px dashed $d_main_color;
       }
     }
+  }
+
+  .toolBarContainer {
+    margin: 0 24px 0 24px;
   }
 
 }

@@ -5,6 +5,7 @@ import UserSection from "../UserSection";
 import Logotype from "../common/Logotype";
 import UnAuthProfile from "../UnAuthProfile";
 import Button from "../common/Button";
+import Link from "next/link";
 
 const Header = () => {
 
@@ -43,9 +44,9 @@ const Header = () => {
               )
             }
           </div>
-          <div ref={menuRef} className={styles.create}>
+          <Link href={'/editor'} className={styles.create}>
             <Button size='small' type={'primary'}>Создать</Button>
-          </div>
+          </Link>
         </div>
       </div>
     </div>

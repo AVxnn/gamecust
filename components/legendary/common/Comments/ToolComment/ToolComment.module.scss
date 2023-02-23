@@ -36,12 +36,16 @@
       svg {
         width: 20px;
         height: 20px;
+
+        path {
+          fill: $d_main_color;
+        }
       }
 
       &:hover {
         path {
           transition: all 0.1s ease-in-out;
-          fill: $d_main_color;
+          fill: $d_main_hover;
         }
       }
     }

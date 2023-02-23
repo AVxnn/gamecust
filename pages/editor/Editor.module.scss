@@ -1,0 +1,22 @@
+@import "/styles/variables.scss";
+
+.middleColumn {
+  position: fixed;
+  background-color: $d_main_bg_color;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  margin-top: 18px;
+
+  .search {
+    font-size: 16px;
+    font-weight: 500;
+    padding: 11.5px 24px;
+    border-radius: 99px;
+    border: 1px solid $d_main_gray_color;
+  }
+}

@@ -85,14 +85,12 @@ input {
     height: 111px;
     position: relative;
     float: left;
-    background-color: #f0fafa;
     box-sizing: border-box;
     cursor: pointer;
     outline: none;
 }
 
 .slick-list {
-    border-radius: 8px;
 
     &:hover > .slick-dots  .slick-active div {
         animation: progressBar 6.1s ease-in-out forwards;
@@ -138,6 +136,14 @@ input {
 }
 #postImageSlider {
     .slick-slider {
+
+        @media (max-width: 1280px) {
+            max-width: 670px;
+        }
+        @media (max-width: 1024px) {
+            max-width: 1920px;
+        }
+
         .slick-list {
             max-height: 500px;
 

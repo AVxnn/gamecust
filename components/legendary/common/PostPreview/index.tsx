@@ -10,7 +10,9 @@ import ImageAndSlider from "../ImageAndSlider";
 const PostPreview = ({data} : any) => {
   return (
     <div className={styles.postPreview}>
-      <HeaderPost data={data}/>
+      <div className={styles.headerContainer}>
+        <HeaderPost data={data}/>
+      </div>
       <section className={styles.tags}>
         {
           data.tags.map((item : any, index : number) => {
@@ -50,7 +52,9 @@ const PostPreview = ({data} : any) => {
           })
         }
       </section>
-      <Toolbar data={data} />
+      <div className={styles.toolBarContainer}>
+        <Toolbar data={data} />
+      </div>
     </div>
   );
 };

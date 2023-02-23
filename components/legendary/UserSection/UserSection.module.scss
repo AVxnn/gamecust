@@ -25,6 +25,7 @@
   }
 
   .userMenu {
+    position: relative;
     display: flex;
     width: 100%;
     align-items: center;
@@ -33,9 +34,6 @@
     border-radius: 99px;
     transition: all 0.1s ease-in-out;
 
-    &:hover {
-      background-color: $d_main_subtext_color;
-    }
 
     .bgAvatar {
       width: 42px;
@@ -48,6 +46,20 @@
 
       path {
         fill: $d_main_bg_color;
+      }
+    }
+
+    .arrow {
+      width: 18px;
+      height: 18px;
+
+      svg {
+        position: absolute;
+        transform: rotate(-90deg);
+        right: 0;
+        path {
+          fill: $d_main_text_hover_color;
+        }
       }
     }
 

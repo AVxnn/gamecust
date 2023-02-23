@@ -35,12 +35,34 @@
     z-index: 30;
 
     .link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 50px;
+      width: 50px;
+
+      svg {
+        width: 28px;
+        height: 28px;
+      }
+
       path {
         fill: $d_main_text_color
       }
       &:hover {
         path {
           fill: $d_main_text_hover_color;
+        }
+      }
+
+      .avatar {
+        position: relative;
+        height: 28px;
+        width: 28px;
+        border-radius: 99px;
+
+        img {
+          border-radius: 99px;
         }
       }
     }

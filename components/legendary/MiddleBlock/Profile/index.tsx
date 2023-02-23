@@ -50,10 +50,9 @@ const ProfileBlock = () => {
               <div className={styles.contImg}>
                 <img src="https://i.pinimg.com/736x/78/a6/de/78a6dee0461f3a04c067b4198730bfb2.jpg" alt=""/>
               </div>
-              <span className={styles.number}>1</span>
             </div>
           </div>
-          <div className={styles.right}>
+          <div className={styles.rightText}>
             <span className={styles.name}>MetaVxnn <CheckIcon /></span>
             <span className={styles.description}>хикикомоэ. соцсетки с рисунками и портфолио </span>
           </div>
@@ -63,10 +62,6 @@ const ProfileBlock = () => {
           <div className={styles.rightMobile}>
             <span className={styles.name}>MetaVxnn <CheckIcon /></span>
             <span className={styles.description}>хикикомоэ. соцсетки с рисунками и портфолио </span>
-          </div>
-          <div className={styles.followMobile}>
-            <Button type={'primary'}>Подписаться</Button>
-            <Dots />
           </div>
             <div className={styles.headers}>
             <span className={styles.subtitle}>
@@ -90,7 +85,7 @@ const ProfileBlock = () => {
           </div>
           <div className={styles.right}>
             <Dots />
-            <Button type={'primary'}>Подписаться</Button>
+            <Button type={'primary'} size={'small'}>Подписаться</Button>
           </div>
         </div>
       </div>
@@ -104,7 +99,6 @@ const ProfileBlock = () => {
                   <div className={styles.contImg}>
                     <img src="https://i.pinimg.com/736x/78/a6/de/78a6dee0461f3a04c067b4198730bfb2.jpg" alt=""/>
                   </div>
-                  <span className={styles.number}>1</span>
                 </div>
               </div>
               <ul className={styles.right}>

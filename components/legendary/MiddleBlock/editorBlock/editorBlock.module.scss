@@ -1,0 +1,160 @@
+@import "/styles/variables.scss";
+
+.editor {
+  min-width: 640px;
+  display: flex;
+  box-sizing: border-box;
+  align-items: flex-start;
+  margin-top: 54px;
+  flex-direction: column;
+  background-color: $d_main_subbg_color;
+  border-radius: 8px;
+  margin-bottom: 40px;
+  padding: 24px 32px;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    min-width: 0;
+    margin-bottom: 60px;
+  }
+
+  .profile {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+    cursor: pointer;
+
+    .avatar {
+      position: relative;
+      height: 32px;
+      width: 32px;
+      border-radius: 99px;
+
+      img {
+        border-radius: 99px;
+      }
+    }
+    .name {
+      color: $d_main_text_color;
+    }
+
+    path {
+      fill: $d_main_text_color;
+    }
+  }
+
+  .editor_list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+      width: 1px;
+      background-color: #f9f9fd;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      border-radius: 10px;
+      background-color: $d_main_color;
+    }
+
+    &::-webkit-scrollbar-track {
+      -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.2);
+      border-radius: 10px;
+      background-color: $d_main_text_color;
+    }
+
+    .titleInput {
+      background-color: rgba(0, 0, 0, 0);
+      color: $d_main_text_color;
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+
+    .title {
+      color: $d_main_text_color;
+      font-size: 20px;
+      margin-bottom: 16px;
+    }
+
+    .descriptionInput {
+      background-color: rgba(0, 0, 0, 0);
+      color: $d_main_text_color;
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+
+    .description {
+      color: $d_main_text_color;
+      font-size: 16px;
+      margin-bottom: 16px;
+    }
+    .image {
+      display: flex;
+      position: relative;
+      width: 100%;
+      min-height: 100px;
+      height: 100%;
+      max-height: 300px;
+
+      img {
+        object-fit: contain;
+      }
+    }
+  }
+
+  .toolBar {
+    width: 100%;
+    display: flex;
+    margin-top: 24px;
+    justify-content: space-between;
+
+    .left {
+      display: flex;
+      right: 24px;
+      align-items: center;
+      align-self: flex-start;
+      gap: 32px;
+      top: 24px;
+
+      button {
+        padding: 8px 8px;
+
+      }
+
+      svg {
+        width: 32px;
+        height: 32px;
+        cursor: pointer;
+
+        path {
+          transition: all 0.1s ease-in-out;
+          fill: $d_main_subtext_color;
+        }
+
+        &:hover {
+          path {
+            fill: $d_main_text_color;
+          }
+        }
+      }
+    }
+
+    .right {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+
+      .save {
+        color: $d_main_text_color;
+      }
+
+      path {
+        fill: $d_main_text_color;
+      }
+    }
+  }
+}

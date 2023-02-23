@@ -3,37 +3,61 @@
 .comments {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 16px;
   margin-top: 48px;
   padding: 12px 16px;
   border: 1px solid $d_main_gray_color;
   border-radius: 8px;
+  transition: background-color 0.05s ease-in-out;
 
-  input {
+  &:hover {
+    background-color: $d_main_bg_color;
+    border: 1px solid $d_main_color;
+    box-shadow: 0 0 4px 0 $d_main_color;
+  }
+
+  textarea {
     font-size: 16px;
+    overflow-y: hidden;
+    font-family: 'Roboto', sans-serif;
+    color: $d_main_text_color;
+    background-color: rgba(0, 0, 0, 0);
     font-weight: 500;
+    resize: none;
+    border: 0;
+    outline: none;
   }
 
   .footer {
     display: flex;
     align-items: center;
+    height: 32px;
     justify-content: space-between;
 
     .left {
       display: flex;
       gap: 12px;
+
+      .icon {
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        border-radius: 8px;
+        justify-content: center;
+        transition: background-color 0.05s ease-in-out;
+
+        &:hover {
+          background-color: $d_main_subbg_color;
+        }
+      }
       
       svg {
         cursor: pointer;
 
         path {
           transition: all 0.1s ease-in-out;
-        }
-
-        &:hover {
-          path {
-            fill: $d_main_black_color;
-          }
+          fill: $d_main_text_color;
         }
       }
     }
