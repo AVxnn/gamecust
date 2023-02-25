@@ -1,11 +1,72 @@
 
-.imgPopup {
-  width: 100%;
-  height: 100%;
-  cursor: pointer;
-  transition: all 0.1s ease-in-out;
+.container {
 
-  &:hover {
-    transform: scale(1.01);
+  .imgPopup {
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    transition: all 0.1s ease-in-out;
+
+    &:hover {
+      transform: scale(1.01);
+    }
+  }
+}
+
+.fixed {
+  left: 0;
+  top: 0;
+  display: flex;
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  z-index: 10;
+  animation-delay: 2s;
+  animation: animCont 1s ease-in-out forwards;
+  background-color: rgba(0, 0, 0, 0.6);
+
+  .paddingCont {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    padding: 30px;
+
+
+    div {
+      overflow: visible;
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      top: 0;
+    }
+
+
+    img {
+      position: absolute;
+      left: var(--left);
+      margin-left: 0;
+      margin-top: 0;
+      min-width: var(--width);
+      min-height: var(--height);
+      top: var(--top);
+      z-index: 10;
+      animation: anim 0.3s ease-in-out forwards;
+    }
+  }
+}
+
+@keyframes anim {
+  0% {
+    left: var(--left);
+    top: var(--top);
+    margin-left: 0;
+    margin-top: 0;
+  }
+  100% {
+    left: 50%;
+    top: 50%;
+    margin-left: calc(var(--width) / 2 * -1);
+    margin-top: calc(var(--height) / 2 * -1);
   }
 }

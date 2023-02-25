@@ -220,6 +220,13 @@
   position: fixed;
   animation: anim 0.2s ease-in-out forwards;
 
+  @media (max-width: 1280px) {
+    max-width: 670px;
+  }
+  @media (max-width: 1024px) {
+    max-width: 936px;
+  }
+  
   .topHeader {
     display: flex;
     padding: 0 16px;
