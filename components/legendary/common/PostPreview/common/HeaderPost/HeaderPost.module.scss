@@ -55,5 +55,19 @@
       cursor: default;
     }
   }
+
+  .btn {
+    background-color: $d_main_color;
+    border: 0;
+    border-radius: 99px;
+    padding: 2px 16px;
+    color: #FFFFFF;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  .sub {
+    background-color: $d_main_bg_color;
+    color: $d_main_text_color;
+  }
 }
 

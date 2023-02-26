@@ -5,6 +5,7 @@ import Button from "../../../Button";
 import Link from "next/link";
 import ImageLoader from 'react-imageloader';
 import ContentLoader from "react-content-loader";
+import button from "../../../Button";
 function preloader() {
   return (
       <ContentLoader  viewBox="0 0 64 64">
@@ -37,13 +38,13 @@ const HeaderPost = ({data} : any) => {
       </div>
       {
         subscribe ? (
-          <Button clb={changeSub} type={'primary'} full={false} size={'small'}>
-            Вы подписаны
-          </Button>
+          <button onClick={() => changeSub()} className={`${styles.btn} ${ subscribe && styles.sub}`}>
+            Подписаны
+          </button>
         ) : (
-          <Button clb={changeSub} type={'secondary'} full={false} size={'small'}>
+          <button onClick={() => changeSub()} className={styles.btn}>
             Подписаться
-          </Button>
+          </button>
         )
       }
 
