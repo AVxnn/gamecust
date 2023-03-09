@@ -44,7 +44,7 @@ const AuthPopup = () => {
         <div className={styles.authPopup}>
             <div className={styles.container}>
                 <div className={styles.leftBlock}>
-                    <Image objectFit='cover' src='https://www.belpressa.ru/media/filer_public_thumbnails/filer_public/d5/4f/d54f5611-42dc-472a-bd19-15981dcf88c4/15_glavnaia.jpg__750x415_q75_crop-True_subsampling-2_upscale.jpg' layout='fill' />
+                    <Image objectFit='cover' src='https://www.belpressa.ru/media/filer_public_thumbnails/filer_public/d5/4f/d54f5611-42dc-472a-bd19-15981dcf88c4/15_glavnaia.jpg__750x415_q75_crop-True_subsampling-2_upscale.jpg' layout='fill' alt='' />
                 </div>
                 <div className={styles.rightBlock}>
                 <div className={styles.close} onClick={() => dispatch(close())}>
