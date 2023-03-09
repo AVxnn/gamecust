@@ -2,7 +2,18 @@ import '../styles/globals.scss'
 import type { AppProps } from 'next/app'
 import { store } from '../store/store'
 import { Provider } from 'react-redux'
-import {useEffect} from "react";
+import {useEffect, createContext, useContext} from "react";
+import MobxStore from '../store/mobxStore';
+
+interface State {
+  mobxStore: MobxStore;
+}
+
+const mobxStore = new MobxStore()
+
+export const Context = createContext<State>({
+  mobxStore,
+})
 
 export default function App({ Component, pageProps }: AppProps) {
 
@@ -17,7 +28,9 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <Provider store={store}>
-      <Component {...pageProps} />
+      <Context.Provider value={{mobxStore}}>
+        <Component {...pageProps} />
+      </Context.Provider>
     </ Provider>
   )
 }

@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {use, useContext, useEffect, useRef, useState} from 'react';
 import Head from "next/head";
 import Header from "../../../components/legendary/header";
 import Layout from "../../../components/layout";
@@ -13,11 +13,52 @@ import BackWallpaper from "../../../components/legendary/BackWallpaper";
 import LoginRight from "../../../components/legendary/RightBlock/LoginRight";
 import ProfileBlock from "../../../components/legendary/MiddleBlock/Profile";
 import PostList from "../../../components/legendary/MiddleBlock/PostList";
+import { observer } from 'mobx-react-lite';
+import { Context } from '../../_app';
+import { useRouter } from 'next/router';
+import UserService from '../../../utils/user/UserService';
 
 const Profile = () => {
-
+ 
+  const router = useRouter();
+  const {profile} = router.query as any;
+  console.log(profile);
+  
   const [showFixedMenu, setShowFixedMenu] = useState<boolean>(false);
   const menuRef = useRef<HTMLUListElement>(null);
+
+  const {mobxStore} = useContext(Context);
+
+  const [user, setUser] = useState({})
+
+  async function fetchUser(id: any) {
+    try {
+      console.log(id);
+      const response = await UserService.fetchUser(id)
+      if(response.data === null) {
+        router.push('/')
+      }
+      setUser(response.data)
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    if(profile?.length && profile?.length >= 1) {
+      fetchUser(profile[0])
+    }
+  }, [profile])
+
+  useEffect(() => {
+    console.log('work', localStorage.getItem('token'));
+  
+    if(localStorage.getItem('token')) {
+      mobxStore.checkAuth()
+    }
+    
+  }, [])
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -48,7 +89,7 @@ const Profile = () => {
       <BackWallpaper />
       <Layout>
         <div className={styles.middleColumn}>
-          <ProfileBlock />
+          <ProfileBlock data={user} />
           <PostList />
         </div>
         <div className={styles.rightColumn}>
@@ -75,4 +116,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default observer(Profile);

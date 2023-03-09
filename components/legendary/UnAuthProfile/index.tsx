@@ -4,12 +4,15 @@ import Avatar from '../../../public/img/svg/Avatar'
 import Notification from "../Notification";
 import Trand from "../../../public/img/svg/Trand";
 import Arrow from "../../../public/img/svg/Arrow";
+import { useDispatch } from 'react-redux';
+import { open } from '../../../features/Popup/PopupAuthSlice'
 
 const UnAuthProfile = () => {
 
   const [openMenu, setOpenMenu] = useState(true)
   const [showFixedMenu, setShowFixedMenu] = useState<boolean>(false);
   const menuRef = useRef<HTMLDivElement>(null);
+  const dispatch = useDispatch()
 
   const dropdownTypesRef = useRef<HTMLDivElement>(null);
 
@@ -27,7 +30,7 @@ const UnAuthProfile = () => {
 
   return (
     <>
-      <div ref={menuRef} className={styles.unAuthProfile}>
+      <div ref={menuRef} onClick={() => dispatch(open())} className={styles.unAuthProfile}>
         <Avatar />
       </div>
       {

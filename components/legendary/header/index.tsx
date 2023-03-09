@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useContext, useEffect, useRef, useState} from 'react';
 import styles from './header.module.scss'
 import Input from "../input";
 import UserSection from "../UserSection";
@@ -6,12 +6,16 @@ import Logotype from "../common/Logotype";
 import UnAuthProfile from "../UnAuthProfile";
 import Button from "../common/Button";
 import Link from "next/link";
+import { observer } from 'mobx-react-lite';
+import { Context } from '../../../pages/_app';
 
 const Header = () => {
 
-  const [auth, setAuth] = useState(true)
+  const [auth, setAuth] = useState(false)
   const [showFixedMenu, setShowFixedMenu] = useState<boolean>(false);
   const menuRef = useRef<HTMLDivElement>(null);
+
+  const {mobxStore} = useContext(Context);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -37,10 +41,18 @@ const Header = () => {
         <div className={styles.rightColumn}>
           <div className={styles.profile}>
             {
-              auth ? (
+              mobxStore?.user?.email ? (
                 <UserSection />
               ) : (
-                <UnAuthProfile />
+                <>
+                  {
+                    mobxStore.isLoading ? (
+                      ''
+                    ) : (
+                      <UnAuthProfile />
+                    )
+                  }
+                </>
               )
             }
           </div>
@@ -53,4 +65,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default observer(Header);

@@ -1,9 +1,27 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styles from './CreatePostRight.module.scss'
 import Notepad from "../../../../public/img/svg/Notepad";
 import Link from "next/link";
+import { useDispatch, useSelector } from 'react-redux';
+import { Context } from '../../../../pages/_app';
+import {open} from '../../../../features/Popup/PopupAuthSlice'
+import { useRouter } from 'next/router'
 
 const CreatePostRight = () => {
+
+  const dispatch = useDispatch()
+
+  const {mobxStore} = useContext(Context);
+
+  const router = useRouter()
+
+  const redirectLink = (link: string) => {
+    if(!mobxStore.user.email) {
+      return dispatch(open())
+    }
+    router.push(link)
+  }
+
   return (
     <div className={styles.createPost}>
       <div className={styles.header}>
@@ -11,7 +29,7 @@ const CreatePostRight = () => {
         <span className={styles.notepad}> <Notepad /> Черновик(2)</span>
       </div>
       <div className={styles.list}>
-        <Link href={'/editor'}>
+        <div onClick={() => redirectLink('/editor')} >
           <div className={styles.item}>
             <div className={styles.img}>
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -20,7 +38,7 @@ const CreatePostRight = () => {
             </div>
             <span className={styles.text}>Пост</span>
           </div>
-        </Link>
+        </div>
         <div className={styles.item}>
           <div className={styles.img}>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

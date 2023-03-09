@@ -6,7 +6,7 @@ import Tabs from "../../common/Tabs";
 import Button from "../../common/Button";
 import Dots from "../../../../public/img/svg/Dots";
 
-const data = [
+const dataTag = [
   {
     title: 'Статьи',
   },
@@ -18,8 +18,7 @@ const data = [
   }
 ]
 
-const ProfileBlock = () => {
-
+const ProfileBlock = ({data} : any) => {
   const [active, setActive] = useState(0)
   const [showFixedMenu, setShowFixedMenu] = useState<boolean>(false);
   const menuRef = useRef<HTMLUListElement>(null);
@@ -53,20 +52,32 @@ const ProfileBlock = () => {
             </div>
           </div>
           <div className={styles.rightText}>
-            <span className={styles.name}>MetaVxnn <CheckIcon /></span>
-            <span className={styles.description}>хикикомоэ. соцсетки с рисунками и портфолио </span>
+          {
+              data && (
+                <>
+                  <span className={styles.name}>{data.username}<CheckIcon /></span>
+                  <span className={styles.description}>хикикомоэ. соцсетки с рисунками и портфолио </span>
+                </>
+              )
+            }
           </div>
         </div>
         <div className={styles.info}>
           <div className={styles.left}>
           <div className={styles.rightMobile}>
-            <span className={styles.name}>MetaVxnn <CheckIcon /></span>
-            <span className={styles.description}>хикикомоэ. соцсетки с рисунками и портфолио </span>
+            {
+              data && (
+                <>
+                  <span className={styles.name}>{data.username}<CheckIcon /></span>
+                  <span className={styles.description}>хикикомоэ. соцсетки с рисунками и портфолио </span>
+                </>
+              )
+            }
           </div>
             <div className={styles.headers}>
             <span className={styles.subtitle}>
               <Trand />
-              1232
+              {data && data.rating}
             </span>
             <span className={styles.subs}>
               699 подписчиков
@@ -75,7 +86,7 @@ const ProfileBlock = () => {
             <div className={styles.date}>На проекте с 12 фев 2021</div>
             <ul ref={menuRef} className={styles.navigation}>
               {
-                data.map((item : any, index : number) => {
+                dataTag.map((item : any, index : number) => {
                   return (
                     <Tabs key={index} onClick={() => changePage(index)} current={active == index}>{item.title}</Tabs>
                   )

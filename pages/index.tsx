@@ -2,7 +2,7 @@ import Head from 'next/head'
 import styles from '../styles/Home.module.scss'
 import Layout from "../components/layout";
 import Header from "../components/legendary/header";
-import React, {useEffect, useRef, useState} from "react";
+import React, {useContext, useEffect, useRef, useState} from "react";
 import UserLeft from "../components/legendary/LeftBlock/UserLeft";
 import Navigation from "../components/legendary/MiddleBlock/Navigation";
 import CreatePostRight from "../components/legendary/RightBlock/CreatePostRight";
@@ -12,11 +12,25 @@ import TopUsers from "../components/legendary/RightBlock/TopUsers";
 import NewsSliderSmall from "../components/legendary/RightBlock/NewsSliderSmall";
 import TopGroup from "../components/legendary/RightBlock/TopGroup";
 import Contacts from "../components/legendary/RightBlock/Contacts";
+import { Context } from './_app';
+import { observer } from 'mobx-react-lite'
 
-export default function Home() {
-
+const Home = ({ props } : any) => {
+  console.log(props);
+  
   const [showFixedMenu, setShowFixedMenu] = useState<boolean>(false);
   const menuRef = useRef<HTMLUListElement>(null);
+
+  const {mobxStore} = useContext(Context);
+  console.log(mobxStore);
+  
+  useEffect(() => {
+    console.log('work', localStorage.getItem('token'));
+    
+    if(localStorage.getItem('token')) {
+      mobxStore.checkAuth()
+    }
+  }, [])
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -41,7 +55,7 @@ export default function Home() {
               href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"/>
         <link rel="stylesheet" type="text/css"
               href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"/>
-        <link rel="icon" href="" />
+        <link rel="shortcut ico" href="../public/favicon.svg" />
       </Head>
       <Header />
       <Layout>
@@ -76,3 +90,15 @@ export default function Home() {
     </>
   )
 }
+
+
+// export async function getServerSideProps(context : any) {
+
+//   const res = await fetch('http://localhost:4000/api/post/getPosts');
+  
+//   return {
+//     props: {props : await res.json()}, // will be passed to the page component as props
+//   }
+// }
+
+export default observer(Home)

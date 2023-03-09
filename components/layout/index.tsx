@@ -5,10 +5,13 @@ import Home from '../../public/img/svg/Home'
 import Search from '../../public/img/svg/Search'
 import Link from "next/link";
 import Image from "next/image";
+import AuthPopup from '../legendary/common/Popup/AuthPopup';
 
 const Layout = ({children}: any) => {
   return (
-    <div className={styles.layout}>
+    <>
+      <AuthPopup />
+      <div className={styles.layout}>
       <div className={styles.container}>
         {children}
       </div>
@@ -26,6 +29,7 @@ const Layout = ({children}: any) => {
         </Link>
       </div>
     </div>
+    </>
   );
 };
 

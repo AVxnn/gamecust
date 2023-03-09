@@ -8,7 +8,6 @@ import Link from "next/link";
 import Counter from "../Counter";
 
 const Toolbar = ({data} : any) => {
-  console.log(data)
   return (
     <section className={styles.toolbar}>
       <div className={styles.leftBlock}>

@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useContext, useEffect, useRef, useState} from 'react';
 import styles from './UserSection.module.scss'
 import Arrow from '../../../public/img/svg/Arrow'
 import Trand from '../../../public/img/svg/Trand'
@@ -9,6 +9,7 @@ import Cog from "../../../public/img/svg/Cog";
 import Exit from "../../../public/img/svg/Exit";
 import Sun from "../../../public/img/svg/Sun";
 import Moon from "../../../public/img/svg/Moon";
+import { Context } from '../../../pages/_app';
 
 const UserSection = () => {
 
@@ -16,6 +17,8 @@ const UserSection = () => {
   const [theme, setTheme] = useState(true)
   const [notifi, setNotifi] = useState(false)
   const menuRef = useRef<HTMLDivElement>(null);
+
+  const {mobxStore} = useContext(Context);
 
   const dropdownTypesRef = useRef<HTMLDivElement>(null);
 
@@ -123,7 +126,7 @@ const UserSection = () => {
                 <div className={styles.bgAvatar}>
                   <Exit/>
                 </div>
-                <p className={styles.userName}>Выйти</p>
+                <p onClick={() => mobxStore.logout()}className={styles.userName}>Выйти</p>
               </div>
             </Link>
           </div>

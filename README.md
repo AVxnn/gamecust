@@ -12,3 +12,7 @@ yarn dev
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 ### version 0
+
+```bash
+UrlDB=mongodb+srv://admin:admin@gamecust.w6kezsh.mongodb.net/?retryWrites=true&w=majority
+```
