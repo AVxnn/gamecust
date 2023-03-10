@@ -17,8 +17,9 @@ import { observer } from 'mobx-react-lite';
 import { Context } from '../../_app';
 import { useRouter } from 'next/router';
 import UserService from '../../../utils/user/UserService';
+import axios from 'axios';
 
-const Profile = () => {
+const Profile = ({props} : any) => {
  
   const router = useRouter();
   const {profile} = router.query as any;
