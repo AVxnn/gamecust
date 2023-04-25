@@ -1,11 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit'
 import PopupSlice from '../features/Popup/PopupSlice'
 import PopupAuthSlice from '../features/Popup/PopupAuthSlice'
+import CreatePostSlice from '../features/CreatePost/CreatePostSlice'
 
 export const store = configureStore({
   reducer: {
     popup: PopupSlice,
     popupAuth: PopupAuthSlice,
+    createPost: CreatePostSlice,
   },
 })
 

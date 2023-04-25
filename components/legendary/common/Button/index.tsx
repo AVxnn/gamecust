@@ -1,27 +1,29 @@
 import React from 'react';
 import styles from './Button.module.scss'
+import cn from "classnames";
 
-const Button = ({children, clb = () => '', type, size, full} : any) => {
+interface MainButtonProps {
+  children?: React.ReactChild | React.ReactNode;
+  type?: 'secondary' | 'primary' | 'specials' | string,
+  size?: 'small' | 'big' | 'giant' | string,
+  disabled?: boolean,
+  clb?: React.MouseEventHandler,
+  full?: boolean
+}
 
-  if (type == 'primary') {
-    return (
-      <button onClick={() => clb()} className={`${styles.primary} ${size === 'big' ? styles.big : size === 'small' ? styles.small : ''} ${full && styles.full}`}>
-        {children}
-      </button>
-    );
-  }
-  if (type == 'secondary') {
-    return (
-      <button onClick={() => clb()} className={`${styles.secondary} ${size === 'big' ? styles.big : size === 'small' ? styles.small : ''} ${full && styles.full}`}>
-        {children}
-      </button>
-    );
-  }
+const Button = ({children, clb = () => '', type = 'secondary', size = 'small', full, disabled} : MainButtonProps) => {
+
   return (
-    <button onClick={() => clb()} className={`${styles.button} ${size === 'big' ? styles.big : size === 'small' ? styles.small : ''} ${full && styles.full}`}>
-      {children}
-    </button>
+    <>
+      <button
+        onClick={clb}
+        disabled={disabled}
+        className={cn(styles[type], styles[size], full && styles.full)}>
+        {children}
+      </button>
+    </>
   );
+
 };
 
 export default Button;

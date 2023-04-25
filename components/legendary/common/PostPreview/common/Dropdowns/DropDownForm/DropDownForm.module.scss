@@ -1,0 +1,78 @@
+@import "/styles/variables.scss";
+
+.toolbar {
+    position: absolute;
+    top: 15px;
+    left: 28px;
+    z-index: 10;
+
+    .newForm {
+        width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 0;
+        background-color: rgba(0, 0, 0, 0);
+        outline: none;
+        padding: 2px;
+        cursor: pointer;
+
+        &:hover {
+            background-color: $d_main_text_color;
+            border-radius: 8px;
+        }
+
+        rect {
+            fill: $d_main_text_color;
+        }
+
+        svg {
+            transition: all 0.2s ease-in-out;
+        }
+    }
+
+    .active {
+
+        svg {
+            transform: rotate(45deg);
+        }
+    }
+
+    .dropDownForm {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        width: 160px;
+        padding: 4px;
+        box-sizing: border-box;
+        background-color: $d_main_text_color;
+        border-radius: 8px;
+        top: 30px;
+    
+        .item {
+            display: flex;
+            gap: 12px;
+            padding: 8px;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.1s ease-in-out;
+    
+            path {
+                fill: $d_main_bg_color;
+            }
+    
+            &:hover {
+                border-radius: 8px;
+                background-color: $d_main_subbg_glass_color;
+            }
+    
+            .text {
+                margin: 0;
+                font-size: 13px;
+                color: $d_main_bg_color;
+                font-weight: 600;
+            }
+        }
+    }
+}

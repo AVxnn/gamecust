@@ -38,13 +38,13 @@ const HeaderPost = ({data} : any) => {
       </div>
       {
         subscribe ? (
-          <button onClick={() => changeSub()} className={`${styles.btn} ${ subscribe && styles.sub}`}>
+          <Button clb={() => changeSub()} type={'primary'}>
             Подписаны
-          </button>
+          </Button>
         ) : (
-          <button onClick={() => changeSub()} className={styles.btn}>
+          <Button clb={() => changeSub()} type={'primary'}>
             Подписаться
-          </button>
+          </Button>
         )
       }
 

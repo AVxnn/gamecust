@@ -1,0 +1,16 @@
+@import "/styles/variables.scss";
+
+.br {
+    display: flex;
+    gap: 24px;
+    position: relative;
+    padding: 24px 0;
+    margin: 0 auto;
+
+    .oval {
+        width: 24px;
+        height: 24px;
+        border-radius: 99px;
+        background-color: $d_main_text_color;
+    }
+}

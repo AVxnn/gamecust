@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import styles from './layout.module.scss'
-import User from '../../public/img/svg/User'
 import Home from '../../public/img/svg/Home'
 import Search from '../../public/img/svg/Search'
 import Link from "next/link";
@@ -9,7 +8,6 @@ import AuthPopup from '../legendary/common/Popup/AuthPopup';
 import { Context } from '../../pages/_app';
 import Avatar from '../../public/img/svg/Avatar';
 import { useDispatch } from 'react-redux';
-import { open } from '../../features/Popup/PopupAuthSlice'
 import { observer } from 'mobx-react-lite';
 
 const Layout = ({children}: any) => {

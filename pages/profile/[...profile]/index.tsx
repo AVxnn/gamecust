@@ -17,15 +17,12 @@ import { observer } from 'mobx-react-lite';
 import { Context } from '../../_app';
 import { useRouter } from 'next/router';
 import UserService from '../../../utils/user/UserService';
-import axios from 'axios';
 
 const Profile = ({props} : any) => {
  
   const router = useRouter();
   const {profile} = router.query as any;
-  console.log(profile);
   
-  const [showFixedMenu, setShowFixedMenu] = useState<boolean>(false);
   const menuRef = useRef<HTMLUListElement>(null);
 
   const {mobxStore} = useContext(Context);
@@ -61,19 +58,6 @@ const Profile = ({props} : any) => {
     
   }, [])
 
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      window.addEventListener('scroll', () => {
-
-        if (menuRef.current && menuRef.current.getBoundingClientRect().top <= -140) {
-          setShowFixedMenu(true)
-        } else {
-          setShowFixedMenu(false)
-        }
-      })
-    }
-  })
-
   return (
     <>
       <Head>
@@ -102,15 +86,6 @@ const Profile = ({props} : any) => {
           <NewsSliderSmall />
           <TopGroup />
           <Contacts />
-          <div style={{opacity: showFixedMenu ? 1 : 0, zIndex: showFixedMenu ? 1 : -2}} className={styles.rightColumnFixed}>
-            <LoginRight />
-            <CreatePostRight />
-            <Premium />
-            <TopUsers />
-            <NewsSliderSmall />
-            <TopGroup />
-            <Contacts />
-          </div>
         </div>
       </Layout>
     </>

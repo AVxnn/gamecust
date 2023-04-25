@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import styles from './PostPreview.module.scss'
 import Tag from "../Tag";
 import Link from "next/link";
@@ -6,10 +6,21 @@ import HashTag from "./common/hashtag";
 import Toolbar from "./common/toolbar";
 import HeaderPost from "./common/HeaderPost";
 import ImageAndSlider from "../ImageAndSlider";
+import { useInView } from 'framer-motion';
 
 const PostPreview = ({data} : any) => {
+
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
+  
   return (
-    <div className={styles.postPreview}>
+    <div
+      style={{
+        transform: isInView ? "none" : "translateY(200px)",
+        transition: "all 0.2s cubic-bezier(0.17, 0.55, 0.55, 1)"
+      }}
+      ref={ref}
+      className={styles.postPreview}>
       <div className={styles.headerContainer}>
         <HeaderPost data={data}/>
       </div>
