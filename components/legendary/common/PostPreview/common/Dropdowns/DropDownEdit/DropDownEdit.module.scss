@@ -2,7 +2,7 @@
 
 .toolbar {
     position: absolute;
-    top: 15px;
+    top: 6px;
     left: 28px;
     z-index: 10;
 
@@ -47,6 +47,14 @@
         background-color: $d_main_text_color;
         border-radius: 8px;
         top: 30px;
+
+        .title {
+            padding: 8px 8px 4px 8px;
+            margin: 0;
+            font-size: 14px;
+            color: $d_main_bg_color;
+            font-weight: 600;
+        }
     
         .item {
             display: flex;

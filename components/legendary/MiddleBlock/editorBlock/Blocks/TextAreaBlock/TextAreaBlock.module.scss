@@ -1,0 +1,24 @@
+@import "/styles/variables.scss";
+
+.container {
+    width: calc(100% - 128px);
+    position: relative;
+    padding: 0 64px;
+    user-select: none;
+
+    .inputMain {
+        background-color: rgba(0, 0, 0, 0);
+        width: 100%;
+        border: none;
+        outline: none;
+        resize: none;
+        color: $d_main_text_color;
+        padding: 8px 0;
+        font-size: 20px;
+    }
+
+    .text {
+        padding: 8px 0;
+        font-size: 16px;
+    }
+}

@@ -4,20 +4,21 @@ import Heading from "../../../../../../../public/img/svg/Heading";
 import ImageIcon from "../../../../../../../public/img/svg/ImageIcon";
 import LinkIcon from "../../../../../../../public/img/svg/LinkIcon";
 import DotsIcon from "../../../../../../../public/img/svg/DotsIcon";
-import { useEffect, useRef } from "react";
+import { useContext, useEffect, useRef } from "react";
 import Plus from "../../../../../../../public/img/svg/Plus";
 import cn from "classnames";
 import { useDispatch, useSelector } from "react-redux";
-import { addForm } from "../../../../../../../features/CreatePost/CreatePostSlice";
+import { addItem } from "../../../../../../../features/CreatePost/CreatePostSlice";
+import { Context } from "../../../../../../../pages/_app";
+import { motion } from "framer-motion";
+import { observer } from "mobx-react";
 
-const DropDownForm = ({setIsClicked, isClicked} : any) => {
+const DropDownForm = observer(({setIsClicked, isClicked} : any) => {
 
     const popupRef = useRef<HTMLDivElement>(null);
     const labelRef = useRef<HTMLDivElement>(null);
 
-    const state = useSelector((state : any) => state.createPost.data)
-
-    const dispatch = useDispatch()
+    const {postCreateStore} = useContext(Context);
 
     const handleClickOutside = (e: any) => {
         if (isClicked) {
@@ -34,22 +35,40 @@ const DropDownForm = ({setIsClicked, isClicked} : any) => {
             result = {
                 type: 'text',
                 value: '',
-                id: state.length
+                stared: false,
+                id: postCreateStore.data.length
             }
         } else if (type == 'h1') {
             result = {
                 type: 'h1',
                 value: '',
-                id: state.length
+                stared: false,
+                id: postCreateStore.data.length
+            }
+        } else if (type == 'media') {
+            result = {
+                type: 'media',
+                value: '',
+                stared: false,
+                href: '',
+                id: postCreateStore.data.length
+            }
+        } else if (type == 'link') {
+            result = {
+                type: 'link',
+                value: '',
+                stared: false,
+                href: '',
+                id: postCreateStore.data.length
             }
         } else if (type == 'br') {
             result = {
                 type: 'br',
-                value: '',
-                id: state.length
+                stared: false,
+                id: postCreateStore.data.length
             }
         }
-        dispatch(addForm(result))
+        postCreateStore.addItem(result);
     }
 
     useEffect(() => {
@@ -69,7 +88,14 @@ const DropDownForm = ({setIsClicked, isClicked} : any) => {
                 <button onClick={() => setIsClicked(!isClicked)} className={cn(styles.newForm, isClicked && styles.active)}><Plus /></button>
                 {
                     isClicked && (
-                        <div ref={popupRef} className={styles.dropDownForm}>
+                        <motion.div 
+                            initial={{ y: 10, opacity: 0 }}
+                            animate={{ y: 0, opacity: 1 }}
+                            exit={{ y: -10, opacity: 0 }}
+                            transition={{ duration: 0.2 }}  
+                            ref={popupRef} 
+                            className={styles.dropDownForm}
+                            >
                             <div onClick={() => createNewFormChange('text')} className={styles.item}>
                                 <Text />
                                 <p className={styles.text}>Текст</p>
@@ -78,7 +104,7 @@ const DropDownForm = ({setIsClicked, isClicked} : any) => {
                                 <Heading />
                                 <p className={styles.text}>Заголовок</p>
                             </div>
-                            <div onClick={() => createNewFormChange('image')} className={styles.item}>
+                            <div onClick={() => createNewFormChange('media')} className={styles.item}>
                                 <ImageIcon />
                                 <p className={styles.text}>Фото или видео</p>
                             </div>
@@ -90,12 +116,12 @@ const DropDownForm = ({setIsClicked, isClicked} : any) => {
                                 <DotsIcon />
                                 <p className={styles.text}>Разделитель</p>
                             </div>
-                        </div>
+                        </motion.div>
                     )
                 }
             </div>
         </>
     );
-}
+})
  
 export default DropDownForm;

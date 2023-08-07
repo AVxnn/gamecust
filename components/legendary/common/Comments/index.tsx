@@ -56,7 +56,7 @@ const Comments = ({data} : any) => {
       </ul>
       <div className={styles.listComments}>
         {
-          data.comments.map((item : any, index : number) => {
+          data?.comments?.map((item : any, index : number) => {
             return (
               <Item key={index} data={item}/>
             )

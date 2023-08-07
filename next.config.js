@@ -3,6 +3,7 @@ const nextConfig = {
   reactStrictMode: false,
   optimizeFonts: true,
   images: {
+    domains: ['localhost', 'www.belpressa.ru'],
     remotePatterns: [
       {
         protocol: "https",
@@ -46,7 +47,7 @@ const nextConfig = {
       },
       {
         protocol: "https",
-        hostname: "www.belpressa.ru",
+        hostname: "avatars.mds.yandex.net",
       },
     ],
     minimumCacheTTL: 15000000,

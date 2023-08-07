@@ -9,6 +9,10 @@
   border-radius: 8px;
   padding: 16px 0;
 
+  @media screen and (max-width: 640px) {
+    border-radius: 0;
+  }
+
   .headerContainer {
     margin: 0 24px 0 24px;
   }
@@ -37,6 +41,7 @@
         line-height: 27px;
         color: $d_main_text_color;
         font-weight: 700;
+        word-break: break-word
       }
 
       .subtitle {

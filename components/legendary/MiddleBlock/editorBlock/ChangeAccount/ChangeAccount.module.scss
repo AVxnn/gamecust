@@ -1,0 +1,46 @@
+@import "/styles/variables.scss";
+
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+    margin: 0 64px;
+    margin-bottom: 12px;
+    cursor: pointer;
+
+    .avatar {
+      position: relative;
+      height: 32px;
+      width: 32px;
+      border-radius: 99px;
+
+      img {
+        border-radius: 99px;
+      }
+    }
+    .name {
+      color: $d_main_text_color;
+    }
+
+    svg {
+      transition: all 0.1s ease-in-out;
+    }
+
+    path {
+      fill: $d_main_text_color;
+    }
+
+    .toolbar {
+      position: absolute;
+      bottom: 32px;
+      z-index: 10;
+    }
+  }
+
+.active {
+
+  svg {
+    transform: rotate(180deg);
+  }
+}

@@ -1,0 +1,54 @@
+@import "/styles/variables.scss";
+
+.toolBar {
+    width: calc(100% - 128px);
+    display: flex;
+    margin-top: 24px !important;
+    justify-content: space-between;
+    margin: 0 64px;
+
+    .left {
+      display: flex;
+      right: 24px;
+      align-items: center;
+      align-self: flex-start;
+      gap: 32px;
+      top: 24px;
+
+      button {
+        padding: 8px 8px;
+
+      }
+
+      svg {
+        width: 32px;
+        height: 32px;
+        cursor: pointer;
+
+        path {
+          transition: all 0.1s ease-in-out;
+          fill: $d_main_subtext_color;
+        }
+
+        &:hover {
+          path {
+            fill: $d_main_text_color;
+          }
+        }
+      }
+    }
+
+    .right {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+
+        .save {
+            color: $d_main_text_color;
+        }
+
+        path {
+            fill: $d_main_text_color;
+        }
+    }
+}

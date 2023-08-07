@@ -11,24 +11,35 @@ import TopGroup from "../../../components/legendary/RightBlock/TopGroup";
 import Contacts from "../../../components/legendary/RightBlock/Contacts";
 import Post from "../../../components/legendary/common/Post";
 import LoginRight from "../../../components/legendary/RightBlock/LoginRight";
+import { useRouter } from 'next/router';
+import CreatePostService from '../../../utils/createPost/CreatePostService';
 
 const MyComponent = () => {
+ 
+  const router = useRouter();
+  const {post} = router.query as any;
 
-  const [showFixedMenu, setShowFixedMenu] = useState<boolean>(false);
-  const menuRef = useRef<HTMLUListElement>(null);
+  const [data, setData] = useState<any>({});
+
+  async function fetchPost(id: any) {
+    try {
+      console.log(id);  
+      const response = await CreatePostService.getPost(id)
+      if(response.data === null) {
+        router.push('/')
+      }
+      setData(response.data)
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      window.addEventListener('scroll', () => {
-
-        if (menuRef.current && menuRef.current.getBoundingClientRect().top <= 0) {
-          setShowFixedMenu(true)
-        } else {
-          setShowFixedMenu(false)
-        }
-      })
+    if(post?.length && post?.length >= 1) {
+      fetchPost(post[0])
     }
-  })
+  }, [post])
 
   return (
     <>
@@ -45,14 +56,14 @@ const MyComponent = () => {
       <Header />
       <Layout>
         <div className={styles.middleColumn}>
-          <Post />
+          <Post data={data} />
         </div>
         <div className={styles.rightColumn}>
           <LoginRight />
           <CreatePostRight />
           <Premium />
           <TopUsers />
-          <ul className={styles.fixedBar} ref={menuRef}></ul>
+          <ul className={styles.fixedBar}></ul>
           <NewsSliderSmall />
           <TopGroup />
           <Contacts />

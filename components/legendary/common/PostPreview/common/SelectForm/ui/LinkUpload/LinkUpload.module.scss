@@ -1,0 +1,23 @@
+@import "/styles/variables.scss";
+
+.container {
+    position: relative;
+    display: flex;
+    padding: 18px 16px;
+    justify-content: center;
+    align-items: center;
+    background-color: $d_main_text_color;
+    border-radius: 8px;
+    transition: all 0.1s ease-in-out;
+
+    &:hover {
+        background-color: $d_main_text_hover_color;
+    }
+    
+    .link {
+        width: 100%;
+        font-size: 16px;
+        color: $d_main_bg_color;
+        background-color: rgba(0, 0, 0, 0);
+    }
+}

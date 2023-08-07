@@ -31,7 +31,7 @@ const Profile = ({props} : any) => {
 
   async function fetchUser(id: any) {
     try {
-      console.log(id);
+      console.log(id);  
       const response = await UserService.fetchUser(id)
       if(response.data === null) {
         router.push('/')
@@ -75,7 +75,9 @@ const Profile = ({props} : any) => {
       <Layout>
         <div className={styles.middleColumn}>
           <ProfileBlock data={user} />
-          <PostList />
+          <div className={styles.postListContainer}>
+            <PostList />
+          </div>
         </div>
         <div className={styles.rightColumn}>
           <LoginRight />

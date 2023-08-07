@@ -220,11 +220,12 @@ const data = [
   }
 ]
 
-const PostList = () => {
+
+const PostList = ({PostData} : any) => {
   return (
     <div className={styles.postList}>
       {
-        data.map((item : any, index : number) => {
+        PostData.map((item : any, index : number) => {
           if (item.news) {
             return (
               <NewsSlider key={index} />

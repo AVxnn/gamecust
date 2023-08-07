@@ -67,7 +67,9 @@ const Home = ({ props } : any) => {
         </div>
         <div className={styles.middleColumn}>
           <Navigation />
-          <PostList />
+          <div className={styles.postListContainer}>
+            <PostList PostData={props ? props : null} />
+          </div>
         </div>
         <div className={styles.rightColumn}>
           <CreatePostRight />
@@ -84,13 +86,13 @@ const Home = ({ props } : any) => {
 }
 
 
-// export async function getServerSideProps(context : any) {
+export async function getServerSideProps(context : any) {
 
-//   const res = await fetch('http://localhost:4000/api/post/getPosts');
+  const res = await fetch('http://localhost:4000/api/post/getPosts');
   
-//   return {
-//     props: {props : await res.json()}, // will be passed to the page component as props
-//   }
-// }
+  return {
+    props: {props : await res?.json()}, // will be passed to the page component as props
+  }
+}
 
 export default observer(Home)

@@ -2,7 +2,7 @@
 
 .toolbar {
     position: absolute;
-    top: 15px;
+    top: 6px;
     left: 28px;
     z-index: 10;
 
@@ -19,7 +19,7 @@
         cursor: pointer;
 
         &:hover {
-            background-color: $d_main_text_color;
+            background-color: $d_main_bg_color;
             border-radius: 8px;
         }
 

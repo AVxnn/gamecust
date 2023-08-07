@@ -1,9 +1,10 @@
 @import "/styles/variables.scss";
 
 .navigation {
-  position: relative;
-  width: 100%;
+  position: absolute;
+  width: 640px;
   display: flex;
+  max-height: 48px;
   box-sizing: border-box;
   background-color: $d_main_subbg_glass_color;
   border-radius: 8px;
@@ -11,11 +12,16 @@
   gap: 32px;
   z-index: 1;
   padding: 16px 24px;
+
+  @media screen and (max-width: 640px) {
+    border-radius: 0;
+  }
 }
 
 .navigationFixed {
   position: fixed;
   width: 640px;
+  max-height: 48px;
   z-index: 3;
   top: 60px;
   .navigation {
@@ -26,7 +32,6 @@
     backdrop-filter: blur(8px);
     border-top: 1px solid rgba(0, 0, 0, 0.1);
     background: $d_main_subbg_glass_color;
-    box-shadow: 0 28px 20px -19px rgb(30 50 54 / 10%);
   }
 
 }

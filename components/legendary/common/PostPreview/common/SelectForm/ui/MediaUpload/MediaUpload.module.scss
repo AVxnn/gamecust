@@ -1,0 +1,61 @@
+@import "/styles/variables.scss";
+.container {
+    position: relative;
+    width: calc(100% - 128px);
+    padding: 0 64px;
+
+    .uploadImage {
+        padding: 24px 0;
+        height: auto;
+        min-height: 300px;
+        user-select: none;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $d_main_text_color;
+        border-radius: 8px;
+        transition: all 0.1s ease-in-out;
+        
+        img {
+            object-fit: contain;
+        }
+    }
+
+    .fileBlock {
+    
+        padding: 24px 0;
+        user-select: none;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $d_main_text_color;
+        border-radius: 8px;
+        transition: all 0.1s ease-in-out;
+    
+        &:hover {
+            background-color: $d_main_text_hover_color;
+        }
+    
+        .info {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            
+            span {
+                color: $d_main_bg_color;
+                font-size: 16px;
+            }
+    
+            svg {
+                width: 31px;
+                height: 31px;
+            }
+        }
+    
+        .file {
+            display: none;
+        }
+    }
+}

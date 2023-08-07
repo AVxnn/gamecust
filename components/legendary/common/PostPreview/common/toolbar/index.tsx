@@ -13,7 +13,7 @@ const Toolbar = ({data} : any) => {
       <div className={styles.leftBlock}>
         <div className={styles.views}>
           <Eye />
-          <span className={styles.title}>{data.views}</span>
+          <span className={styles.title}>{data?.viewsCount}</span>
         </div>
         <div className={styles.mark}>
           <Mark />
@@ -23,7 +23,7 @@ const Toolbar = ({data} : any) => {
         <Link href={`/post/${data.link}/#comments`}>
           <div className={styles.comments}>
             <Chat />
-            <span className={styles.title}>{data.commentsCount}</span>
+            <span className={styles.title}>{data?.comments?.length}</span>
           </div>
         </Link>
         <Counter data={data}/>

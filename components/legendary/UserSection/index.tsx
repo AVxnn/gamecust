@@ -71,7 +71,7 @@ const UserSection = () => {
           <Image layout={'fill'} src={'https://i.pinimg.com/736x/78/a6/de/78a6dee0461f3a04c067b4198730bfb2.jpg'} alt="ads"/>
         </div>
         <div className={styles.info}>
-          <h4 className={styles.name}>MetaVxnn</h4>
+          <h4 className={styles.name}>{mobxStore.user.username}</h4>
           <span className={styles.subtitle}>
             <Trand />
             1232
@@ -88,12 +88,12 @@ const UserSection = () => {
             onMouseLeave={() => setOpenMenu(false)}
             className={styles.menu}>
             <h4 className={styles.title}>Мой профиль</h4>
-            <Link href={'#'}>
+            <Link href={`/profile/${mobxStore.user.username}`}>
               <div className={styles.userMenu}>
                 <div className={styles.avatar}>
                   <Image layout={'fill'} src={'https://i.pinimg.com/736x/78/a6/de/78a6dee0461f3a04c067b4198730bfb2.jpg'} alt="ads"/>
                 </div>
-                <p className={styles.userName}>MetaVxnn</p>
+                <p className={styles.userName}>{mobxStore.user.username}</p>
               </div>
             </Link>
             <Link href={'#'}>

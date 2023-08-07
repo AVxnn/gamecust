@@ -1,0 +1,36 @@
+@import "/styles/variables.scss";
+
+.container {
+    position: absolute;
+    right: 0;
+    top: 6px;
+    right: 28px;
+
+    .infoBlock {
+        width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 0;
+        background-color: rgba(0, 0, 0, 0);
+        outline: none;
+        padding: 2px;
+        cursor: pointer;
+
+        &:hover {
+            background-color: $d_main_bg_color;
+            border-radius: 8px;
+        }
+
+        path {
+            fill: $d_main_text_color;
+        }
+
+        svg {
+            width: 18px; 
+            height: 18px;
+            transition: all 0.2s ease-in-out;
+        }
+    }
+}

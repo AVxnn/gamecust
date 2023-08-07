@@ -1,15 +1,21 @@
 @import "/styles/variables.scss";
 
+.container {
+    display: flex;
+    position: relative;
+    padding: 8px 0;
+    justify-content: center;
+}
+
 .br {
     display: flex;
-    gap: 24px;
+    gap: 8px;
     position: relative;
-    padding: 24px 0;
     margin: 0 auto;
 
     .oval {
-        width: 24px;
-        height: 24px;
+        width: 8px;
+        height: 8px;
         border-radius: 99px;
         background-color: $d_main_text_color;
     }

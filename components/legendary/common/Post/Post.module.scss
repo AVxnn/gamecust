@@ -72,10 +72,24 @@
       line-height: 1.35;
     }
     .img {
-      overflow: hidden;
-      margin: 0 -24px 0 -24px;
+      padding: 24px 0;
+      height: auto;
+      min-height: 300px;
+      user-select: none;
+      position: relative;
       width: calc(100% + 48px);
-    }
+      display: flex;
+      margin: 0 -24px 16px -24px;
+      justify-content: center;
+      align-items: center;
+      background-color: $d_main_text_color;
+      border-radius: 8px;
+      transition: all 0.1s ease-in-out;
+      
+      img {
+          object-fit: contain;
+      }
+  }
   }
 
   .hashList {

@@ -48,9 +48,15 @@
       path {
         fill: $d_main_text_color
       }
+      rect {
+        stroke: $d_main_text_color;
+      }
       &:hover {
         path {
           fill: $d_main_text_hover_color;
+        }
+        rect {
+          stroke: $d_main_text_color;
         }
       }
 

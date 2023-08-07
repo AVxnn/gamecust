@@ -18,32 +18,10 @@
     min-width: 0;
     margin-bottom: 60px;
   }
-
-  .profile {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin: 0 64px;
-    margin-bottom: 12px;
-    cursor: pointer;
-
-    .avatar {
-      position: relative;
-      height: 32px;
-      width: 32px;
-      border-radius: 99px;
-
-      img {
-        border-radius: 99px;
-      }
-    }
-    .name {
-      color: $d_main_text_color;
-    }
-
-    path {
-      fill: $d_main_text_color;
-    }
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
   }
 
   .editor_list {
@@ -51,6 +29,7 @@
     display: flex;
     flex-direction: column;
     height: 100%;
+    gap: 16px;
     overflow-x: hidden;
     overflow-y: scroll;
 
@@ -105,59 +84,6 @@
 
       img {
         object-fit: contain;
-      }
-    }
-  }
-
-  .toolBar {
-    width: calc(100% - 128px);
-    display: flex;
-    margin-top: 24px;
-    justify-content: space-between;
-    margin: 0 64px;
-
-    .left {
-      display: flex;
-      right: 24px;
-      align-items: center;
-      align-self: flex-start;
-      gap: 32px;
-      top: 24px;
-
-      button {
-        padding: 8px 8px;
-
-      }
-
-      svg {
-        width: 32px;
-        height: 32px;
-        cursor: pointer;
-
-        path {
-          transition: all 0.1s ease-in-out;
-          fill: $d_main_subtext_color;
-        }
-
-        &:hover {
-          path {
-            fill: $d_main_text_color;
-          }
-        }
-      }
-    }
-
-    .right {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-
-      .save {
-        color: $d_main_text_color;
-      }
-
-      path {
-        fill: $d_main_text_color;
       }
     }
   }

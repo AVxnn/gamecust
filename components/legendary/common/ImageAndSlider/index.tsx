@@ -6,7 +6,8 @@ import Image from 'next/image'
 const ImageAndSlider = ({data}: any) => {
 
   const [countImages, setCountImages] = useState(0) as any
-
+  console.log(data);
+  
   let settings = {
     className: "",
     dots: false,
@@ -19,30 +20,30 @@ const ImageAndSlider = ({data}: any) => {
     beforeChange: (current: any, next: any) => setCountImages(next),
   };
   
-  if(data.images.length > 1) {
-    return (
-      <div id={'postImageSlider'} className={styles.slider_images}>
-        <div className={styles.counter}>
-          <span className={styles.text}>{`${countImages + 1}/${data.images.length}`}</span>
-        </div>
-        <Slider {...settings}>
-          {
-            data.images.map((item: any, index: number) => {
-              return (
-                <div key={index} className={styles.imgC}>
-                  <Image className={styles.images} layout={'fill'} src={item} alt=""/>
-                </div>
-              )
-            })
-          }
-        </Slider>
-      </div>
-    )
-  }
+  // if(data.images.length > 1) {
+  //   return (
+  //     <div id={'postImageSlider'} className={styles.slider_images}>
+  //       <div className={styles.counter}>
+  //         <span className={styles.text}>{`${countImages + 1}/${data.images.length}`}</span>
+  //       </div>
+  //       <Slider {...settings}>
+  //         {
+  //           data.images.map((item: any, index: number) => {
+  //             return (
+  //               <div key={index} className={styles.imgC}>
+  //                 <Image className={styles.images} layout={'fill'} src={item} alt=""/>
+  //               </div>
+  //             )
+  //           })
+  //         }
+  //       </Slider>
+  //     </div>
+  //   )
+  // }
 
   return (
     <div className={styles.imgCont}>
-      <Image layout={'fill'} className={styles.img} src={data.img} alt=""/>
+      <Image layout={'fill'} className={styles.img} src={process.env.NEXT_PUBLIC_API_URL + data?.href} alt=""/>
     </div>
   )
 };

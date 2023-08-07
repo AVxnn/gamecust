@@ -11,7 +11,7 @@ const Counter = ({data} : any) => {
         <div className={styles.like}>
             <Arrow />
         </div>
-      <span className={styles.title}>{data.count}</span>
+      <span className={styles.title}>{data?.likes?.length}</span>
     </div>
   );
 };

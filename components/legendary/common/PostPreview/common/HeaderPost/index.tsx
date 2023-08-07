@@ -33,7 +33,7 @@ const HeaderPost = ({data} : any) => {
             Image load failed!
           </ImageLoader>
         </Link>
-        <span className={styles.name}>{data.name} <CheckIcon /></span>
+        <span className={styles.name}>{data.username} <CheckIcon /></span>
         <span className={styles.date}>3  часа</span>
       </div>
       {

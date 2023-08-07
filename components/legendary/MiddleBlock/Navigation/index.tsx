@@ -17,8 +17,7 @@ const data = [
 const Navigation = () => {
 
   const [active, setActive] = useState(0)
-  const [showFixedMenu, setShowFixedMenu] = useState<boolean>(false);
-  const menuRef = useRef<HTMLUListElement>(null);
+  const [showFixedMenu, setShowFixedMenu] = useState<boolean>(true);
 
   const changePage = (index : number) => {
     setActive(index)
@@ -28,7 +27,7 @@ const Navigation = () => {
     if (typeof window !== 'undefined') {
       window.addEventListener('scroll', () => {
 
-        if (menuRef.current && menuRef.current.getBoundingClientRect().top <= 10) {
+        if (window.scrollY <= 6) {
           setShowFixedMenu(true)
         } else {
           setShowFixedMenu(false)
@@ -40,29 +39,17 @@ const Navigation = () => {
 
   return (
     <>
-      <ul ref={menuRef} className={styles.navigation}>
-        {
-          data.map((item : any, index : number) => {
-            return (
-              <Tabs key={index} onClick={() => changePage(index)} current={active == index}>{item.title}</Tabs>
-            )
-          })
-        }
-      </ul>
-      {
-        showFixedMenu &&
-        <div className={styles.navigationFixed}>
-          <ul className={styles.navigation}>
-            {
-              data.map((item : any, index : number) => {
-                return (
-                  <Tabs key={index} onClick={() => changePage(index)} current={active == index}>{item.title}</Tabs>
-                )
-              })
-            }
-          </ul>
-        </div>
-      }
+      <div className={`${showFixedMenu ? '' : styles.navigationFixed}`}>
+        <ul className={styles.navigation}>
+          {
+            data.map((item : any, index : number) => {
+              return (
+                <Tabs key={index} onClick={() => changePage(index)} current={active == index}>{item.title}</Tabs>
+              )
+            })
+          }
+        </ul>
+      </div>
     </>
   );
 };

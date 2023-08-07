@@ -1,11 +1,34 @@
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import Head from "next/head";
 import Header from "../../components/legendary/header";
 import Layout from "../../components/layout";
 import styles from './Editor.module.scss'
 import EditorBlock from "../../components/legendary/MiddleBlock/editorBlock";
+import { Context } from '../_app';
+import { useRouter } from 'next/router';
 
 const Editor = () => {
+
+  const {mobxStore, postCreateStore} = useContext(Context);
+  const router = useRouter();
+
+  useEffect(() => {
+    postCreateStore.updateArray([
+      {
+          type: 'h1',
+          value: '',
+          stared: false,
+          id: 0,
+      },
+    ])
+    console.log('work', localStorage.getItem('token'), mobxStore);
+    if (!mobxStore.user.isActivated) {
+      router.push('/')
+    }
+    if(localStorage.getItem('token')) {
+      mobxStore.checkAuth()
+    }
+  }, [])
 
   return (
     <>

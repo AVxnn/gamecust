@@ -1,20 +1,19 @@
 import React, { useContext } from 'react';
 import styles from './layout.module.scss'
 import Home from '../../public/img/svg/Home'
+import PlusMenu from '../../public/img/svg/PlusMenu'
+import Notification from '../../public/img/svg/Notification'
 import Search from '../../public/img/svg/Search'
 import Link from "next/link";
 import Image from "next/image";
 import AuthPopup from '../legendary/common/Popup/AuthPopup';
 import { Context } from '../../pages/_app';
 import Avatar from '../../public/img/svg/Avatar';
-import { useDispatch } from 'react-redux';
 import { observer } from 'mobx-react-lite';
 
 const Layout = ({children}: any) => {
   
   const {mobxStore} = useContext(Context);
-
-  const dispatch = useDispatch()
 
   return (
     <>
@@ -24,17 +23,23 @@ const Layout = ({children}: any) => {
         {children}
       </div>
       <div className={styles.mobileMenu}>
-        <Link className={styles.link} href={''}>
-          <Search />
-        </Link>
         <Link className={styles.link} href={'/'}>
           <Home />
+        </Link>
+        <Link className={styles.link} href={'/'}>
+          <Search />
+        </Link>
+        <Link className={styles.link} href={'/editor'}>
+          <PlusMenu />
+        </Link>
+        <Link className={styles.link} href={'/'}>
+          <Notification />
         </Link>
         {
           mobxStore?.user?.email ? (
             <Link className={styles.link} href={'/account'}>
               <div className={styles.avatar}>
-                <Image layout={'fill'} src={'https://i.pinimg.com/736x/78/a6/de/78a6dee0461f3a04c067b4198730bfb2.jpg'} alt="ads"/>
+                <Image layout={'fill'} src={''} alt="ads"/>
               </div>
             </Link>
           ) : (

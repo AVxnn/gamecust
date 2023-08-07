@@ -21,10 +21,13 @@
     "eslint": "8.30.0",
     "eslint-config-next": "13.1.0",
     "framer-motion": "^10.12.4",
+    "fs": "^0.0.1-security",
     "mobx": "^6.8.0",
+    "mobx-react": "^9.0.0",
     "mobx-react-lite": "^3.4.3",
     "mongoose": "^7.0.1",
     "next": "13.1.0",
+    "path": "^0.12.7",
     "react": "18.2.0",
     "react-content-loader": "^6.2.0",
     "react-dom": "18.2.0",
@@ -42,6 +45,7 @@
   },
   "devDependencies": {
     "@types/react-imageloader": "^2.1.12",
+    "@types/react-redux": "^7.1.25",
     "@types/react-slick": "^0.23.10",
     "@types/react-transition-group": "^4.4.5"
   }
