@@ -1,21 +1,32 @@
 import React, { useCallback, useContext, useEffect, useState } from 'react';
 import styles from './editorBlock.module.scss'
-import { useDispatch, useSelector } from 'react-redux';
-import { addItem } from '../../../../features/CreatePost/CreatePostSlice';
 import ToolBar from './ToolBar';
 import ChangeAccount from './ChangeAccount';
 import ConstructorBlocks from './ConstructorBlocks';
 import { Context } from '../../../../pages/_app';
 import { observer } from "mobx-react"
 import { Reorder, useDragControls } from 'framer-motion';
+import useDebounce from '../../../../features/Hooks/useDebounce';
 
 const EditorBlock = observer(() => {
 
-  const {postCreateStore} = useContext(Context);
+  const {mobxStore, postCreateStore} = useContext(Context);
   const dragControls = useDragControls();
+
+  const [pressKey, setPressKey] = useState(false)
+
+  const saveHandler = () => {
+    console.log('save', postCreateStore.postId);
+    postCreateStore.reSavePost(mobxStore.user, postCreateStore.data, postCreateStore.postId)
+    setPressKey(false)
+  }
+
+  const debouncedSave = useDebounce(saveHandler, 2500)
 
   const keyPress = useCallback(
     (e: any) => {
+      setPressKey(true)
+      debouncedSave()
       if (e.keyCode === 13 || e.keyCode === 9) {
         let res = {
           type: 'text',
@@ -32,8 +43,6 @@ const EditorBlock = observer(() => {
     document.addEventListener('keydown', keyPress);
     return () => document.removeEventListener('keydown', keyPress);
   }, [keyPress]);
-
-  console.log(postCreateStore.data);
   
   return (
     <div className={styles.editor}>
@@ -53,7 +62,7 @@ const EditorBlock = observer(() => {
           } 
         </Reorder.Group>
       </div>
-      <ToolBar />
+      <ToolBar pressKey={pressKey} />
     </div>
   );
 });

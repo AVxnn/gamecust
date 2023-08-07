@@ -7,8 +7,6 @@ import DotsIcon from "../../../../../../../public/img/svg/DotsIcon";
 import { useContext, useEffect, useRef } from "react";
 import Plus from "../../../../../../../public/img/svg/Plus";
 import cn from "classnames";
-import { useDispatch, useSelector } from "react-redux";
-import { addItem } from "../../../../../../../features/CreatePost/CreatePostSlice";
 import { Context } from "../../../../../../../pages/_app";
 import { motion } from "framer-motion";
 import { observer } from "mobx-react";
@@ -56,7 +54,7 @@ const DropDownForm = observer(({setIsClicked, isClicked} : any) => {
         } else if (type == 'link') {
             result = {
                 type: 'link',
-                value: '',
+                typeMedia: '',
                 stared: false,
                 href: '',
                 id: postCreateStore.data.length

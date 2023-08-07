@@ -7,7 +7,7 @@ const InformationBlock = ({item} : any) => {
   return (
     <div className={styles.container}>
         {
-            item.stared && (
+            item?.stared && (
                 <div className={styles.infoBlock}>
                     <Star />
                 </div>

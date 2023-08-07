@@ -16,17 +16,13 @@ import { Context } from './_app';
 import { observer } from 'mobx-react-lite'
 
 const Home = ({ props } : any) => {
-  console.log(props);
   
   const [showFixedMenu, setShowFixedMenu] = useState<boolean>(false);
   const menuRef = useRef<HTMLUListElement>(null);
 
   const {mobxStore} = useContext(Context);
-  console.log(mobxStore);
   
   useEffect(() => {
-    console.log('work', localStorage.getItem('token'));
-    
     if(localStorage.getItem('token')) {
       mobxStore.checkAuth()
     }

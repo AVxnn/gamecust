@@ -11,7 +11,7 @@ import Image from 'next/image'
 const Post = ({data} : any) => {
   console.log(data);
 
-  if (!data?.username) return <>'Loading...'</>
+  if (!data?.username) return <>Loading...</>
   
   return (
     <div className={styles.postContainer}>
@@ -39,8 +39,8 @@ const Post = ({data} : any) => {
               )
             } else if (item.type === 'media') {
               return (
-                <div className={styles.img}>
-                  <Image key={index} layout={'fill'} src={process.env.NEXT_PUBLIC_API_URL + item?.href} className={styles.subtitle} alt=""/>
+                <div key={index} className={styles.img}>
+                  <Image layout={'fill'} src={process.env.NEXT_PUBLIC_API_URL + item?.href} className={styles.subtitle} alt=""/>
                 </div>
               )
             }

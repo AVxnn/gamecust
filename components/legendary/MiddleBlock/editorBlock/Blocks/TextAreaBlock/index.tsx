@@ -1,12 +1,9 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import styles from "./TextAreaBlock.module.scss"
 import TextareaAutosize from 'react-textarea-autosize';
-import { useDispatch } from "react-redux";
-import { removeItem, updateItem } from "../../../../../../features/CreatePost/CreatePostSlice";
 import DropDownForm from "../../../../common/PostPreview/common/Dropdowns/DropDownForm";
 import DropDownEdit from "../../../../common/PostPreview/common/Dropdowns/DropDownEdit";
 import { Context } from "../../../../../../pages/_app";
-import { motion } from "framer-motion";
 import { observer } from "mobx-react";
 import InformationBlock from "../../InformationBlock";
 
@@ -23,7 +20,6 @@ const TextAreaBlock = observer(({item} : any) => {
     const {postCreateStore} = useContext(Context);
     
     const updateHandler = (value : any) => {
-        console.log('updated', item.id, postCreateStore.data);
         postCreateStore.updateItem({...item, value: value})
     }
 

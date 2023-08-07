@@ -1,8 +1,11 @@
 import { makeAutoObservable } from "mobx";
 import sortIds from "../features/Sort/SortIds";
 import CreatePostService from "../utils/createPost/CreatePostService";
+import { useContext } from "react";
+import { Context } from "../pages/_app";
 
 export default class PostCreateStore {
+    postId = ''
     data = [
         {
             type: 'h1',
@@ -14,6 +17,11 @@ export default class PostCreateStore {
 
     constructor() {
         makeAutoObservable(this)
+    }
+
+    setPostId(data : any) {
+        this.postId = data;
+        console.log(this.data);
     }
 
     addItem(data : any) {
@@ -62,13 +70,15 @@ export default class PostCreateStore {
         return this.data
     }
 
-    async createPost(user: any, data: any) {
+    async createPost(user: any, data: any, id : string) {
         try {
             const post = {
                 title: 'user',
                 description: 'desc',
                 username: user.username,
                 userAvatar: '',
+                save: true,
+                postId: id,
                 data: data,
                 stared: data.filter((item:any) => item.stared === true),
                 tags: [],
@@ -78,6 +88,8 @@ export default class PostCreateStore {
                 comments: [],
                 viewsCount: 0,
             }
+            console.log(post);
+            
             const response = await CreatePostService.createPost(post);
             await console.log('+', response);
         } catch (error: any) {
@@ -91,4 +103,33 @@ export default class PostCreateStore {
         
     }
 
+    async reSavePost(user: any, data: any, postId: any) {
+        try {
+            
+            const post = {
+                username: user.username,
+                userAvatar: '',
+                userId: user.id,
+                published: false,
+                postId: postId,
+                data: data,
+                stared: data.filter((item:any) => item.stared === true),
+                tags: [],
+                images: [],
+                hashtags: [],
+                likes: [],
+                comments: [],
+                viewsCount: 0,
+            }
+            const response = await CreatePostService.reSavePost(user.id, post);
+            await console.log('+', response);
+        } catch (error: any) {
+            console.log(error)
+        }
+    }
+
 }
+
+
+
+

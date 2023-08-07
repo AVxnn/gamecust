@@ -5,15 +5,14 @@ import Dots from '../../../../../public/img/svg/Dots'
 import Check from '../../../../../public/img/svg/Check'
 import { Context } from '../../../../../pages/_app'
 
-const ToolBar = () => {
+const ToolBar = ({pressKey} : any) => {
 
   const {mobxStore, postCreateStore} = useContext(Context);
-
   const submitHandler = () => {
     if(localStorage.getItem('token')) {
       mobxStore.checkAuth()
     }
-    postCreateStore.createPost(mobxStore.user, postCreateStore.getPost());
+    postCreateStore.createPost(mobxStore.user, postCreateStore.getPost(), `${postCreateStore.postId}`);
   }
 
   return (
@@ -23,8 +22,20 @@ const ToolBar = () => {
             <Dots />
         </div>
         <div className={styles.right}>
-            <span className={styles.save}>Сохранено</span>
-            <Check />
+          {
+            !pressKey ? (
+              <>
+                <span className={styles.save}>Сохранено</span>
+                <Check />
+              </>
+            ) : (
+              <>
+                <span className={styles.save}>Сохранение</span>
+                <span className={styles.loader}></span>
+              </>
+            )
+          }
+            
         </div>
     </div>
   )

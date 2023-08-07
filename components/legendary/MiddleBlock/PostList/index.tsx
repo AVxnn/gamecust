@@ -225,7 +225,7 @@ const PostList = ({PostData} : any) => {
   return (
     <div className={styles.postList}>
       {
-        PostData.map((item : any, index : number) => {
+        PostData && PostData.map((item : any, index : number) => {
           if (item.news) {
             return (
               <NewsSlider key={index} />

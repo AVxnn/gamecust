@@ -50,5 +50,32 @@
         path {
             fill: $d_main_text_color;
         }
+
+        .loader {
+          width: 8px;
+          height: 8px;
+          margin-left: 16px;
+          border-radius: 50%;
+          background-color: #fff;
+          box-shadow: 8px 0 #fff, -8px 0 #fff;
+          position: relative;
+          animation: flash 0.5s ease-out infinite alternate;
+        }
+        
+        @keyframes flash {
+          0% {
+            background-color: #FFF2;
+            box-shadow: 12px 0 #FFF2, -12px 0 #FFF;
+          }
+          50% {
+            background-color: #FFF;
+            box-shadow: 12px 0 #FFF2, -12px 0 #FFF2;
+          }
+          100% {
+            background-color: #FFF2;
+            box-shadow: 12px 0 #FFF, -12px 0 #FFF2;
+          }
+        }
+              
     }
 }

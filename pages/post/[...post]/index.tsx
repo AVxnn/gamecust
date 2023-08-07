@@ -12,34 +12,8 @@ import Contacts from "../../../components/legendary/RightBlock/Contacts";
 import Post from "../../../components/legendary/common/Post";
 import LoginRight from "../../../components/legendary/RightBlock/LoginRight";
 import { useRouter } from 'next/router';
-import CreatePostService from '../../../utils/createPost/CreatePostService';
 
-const MyComponent = () => {
- 
-  const router = useRouter();
-  const {post} = router.query as any;
-
-  const [data, setData] = useState<any>({});
-
-  async function fetchPost(id: any) {
-    try {
-      console.log(id);  
-      const response = await CreatePostService.getPost(id)
-      if(response.data === null) {
-        router.push('/')
-      }
-      setData(response.data)
-      console.log(response);
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  useEffect(() => {
-    if(post?.length && post?.length >= 1) {
-      fetchPost(post[0])
-    }
-  }, [post])
+const OnePost = ({props} : any) => {
 
   return (
     <>
@@ -56,7 +30,7 @@ const MyComponent = () => {
       <Header />
       <Layout>
         <div className={styles.middleColumn}>
-          <Post data={data} />
+          <Post data={props} />
         </div>
         <div className={styles.rightColumn}>
           <LoginRight />
@@ -73,4 +47,13 @@ const MyComponent = () => {
   );
 };
 
-export default MyComponent;
+export async function getServerSideProps(context : any) {
+
+  const res = await fetch(`http://localhost:4000/api/post/getPost/${context.params.post}`);
+  
+  return {
+    props: {props : await res?.json()}, // will be passed to the page component as props
+  }
+}
+
+export default OnePost;

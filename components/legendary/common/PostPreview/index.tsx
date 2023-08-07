@@ -25,7 +25,7 @@ const PostPreview = ({data} : any) => {
           })
         }
       </section>
-      <Link className={styles.post} href={`/post/${data.id}`}>
+      <Link className={styles.post} href={`/post/${data.postId}`}>
         <section className={styles.mainInfo}>
           {
             data?.stared.map((item: any, index: number) => {

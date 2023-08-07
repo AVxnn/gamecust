@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Context } from '../../../../pages/_app';
 import {open} from '../../../../features/Popup/PopupAuthSlice'
 import { useRouter } from 'next/router'
+import uuid from "react-uuid"
 
 const CreatePostRight = () => {
 
@@ -29,7 +30,7 @@ const CreatePostRight = () => {
         <span className={styles.notepad}> <Notepad /> Черновик(2)</span>
       </div>
       <div className={styles.list}>
-        <div onClick={() => redirectLink('/editor')} >
+        <div onClick={() => redirectLink(`/editor/${mobxStore.user.id}/${uuid()}-${mobxStore.user.username}`)} >
           <div className={styles.item}>
             <div className={styles.img}>
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

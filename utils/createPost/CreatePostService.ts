@@ -12,4 +12,8 @@ export default class CreatePostService {
         return $api.get<any>(`/post/getPost/${id}`);
     }
 
+    static async reSavePost (id: any, data: any): Promise<AxiosResponse<any>> {
+        return $api.post<any>(`/post/update/${id}`, {data});
+    }
+
 }

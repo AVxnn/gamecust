@@ -1,16 +1,17 @@
 import React, { useContext, useEffect } from 'react';
 import Head from "next/head";
-import Header from "../../components/legendary/header";
-import Layout from "../../components/layout";
+import Header from "../../../components/legendary/header";
+import Layout from "../../../components/layout";
 import styles from './Editor.module.scss'
-import EditorBlock from "../../components/legendary/MiddleBlock/editorBlock";
-import { Context } from '../_app';
+import EditorBlock from "../../../components/legendary/MiddleBlock/editorBlock";
+import { Context } from '../../_app';
 import { useRouter } from 'next/router';
 
 const Editor = () => {
-
+  
   const {mobxStore, postCreateStore} = useContext(Context);
   const router = useRouter();
+  const { postId } = router.query
 
   useEffect(() => {
     postCreateStore.updateArray([
@@ -21,14 +22,23 @@ const Editor = () => {
           id: 0,
       },
     ])
-    console.log('work', localStorage.getItem('token'), mobxStore);
-    if (!mobxStore.user.isActivated) {
-      router.push('/')
+    const checkHandler = async () => {
+      if(localStorage.getItem('token')) {
+        await mobxStore.checkAuth()
+      }
+      
+      if (!mobxStore.user.isActivated) {
+        await router.push('/')
+      }
     }
-    if(localStorage.getItem('token')) {
-      mobxStore.checkAuth()
-    }
+    checkHandler()
   }, [])
+  console.log(postCreateStore);
+  
+  useEffect(() => {
+    console.log(postId);
+    postCreateStore.setPostId(postId ? postId[1] : '')
+  }, [postId])
 
   return (
     <>
