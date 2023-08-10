@@ -1,0 +1,22 @@
+@import "/styles/variables.scss";
+
+.subs {
+    padding: 16px 10px;
+    background-color: $d_main_subbg_color;
+    border-radius: 8px;
+
+    .title {
+        margin: 0;
+        padding: 0 0 12px 14px;
+        font-size: 16px;
+        color: $d_main_text_color;
+
+        span {
+            font-weight: 300;
+            color: $d_main_subtext_color;
+        }
+    }
+    a {
+        text-decoration: none;
+    }
+}

@@ -1,11 +1,14 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import styles from './HeaderPost.module.scss'
 import CheckIcon from "../../../../../../public/img/svg/CheckIcon";
 import Button from "../../../Button";
 import Link from "next/link";
 import ImageLoader from 'react-imageloader';
 import ContentLoader from "react-content-loader";
-import button from "../../../Button";
+import ReactTimeAgo from 'react-time-ago';
+import { Context } from '../../../../../../pages/_app';
+import isRoleHandler from '../../../../../../features/isRoleHandler';
+import EditBlock from './EditBlock';
 function preloader() {
   return (
       <ContentLoader  viewBox="0 0 64 64">
@@ -14,17 +17,19 @@ function preloader() {
   )
 }
 const HeaderPost = ({data} : any) => {
-
+  
+  const {mobxStore, postCreateStore} = useContext(Context);
   const [subscribe, setSubscribe] = useState(false)
 
   const changeSub = () => {
+    mobxStore.updateAuth(data.userId, mobxStore.user.id);
     setSubscribe(!subscribe)
   }
 
   return (
     <header className={styles.header}>
       <div className={styles.leftBlock}>
-        <Link href={'/profile/metavxnn'}>
+        <Link href={`/profile/${data.username}`}>
           <ImageLoader
               className={styles.avatar}
               src="https://i.pinimg.com/736x/78/a6/de/78a6dee0461f3a04c067b4198730bfb2.jpg"
@@ -34,16 +39,18 @@ const HeaderPost = ({data} : any) => {
           </ImageLoader>
         </Link>
         <span className={styles.name}>{data.username} <CheckIcon /></span>
-        <span className={styles.date}>3  часа</span>
+        <ReactTimeAgo className={styles.date} date={data.publishedDate} locale="ru-RU"/>
       </div>
       {
-        subscribe ? (
+        isRoleHandler(mobxStore.user.id, data.userId) ? ( 
+          <EditBlock postId={data.postId} />
+        ) : subscribe ? (
           <Button clb={() => changeSub()} type={'primary'}>
-            Подписаны
+            Подписаться
           </Button>
         ) : (
           <Button clb={() => changeSub()} type={'primary'}>
-            Подписаться
+            Подписаны
           </Button>
         )
       }

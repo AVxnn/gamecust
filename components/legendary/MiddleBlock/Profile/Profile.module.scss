@@ -142,24 +142,18 @@
 
       .headers {
         display: flex;
-        gap: 32px;
+        gap: 24px;
         align-items: center;
         margin-bottom: 4px;
 
-        .subtitle {
+        .lvl {
           display: flex;
           align-items: center;
-          color: #3FC344;
-
-          svg {
-            margin-right: 8px;
-            width: 24px;
-            height: 24px;
-
-            path {
-              fill: #3FC344;
-            }
-          }
+          font-size: 10px;
+          color: $const_main_text_color;
+          padding: 4px 8px;
+          border-radius: 8px;
+          background-color: #4A7EE1;
         }
         .subs {
           color: $d_main_subtext_color;
@@ -172,111 +166,6 @@
         display: flex;
         gap: 32px;
         padding: 0;
-      }
-    }
-    .right {
-      position: absolute;
-      display: flex;
-      right: 24px;
-      align-items: center;
-      align-self: flex-start;
-      gap: 32px;
-      top: 24px;
-
-      button {
-        padding: 8px 8px;
-
-      }
-
-      svg {
-        width: 32px;
-        height: 32px;
-        cursor: pointer;
-
-        path {
-          transition: all 0.1s ease-in-out;
-          fill: $d_main_subtext_color;
-        }
-
-        &:hover {
-          path {
-            fill: $d_main_text_color;
-          }
-        }
-      }
-    }
-  }
-}
-
-.profileBlockFixed {
-  width: 100%;
-  border-radius: 8px;
-  max-width: 936px;
-  background: $d_main_subbg_glass_color;
-  backdrop-filter: blur(8px);
-  top: -199px;
-  z-index: 999;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
-  position: fixed;
-  animation: anim 0.2s ease-in-out forwards;
-
-  @media (max-width: 1280px) {
-    max-width: 670px;
-  }
-  @media (max-width: 1024px) {
-    max-width: 936px;
-  }
-  
-  .topHeader {
-    display: flex;
-    padding: 0 16px;
-    align-items: center;
-    justify-content: space-between;
-
-    .header {
-      display: flex;
-      align-self: flex-end;
-      align-items: center;
-      max-width: 936px;
-      .left {
-
-        .avatar {
-          position: relative;
-          width: 40px;
-          height: 40px;
-
-          img {
-            border-radius: 99px;
-            width: 40px;
-            box-sizing: border-box;
-            border: 0;
-            height: 40px;
-          }
-
-        }
-        .number {
-          display: flex;
-          font-size: 12px;
-          align-items: center;
-          justify-content: center;
-          position: absolute;
-          right: 0;
-          color: $d_main_text_color;
-          width: 16px;
-          height: 16px;
-          border-radius: 99px;
-          background-color: #F2C94C;
-          bottom: 0;
-        }
-      }
-      .right {
-        padding-left: 12px;
-        .name {
-          color: $d_main_text_color;
-        }
-        .description {
-
-        }
       }
     }
   }

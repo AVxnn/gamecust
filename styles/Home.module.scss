@@ -66,13 +66,3 @@
     margin: -12px 0 0 0;
   }
 }
-
-.rightColumnFixed {
-  display: flex;
-  user-select: none;
-  z-index: -2;
-  justify-self: flex-end;
-  margin-top: -911px;
-  background-color: $d_main_bg_color;
-  position: fixed;
-}

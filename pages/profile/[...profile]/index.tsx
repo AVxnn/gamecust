@@ -1,4 +1,4 @@
-import React, {use, useContext, useEffect, useRef, useState} from 'react';
+import React, { useContext, useEffect, useRef} from 'react';
 import Head from "next/head";
 import Header from "../../../components/legendary/header";
 import Layout from "../../../components/layout";
@@ -12,50 +12,23 @@ import Contacts from "../../../components/legendary/RightBlock/Contacts";
 import BackWallpaper from "../../../components/legendary/BackWallpaper";
 import LoginRight from "../../../components/legendary/RightBlock/LoginRight";
 import ProfileBlock from "../../../components/legendary/MiddleBlock/Profile";
-import PostList from "../../../components/legendary/MiddleBlock/PostList";
 import { observer } from 'mobx-react-lite';
 import { Context } from '../../_app';
-import { useRouter } from 'next/router';
-import UserService from '../../../utils/user/UserService';
+import ChangeProfileBlock from '../../../components/legendary/MiddleBlock/ChangeProfileBlock';
+import Subscriptions from '../../../components/legendary/RightBlock/Subscriptions';
 
-const Profile = ({props} : any) => {
- 
-  const router = useRouter();
-  const {profile} = router.query as any;
+const Profile = ({user, posts} : any) => {
+  console.log(user, posts);
   
   const menuRef = useRef<HTMLUListElement>(null);
 
   const {mobxStore} = useContext(Context);
-
-  const [user, setUser] = useState({})
-
-  async function fetchUser(id: any) {
-    try {
-      console.log(id);  
-      const response = await UserService.fetchUser(id)
-      if(response.data === null) {
-        router.push('/')
-      }
-      setUser(response.data)
-      console.log(response);
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  useEffect(() => {
-    if(profile?.length && profile?.length >= 1) {
-      fetchUser(profile[0])
-    }
-  }, [profile])
-
+  
   useEffect(() => {
     console.log('work', localStorage.getItem('token'));
-  
     if(localStorage.getItem('token')) {
       mobxStore.checkAuth()
     }
-    
   }, [])
 
   return (
@@ -76,11 +49,12 @@ const Profile = ({props} : any) => {
         <div className={styles.middleColumn}>
           <ProfileBlock data={user} />
           <div className={styles.postListContainer}>
-            <PostList />
+            <ChangeProfileBlock data={posts}/>
           </div>
         </div>
         <div className={styles.rightColumn}>
           <LoginRight />
+          <Subscriptions user={user} />
           <CreatePostRight />
           <Premium />
           <TopUsers />
@@ -93,5 +67,19 @@ const Profile = ({props} : any) => {
     </>
   );
 };
+
+export async function getServerSideProps(context : any) {
+// http://localhost:3000/editor/640b0a3f32ad4cf57431ff70/8b0532a0-cbee-06a2-6d36-b5aebb787bf2-MetaVxnn
+  const userData = await fetch(`http://localhost:4000/api/user/getUser/${context.params.profile[0]}`);
+  let user = await userData?.json()
+  const postData = await fetch(`http://localhost:4000/api/post/getPosts/filter/${user._id}`);
+  
+  return {
+    props: {
+      user : user,
+      posts : await postData?.json(),
+    }, // will be passed to the page component as props
+  }
+}
 
 export default observer(Profile);

@@ -23,12 +23,39 @@
         }
     }
 
+    .fileBlockDrag {
+        padding: 24px 0;
+        user-select: none;
+        position: relative;
+        display: flex;
+        height: 44px;
+        width: calc(100% - 4px);
+        justify-content: center;
+        align-items: center;
+        background-color: $d_main_subbg_color;
+        border-radius: 8px;
+        border: 2px dashed $d_main_color;
+        transition: all 0.1s ease-in-out;
+        user-select: none;
+
+        .text {
+            color: $d_main_text_color;
+            user-select: none;
+            pointer-events: none;
+        }
+
+        &:hover {
+            background-color: $d_main_text_hover_color;
+        }
+    }
+
     .fileBlock {
     
         padding: 24px 0;
         user-select: none;
         position: relative;
         display: flex;
+        height: 48px;
         justify-content: center;
         align-items: center;
         background-color: $d_main_text_color;

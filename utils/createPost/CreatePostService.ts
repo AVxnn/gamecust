@@ -16,4 +16,12 @@ export default class CreatePostService {
         return $api.post<any>(`/post/update/${id}`, {data});
     }
 
+    static async updatePost (id: any, data: any): Promise<AxiosResponse<any>> {
+        return $api.post<any>(`/post/update/${id}`, {data});
+    }
+
+    static async deletePost (id: any): Promise<AxiosResponse<any>> {
+        return $api.get<any>(`/post/delete/${id}`);
+    }
+
 }

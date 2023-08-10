@@ -76,4 +76,13 @@ export default class MobxStore {
             this.setLoading(false);
         }
     }
+
+    async updateAuth(id: string, uId: string) {
+        try {
+            const response = await AuthService.updateSubs(id, uId);
+            console.log(response);
+        } catch (error: any) {
+            console.log(error.response?.data?.message)
+        }
+    }
 }

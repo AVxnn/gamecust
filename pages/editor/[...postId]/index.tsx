@@ -7,21 +7,25 @@ import EditorBlock from "../../../components/legendary/MiddleBlock/editorBlock";
 import { Context } from '../../_app';
 import { useRouter } from 'next/router';
 
-const Editor = () => {
+const Editor = ({props} : any) => {
   
   const {mobxStore, postCreateStore} = useContext(Context);
   const router = useRouter();
   const { postId } = router.query
-
+  
   useEffect(() => {
-    postCreateStore.updateArray([
-      {
-          type: 'h1',
-          value: '',
-          stared: false,
-          id: 0,
-      },
-    ])
+    if (props?.data?.length > 0) {
+      postCreateStore.updateArray(props.data)
+    } else {
+      postCreateStore.updateArray([
+        {
+            type: 'h1',
+            value: '',
+            stared: false,
+            id: 0,
+        },
+      ])
+    }
     const checkHandler = async () => {
       if(localStorage.getItem('token')) {
         await mobxStore.checkAuth()
@@ -33,10 +37,8 @@ const Editor = () => {
     }
     checkHandler()
   }, [])
-  console.log(postCreateStore);
   
   useEffect(() => {
-    console.log(postId);
     postCreateStore.setPostId(postId ? postId[1] : '')
   }, [postId])
 
@@ -65,5 +67,14 @@ const Editor = () => {
     </>
   );
 };
+
+export async function getServerSideProps(context : any) {
+
+  const res = await fetch(`http://localhost:4000/api/post/getPost/${context.params.postId[1]}`);
+  
+  return {
+    props: {props : await res?.json()}, // will be passed to the page component as props
+  }
+}
 
 export default Editor;

@@ -8,7 +8,7 @@ export default class UserService {
         return $api.get<IUser[]>('/user/getUsers')
     }
 
-    static fetchUser(id: any): Promise<AxiosResponse<IUser[]>> {
-        return $api.get<IUser[]>(`/user/getUser/${id}`)
+    static fetchUser(username: any): Promise<AxiosResponse<IUser[]>> {
+        return $api.get<IUser[]>(`/user/getUser/${username}`)
     }
 }

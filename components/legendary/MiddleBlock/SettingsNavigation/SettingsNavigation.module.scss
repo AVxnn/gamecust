@@ -1,0 +1,36 @@
+@import "/styles/variables.scss";
+
+.navigation {
+    width: 100%;
+    padding: 16px 10px;
+    background-color: $d_main_subbg_color;
+    border-radius: 8px;
+
+    a {
+        text-decoration: none;
+    }
+
+    .title {
+        margin: 0 0 20px 14px;
+        padding: 0;
+        color: $d_main_text_color;
+    }
+    .list {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+    .item {
+        padding: 16px 14px;
+        border-radius: 8px;
+        color: $d_main_text_color;
+        
+        &:hover {
+            background-color: $d_main_bg_color;
+        }
+    }
+
+    .active {
+        background-color: $d_main_bg_color;
+    }
+}

@@ -1,0 +1,18 @@
+@import "/styles/variables.scss";
+
+.item {
+    padding: 14px;
+    display: flex;
+    gap: 16px;
+    align-items: center;
+
+    .noImage {
+        width: 40px;
+        height: 40px;
+        background-color: red;
+        border-radius: 99px;
+    }
+    .username {
+        color: $d_main_text_color;
+    }
+}

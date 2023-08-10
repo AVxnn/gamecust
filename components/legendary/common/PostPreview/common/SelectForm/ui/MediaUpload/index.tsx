@@ -15,17 +15,20 @@ const MediaUpload = observer(({item} : any) => {
 
     const [hover, setHover] = useState<boolean>(false);
     
-    const [focus, setFocus] = useState<boolean>(false);
+    const [dragActive, setDragActive] = useState(false);
     const [isClicked, setIsClicked] = useState<boolean>(false);
 
     const {postCreateStore} = useContext(Context);
     
-    const sendData = (file : any) => {
-
+    const sendData = (file : any, type: any) => {
+      let files = file.currentTarget.files[0]
+      if (type === 'drag') {
+        files = file.dataTransfer.files[0]
+      }
       var formdata = new FormData();
-      formdata.append("image", file.target.files[0]);
+      formdata.append("image", files);
       formdata.append("id", "12312312312");
-      console.log(file.target.files[0])
+      console.log(files)
       fetch("http://localhost:4000/api/file/upload", {
         method: 'POST',
         body: formdata,
@@ -61,28 +64,26 @@ const MediaUpload = observer(({item} : any) => {
         }
       }, []);
 
-    const handleClickOutside = (e: any) => {
-        if (isClicked) {
-            if (labelRef.current &&
-                !labelRef.current.contains(e.target)) {
-                    setFocus(false)
-            }
-        }
-    }
+    const handleDrop = (e : any) => {
+      e.preventDefault();
+      e.stopPropagation();
+      setDragActive(false);
+      if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+        sendData(e, 'drag');
+      }
+    };
 
-    useEffect(() => {
-        if (typeof document !== "undefined" && isClicked) {
-            document.addEventListener('click', (e: any) => {
-            handleClickOutside(e);
-        })
-        return document.removeEventListener('click', (e: any) => {
-            handleClickOutside(e);
-        })
-        }
-    })
-
-    console.log(process.env.NEXT_PUBLIC_API_URL);
-    
+    const handleDrag = function(e : any) {
+      e.preventDefault();
+      e.stopPropagation();
+      console.log('rere');
+      
+      if (e.type === "dragenter" || e.type === "dragover") {
+        setDragActive(true);
+      } else if (e.type === "dragleave") {
+        setDragActive(false);
+      }
+    };
 
     return (
         <>
@@ -96,25 +97,25 @@ const MediaUpload = observer(({item} : any) => {
                       <div className={styles.uploadImage}>
                         <Image layout={'fill'} src={process.env.NEXT_PUBLIC_API_URL + item.href} alt="" />
                       </div>
-                    ) : (
-                    <div className={styles.fileBlock}>
+                    ) : !dragActive ? (
+                    <form onSubmit={(e) => e.preventDefault()} onDragEnter={handleDrag} className={styles.fileBlock}>
                       <label htmlFor={'img'} className={styles.info}>
                           <ImageAdd />
                           <span className={styles.text}>Загрузите или перетащите изображение</span> 
                       </label> 
                       
-                      <input onChange={(e) => sendData(e)} className={styles.file} type="file" id="img" name="img" accept="image/*"/>
-                    </div>
+                      <input multiple={true} onChange={(e) => sendData(e, 'click')} className={styles.file} type="file" id="img" name="img" accept="image/*"/>
+                    </form>
+                    ) : (
+                      <>
+                        <div className={styles.fileBlockDrag} onDragEnter={handleDrag} onDragLeave={handleDrag} onDragOver={handleDrag} onDrop={handleDrop}>
+                          <span className={styles.text}>Отпустите файл</span> 
+                        </div>
+                      </>
                     )
                   }
-                
                 {
-                    hover && !item.href && (
-                        <DropDownForm ref={popupRef} setIsClicked={setIsClicked} isClicked={isClicked} />
-                    )
-                }
-                {
-                    hover && item.href && (
+                    hover && (
                         <DropDownEdit ref={popupRef} item={item} setIsClicked={setIsClicked} isClicked={isClicked} />
                     )
                 }

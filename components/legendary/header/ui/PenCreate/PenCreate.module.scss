@@ -1,0 +1,10 @@
+@import "/styles/variables.scss";
+
+.penCreate {
+    height: 28px;
+    cursor: pointer;
+
+    path {
+        fill: $d_main_text_color;
+    }
+}

@@ -12,6 +12,10 @@ export default class AuthService {
         return $api.post<AuthResponse>('/user/registration', {username, email, password});
     }
 
+    static async updateSubs(id: string, uId: string): Promise<AxiosResponse<AuthResponse>> {
+        return $api.post<AuthResponse>('/user/addSubscriptions', {id, uId});
+    }
+
     static async logout(): Promise<void> {
         return $api.post('/user/logout');
     }

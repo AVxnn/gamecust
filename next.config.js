@@ -3,7 +3,7 @@ const nextConfig = {
   reactStrictMode: false,
   optimizeFonts: true,
   images: {
-    domains: ['localhost', 'www.belpressa.ru'],
+    domains: ['localhost', 'img.freepik.com'],
     remotePatterns: [
       {
         protocol: "https",

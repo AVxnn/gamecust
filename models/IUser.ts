@@ -3,4 +3,6 @@ export interface IUser {
     username: string;
     isActivated: boolean;
     id: string;
+    subscribers: [string];
+    subscriptions: [string];
 }

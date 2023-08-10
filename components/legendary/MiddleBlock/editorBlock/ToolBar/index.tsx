@@ -4,15 +4,18 @@ import Button from '../../../common/Button'
 import Dots from '../../../../../public/img/svg/Dots'
 import Check from '../../../../../public/img/svg/Check'
 import { Context } from '../../../../../pages/_app'
+import { useRouter } from 'next/router'
 
 const ToolBar = ({pressKey} : any) => {
 
   const {mobxStore, postCreateStore} = useContext(Context);
+  const router = useRouter();
   const submitHandler = () => {
     if(localStorage.getItem('token')) {
       mobxStore.checkAuth()
     }
     postCreateStore.createPost(mobxStore.user, postCreateStore.getPost(), `${postCreateStore.postId}`);
+    router.push('/')
   }
 
   return (
@@ -35,7 +38,6 @@ const ToolBar = ({pressKey} : any) => {
               </>
             )
           }
-            
         </div>
     </div>
   )

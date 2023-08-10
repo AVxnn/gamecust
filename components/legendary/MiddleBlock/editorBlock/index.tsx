@@ -27,7 +27,7 @@ const EditorBlock = observer(() => {
     (e: any) => {
       setPressKey(true)
       debouncedSave()
-      if (e.keyCode === 13 || e.keyCode === 9) {
+      if (e.keyCode === 9) {
         let res = {
           type: 'text',
           value: '',

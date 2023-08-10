@@ -1,45 +1,53 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useContext, useEffect, useRef, useState} from 'react';
 import styles from './Profile.module.scss'
 import CheckIcon from "../../../../public/img/svg/CheckIcon";
-import Trand from "../../../../public/img/svg/Trand";
 import Tabs from "../../common/Tabs";
-import Button from "../../common/Button";
-import Dots from "../../../../public/img/svg/Dots";
+import ButtonChanger from './ui/ButtonChanger';
+import { useRouter } from 'next/router';
+import { Context } from '../../../../pages/_app';
+import { observer } from 'mobx-react';
 
 const dataTag = [
   {
     title: 'Статьи',
+    link: 'entries'
   },
   {
     title: 'Комментарии',
+    link: 'comments'
   },
   {
-    title: 'Подробнее',
+    title: 'Черновики',
+    link: 'drafts'
   }
 ]
 
 const ProfileBlock = ({data} : any) => {
   const [active, setActive] = useState(0)
-  const [showFixedMenu, setShowFixedMenu] = useState<boolean>(false);
   const menuRef = useRef<HTMLUListElement>(null);
+  const {mobxStore} = useContext(Context);
+  const router = useRouter() as any
 
   const changePage = (index : number) => {
     setActive(index)
   }
-
+  console.log(mobxStore.user);
+  
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      window.addEventListener('scroll', () => {
-
-        if (menuRef.current && menuRef.current.getBoundingClientRect().top <= 13) {
-          setShowFixedMenu(true)
-        } else {
-          setShowFixedMenu(false)
-        }
-      })
+    console.log(router.query.profile[1]);
+    
+    switch (router.query.profile[1]) {
+      case 'entries':
+        return setActive(0)
+      case 'comments':
+        return setActive(1)
+      case 'drafts':
+        return setActive(2)
+      default:
+        return setActive(0)
     }
-  })
-
+  }, [router])
+  
   return (
     <>
       <div className={styles.profileBlock}>
@@ -75,12 +83,11 @@ const ProfileBlock = ({data} : any) => {
             }
           </div>
             <div className={styles.headers}>
-            <span className={styles.subtitle}>
-              <Trand />
-              {data && data.rating}
+            <span className={styles.lvl}>
+              Ур. 2
             </span>
             <span className={styles.subs}>
-              699 подписчиков
+              {data.subscribers ? data.subscribers.length : 0} подписчиков
             </span>
             </div>
             <div className={styles.date}>На проекте с 12 фев 2021</div>
@@ -88,42 +95,17 @@ const ProfileBlock = ({data} : any) => {
               {
                 dataTag.map((item : any, index : number) => {
                   return (
-                    <Tabs key={index} onClick={() => changePage(index)} current={active == index}>{item.title}</Tabs>
+                    <Tabs link={`/profile/${data.username}/${item.link}`} key={index} onClick={() => changePage(index)} current={active == index}>{item.title}</Tabs>
                   )
                 })
               }
             </ul>
           </div>
-          <div className={styles.right}>
-            <Dots />
-            <Button type={'primary'} size={'small'}>Подписаться</Button>
-          </div>
         </div>
+        <ButtonChanger />
       </div>
-      {
-        showFixedMenu &&
-        <div className={styles.profileBlockFixed}>
-          <div className={styles.topHeader}>
-            <div className={styles.header}>
-              <div className={styles.left}>
-                <div className={styles.avatar}>
-                  <div className={styles.contImg}>
-                    <img src="https://i.pinimg.com/736x/78/a6/de/78a6dee0461f3a04c067b4198730bfb2.jpg" alt=""/>
-                  </div>
-                </div>
-              </div>
-              <ul className={styles.right}>
-                <span className={styles.name}>MetaVxnn <CheckIcon /></span>
-              </ul>
-            </div>
-            <div>
-              <Button size='small' type={'primary'}>Подписаться</Button>
-            </div>
-          </div>
-        </div>
-      }
     </>
   );
 };
 
-export default ProfileBlock;
+export default observer(ProfileBlock);

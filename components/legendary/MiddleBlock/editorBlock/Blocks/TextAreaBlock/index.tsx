@@ -10,7 +10,7 @@ import InformationBlock from "../../InformationBlock";
 const TextAreaBlock = observer(({item} : any) => {
 
     const popupRef = useRef<HTMLDivElement>(null);
-    const labelRef = useRef<HTMLDivElement>(null);
+    const labelRef = useRef<HTMLElement>(null) as any;
 
     const [hover, setHover] = useState<boolean>(false);
     
@@ -30,19 +30,6 @@ const TextAreaBlock = observer(({item} : any) => {
             setHover(false)
         }
     }
-
-    useEffect(() => {
-        const onKeypress = (event : any) => {
-          if (event.keyCode == 13) {
-            event.preventDefault()
-          }
-        }
-      
-        document.addEventListener('keydown', (event: KeyboardEvent) => onKeypress(event));
-        return () => {
-            document.addEventListener('keydown', (event: KeyboardEvent) => onKeypress(event));
-        }
-      }, []);
 
     const handleClickOutside = (e: any) => {
         if (isClicked) {
@@ -64,6 +51,10 @@ const TextAreaBlock = observer(({item} : any) => {
         }
     })
 
+    useEffect(() => {
+        labelRef.current.focus()
+    }, [labelRef])
+
     return (
         <>
             <div
@@ -71,7 +62,7 @@ const TextAreaBlock = observer(({item} : any) => {
                 onMouseEnter={() => hoverChange('on')}
                 onMouseLeave={() => hoverChange('off')} 
                 className={styles.container}>
-                <TextareaAutosize 
+                <TextareaAutosize
                     contentEditable={true}
                     className={`${styles.inputMain} ${styles[item.type]}`}
                     onChange={(e) => updateHandler(e.currentTarget.value)}

@@ -16,6 +16,7 @@
     position: relative;
     max-width: 1256px;
     width: 100%;
+    height: 42px;
     gap: 24px;
     justify-content: center;
     display: flex;
@@ -79,6 +80,13 @@
     max-width: 296px;
     width: 100%;
 
+    .penCreate {
+
+      @media (max-width: 720px) {
+        margin-right: 24px;
+      }
+    }
+
     .profile {
       display: flex;
       align-items: center;
@@ -93,24 +101,6 @@
 
     a {
       text-decoration: none;
-    }
-
-    .create {
-      display: none;
-      margin-right: 20px;
-      @media (max-width: 720px) {
-        display: flex;
-      }
-    }
-    .createFixed {
-      position: fixed;
-      display: none;
-      top: 10px;
-      margin-right: 20px;
-      z-index: 123;
-      @media (max-width: 720px) {
-        display: flex;
-      }
     }
   }
 }

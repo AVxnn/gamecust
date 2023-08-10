@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styles from './Post.module.scss'
 import HeaderPost from "../PostPreview/common/HeaderPost";
 import Tag from "../Tag";
@@ -9,7 +9,6 @@ import Image from 'next/image'
 
 
 const Post = ({data} : any) => {
-  console.log(data);
 
   if (!data?.username) return <>Loading...</>
   

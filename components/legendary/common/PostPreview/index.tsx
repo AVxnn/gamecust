@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styles from './PostPreview.module.scss'
 import Tag from "../Tag";
 import Link from "next/link";
@@ -7,8 +7,20 @@ import Toolbar from "./common/toolbar";
 import HeaderPost from "./common/HeaderPost";
 import ImageAndSlider from "../ImageAndSlider";
 import Br from './common/SelectForm/ui/Br';
+import { Context } from '../../../../pages/_app';
 
 const PostPreview = ({data} : any) => {
+
+  const {postCreateStore} = useContext(Context);
+  console.log(data);
+  
+  const openPost = () => {
+    let newData = data
+    newData.viewsCount = data.viewsCount + 1
+    console.log(newData);
+    
+    postCreateStore.updatePost(newData);
+  }
 
   return (
     <div
@@ -25,12 +37,10 @@ const PostPreview = ({data} : any) => {
           })
         }
       </section>
-      <Link className={styles.post} href={`/post/${data.postId}`}>
+      <Link onClick={() => openPost()} className={styles.post} href={`/post/${data.postId}`}>
         <section className={styles.mainInfo}>
           {
             data?.stared.map((item: any, index: number) => {
-              console.log(item);
-              
               if (item.type === 'h1') {
                 return (
                   <h4 key={index} className={styles.title}>{item.value}</h4>

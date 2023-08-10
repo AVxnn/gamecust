@@ -17,7 +17,6 @@ import { observer } from 'mobx-react-lite'
 
 const Home = ({ props } : any) => {
   
-  const [showFixedMenu, setShowFixedMenu] = useState<boolean>(false);
   const menuRef = useRef<HTMLUListElement>(null);
 
   const {mobxStore} = useContext(Context);
@@ -27,19 +26,6 @@ const Home = ({ props } : any) => {
       mobxStore.checkAuth()
     }
   }, [])
-
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      window.addEventListener('scroll', () => {
-
-        if (menuRef.current && menuRef.current.getBoundingClientRect().top <= 0) {
-          setShowFixedMenu(true)
-        } else {
-          setShowFixedMenu(false)
-        }
-      })
-    }
-  })
 
   return (
     <>
