@@ -8,7 +8,7 @@ const ItemSub = ({user} : any) => {
     console.log(user);
     
     const getUser = async () => {
-        const userData = await fetch(`http://localhost:4000/api/user/getUserId/${user}`);
+        const userData = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/user/getUserId/${user}`);
         setUserData(await userData?.json())
     }
 

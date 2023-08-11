@@ -3,11 +3,15 @@ const nextConfig = {
   reactStrictMode: false,
   optimizeFonts: true,
   images: {
-    domains: ['localhost', 'img.freepik.com'],
+    domains: ['localhost', 'img.freepik.com', 'gamecust.ru'],
     remotePatterns: [
       {
         protocol: "https",
         hostname: "s3-ap-northeast-1.amazonaws.com",
+      },
+      {
+        protocol: "https",
+        hostname: "gamecust.ru",
       },
       {
         protocol: "https",

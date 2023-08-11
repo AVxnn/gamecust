@@ -31,9 +31,6 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <>
-      <Head>
-        <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
-      </Head>
       <Provider store={store}>
       <Context.Provider value={{mobxStore, postCreateStore}}>
         <Component {...pageProps} />
