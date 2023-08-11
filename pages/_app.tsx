@@ -5,8 +5,6 @@ import { Provider } from 'react-redux'
 import {useEffect, createContext, useContext} from "react";
 import MobxStore from '../store/mobxStore';
 import PostCreateStore from '../store/postCreateStore';
-import TimeAgo from 'javascript-time-ago'
-import ru from 'javascript-time-ago/locale/ru.json'
 interface State {
   mobxStore: MobxStore;
   postCreateStore: PostCreateStore;
@@ -20,8 +18,6 @@ export const Context = createContext<State>({
 })
 
 export default function App({ Component, pageProps }: AppProps) {
-
-  TimeAgo.addLocale(ru)
 
   useEffect(() => {
     const Theme = localStorage.getItem('Theme')
