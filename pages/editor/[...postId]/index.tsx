@@ -70,7 +70,7 @@ const Editor = ({props} : any) => {
 
 export async function getServerSideProps(context : any) {
 
-  const res = await fetch(`http://localhost:4000/api/post/getPost/${context.params.postId[1]}`);
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/post/getPost/${context.params.postId[1]}`);
   
   return {
     props: {props : await res?.json()}, // will be passed to the page component as props

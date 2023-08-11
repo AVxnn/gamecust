@@ -18,7 +18,8 @@ import { observer } from 'mobx-react-lite'
 const Home = ({ props } : any) => {
   
   const menuRef = useRef<HTMLUListElement>(null);
-
+  console.log(process.env.NEXT_PUBLIC_API_URL);
+  
   const {mobxStore} = useContext(Context);
   
   useEffect(() => {
@@ -69,8 +70,8 @@ const Home = ({ props } : any) => {
 
 
 export async function getServerSideProps(context : any) {
-
-  const res = await fetch('http://localhost:4000/api/post/getPosts');
+  
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/post/getPosts`);
   
   return {
     props: {props : await res?.json()}, // will be passed to the page component as props

@@ -18,7 +18,7 @@ export const Context = createContext<State>({
 })
 
 export default function App({ Component, pageProps }: AppProps) {
-
+  console.log(process.env.NEXT_PUBLIC_API_URL);
   useEffect(() => {
     const Theme = localStorage.getItem('Theme')
     if (Theme == 'white') {
