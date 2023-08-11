@@ -5,6 +5,7 @@ import { Provider } from 'react-redux'
 import {useEffect, createContext, useContext} from "react";
 import MobxStore from '../store/mobxStore';
 import PostCreateStore from '../store/postCreateStore';
+import Head from 'next/head';
 interface State {
   mobxStore: MobxStore;
   postCreateStore: PostCreateStore;
@@ -29,10 +30,16 @@ export default function App({ Component, pageProps }: AppProps) {
   })
 
   return (
-    <Provider store={store}>
+    <>
+      <Head>
+        <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+      </Head>
+      <Provider store={store}>
       <Context.Provider value={{mobxStore, postCreateStore}}>
         <Component {...pageProps} />
       </Context.Provider>
     </ Provider>
+    </>
+    
   )
 }
