@@ -5,7 +5,6 @@ import Button from "../../../Button";
 import Link from "next/link";
 import ImageLoader from 'react-imageloader';
 import ContentLoader from "react-content-loader";
-import ReactTimeAgo from 'react-time-ago';
 import { Context } from '../../../../../../pages/_app';
 import isRoleHandler from '../../../../../../features/isRoleHandler';
 import EditBlock from './EditBlock';
@@ -39,7 +38,7 @@ const HeaderPost = ({data} : any) => {
           </ImageLoader>
         </Link>
         <span className={styles.name}>{data.username} <CheckIcon /></span>
-        <ReactTimeAgo className={styles.date} date={data.publishedDate} locale="ru-RU"/>
+        {/* <ReactTimeAgo className={styles.date} date={data.publishedDate} locale="ru-RU"/> */}
       </div>
       {
         isRoleHandler(mobxStore.user.id, data.userId) ? ( 

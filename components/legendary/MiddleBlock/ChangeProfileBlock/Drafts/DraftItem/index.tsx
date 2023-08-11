@@ -1,7 +1,6 @@
 import React, { useContext } from 'react'
 import styles from "./DraftItem.module.scss"
 import Image from "next/image"
-import ReactTimeAgo from 'react-time-ago'
 import Trash from '../../../../../../public/img/svg/Trash'
 import Link from 'next/link'
 import { Context } from '../../../../../../pages/_app'
@@ -37,7 +36,7 @@ const DraftItem = ({data} : any) => {
                 <div className={styles.mainInfo}>
                     <h2 className={styles.title}>{data.data.filter((e: any) => e.type == 'h1')[0].value}</h2>
                     <div className={styles.bottomInfo}>
-                        <ReactTimeAgo className={styles.date} date={data.publishedDate} locale="ru-RU"/>
+                        {/* <ReactTimeAgo className={styles.date} date={data.publishedDate} locale="ru-RU"/> */}
                         <div onClick={(e) => deleteHandler(e)} className={styles.delete}>
                             <Trash />
                             <p>Удалить черновик</p>
