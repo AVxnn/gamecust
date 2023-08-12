@@ -5,15 +5,15 @@ import $api from "../http";
 export default class CreatePostService {
 
     static async createPost (data: any): Promise<AxiosResponse<any>> {
-        return $api.post<any>('/post/create', {data});
+        return $api.post<any>('/api/post/create', {data});
     }
 
     static async getPost (id: any): Promise<AxiosResponse<any>> {
-        return $api.get<any>(`/post/getPost/${id}`);
+        return $api.get<any>(`/api/post/getPost/${id}`);
     }
 
     static async reSavePost (id: any, data: any): Promise<AxiosResponse<any>> {
-        return $api.post<any>(`/post/update/${id}`, {data});
+        return $api.post<any>(`/api/post/update/${id}`, {data});
     }
 
     static async updatePost (id: any, data: any): Promise<AxiosResponse<any>> {
@@ -21,7 +21,7 @@ export default class CreatePostService {
     }
 
     static async deletePost (id: any): Promise<AxiosResponse<any>> {
-        return $api.get<any>(`/post/delete/${id}`);
+        return $api.get<any>(`/api/post/delete/${id}`);
     }
 
 }
