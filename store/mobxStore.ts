@@ -3,7 +3,7 @@ import { makeAutoObservable } from "mobx";
 import { IUser } from "../models/IUser";
 import { AuthResponse } from "../models/response/AuthResponse";
 import AuthService from "../utils/auth/AuthService";
-import { API_URL } from "../utils/http";
+import $api, { API_URL } from "../utils/http";
 
 export default class MobxStore {
     user = {} as IUser;
@@ -66,7 +66,7 @@ export default class MobxStore {
     async checkAuth() {
         this.setLoading(true);
         try {
-            const response = await axios.get<AuthResponse>(`${process.env.NEXT_PUBLIC_API_URL}/api/user/refresh`, {withCredentials: true})
+            const response = await $api.get<AuthResponse>(`${process.env.NEXT_PUBLIC_API_URL}/api/user/refresh`, {withCredentials: true})
             localStorage.setItem('token', response.data.accessToken);
             console.log('work');
             
