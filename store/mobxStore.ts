@@ -66,7 +66,7 @@ export default class MobxStore {
     async checkAuth() {
         this.setLoading(true);
         try {
-            const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/user/refresh`, {withCredentials: true})
+            const response = await AuthService.check()
             localStorage.setItem('token', response.data.accessToken);
             console.log('work');
             

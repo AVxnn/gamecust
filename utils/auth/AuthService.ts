@@ -19,4 +19,8 @@ export default class AuthService {
     static async logout(): Promise<void> {
         return $api.post('/api/user/logout');
     }
+
+    static async check(): Promise<AxiosResponse<AuthResponse>> {
+        return $api.get<AuthResponse>(`${process.env.NEXT_PUBLIC_API_URL}/api/user/refresh`, {withCredentials: true})
+    }
 }
