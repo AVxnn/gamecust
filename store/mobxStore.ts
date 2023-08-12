@@ -66,21 +66,8 @@ export default class MobxStore {
     async checkAuth() {
         this.setLoading(true);
         try {
-            console.log('work');
-            
-            return fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/user/refresh`, {
-                method: 'GET',
-                mode: 'same-origin',
-                redirect: 'follow',
-                credentials: 'include', // Don't forget to specify this if you need cookies
-                headers: headers,
-                body: JSON.stringify({
-                    first_name: 'John',
-                    last_name: 'Doe'
-                })
-            }).then((e) => console.log(e))
-            // const response = await axios.get<AuthResponse>(`${process.env.NEXT_PUBLIC_API_URL}/api/user/refresh`, {withCredentials: true})
-            // console.log(response.data.accessToken);
+            const response = await axios.get<AuthResponse>(`${process.env.NEXT_PUBLIC_API_URL}/api/user/refresh`, {withCredentials: true})
+            console.log(response.data.accessToken);
             
             localStorage.setItem('token', response.data.accessToken);
             console.log('work');
