@@ -14,6 +14,17 @@ const Editor = ({props} : any) => {
   const { postId } = router.query
   
   useEffect(() => {
+    const checkHandler = async () => {
+      if(localStorage.getItem('token')) {
+        await mobxStore.checkAuth()
+      }
+      
+      if (!mobxStore.user.isActivated) {
+        await router.push('/')
+      }
+    }
+    checkHandler()
+
     if (props?.data?.length > 0) {
       postCreateStore.updateArray(props.data)
     } else {
@@ -26,16 +37,6 @@ const Editor = ({props} : any) => {
         },
       ])
     }
-    const checkHandler = async () => {
-      if(localStorage.getItem('token')) {
-        await mobxStore.checkAuth()
-      }
-      
-      if (!mobxStore.user.isActivated) {
-        await router.push('/')
-      }
-    }
-    checkHandler()
   }, [])
   
   useEffect(() => {
@@ -70,7 +71,7 @@ const Editor = ({props} : any) => {
 
 export async function getServerSideProps(context : any) {
 
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/post/getPost/${context.params.postId[1]}`);
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/post/getPost/${context.params.postId[1]}`);
   
   return {
     props: {props : await res?.json()}, // will be passed to the page component as props

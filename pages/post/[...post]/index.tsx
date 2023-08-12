@@ -49,7 +49,7 @@ const OnePost = ({props} : any) => {
 
 export async function getServerSideProps(context : any) {
 
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/post/getPost/${context.params.post}`);
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/post/getPost/${context.params.post}`);
   
   return {
     props: {props : await res?.json()}, // will be passed to the page component as props

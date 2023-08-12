@@ -7,12 +7,14 @@ const ItemSub = ({user} : any) => {
     const [userData, setUserData] = useState<any>({})
     console.log(user);
     
-    const getUser = async () => {
-        const userData = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/user/getUserId/${user}`);
-        setUserData(await userData?.json())
-    }
+    
 
     useEffect(() => {
+        const getUser = async () => {
+            const userData = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/user/getUserId/${user}`);
+            setUserData(await userData?.json())
+        }
+
         getUser()
     }, [user])
     console.log(userData);

@@ -29,7 +29,7 @@ const MediaUpload = observer(({item} : any) => {
       formdata.append("image", files);
       formdata.append("id", "12312312312");
       console.log(files)
-      fetch("http://localhost:4000/api/file/upload", {
+      fetch(`${process.env.NEXT_PUBLIC_API_URL}/file/upload`, {
         method: 'POST',
         body: formdata,
         redirect: 'follow'

@@ -70,9 +70,9 @@ const Profile = ({user, posts} : any) => {
 
 export async function getServerSideProps(context : any) {
 // http://localhost:3000/editor/640b0a3f32ad4cf57431ff70/8b0532a0-cbee-06a2-6d36-b5aebb787bf2-MetaVxnn
-  const userData = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/user/getUser/${context.params.profile[0]}`);
+  const userData = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/user/getUser/${context.params.profile[0]}`);
   let user = await userData?.json()
-  const postData = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/post/getPosts/filter/${user._id}`);
+  const postData = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/post/getPosts/filter/${user._id}`);
   
   return {
     props: {
