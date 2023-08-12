@@ -21,6 +21,6 @@ export default class AuthService {
     }
 
     static async check(): Promise<AxiosResponse<AuthResponse>> {
-        return $api.get<AuthResponse>(`${process.env.NEXT_PUBLIC_API_URL}/api/user/refresh`, {withCredentials: true})
+        return $api.get<AuthResponse>(`/api/user/refresh`, {withCredentials: true})
     }
 }
