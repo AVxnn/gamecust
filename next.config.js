@@ -2,6 +2,7 @@
 const nextConfig = {
   reactStrictMode: false,
   optimizeFonts: true,
+  distDir: "build",
   images: {
     domains: ['localhost', 'img.freepik.com', 'gamecust.ru'],
     remotePatterns: [
