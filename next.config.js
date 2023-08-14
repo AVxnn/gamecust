@@ -4,6 +4,7 @@ const nextConfig = {
   optimizeFonts: true,
   distDir: "build",
   images: {
+    unoptimized: true,
     domains: ['localhost', 'img.freepik.com', 'gamecust.ru'],
     remotePatterns: [
       {
