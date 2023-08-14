@@ -25,7 +25,7 @@ const PenCreate = () => {
 
     return (
         <div onClick={() => redirectLink(`/editor/${mobxStore.user.id}/${uuid()}-${mobxStore.user.username}`)} className={styles.penCreate}>
-            <Pen />
+            <Pen type={false}/>
         </div>
     )
 }
