@@ -39,7 +39,7 @@ const Post = ({data} : any) => {
             } else if (item.type === 'media') {
               return (
                 <div key={index} className={styles.img}>
-                  <Image layout={'fill'} src={process.env.NEXT_PUBLIC_API_URL + item?.href} className={styles.subtitle} alt=""/>
+                  <Image layout={'fill'} src={process.env.NEXT_PUBLIC_IMAGES_URL + item?.href} className={styles.subtitle} alt=""/>
                 </div>
               )
             }

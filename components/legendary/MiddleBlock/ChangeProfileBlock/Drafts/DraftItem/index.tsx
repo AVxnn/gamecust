@@ -26,7 +26,7 @@ const DraftItem = ({data} : any) => {
                 <div className={styles.image}>
                     {
                         image ? (
-                            <Image layout={'fill'} src={process.env.NEXT_PUBLIC_API_URL + image} alt={''} />
+                            <Image layout={'fill'} src={process.env.NEXT_PUBLIC_IMAGES_URL + image} alt={''} />
                         ) : (
                             <div className={styles.noImage}></div>
                         )
