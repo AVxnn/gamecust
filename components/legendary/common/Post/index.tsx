@@ -39,7 +39,7 @@ const Post = ({data} : any) => {
               )
             } else if (item.type === 'link') {
               return (
-                <div className={styles.mediaBlock}>
+                <div key={index} className={styles.mediaBlock}>
                   <ReactPlayer width={'100%'} height={'100%'} className={styles.player} controls={true} url={item?.href} />
                 </div>
               )
