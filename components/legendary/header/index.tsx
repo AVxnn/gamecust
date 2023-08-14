@@ -22,9 +22,9 @@ const Header = () => {
           <Input placeholder={'Поиск'} width={300}/>
         </div>
         <div className={styles.rightColumn}>
-          <div className={styles.penCreate}>
+          <a className={styles.penCreate}>
             <PenCreate />
-          </div>
+          </a>
           <div className={styles.profile}>
             {
               mobxStore?.user?.email ? (

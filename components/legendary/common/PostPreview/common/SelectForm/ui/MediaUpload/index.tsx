@@ -98,14 +98,16 @@ const MediaUpload = observer(({item} : any) => {
                         <Image layout={'fill'} src={process.env.NEXT_PUBLIC_IMAGES_URL + item.href} alt="" />
                       </div>
                     ) : !dragActive ? (
-                    <form onSubmit={(e) => e.preventDefault()} onDragEnter={handleDrag} className={styles.fileBlock}>
                       <label htmlFor={'img'} className={styles.info}>
-                          <ImageAdd />
-                          <span className={styles.text}>Загрузите или перетащите изображение</span> 
-                      </label> 
-                      
-                      <input multiple={true} onChange={(e) => sendData(e, 'click')} className={styles.file} type="file" id="img" name="img" accept="image/*"/>
-                    </form>
+                      <form onSubmit={(e) => e.preventDefault()} onDragEnter={handleDrag} className={styles.fileBlock}>
+                        
+                            <ImageAdd />
+                            <span className={styles.text}>Загрузите или перетащите изображение</span> 
+                        
+                        
+                        <input multiple={true} onChange={(e) => sendData(e, 'click')} className={styles.file} type="file" id="img" name="img" accept="image/*"/>
+                      </form>
+                    </label> 
                     ) : (
                       <>
                         <div className={styles.fileBlockDrag} onDragEnter={handleDrag} onDragLeave={handleDrag} onDragOver={handleDrag} onDrop={handleDrop}>

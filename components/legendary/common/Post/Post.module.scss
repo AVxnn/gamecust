@@ -71,6 +71,23 @@
       font-weight: 500;
       line-height: 1.35;
     }
+
+    .mediaBlock {
+      position: relative;
+      width: calc(100% + 48px);
+      margin: 0 -24px;
+      height: 500px;
+      margin-bottom: 48px;
+
+      img {
+        object-fit: contain;
+      }
+
+      .player {
+          width: 100% !important;
+      }
+    }
+
     .img {
       padding: 24px 0;
       height: auto;

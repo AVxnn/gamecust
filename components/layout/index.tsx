@@ -2,8 +2,6 @@ import React, { useContext } from 'react';
 import styles from './layout.module.scss'
 
 import AuthPopup from '../legendary/common/Popup/AuthPopup';
-import { Context } from '../../pages/_app';
-import Avatar from '../../public/img/svg/Avatar';
 import { observer } from 'mobx-react-lite';
 import MobileMenu from '../legendary/common/MobileMenu';
 
@@ -13,11 +11,11 @@ const Layout = ({children}: any) => {
     <>
       <AuthPopup />
       <div className={styles.layout}>
-      <div className={styles.container}>
-        {children}
+        <div className={styles.container}>
+          {children}
+        </div>
+        <MobileMenu />
       </div>
-      <MobileMenu />
-    </div>
     </>
   );
 };

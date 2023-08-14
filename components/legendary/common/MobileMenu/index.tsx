@@ -12,6 +12,7 @@ import { useRouter } from 'next/router'
 import { useDispatch } from 'react-redux'
 import {open} from '../../../../features/Popup/PopupAuthSlice'
 import uuid from 'react-uuid'
+import { observer } from 'mobx-react'
 
 const MobileMenu = () => {
 
@@ -32,16 +33,16 @@ const MobileMenu = () => {
         <>
             <div className={styles.mobileMenu}>
                 <Link className={styles.link} href={'/'}>
-                <Home />
+                    <Home />
                 </Link>
                 <Link className={styles.link} href={'/'}>
-                <Search />
+                    <Search />
                 </Link>
-                <Link onClick={() => redirectLink(`/editor/${mobxStore.user.id}/${uuid()}-${mobxStore.user.username}`)} className={styles.link} href={'/editor'}>
-                <PlusMenu />
+                <Link onClick={() => redirectLink(`/editor/${mobxStore.user.id}/${uuid()}-${mobxStore.user.username}`)} className={styles.link} href={`/editor/${mobxStore.user.id}/${uuid()}-${mobxStore.user.username}`}>
+                    <PlusMenu />
                 </Link>
                 <Link className={styles.link} href={'/'}>
-                <Notification />
+                    <Notification />
                 </Link>
                 {
                 mobxStore?.user?.email ? (
@@ -63,4 +64,4 @@ const MobileMenu = () => {
     )
 }
 
-export default MobileMenu
+export default observer(MobileMenu)

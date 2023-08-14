@@ -48,19 +48,11 @@ const EditorBlock = observer(() => {
     <div className={styles.editor}>
       <ChangeAccount />
       <div className={styles.editor_list}>
-      <Reorder.Group values={postCreateStore.data} onReorder={(e) => postCreateStore.updateArray(e)}>
           {
             postCreateStore.data.map((item: any, index: number) => (
-              <Reorder.Item 
-                onDragEnd={() => postCreateStore.sortArray(postCreateStore.data)}
-                key={item.id}
-                dragControls={dragControls} 
-                value={item}>
                 <ConstructorBlocks data={item} key={index}/>
-              </Reorder.Item>
             ))
           } 
-        </Reorder.Group>
       </div>
       <ToolBar pressKey={pressKey} />
     </div>

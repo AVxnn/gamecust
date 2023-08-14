@@ -34,23 +34,6 @@ const ChangeAccount = () => {
     }
   })
 
-  const variants = {
-    open: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        y: { stiffness: 1000, velocity: -100 }
-      }
-    },
-    closed: {
-      y: 50,
-      opacity: 0,
-      transition: {
-        y: { stiffness: 1000 }
-      }
-    }
-  };
-
   return (
     <div
       ref={labelRef} 
@@ -64,15 +47,7 @@ const ChangeAccount = () => {
         <Arrow />
         {
           clicked && (
-            <motion.div
-              initial={{ y: 10, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: -10, opacity: 0 }}
-              transition={{ duration: 0.2 }} 
-              ref={popupRef} 
-              className={styles.toolbar}>
               <AccountDrop />
-            </motion.div>
           )
         }
     </div>

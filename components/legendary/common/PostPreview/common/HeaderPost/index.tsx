@@ -10,6 +10,8 @@ import isRoleHandler from '../../../../../../features/isRoleHandler';
 import EditBlock from './EditBlock';
 import { formatDistance, subDays } from 'date-fns'
 import { ru } from 'date-fns/locale';
+import { useDispatch } from 'react-redux';
+import {open} from '../../../../../../features/Popup/PopupAuthSlice'
 
 function preloader() {
   return (
@@ -24,14 +26,16 @@ const HeaderPost = ({data} : any) => {
   const {mobxStore, postCreateStore} = useContext(Context);
   const [subscribe, setSubscribe] = useState(false)
 
+  const dispatch = useDispatch()
+
   const changeSub = () => {
+    if(!mobxStore.user.email) {
+      return dispatch(open())
+    }
     mobxStore.updateAuth(data.userId, mobxStore.user.id);
     setSubscribe(!subscribe)
   }
 
-  const timestamp = data.publishedDate ? new Date(data.publishedDate) : '' as any
-  console.log(timestamp);
-  
   return (
     <header className={styles.header}>
       <div className={styles.leftBlock}>
@@ -44,19 +48,22 @@ const HeaderPost = ({data} : any) => {
             Image load failed!
           </ImageLoader>
         </Link>
-        <span className={styles.name}>{data.username} <CheckIcon /></span>
-        <span className={styles.date}>{formatDistance(new Date(data.publishedDate), Date.now(), { addSuffix: true, locale: ru })}</span>
+        <div className={styles.info}>
+          <span className={styles.name}>{data.username} <CheckIcon /></span>
+          <span className={styles.date}>{formatDistance(+data.publishedDate, Date.now(), { addSuffix: true, locale: ru })}</span>
+        </div>
       </div>
       {
         isRoleHandler(mobxStore.user.id, data.userId) ? ( 
           <EditBlock postId={data.postId} />
-        ) : subscribe ? (
+        ) : mobxStore?.user?.subscribers?.filter((e) => e === data.userId).length ? (
+          
           <Button clb={() => changeSub()} type={'primary'}>
-            Подписаться
+            Отписаться
           </Button>
         ) : (
           <Button clb={() => changeSub()} type={'primary'}>
-            Подписаны
+            Подписаться
           </Button>
         )
       }

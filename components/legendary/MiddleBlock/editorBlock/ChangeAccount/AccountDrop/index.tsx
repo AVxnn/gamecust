@@ -2,6 +2,7 @@ import styles from "./AccountDrop.module.scss"
 import { useContext} from "react";
 import { Context } from "../../../../../../pages/_app";
 import Avatar from "../../../../../../public/img/svg/Avatar";
+import { motion } from "framer-motion";
 
 const AccountDrop = () => {
 
@@ -11,9 +12,32 @@ const AccountDrop = () => {
         console.log(id);
     }
 
+    
+  const variants = {
+    open: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        y: { stiffness: 1000, velocity: -100 }
+      }
+    },
+    closed: {
+      y: 50,
+      opacity: 0,
+      transition: {
+        y: { stiffness: 1000 }
+      }
+    }
+  };
+
     return ( 
         <>
-            <div className={styles.dropDownForm}>
+            <motion.div
+              initial={{ y: 10, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: -10, opacity: 0 }}
+              transition={{ duration: 0.2 }} 
+              className={styles.dropDownForm}>
                 <p className={styles.title}>Мои сообщества</p>
                 <div onClick={() => changeProfile('text')} className={styles.item}>
                     <Avatar />
@@ -32,7 +56,7 @@ const AccountDrop = () => {
                     <Avatar />
                     <p className={styles.text}>Dota 2</p>
                 </div>
-            </div>
+            </motion.div>
         </>
     );
 }

@@ -73,7 +73,7 @@ const Br = ({item} : any) => {
                     </div>  
                 </div>
                 {
-                    hover && focus && (
+                    hover && (
                         <DropDownEdit ref={popupRef} item={item} setIsClicked={setIsClicked} isClicked={isClicked} />
                     )
                 }

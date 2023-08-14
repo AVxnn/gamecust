@@ -37,23 +37,30 @@
         opacity: 0.8;
       }
     }
-    .name {
-      display: flex;
-      align-items: center;
-      font-size: 14px;
-      margin-left: 8px;
-      color: $d_main_text_color;
-      font-weight: 600;
 
-      svg {
-        margin-left: 2px;
+    .info {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+
+      .name {
+        display: flex;
+        align-items: center;
+        font-size: 14px;
+        margin-left: 8px;
+        color: $d_main_text_color;
+        font-weight: 600;
+  
+        svg {
+          margin-left: 2px;
+        }
       }
-    }
-    .date {
-      color: $d_main_subtext_color;
-      font-size: 12px;
-      margin-left: 12px;
-      cursor: default;
+      .date {
+        color: $d_main_subtext_color;
+        font-size: 12px;
+        margin-left: 8px;
+        cursor: default;
+      }
     }
   }
 

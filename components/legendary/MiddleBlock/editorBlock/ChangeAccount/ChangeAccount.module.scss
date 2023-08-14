@@ -9,6 +9,10 @@
     margin-bottom: 12px;
     cursor: pointer;
 
+    @media (max-width: 768px) {
+      margin: 0 32px 12px 32px;
+    }
+
     .avatar {
       position: relative;
       height: 32px;

@@ -1,37 +1,25 @@
 @import "/styles/variables.scss";
 
-.navigation {
-  position: absolute;
-  width: 640px;
-  display: flex;
-  max-height: 48px;
-  box-sizing: border-box;
-  background-color: $d_main_subbg_glass_color;
-  border-radius: 8px;
-  margin: 0;
-  gap: 32px;
-  z-index: 1;
-  padding: 16px 24px;
+.container {
 
-  @media screen and (max-width: 640px) {
-    border-radius: 0;
-  }
-}
+  position: relative;
 
-.navigationFixed {
-  position: fixed;
-  width: 640px;
-  max-height: 48px;
-  z-index: 3;
-  top: 60px;
   .navigation {
-    opacity: 1;
     position: absolute;
-    margin-top: 0;
-    border-radius: 0 0 4px 4px;
-    backdrop-filter: blur(8px);
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-    background: $d_main_subbg_glass_color;
+    width: 100%;
+    display: flex;
+    max-height: 48px;
+    box-sizing: border-box;
+    background-color: $d_main_subbg_glass_color;
+    border-radius: 8px;
+    margin: 0;
+    gap: 32px;
+    z-index: 1;
+    padding: 16px 24px;
+  
+    @media screen and (max-width: 640px) {
+      border-radius: 0;
+    }
   }
-
 }
+

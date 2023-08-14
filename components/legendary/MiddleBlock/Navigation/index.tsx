@@ -39,7 +39,7 @@ const Navigation = () => {
 
   return (
     <>
-      <div className={`${showFixedMenu ? '' : styles.navigationFixed}`}>
+      <div className={styles.container}>
         <ul className={styles.navigation}>
           {
             data.map((item : any, index : number) => {

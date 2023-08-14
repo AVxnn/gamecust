@@ -11,7 +11,7 @@ import { Context } from "../../../../../../../pages/_app";
 import { motion } from "framer-motion";
 import { observer } from "mobx-react";
 
-const DropDownForm = observer(({setIsClicked, isClicked} : any) => {
+const DropDownForm = observer(({setIsClicked, isClicked, hoverChange} : any) => {
 
     const popupRef = useRef<HTMLDivElement>(null);
     const labelRef = useRef<HTMLDivElement>(null);
@@ -67,6 +67,8 @@ const DropDownForm = observer(({setIsClicked, isClicked} : any) => {
             }
         }
         postCreateStore.addItem(result);
+        setIsClicked(false)
+        hoverChange('off')
     }
 
     useEffect(() => {

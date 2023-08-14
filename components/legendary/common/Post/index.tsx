@@ -6,6 +6,7 @@ import HashTag from "../PostPreview/common/hashtag";
 import Toolbar from "../PostPreview/common/toolbar";
 import Comments from "../Comments";
 import Image from 'next/image'
+import ReactPlayer from 'react-player';
 
 
 const Post = ({data} : any) => {
@@ -35,6 +36,12 @@ const Post = ({data} : any) => {
             } else if (item.type === 'text') {
               return (
                 <p key={index} className={styles.subtitle}>{item.value}</p>
+              )
+            } else if (item.type === 'link') {
+              return (
+                <div className={styles.mediaBlock}>
+                  <ReactPlayer width={'100%'} height={'100%'} className={styles.player} controls={true} url={item?.href} />
+                </div>
               )
             } else if (item.type === 'media') {
               return (

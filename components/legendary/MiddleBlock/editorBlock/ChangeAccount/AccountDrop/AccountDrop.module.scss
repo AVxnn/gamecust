@@ -40,16 +40,31 @@
     width: 160px;
     padding: 4px;
     box-sizing: border-box;
-    background-color: $d_main_text_color;
+    background-color: $d_main_bg_color;
     border-radius: 8px;
-    top: 30px;
+    top: 50px;
+    z-index: 2;
+
+    @media (max-width: 768px) {
+        position: fixed;
+        top: auto;
+        left: 0;
+        width: 100%;
+        padding: 8px;
+        right: 0;
+        bottom: 52px;
+    }
 
     .title {
         padding: 8px 8px 4px 8px;
         margin: 0;
         font-size: 14px;
-        color: $d_main_bg_color;
+        color: $d_main_text_color;
         font-weight: 600;
+
+        @media (max-width: 768px) {
+            font-size: 16px;
+        }
     }
 
     .item {
@@ -68,13 +83,22 @@
         svg {
             width: 24px;
             height: 24px;
+
+            @media (max-width: 768px) {
+                width: 28px;
+                height: 28px;
+            }
         }
 
         .text {
             margin: 0;
             font-size: 13px;
-            color: $d_main_bg_color;
+            color: $d_main_text_color;
             font-weight: 600;
+
+            @media (max-width: 768px) {
+                font-size: 16px;
+            }
         }
     }
 }

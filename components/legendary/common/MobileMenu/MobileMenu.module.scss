@@ -11,6 +11,7 @@
     backdrop-filter: blur(8px);
     width: 100%;
     z-index: 30;
+    box-shadow: 0px -1px 24px 0px rgba(0, 0, 0, 0.25);
 
     .link {
       display: flex;

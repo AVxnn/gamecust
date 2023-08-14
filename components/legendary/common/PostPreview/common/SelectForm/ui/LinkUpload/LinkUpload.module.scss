@@ -5,6 +5,10 @@
     padding: 0 64px;
     margin-bottom: 8px;
 
+    @media (max-width: 768px) {
+        padding: 0 32px 0 32px;
+    }
+
     .mediaBlock {
         position: relative;
         width: 100%;

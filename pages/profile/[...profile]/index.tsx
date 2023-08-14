@@ -25,7 +25,6 @@ const Profile = ({user, posts} : any) => {
   const {mobxStore} = useContext(Context);
   
   useEffect(() => {
-    console.log('work', localStorage.getItem('token'));
     if(localStorage.getItem('token')) {
       mobxStore.checkAuth()
     }

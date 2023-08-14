@@ -73,11 +73,11 @@ const TextAreaBlock = observer(({item} : any) => {
                 />
                 {
                     hover && !item.value && (
-                        <DropDownForm ref={popupRef} setIsClicked={setIsClicked} isClicked={isClicked} />
+                        <DropDownForm hoverChange={hoverChange} ref={popupRef} setIsClicked={setIsClicked} isClicked={isClicked} />
                     )
                 }
                 {
-                    hover && focus && item.value && (
+                    hover && item.value && (
                         <DropDownEdit ref={popupRef} item={item} setIsClicked={setIsClicked} isClicked={isClicked} />
                     )
                 }

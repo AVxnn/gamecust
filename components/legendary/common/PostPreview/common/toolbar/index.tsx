@@ -16,11 +16,11 @@ const Toolbar = ({data} : any) => {
           <span className={styles.title}>{data?.viewsCount}</span>
         </div>
         <div className={styles.mark}>
-          <Mark />
+          <Mark type={false}/>
         </div>
       </div>
       <div className={styles.rightBlock}>
-        <Link href={`/post/${data.link}/#comments`}>
+        <Link href={`/post/${data.postId}/#comments`}>
           <div className={styles.comments}>
             <Chat />
             <span className={styles.title}>{data?.comments?.length}</span>

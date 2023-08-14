@@ -21,16 +21,19 @@ const DropDownEdit = observer(({item, setIsClicked, isClicked} : any) => {
     const MoveHandler = (move : any) => {
         console.log('move up', item);
         postCreateStore.MoveItem(item, move)
+        setIsClicked(false)
     }
 
     const deleteHandler = () => {
         console.log('deleted', item);
         postCreateStore.removeItem(item)
+        setIsClicked(false)
     }
 
     const staredHandler = (flag : boolean) => {
         console.log('addStar', item.id, postCreateStore.data);
         postCreateStore.updateItem({...item, stared: flag})
+        setIsClicked(false)
     }
 
 

@@ -1,9 +1,13 @@
 @import "/styles/variables.scss";
 .container {
     position: relative;
-    width: calc(100% - 128px);
+    
     padding: 0 64px;
     margin-bottom: 8px;
+
+    @media (max-width: 768px) {
+        padding: 0 32px 0 32px;
+    }
 
     .uploadImage {
         padding: 24px 0;
@@ -79,6 +83,14 @@
             svg {
                 width: 31px;
                 height: 31px;
+            }
+
+            @media (max-width: 430px) {
+                flex-direction: column;
+
+                span {
+                    text-align: center;
+                }
             }
         }
     
