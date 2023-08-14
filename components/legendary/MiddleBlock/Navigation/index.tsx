@@ -4,7 +4,7 @@ import styles from './Navigation.module.scss'
 
 const data = [
   {
-    title: 'Рекомендации',
+    title: 'Популярное',
   },
   {
     title: 'Свежее',

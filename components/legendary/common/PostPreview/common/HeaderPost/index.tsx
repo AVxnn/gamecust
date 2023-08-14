@@ -8,6 +8,9 @@ import ContentLoader from "react-content-loader";
 import { Context } from '../../../../../../pages/_app';
 import isRoleHandler from '../../../../../../features/isRoleHandler';
 import EditBlock from './EditBlock';
+import { formatDistance, subDays } from 'date-fns'
+import { ru } from 'date-fns/locale';
+
 function preloader() {
   return (
       <ContentLoader  viewBox="0 0 64 64">
@@ -15,6 +18,7 @@ function preloader() {
       </ContentLoader>
   )
 }
+
 const HeaderPost = ({data} : any) => {
   
   const {mobxStore, postCreateStore} = useContext(Context);
@@ -25,6 +29,9 @@ const HeaderPost = ({data} : any) => {
     setSubscribe(!subscribe)
   }
 
+  const timestamp = data.publishedDate ? new Date(data.publishedDate) : '' as any
+  console.log(timestamp);
+  
   return (
     <header className={styles.header}>
       <div className={styles.leftBlock}>
@@ -38,7 +45,7 @@ const HeaderPost = ({data} : any) => {
           </ImageLoader>
         </Link>
         <span className={styles.name}>{data.username} <CheckIcon /></span>
-        {/* <ReactTimeAgo className={styles.date} date={data.publishedDate} locale="ru-RU"/> */}
+        <span className={styles.date}>{formatDistance(new Date(data.publishedDate), Date.now(), { addSuffix: true, locale: ru })}</span>
       </div>
       {
         isRoleHandler(mobxStore.user.id, data.userId) ? ( 

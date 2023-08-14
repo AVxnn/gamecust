@@ -8,10 +8,25 @@ import Link from "next/link";
 import Image from "next/image";
 import { Context } from '../../../../pages/_app'
 import Avatar from '../../../../public/img/svg/Avatar'
+import { useRouter } from 'next/router'
+import { useDispatch } from 'react-redux'
+import {open} from '../../../../features/Popup/PopupAuthSlice'
+import uuid from 'react-uuid'
 
 const MobileMenu = () => {
 
+    const dispatch = useDispatch()
+
     const {mobxStore} = useContext(Context);
+  
+    const router = useRouter()
+
+    const redirectLink = (link: string) => {
+        if(!mobxStore.user.email) {
+          return dispatch(open())
+        }
+        router.push(link)
+    }
 
     return (
         <>
@@ -22,7 +37,7 @@ const MobileMenu = () => {
                 <Link className={styles.link} href={'/'}>
                 <Search />
                 </Link>
-                <Link className={styles.link} href={'/editor'}>
+                <Link onClick={() => redirectLink(`/editor/${mobxStore.user.id}/${uuid()}-${mobxStore.user.username}`)} className={styles.link} href={'/editor'}>
                 <PlusMenu />
                 </Link>
                 <Link className={styles.link} href={'/'}>
