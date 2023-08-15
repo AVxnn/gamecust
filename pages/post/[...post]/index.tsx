@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useContext, useEffect, useRef, useState} from 'react';
 import Head from "next/head";
 import Header from "../../../components/legendary/header";
 import Layout from "../../../components/layout";
@@ -11,9 +11,17 @@ import TopGroup from "../../../components/legendary/RightBlock/TopGroup";
 import Contacts from "../../../components/legendary/RightBlock/Contacts";
 import Post from "../../../components/legendary/common/Post";
 import LoginRight from "../../../components/legendary/RightBlock/LoginRight";
-import { useRouter } from 'next/router';
+import { Context } from '../../_app';
 
 const OnePost = ({props} : any) => {
+
+  const {mobxStore} = useContext(Context);
+
+  useEffect(() => {
+    if(localStorage.getItem('token')) {
+      mobxStore.checkAuth()
+    }
+  }, [])
 
   return (
     <>

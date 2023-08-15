@@ -51,7 +51,7 @@ const AccountBlock = () => {
                             <div className={`${styles.avatar}`}>
                                 <Image layout={'fill'} src={'https://i.pinimg.com/736x/78/a6/de/78a6dee0461f3a04c067b4198730bfb2.jpg'} alt="ads"/>
                             </div>
-                            <p className={styles.userName}>MetaVxnn</p>
+                            <p className={styles.userName}>{mobxStore.user.username}</p>
                             <div className={styles.arrow}>
                                 <Arrow/>
                             </div>
@@ -119,7 +119,7 @@ const AccountBlock = () => {
             </Link>
             {
                 mobxStore?.user?.email && (
-                    <Link className={styles.block} href={'/settings/main'}>
+                    <Link className={styles.block} href={'/settings'}>
                         <div className={styles.userMenu}>
                         <div className={`${styles.bgAvatar} ${styles.green}`}>
                             <Cog />

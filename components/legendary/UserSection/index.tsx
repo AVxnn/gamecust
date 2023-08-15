@@ -82,7 +82,7 @@ const UserSection = () => {
                   <p className={styles.userName}>Черновики</p>
                 </div>
               </Link>
-              <Link href={'/settings/main'}>
+              <Link href={'/settings'}>
                 <div className={styles.userMenu}>
                   <div className={styles.bgAvatar}>
                     <Cog/>
