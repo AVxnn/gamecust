@@ -8,14 +8,15 @@ import { useRouter } from 'next/router'
 
 const ToolBar = ({pressKey} : any) => {
 
-  const {mobxStore, postCreateStore} = useContext(Context);
+  const {mobxStore, postCreateStore, notificationStore} = useContext(Context);
   const router = useRouter();
   const submitHandler = () => {
     if(localStorage.getItem('token')) {
       mobxStore.checkAuth()
     }
-    postCreateStore.createPost(mobxStore.user, postCreateStore.getPost(), `${postCreateStore.postId}`);
+    notificationStore.addItem({title: 'Пост опубликован', status: 'success', timeLife: 2500})
     router.push('/')
+    postCreateStore.createPost(mobxStore.user, postCreateStore.getPost(), `${postCreateStore.postId}`);
   }
 
   return (

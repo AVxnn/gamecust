@@ -55,7 +55,6 @@
   }
 
   .mainInfo {
-    cursor: pointer;
 
     .title {
       font-size: 20px;
@@ -76,7 +75,7 @@
       position: relative;
       width: calc(100% + 48px);
       margin: 0 -24px;
-      height: 500px;
+      height: auto;
       margin-bottom: 48px;
 
       img {
@@ -85,6 +84,9 @@
 
       .player {
           width: 100% !important;
+          height: auto !important;
+          max-height: 500px;
+          aspect-ratio: 16/9;
       }
     }
 

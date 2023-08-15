@@ -12,11 +12,9 @@ const ImgPopup = ({data} : any) => {
     <>
       <div className={styles.container}>
         <motion.img
+          className={styles.imageCont}
           src={process.env.NEXT_PUBLIC_IMAGES_URL + data?.href}
           onClick={() => setActive(true)}
-          style={{
-            width: '100%'
-          }}
           layoutId={"image" + data.href} />
       </div>
       <div className={styles.imgPopup}>
@@ -33,7 +31,7 @@ const ImgPopup = ({data} : any) => {
               }}
             >
               <motion.div
-                onClick={() => setActive(false)}
+                onClick={() => setActive(null)}
                 style={{
                   position: "absolute",
                   zIndex: -1,

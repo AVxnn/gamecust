@@ -11,12 +11,13 @@ const EditBlock = ({ postId }: any) => {
     const [isDropOpen, setIsDropOpen] = useState<boolean>(false)
     const Button = useRef<HTMLDivElement>(null);
 
-    const {mobxStore, postCreateStore} = useContext(Context);
+    const {mobxStore, postCreateStore, notificationStore} = useContext(Context);
 
     const router = useRouter();
 
     const deleteHandler = (e: any) => {
         e.preventDefault();
+        notificationStore.addItem({title: 'Пост удален', status: 'success', timeLife: 2500})
         postCreateStore.deletePost(postId);
         router.push('/')
     }

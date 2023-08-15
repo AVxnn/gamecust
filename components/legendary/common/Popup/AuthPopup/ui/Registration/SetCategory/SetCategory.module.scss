@@ -1,0 +1,31 @@
+@import "/styles/variables.scss";
+
+.title {
+    font-size: 24px;
+    color: $d_main_text_color;
+}
+
+.container {
+    display: flex;
+    gap: 42px;
+    height: 300px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    .title {
+        font-size: 32px;
+    }
+}
+
+.button {
+    padding: 16px 12px;
+    border-radius: 8px;
+    background-color: $d_main_color;
+    margin-top: 16px;
+    font-weight: 700;
+    color: #FFFFFF;
+    font-size: 16px;
+    margin-bottom: 18px;
+    cursor: pointer;
+}

@@ -10,13 +10,13 @@ import useDebounce from '../../../../features/Hooks/useDebounce';
 
 const EditorBlock = observer(() => {
 
-  const {mobxStore, postCreateStore} = useContext(Context);
+  const {mobxStore, postCreateStore, notificationStore} = useContext(Context);
   const dragControls = useDragControls();
 
   const [pressKey, setPressKey] = useState(false)
 
   const saveHandler = () => {
-    console.log('save', postCreateStore.postId);
+    notificationStore.addItem({title: 'Пост сохранен', status: 'success', timeLife: 2500})
     postCreateStore.reSavePost(mobxStore.user, postCreateStore.data, postCreateStore.postId)
     setPressKey(false)
   }

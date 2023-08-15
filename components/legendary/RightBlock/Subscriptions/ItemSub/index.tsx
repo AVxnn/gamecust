@@ -23,8 +23,10 @@ const ItemSub = ({user} : any) => {
        <Link href={`/profile/${userData.username}`}> 
         <div className={styles.item}>
                 {
-                    !userData?.username ? (
-                        <Image layout={'fill'} src={''} alt={''} />
+                    userData.username ? (
+                        <div className={styles.image}>
+                            <Image layout={'fill'} src={'https://i.pinimg.com/736x/78/a6/de/78a6dee0461f3a04c067b4198730bfb2.jpg'} alt="ads"/>
+                        </div>
                     ) : (
                         <div className={styles.noImage}></div>
                     )

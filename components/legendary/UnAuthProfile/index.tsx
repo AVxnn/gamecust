@@ -1,20 +1,14 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useContext, useEffect, useRef, useState} from 'react';
 import styles from './UnAuthProfile.module.scss'
 import Avatar from '../../../public/img/svg/Avatar'
-import Notification from "../Notification";
-import Trand from "../../../public/img/svg/Trand";
-import Arrow from "../../../public/img/svg/Arrow";
-import { useDispatch } from 'react-redux';
-import { open } from '../../../features/Popup/PopupAuthSlice'
+import { Context } from '../../../pages/_app';
 
 const UnAuthProfile = () => {
 
-  const [openMenu, setOpenMenu] = useState(true)
   const [showFixedMenu, setShowFixedMenu] = useState<boolean>(false);
   const menuRef = useRef<HTMLDivElement>(null);
-  const dispatch = useDispatch()
-
-  const dropdownTypesRef = useRef<HTMLDivElement>(null);
+  
+  const {popupHandlers} = useContext(Context);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -30,7 +24,7 @@ const UnAuthProfile = () => {
 
   return (
     <>
-      <div ref={menuRef} onClick={() => dispatch(open())} className={styles.unAuthProfile}>
+      <div ref={menuRef} onClick={() => popupHandlers.authPopupOpen()} className={styles.unAuthProfile}>
         <Avatar />
       </div>
       {

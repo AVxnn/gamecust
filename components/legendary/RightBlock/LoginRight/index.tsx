@@ -9,8 +9,7 @@ import { observer } from 'mobx-react-lite';
 
 const LoginRight = () => {
 
-  const {mobxStore} = useContext(Context);
-  const dispatch = useDispatch()
+  const {mobxStore, popupHandlers} = useContext(Context);
 
   if(mobxStore.user.email) {
     return null
@@ -23,7 +22,7 @@ const LoginRight = () => {
       </div>
       <p className={styles.title}>Войдите в свой аккаунт чтобы расширить функционал</p>
       <div className={styles.container}>
-        <Button type={'primary'} clb={() => dispatch(open())} full={true} size={''}>Войти</Button>
+        <Button type={'primary'} clb={() => popupHandlers.authPopupOpen()} full={true} size={''}>Войти</Button>
       </div>
     </div>
   );

@@ -1,0 +1,131 @@
+@import "/styles/variables.scss";
+
+.rightBlock {
+    position: relative;
+    width: 480px;
+    height: 100%;
+    display: flex;
+    box-sizing: border-box;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 48px;
+
+    @media (max-width: 768px) {
+        width: 100%;
+        max-width: 480px;
+        height: 100%;
+        margin-bottom: 64px;
+        padding: 0 24px;
+    }
+
+    .topBar {
+        position: absolute;
+        top: 24px;
+        width: 384px;
+        height: 4px;
+        display: flex;
+        gap: 12px;
+
+        .line {
+            width: 120px;
+            position: relative;
+            height: 4px;
+            background-color: $d_main_subbg_color;
+
+            &::before {
+                content: "";
+                position: absolute;
+                width: 0%;
+                height: 4px;
+                background-color: $d_main_color;
+            }
+        }
+        .lineProgress {
+            width: 120px;
+            position: relative;
+            height: 4px;
+            background-color: $d_main_subbg_color;
+
+            &::before {
+                content: "";
+                position: absolute;
+                width: 30%;
+                height: 4px;
+                background-color: $d_main_color;
+            }
+        }
+        .lineFull {
+            width: 120px;
+            position: relative;
+            height: 4px;
+            background-color: $d_main_subbg_color;
+
+            &::before {
+                content: "";
+                position: absolute;
+                width: 100%;
+                height: 4px;
+                background-color: $d_main_color;
+            }
+        }
+    }
+
+    .title {
+        font-size: 24px;
+        color: $d_main_text_color;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+
+        .formInput {
+            position: relative;
+        
+            .input {
+                position: relative;
+                padding: 16px 12px;
+                border-radius: 8px;
+                width: 100%;
+                font-size: 16px;
+                color: $d_main_text_color;
+                background-color: $d_main_subbg_color;
+                margin-bottom: 18px;
+            }
+        
+            .error {
+                margin-bottom: 32px;
+            }
+            .errorText {
+                bottom: 8px;
+                left: 12px;
+                position: absolute;
+                font-size: 16;
+                color: $d_main_text_color;
+            }
+        }
+        
+        
+    }
+
+    .button {
+        padding: 16px 12px;
+        border-radius: 8px;
+        background-color: $d_main_color;
+        margin-top: 16px;
+        font-weight: 700;
+        color: #FFFFFF;
+        font-size: 16px;
+        margin-bottom: 18px;
+        cursor: pointer;
+    }
+    
+    .text {
+        font-size: 16;
+        color: $d_main_text_color;
+        .link {
+            color: $d_main_color;
+            cursor: pointer;
+        }
+    }
+}

@@ -1,0 +1,66 @@
+@import "/styles/variables.scss";
+
+.formInput {
+    position: relative;
+    width: 100%;
+
+    .input {
+        position: relative;
+        padding: 16px 12px;
+        box-sizing: border-box;
+        border-radius: 8px;
+        width: 100%;
+        font-size: 16px;
+        color: $d_main_text_color;
+        background-color: $d_main_subbg_color;
+        margin-bottom: 18px;
+    }
+
+    .input:-internal-autofill-selected {
+        color: $d_main_text_color !important; 
+        background-image: none !important;
+        background-color: $d_main_subbg_color !important;
+    }
+
+    .error {
+        margin-bottom: 32px;
+        border: 2px solid red;
+    }
+    .errorText {
+        bottom: 8px;
+        left: 12px;
+        position: absolute;
+        font-size: 16;
+        color: $d_main_text_color;
+    }
+
+    .eye {
+        position: absolute;
+        right: 24px;
+        top: 13px;
+        cursor: pointer;
+
+        path {
+            fill: $d_main_text_color
+        }
+    }
+
+    .error ~ .eye {
+        top: 15px;
+    }
+
+    .line {
+        position: absolute;
+        bottom: 8px;
+        background-color: $d_main_subbg_color;
+        height: 2px;
+        width: 100%;
+        .activeLine {
+            width: 0;
+            height: 2px;
+            background-color: green;
+            transition: all 0.2s ease-in-out;
+        }
+    }
+    
+}
