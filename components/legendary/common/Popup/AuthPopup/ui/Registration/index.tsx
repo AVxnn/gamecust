@@ -65,7 +65,7 @@ const Registration = ({setAuth} : any) => {
 
     const registration = () => {
         if (!email.error && password.error >= 30 && (/[0-9a-zA-Z!@#$%^&*]{6,}/g).test(String(password.password)) && !username.error) {
-            // mobxStore.registration(username.username, email.email, password.password)
+            mobxStore.registration(username.username, email.email, password.password)
             notificationStore.addItem({title: 'Аккаунт зарегистрирован', status: 'success', timeLife: 2500})
             setPage(1)
         }
