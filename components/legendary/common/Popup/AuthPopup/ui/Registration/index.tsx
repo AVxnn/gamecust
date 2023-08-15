@@ -34,7 +34,7 @@ const Registration = ({setAuth} : any) => {
     }
 
     function validateUsername(value : string) {
-        var re = /[0-9a-zA-Z!@#$%^&*]{4,}/g;
+        var re = /[0-9a-zA-Z!@#$%^&*]{6,}/g;
         console.log(username.error);
         if (re.test(String(value).toLowerCase())) {
             setUsername({error: '', username: value})
