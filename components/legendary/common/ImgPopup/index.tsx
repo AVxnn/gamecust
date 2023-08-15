@@ -10,14 +10,14 @@ const ImgPopup = ({data} : any) => {
 
   return (
     <>
-      <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+      <div className={styles.container}>
         <motion.img
-          src={data.img}
-          onClick={() => setActive(data.img)}
+          src={process.env.NEXT_PUBLIC_IMAGES_URL + data?.href}
+          onClick={() => setActive(true)}
           style={{
             width: '100%'
           }}
-          layoutId={"image" + data.img} />
+          layoutId={"image" + data.href} />
       </div>
       <div className={styles.imgPopup}>
         <AnimatePresence>
@@ -33,7 +33,7 @@ const ImgPopup = ({data} : any) => {
               }}
             >
               <motion.div
-                onClick={() => setActive(null)}
+                onClick={() => setActive(false)}
                 style={{
                   position: "absolute",
                   zIndex: -1,
@@ -44,7 +44,7 @@ const ImgPopup = ({data} : any) => {
                 animate={{ opacity: 0.5 }}
                 exit={{ opacity: 0 }}
               />
-              <motion.img src={data.img} layoutId={"image" + data.img} onClick={() => setActive(null)} />
+              <motion.img src={process.env.NEXT_PUBLIC_IMAGES_URL + data?.href} layoutId={"image" + data.href} onClick={() => setActive(null)} />
             </div>
           )}
         </AnimatePresence>

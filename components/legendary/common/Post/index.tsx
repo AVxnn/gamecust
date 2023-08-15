@@ -7,6 +7,7 @@ import Toolbar from "../PostPreview/common/toolbar";
 import Comments from "../Comments";
 import Image from 'next/image'
 import ReactPlayer from 'react-player';
+import ImgPopup from '../ImgPopup';
 
 
 const Post = ({data} : any) => {
@@ -45,9 +46,7 @@ const Post = ({data} : any) => {
               )
             } else if (item.type === 'media') {
               return (
-                <div key={index} className={styles.img}>
-                  <Image layout={'fill'} src={process.env.NEXT_PUBLIC_IMAGES_URL + item?.href} className={styles.subtitle} alt=""/>
-                </div>
+                <ImgPopup key={index} data={item} />
               )
             }
           })

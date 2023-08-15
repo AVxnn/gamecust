@@ -1,3 +1,10 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  width: calc(100% + 48px);
+  margin: 0 -24px 16px -24px;
+  gap: 8;
+}
 
 .img {
   display: flex;
