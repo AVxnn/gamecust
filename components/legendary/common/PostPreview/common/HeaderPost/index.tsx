@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import styles from './HeaderPost.module.scss'
 import CheckIcon from "../../../../../../public/img/svg/CheckIcon";
 import Button from "../../../Button";
@@ -12,6 +12,7 @@ import { formatDistance, subDays } from 'date-fns'
 import { ru } from 'date-fns/locale';
 import { useDispatch } from 'react-redux';
 import {open} from '../../../../../../features/Popup/PopupAuthSlice'
+import { observer } from 'mobx-react';
 
 function preloader() {
   return (
@@ -23,19 +24,22 @@ function preloader() {
 
 const HeaderPost = ({data} : any) => {
   
-  const {mobxStore, postCreateStore} = useContext(Context);
+  const {mobxStore, postCreateStore, popupHandlers, notificationStore} = useContext(Context);
   const [subscribe, setSubscribe] = useState(false)
-
-  const dispatch = useDispatch()
 
   const changeSub = () => {
     if(!mobxStore.user.email) {
-      return dispatch(open())
+      notificationStore.addItem({title: 'Нужно выполнить авторизацию', status: 'error', timeLife: 2500})
+      return popupHandlers.authPopupOpen()
     }
     mobxStore.updateAuth(data.userId, mobxStore.user.id);
     setSubscribe(!subscribe)
   }
 
+  useEffect(() => {
+    console.log(mobxStore.checkAuth())
+  }, [subscribe])
+  
   return (
     <header className={styles.header}>
       <div className={styles.leftBlock}>
@@ -56,8 +60,7 @@ const HeaderPost = ({data} : any) => {
       {
         isRoleHandler(mobxStore.user.id, data.userId) ? ( 
           <EditBlock postId={data.postId} />
-        ) : mobxStore?.user?.subscribers?.filter((e) => e === data.userId).length ? (
-          
+        ) : mobxStore?.user?.subscriptions?.filter((e) => e === data.userId).length ? (
           <Button clb={() => changeSub()} type={'primary'}>
             Отписаться
           </Button>
@@ -72,4 +75,4 @@ const HeaderPost = ({data} : any) => {
   );
 };
 
-export default HeaderPost;
+export default observer(HeaderPost);

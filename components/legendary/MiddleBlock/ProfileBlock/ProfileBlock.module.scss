@@ -1,0 +1,26 @@
+@import "/styles/variables.scss";
+
+.container {
+    width: 100%;
+    padding: 24px;
+    box-sizing: border-box;
+    height: 524px;
+    background-color: $d_main_subbg_color;
+    border-radius: 8px;
+    margin-top: 8px;
+
+    .topBar {
+
+        svg {
+            transform: rotate(90deg);
+            path {
+                fill: $d_main_text_color;
+            }
+        }
+    }
+
+    .mainBlocks {
+        display: flex;
+        flex-direction: column;
+    }
+}

@@ -9,7 +9,7 @@ import { useRouter } from 'next/router';
 
 const Editor = ({props} : any) => {
   
-  const {mobxStore, postCreateStore} = useContext(Context);
+  const {mobxStore, postCreateStore, notificationStore} = useContext(Context);
   const router = useRouter();
   const { postId } = router.query
   
@@ -20,6 +20,7 @@ const Editor = ({props} : any) => {
       }
       
       if (!mobxStore.user.isActivated) {
+        notificationStore.addItem({title: 'Нужно выполнить авторизацию', status: 'error', timeLife: 2500})
         await router.push('/')
       }
     }

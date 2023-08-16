@@ -12,13 +12,14 @@ const CreatePostRight = () => {
 
   const dispatch = useDispatch()
 
-  const {mobxStore} = useContext(Context);
+  const {mobxStore, notificationStore, popupHandlers} = useContext(Context);
 
   const router = useRouter()
 
   const redirectLink = (link: string) => {
     if(!mobxStore.user.email) {
-      return dispatch(open())
+      notificationStore.addItem({title: 'Нужно выполнить авторизацию', status: 'error', timeLife: 2500})
+      return popupHandlers.authPopupOpen()
     }
     router.push(link)
   }
