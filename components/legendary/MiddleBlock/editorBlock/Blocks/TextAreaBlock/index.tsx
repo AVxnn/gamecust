@@ -20,6 +20,7 @@ const TextAreaBlock = observer(({item} : any) => {
     const {postCreateStore} = useContext(Context);
     
     const updateHandler = (value : any) => {
+        console.log(value)
         postCreateStore.updateItem({...item, value: value})
     }
 

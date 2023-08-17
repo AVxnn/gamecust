@@ -41,7 +41,8 @@
         line-height: 27px;
         color: $d_main_text_color;
         font-weight: 700;
-        word-break: break-word
+        word-break: break-word;
+        white-space: pre-wrap;
       }
 
       .subtitle {
@@ -50,6 +51,7 @@
         font-weight: 500;
         margin: 0 24px 12px 24px;
         line-height: 1.35;
+        white-space: pre-line;
       }
       .img {
         width: 100%;

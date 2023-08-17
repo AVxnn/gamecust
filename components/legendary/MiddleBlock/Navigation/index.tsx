@@ -4,13 +4,16 @@ import styles from './Navigation.module.scss'
 
 const data = [
   {
-    title: 'Популярное',
+    title: 'Рекомендовано',
+    link: '/',
   },
   {
     title: 'Свежее',
+    link: '/new',
   },
   {
     title: 'Подписки',
+    link: '/subscribers',
   }
 ]
 
@@ -44,7 +47,7 @@ const Navigation = () => {
           {
             data.map((item : any, index : number) => {
               return (
-                <Tabs key={index} onClick={() => changePage(index)} current={active == index}>{item.title}</Tabs>
+                <Tabs key={index} link={item.link} onClick={() => changePage(index)} current={active == index}>{item.title}</Tabs>
               )
             })
           }

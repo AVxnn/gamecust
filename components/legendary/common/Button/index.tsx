@@ -11,7 +11,7 @@ interface MainButtonProps {
   full?: boolean
 }
 
-const Button = ({children, clb = () => '', type = 'secondary', size = 'small', full, disabled} : MainButtonProps) => {
+const Button = ({children, clb = () => '', type = 'secondary', size = '', full, disabled} : MainButtonProps) => {
 
   return (
     <>

@@ -10,7 +10,7 @@ const Premium = () => {
         <p className={styles.subtitle}>в месяц за доступ к приятным функциям</p>
       </div>
       <div className={styles.container}>
-        <Button type={'primary'} full={true} size={''}>Попробовать</Button>
+        <Button type={'primary'} full={true} size={'big'}>Попробовать</Button>
       </div>
     </div>
   );
