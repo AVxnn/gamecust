@@ -10,6 +10,8 @@ body {
 }
 
 body {
+    transition: none;
+    background-color: #F0F0F0;
     --d_main_color: #9E5BF0;
     --d_main_hover: #D5B5FF;
     --d_main_active: #A762FF;
@@ -38,6 +40,8 @@ body {
 }
 
 body[dark] {
+    transition: none;
+    background-color: #161617;
     --d_main_color: #9E5BF0;
     --d_main_hover: #D5B5FF;
     --d_main_active: #A762FF;
