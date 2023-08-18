@@ -17,7 +17,7 @@ const NewInput = ({ title, value, setValue, click, maxValue} : any) => {
                 <p className={styles.title}>{title}</p>
                 <div className={styles.container}>
                     <input className={styles.input} type="text" value={value} onChange={(e) => changeHandler(e.currentTarget.value)}/>
-                    <span className={styles.maxValue}>{maxValue - value.length}</span>
+                    <span className={styles.maxValue}>{maxValue - value?.length}</span>
                 </div>
             </div>
         </>

@@ -5,4 +5,7 @@ export interface IUser {
     id: string;
     subscribers: [string];
     subscriptions: [string];
+    private: string;
+    avatarPath: string;
+    description: string;
 }

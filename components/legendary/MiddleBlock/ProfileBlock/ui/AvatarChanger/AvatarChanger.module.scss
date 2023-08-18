@@ -1,0 +1,26 @@
+
+.avatarChanger {
+    display: flex;
+    gap: 32px;
+    align-items: center;
+
+    .avatar {
+        width: 100px;
+        height: 100px;
+        position: relative;
+        overflow: hidden;
+        border-radius: 99px;
+
+        img {
+            position: relative;
+        }
+    }
+    .buttons {
+        display: flex;
+        gap: 16px;
+
+        .file {
+            display: none;
+        }
+    }
+}

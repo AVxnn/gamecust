@@ -65,7 +65,7 @@ const HeaderPost = ({data} : any) => {
         </div>
       </div>
       {
-        isRoleHandler(mobxStore.user.id, data.userId) ? ( 
+        isRoleHandler(mobxStore?.user?.id, data.userId) ? ( 
           <EditBlock postId={data.postId} />
         ) : mobxStore?.user?.subscriptions?.filter((e) => e === data.userId).length ? (
           <Button clb={() => changeSub()} type={'primary'}>

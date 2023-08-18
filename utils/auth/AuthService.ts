@@ -23,4 +23,8 @@ export default class AuthService {
     static async check(): Promise<AxiosResponse<AuthResponse>> {
         return $api.get<AuthResponse>(`/api/user/refresh`, {withCredentials: true})
     }
+
+    static async reSaveUser(data: any): Promise<AxiosResponse<AuthResponse>> {
+        return $api.post<AuthResponse>(`/api/user/reSaveUser`, {data})
+    }
 }

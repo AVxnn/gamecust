@@ -89,4 +89,15 @@ export default class MobxStore {
             console.log(error.response?.data?.message)
         }
     }
+
+    async reSaveUser(data: any) {
+        try {
+            const response = await AuthService.reSaveUser(data);
+            console.log(await response)
+            this.setUser(await response.data.user);
+            return response;
+        } catch (error: any) {
+            console.log(error.response?.data?.message)
+        }
+    }
 }

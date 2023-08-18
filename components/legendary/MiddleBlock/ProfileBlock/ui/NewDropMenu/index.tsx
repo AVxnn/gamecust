@@ -44,7 +44,7 @@ const NewDropMenu = ({ data, title, value, setValue} : any) => {
                             <div className={styles.dropMenu} ref={popupRef}>
                                 {
                                     data.map((item : any, index : any) => (
-                                        <div key={index} onClick={() => setValue(item)} className={styles.item}>
+                                        <div key={index} onClick={() => setValue(item.type)} className={styles.item}>
                                             {item.value}
                                         </div>
                                     ))

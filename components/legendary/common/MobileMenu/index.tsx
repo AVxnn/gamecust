@@ -38,7 +38,7 @@ const MobileMenu = () => {
                 <Link className={styles.link} href={'/'}>
                     <Search />
                 </Link>
-                <Link onClick={() => redirectLink(`/editor/${mobxStore.user.id}/${uuid()}-${mobxStore.user.username}`)} className={styles.link} href={`/editor/${mobxStore.user.id}/${uuid()}-${mobxStore.user.username}`}>
+                <Link onClick={() => redirectLink(`/editor/${mobxStore?.user?.id}/${uuid()}-${mobxStore.user.username}`)} className={styles.link} href={`/editor/${mobxStore?.user?.id}/${uuid()}-${mobxStore?.user?.username}`}>
                     <PlusMenu />
                 </Link>
                 <Link className={styles.link} href={'/'}>

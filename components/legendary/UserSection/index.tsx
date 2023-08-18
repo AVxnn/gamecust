@@ -49,7 +49,7 @@ const UserSection = () => {
         <Link href={`/profile/${mobxStore.user.username}`}>
           <div className={`${styles.user} ${isDropOpen ? styles.active : ''}`}>
             <div className={styles.avatar}>
-              <Image layout={'fill'} src={'https://i.pinimg.com/736x/78/a6/de/78a6dee0461f3a04c067b4198730bfb2.jpg'} alt="ads"/>
+              <Image layout={'fill'} src={mobxStore.user.avatarPath ? `${process.env.NEXT_PUBLIC_AVATARS_URL}${mobxStore.user.avatarPath}` : 'https://i.pinimg.com/736x/78/a6/de/78a6dee0461f3a04c067b4198730bfb2.jpg'} alt="ads"/>
             </div>
             <div className={styles.info}>
               <h4 className={styles.name}>{mobxStore.user.username}</h4>

@@ -74,7 +74,7 @@ const ProfileBlock = ({data} : any) => {
               data && (
                 <>
                   <span className={styles.name}>{data.username}<CheckIcon /></span>
-                  <span className={styles.description}>хикикомоэ. соцсетки с рисунками и портфолио </span>
+                  <span className={styles.description}>{data?.description}</span>
                 </>
               )
             }
@@ -87,7 +87,7 @@ const ProfileBlock = ({data} : any) => {
               data && (
                 <>
                   <span className={styles.name}>{data.username}<CheckIcon /></span>
-                  <span className={styles.description}>хикикомоэ. соцсетки с рисунками и портфолио </span>
+                  <span className={styles.description}>{data?.description}</span>
                 </>
               )
             }
