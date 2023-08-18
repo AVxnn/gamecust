@@ -22,6 +22,17 @@ const dataTag = [
   }
 ]
 
+const dataTagAccount = [
+  {
+    title: 'Статьи',
+    link: 'entries'
+  },
+  {
+    title: 'Комментарии',
+    link: 'comments'
+  }
+]
+
 const ProfileBlock = ({data} : any) => {
   const [active, setActive] = useState(0)
   const menuRef = useRef<HTMLUListElement>(null);
@@ -31,7 +42,6 @@ const ProfileBlock = ({data} : any) => {
   const changePage = (index : number) => {
     setActive(index)
   }
-  console.log(mobxStore.user);
   
   useEffect(() => {
     console.log(router.query.profile[1]);
@@ -93,11 +103,18 @@ const ProfileBlock = ({data} : any) => {
             <div className={styles.date}>На проекте с 12 фев 2021</div>
             <ul ref={menuRef} className={styles.navigation}>
               {
-                dataTag.map((item : any, index : number) => {
+                mobxStore.user.id === data._id ? dataTag.map((item : any, index : number) => {
                   return (
                     <Tabs link={`/profile/${data.username}/${item.link}`} key={index} onClick={() => changePage(index)} current={active == index}>{item.title}</Tabs>
                   )
-                })
+                }) : ''
+              }
+              {
+                mobxStore.user.id !== data._id ? dataTagAccount.map((item : any, index : number) => {
+                  return (
+                    <Tabs link={`/profile/${data.username}/${item.link}`} key={index} onClick={() => changePage(index)} current={active == index}>{item.title}</Tabs>
+                  )
+                }) : ''
               }
             </ul>
           </div>

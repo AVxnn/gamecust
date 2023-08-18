@@ -1,16 +1,28 @@
 import Head from 'next/head'
-import React, {useContext, useEffect, useRef} from "react";
+import styles from './New.module.scss'
+import React, {useContext, useEffect, useRef, useState} from "react";
 import { observer } from 'mobx-react-lite'
+import { Context } from '../_app';
+import CreatePostRight from '../../components/legendary/RightBlock/CreatePostRight';
+import Premium from '../../components/legendary/RightBlock/Premium';
+import TopUsers from '../../components/legendary/RightBlock/TopUsers';
+import NewsSliderSmall from '../../components/legendary/RightBlock/NewsSliderSmall';
+import TopGroup from '../../components/legendary/RightBlock/TopGroup';
+import Contacts from '../../components/legendary/RightBlock/Contacts';
+import Layout from '../../components/layout';
 import PostList from '../../components/legendary/MiddleBlock/PostList';
+import Navigation from '../../components/legendary/MiddleBlock/Navigation';
+import UserLeft from '../../components/legendary/LeftBlock/UserLeft';
 import Header from '../../components/legendary/header';
 import MainLayout from '../../components/layout/MainLayout';
-import { Context } from '../_app';
 
-const New = ({ props } : any) => {
+const Subscriptions = ({ props } : any) => {
   
   const menuRef = useRef<HTMLUListElement>(null);
   console.log(process.env.NEXT_PUBLIC_API_URL);
 
+  const [data, setData] = useState();
+  
   const {mobxStore} = useContext(Context);
   
   useEffect(() => {
@@ -21,10 +33,20 @@ const New = ({ props } : any) => {
 
   const fetchData = async (page : any) => {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/post/getPosts/${page}`);
-  
-    return await res?.json()
+    const resultData = await res?.json();
+    let resultProps = [] as any;
+    let result = mobxStore?.user?.subscriptions?.forEach(subscription => {
+        resultProps = resultData.filter((i : any) => i.userId === subscription)
+    })
+    setData(resultProps);
+    
+    return resultProps
   }
-  
+
+  useEffect(() => {
+    fetchData(1)
+  }, [props])
+
   return (
     <>
       <Head>
@@ -39,7 +61,7 @@ const New = ({ props } : any) => {
       </Head>
       <Header />
       <MainLayout>
-        <PostList PostData={props ? props : null} fetchData={fetchData}/>
+            <PostList PostData={data} fetchData={fetchData} />
       </MainLayout>
     </>
   )
@@ -55,4 +77,4 @@ export async function getServerSideProps(context : any) {
   }
 }
 
-export default observer(New)
+export default observer(Subscriptions)

@@ -82,7 +82,9 @@ export default class MobxStore {
     async updateAuth(id: string, uId: string) {
         try {
             const response = await AuthService.updateSubs(id, uId);
-            console.log(response);
+            console.log(await response)
+            this.setUser(response.data.user);
+            return response;
         } catch (error: any) {
             console.log(error.response?.data?.message)
         }

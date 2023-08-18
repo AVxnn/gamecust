@@ -7,6 +7,7 @@ import MobxStore from '../store/mobxStore';
 import PostCreateStore from '../store/postCreateStore';
 import NotificationStore from '../store/notificationStore';
 import PopupHandlers from '../store/popupHandlers'
+import { AnimatePresence } from 'framer-motion';
 interface State {
   mobxStore: MobxStore;
   postCreateStore: PostCreateStore;
@@ -45,9 +46,9 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <Provider store={store}>
-      <Context.Provider value={{mobxStore, postCreateStore, notificationStore, popupHandlers}}>
-        <Component {...pageProps} />
-      </Context.Provider>
+        <Context.Provider value={{mobxStore, postCreateStore, notificationStore, popupHandlers}}>
+          <Component {...pageProps} />
+        </Context.Provider>
     </ Provider>
     </>
     

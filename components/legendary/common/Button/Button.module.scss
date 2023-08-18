@@ -3,13 +3,14 @@
 .button,
 .primary,
 .secondary {
-  padding: 6px 18px 6px 18px;
+  padding: 5px 16px 5px 16px;
   border: 1px solid $d_main_color;
   font-weight: 600;
   border-radius: 16px;
   white-space: nowrap;
   background-color: rgba(0, 0, 0, 0);
   font-size: 12px;
+  font-weight: 600;
   color: $d_main_color;
   transition: all 0.1s ease-in-out;
   cursor: pointer;

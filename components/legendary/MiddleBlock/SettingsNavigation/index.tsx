@@ -39,7 +39,7 @@ const SettingsNavigation = () => {
             case '/settings/notification':
                 setActive(2);
                 break;
-            case '/settings/subscription':
+            case '/settings/SubscriptionsSettings':
                 setActive(3);
                 break;
             default:

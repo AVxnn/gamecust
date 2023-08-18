@@ -24,21 +24,28 @@ function preloader() {
 
 const HeaderPost = ({data} : any) => {
   
-  const {mobxStore, postCreateStore, popupHandlers, notificationStore} = useContext(Context);
+  const {mobxStore, popupHandlers, notificationStore} = useContext(Context);
   const [subscribe, setSubscribe] = useState(false)
 
-  const changeSub = () => {
+  const changeSub = async () => {
     if(!mobxStore.user.email) {
       notificationStore.addItem({title: 'Нужно выполнить авторизацию', status: 'error', timeLife: 2500})
       return popupHandlers.authPopupOpen()
     }
-    mobxStore.updateAuth(data.userId, mobxStore.user.id);
+    let res = await mobxStore.updateAuth(data.userId, mobxStore.user.id);
+    console.log(await res);
     setSubscribe(!subscribe)
   }
 
   useEffect(() => {
-    console.log(mobxStore.checkAuth())
-  }, [subscribe])
+    mobxStore?.user?.subscriptions?.map((item) => {
+      if (item == data.id) {
+        setSubscribe(true)
+      } else {
+        setSubscribe(false)
+      }
+    })
+  }, [mobxStore?.user?.subscriptions]);
   
   return (
     <header className={styles.header}>

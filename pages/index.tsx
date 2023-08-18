@@ -1,24 +1,15 @@
 import Head from 'next/head'
-import styles from '../styles/Home.module.scss'
-import Layout from "../components/layout";
 import Header from "../components/legendary/header";
-import React, {useContext, useEffect, useRef, useState} from "react";
-import UserLeft from "../components/legendary/LeftBlock/UserLeft";
-import Navigation from "../components/legendary/MiddleBlock/Navigation";
-import CreatePostRight from "../components/legendary/RightBlock/CreatePostRight";
+import React, {useContext, useEffect, useRef} from "react";
 import PostList from "../components/legendary/MiddleBlock/PostList";
-import Premium from "../components/legendary/RightBlock/Premium";
-import TopUsers from "../components/legendary/RightBlock/TopUsers";
-import NewsSliderSmall from "../components/legendary/RightBlock/NewsSliderSmall";
-import TopGroup from "../components/legendary/RightBlock/TopGroup";
-import Contacts from "../components/legendary/RightBlock/Contacts";
 import { Context } from './_app';
 import { observer } from 'mobx-react-lite'
+import MainLayout from '../components/layout/MainLayout';
 
 const Home = ({ props } : any) => {
   
   const menuRef = useRef<HTMLUListElement>(null);
-  console.log(process.env.NEXT_PUBLIC_API_URL);
+  console.log(props);
   
   const {mobxStore} = useContext(Context);
   
@@ -27,6 +18,12 @@ const Home = ({ props } : any) => {
       mobxStore.checkAuth()
     }
   }, [])
+
+  const fetchData = async (page : any) => {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/post/getPosts/rec/${page}`);
+  
+    return await res?.json()
+  }
 
   return (
     <>
@@ -41,29 +38,9 @@ const Home = ({ props } : any) => {
         <link rel="shortcut ico" href="../public/favicon.png" />
       </Head>
       <Header />
-      <Layout>
-        <div className={styles.leftColumn}>
-          <div className={styles.navigationLeft}>
-            <UserLeft />
-            <UserLeft />
-          </div>
-        </div>
-        <div className={styles.middleColumn}>
-          <Navigation />
-          <div className={styles.postListContainer}>
-            <PostList PostData={props ? props : null} />
-          </div>
-        </div>
-        <div className={styles.rightColumn}>
-          <CreatePostRight />
-          <Premium />
-          <TopUsers />
-          <ul className={styles.fixedBar} ref={menuRef}></ul>
-          <NewsSliderSmall />
-          <TopGroup />
-          <Contacts />
-        </div>
-      </Layout>
+      <MainLayout>
+        <PostList PostData={props ? props : null} fetchData={fetchData}/>
+      </MainLayout>
     </>
   )
 }
@@ -71,7 +48,7 @@ const Home = ({ props } : any) => {
 
 export async function getServerSideProps(context : any) {
   
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/post/getPosts`);
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/post/getPosts/rec`);
   
   return {
     props: {props : await res?.json()}, // will be passed to the page component as props
