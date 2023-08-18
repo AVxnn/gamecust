@@ -9,17 +9,16 @@ interface MainButtonProps {
   disabled?: boolean,
   clb?: React.MouseEventHandler,
   full?: boolean,
-  className: string,
 }
 
-const Button = ({children, clb = () => '', type = 'secondary', size = '', full, disabled, className} : MainButtonProps) => {
+const Button = ({children, clb = () => '', type = 'secondary', size = '', full, disabled} : MainButtonProps) => {
 
   return (
     <>
       <button
         onClick={clb}
         disabled={disabled}
-        className={cn(styles[type], styles[size], full && styles.full, styles[className])}>
+        className={cn(styles[type], styles[size], full && styles.full)}>
         {children}
       </button>
     </>

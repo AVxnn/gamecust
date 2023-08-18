@@ -1,8 +1,8 @@
 import React from 'react';
 import styles from './NewsSlider.module.scss'
 import Slider from "react-slick";
-import Button from "../../common/Button";
 import Image from 'next/image'
+import Button from '../../common/Button';
 
 const NewsSlider = () => {
 
