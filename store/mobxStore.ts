@@ -94,7 +94,16 @@ export default class MobxStore {
         try {
             const response = await AuthService.reSaveUser(data);
             console.log(await response)
-            this.setUser(await response.data.user);
+            this.setUser(await response.data as any);
+            return response;
+        } catch (error: any) {
+            console.log(error.response?.data?.message)
+        }
+    }
+
+    async deleteAvatar(data: any) {
+        try {
+            const response = await AuthService.deleteAvatar(data);
             return response;
         } catch (error: any) {
             console.log(error.response?.data?.message)

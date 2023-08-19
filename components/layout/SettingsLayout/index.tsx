@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './SettingsLayout.module.scss'
-import { observer } from 'mobx-react-lite';
+import { observer } from 'mobx-react';
 import SettingsNavigation from '../../legendary/MiddleBlock/SettingsNavigation';
 import NotificationList from '../../legendary/common/NotificationList';
 import AuthPopup from '../../legendary/common/Popup/AuthPopup';

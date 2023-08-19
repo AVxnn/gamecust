@@ -8,6 +8,13 @@
   margin-top: 8px;
   gap: 8px;
 
+  .container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+  }
+
   .blank {
     margin-top: 32px;
     color: $d_main_text_color;

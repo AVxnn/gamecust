@@ -3,13 +3,10 @@ import Header from "../components/legendary/header";
 import React, {useContext, useEffect, useRef} from "react";
 import PostList from "../components/legendary/MiddleBlock/PostList";
 import { Context } from './_app';
-import { observer } from 'mobx-react-lite'
+import { observer } from 'mobx-react'
 import MainLayout from '../components/layout/MainLayout';
 
 const Home = ({ props } : any) => {
-  
-  const menuRef = useRef<HTMLUListElement>(null);
-  console.log(props);
   
   const {mobxStore} = useContext(Context);
   
@@ -22,7 +19,7 @@ const Home = ({ props } : any) => {
   const fetchData = async (page : any) => {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/post/getPosts/rec/${page}`);
   
-    return await res?.json()
+    return await res?.json();
   }
 
   return (
@@ -48,7 +45,7 @@ const Home = ({ props } : any) => {
 
 export async function getServerSideProps(context : any) {
   
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/post/getPosts/rec`);
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/post/getPosts/rec/1`);
   
   return {
     props: {props : await res?.json()}, // will be passed to the page component as props

@@ -44,9 +44,9 @@ const ProfileBlock = ({data} : any) => {
   }
   
   useEffect(() => {
-    console.log(router.query.profile[1]);
+    console.log(router.query.id[1]);
     
-    switch (router.query.profile[1]) {
+    switch (router.query.id[1]) {
       case 'entries':
         return setActive(0)
       case 'comments':
@@ -65,7 +65,7 @@ const ProfileBlock = ({data} : any) => {
           <div className={styles.left}>
             <div className={styles.avatar}>
               <div className={styles.contImg}>
-                <img src="https://i.pinimg.com/736x/78/a6/de/78a6dee0461f3a04c067b4198730bfb2.jpg" alt=""/>
+                <img src={`${process.env.NEXT_PUBLIC_AVATARS_URL}${data.avatarPath}`} alt=""/>
               </div>
             </div>
           </div>
@@ -105,14 +105,14 @@ const ProfileBlock = ({data} : any) => {
               {
                 mobxStore.user.id === data._id ? dataTag.map((item : any, index : number) => {
                   return (
-                    <Tabs link={`/profile/${data.username}/${item.link}`} key={index} onClick={() => changePage(index)} current={active == index}>{item.title}</Tabs>
+                    <Tabs link={`/profile/${data._id}/${item.link}`} key={index} onClick={() => changePage(index)} current={active == index}>{item.title}</Tabs>
                   )
                 }) : ''
               }
               {
                 mobxStore.user.id !== data._id ? dataTagAccount.map((item : any, index : number) => {
                   return (
-                    <Tabs link={`/profile/${data.username}/${item.link}`} key={index} onClick={() => changePage(index)} current={active == index}>{item.title}</Tabs>
+                    <Tabs link={`/profile/${data._id}/${item.link}`} key={index} onClick={() => changePage(index)} current={active == index}>{item.title}</Tabs>
                   )
                 }) : ''
               }

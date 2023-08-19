@@ -10,8 +10,6 @@ const PostList = ({PostData, fetchData} : any) => {
   const [page, setPage] = useState(1) as any;
 
   const loadMore = async () => {
-    console.log('workwed');
-    
     if (isLoading) {
       return;
     }
@@ -20,14 +18,10 @@ const PostList = ({PostData, fetchData} : any) => {
     const newItems = await fetchData(page);
     
     setItems(newItems);
-
+    
     setIsLoading(false);
     setPage(page + 1);
   };
-
-  useEffect(() => {
-    loadMore();
-  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -46,13 +40,16 @@ const PostList = ({PostData, fetchData} : any) => {
     };
   }, [isLoading]);
 
-  return (
+  return items ? (
     <div className={styles.postList}>
       {
         items?.length ? items.map((item : any, index : number) => {
-          if (item.news) {
+          if (index > 0 && index % 6 == 0) {
             return (
-              <NewsSlider key={index} />
+                <div className={styles.container} key={index}>
+                  <NewsSlider />
+                  <PostPreview data={item} />
+                </div>
             )
           }
           return (
@@ -63,7 +60,7 @@ const PostList = ({PostData, fetchData} : any) => {
         )
       }
     </div>
-  );
+  ) : null
 };
 
 export default PostList;

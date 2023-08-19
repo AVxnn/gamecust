@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import styles from './Post.module.scss'
 import HeaderPost from "../PostPreview/common/HeaderPost";
 import Tag from "../Tag";
@@ -13,10 +13,21 @@ import ImgPopup from '../ImgPopup';
 const Post = ({data} : any) => {
 
   if (!data?.username) return <>Loading...</>
+
+  const [userData, setUserData] = useState()
+  useEffect(() => {
+    const getUser = async () => {
+      const user = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/user/getUserId/${data.userId}`);
+      console.log(user);
+      
+      setUserData(await user?.json())
+    }
+    getUser()
+  }, [])
   
   return (
     <div className={styles.postContainer}>
-      <HeaderPost data={data}/>
+      <HeaderPost data={data} user={userData}/>
       <section className={styles.tags}>
         {
           data?.tags?.map((item : any, index : number) => {

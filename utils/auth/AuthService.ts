@@ -27,4 +27,8 @@ export default class AuthService {
     static async reSaveUser(data: any): Promise<AxiosResponse<AuthResponse>> {
         return $api.post<AuthResponse>(`/api/user/reSaveUser`, {data})
     }
+
+    static async deleteAvatar(data: any): Promise<AxiosResponse<AuthResponse>> {
+        return $api.post<AuthResponse>(`/api/file/deleteAvatar`, {data})
+    }
 }

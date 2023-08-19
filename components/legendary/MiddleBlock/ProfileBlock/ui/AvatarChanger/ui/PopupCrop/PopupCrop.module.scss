@@ -1,0 +1,51 @@
+@import "/styles/variables.scss";
+
+.popupCrop {
+    z-index: 100;
+    display: flex;
+    width: 100vw;
+    left: 0;
+    top: 0;
+    height: calc(100vh - 60px);
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+
+    .cropContainer {
+        position: relative;
+        width: 400px;
+        height: 400px;
+        padding: 40px;
+        border-radius: 16px;
+        overflow: hidden;
+        background-color: $d_main_subbg_color;
+    }
+
+    .save {
+        z-index: 101;
+        position: absolute;
+        bottom: 24px;
+        left: 50%;
+        margin-left: -49px;
+        padding: 5px 16px 5px 16px;
+        background-color: $d_main_color;
+        border: 1px solid $d_main_color;
+        color: $const_main_text_color;
+        font-weight: 600;
+        border-radius: 16px;
+        white-space: nowrap;
+        font-size: 12px;
+        font-weight: 600;
+        transition: all 0.1s ease-in-out;
+        cursor: pointer;
+
+        &:hover {
+            background-color: $d_main_hover;
+            border: 1px solid $d_main_hover;
+        } 
+        &:active {
+            background-color: $d_main_active;
+            border: 1px solid $d_main_active;
+        }
+    }
+}

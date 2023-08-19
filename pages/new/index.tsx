@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import React, {useContext, useEffect, useRef} from "react";
-import { observer } from 'mobx-react-lite'
+import { observer } from 'mobx-react'
 import PostList from '../../components/legendary/MiddleBlock/PostList';
 import Header from '../../components/legendary/header';
 import MainLayout from '../../components/layout/MainLayout';

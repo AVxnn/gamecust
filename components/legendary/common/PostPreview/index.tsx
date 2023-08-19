@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import styles from './PostPreview.module.scss'
 import Tag from "../Tag";
 import Link from "next/link";
@@ -12,8 +12,7 @@ import { Context } from '../../../../pages/_app';
 const PostPreview = ({data} : any) => {
 
   const {postCreateStore} = useContext(Context);
-  console.log(data);
-  
+  const [userData, setUserData] = useState()
   const openPost = () => {
     let newData = data
     newData.viewsCount = data.viewsCount + 1
@@ -21,12 +20,22 @@ const PostPreview = ({data} : any) => {
     
     postCreateStore.updatePost(newData);
   }
+  
+  useEffect(() => {
+    const getUser = async () => {
+      const user = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/user/getUserId/${data.userId}`);
+      console.log(user);
+      
+      setUserData(await user?.json())
+    }
+    getUser()
+  }, [])
 
-  return (
+  return userData ? (
     <div
       className={styles.postPreview}>
       <div className={styles.headerContainer}>
-        <HeaderPost data={data}/>
+        <HeaderPost user={userData} data={data}/>
       </div>
       <section className={styles.tags}>
         {
@@ -75,7 +84,7 @@ const PostPreview = ({data} : any) => {
         <Toolbar data={data} />
       </div>
     </div>
-  );
+  ) : null
 };
 
 export default PostPreview;

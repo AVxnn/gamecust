@@ -4,7 +4,7 @@ import Input from "../input";
 import UserSection from "../UserSection";
 import Logotype from "../common/Logotype";
 import UnAuthProfile from "../UnAuthProfile";
-import { observer } from 'mobx-react-lite';
+import { observer } from 'mobx-react';
 import { Context } from '../../../pages/_app';
 import PenCreate from './ui/PenCreate';
 

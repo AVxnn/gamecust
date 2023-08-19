@@ -16,7 +16,7 @@ import { Context } from '../../_app';
 const OnePost = ({props} : any) => {
 
   const {mobxStore} = useContext(Context);
-
+  
   useEffect(() => {
     if(localStorage.getItem('token')) {
       mobxStore.checkAuth()

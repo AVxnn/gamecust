@@ -22,7 +22,7 @@ function preloader() {
   )
 }
 
-const HeaderPost = ({data} : any) => {
+const HeaderPost = ({data, user} : any) => {
   
   const {mobxStore, popupHandlers, notificationStore} = useContext(Context);
   const [subscribe, setSubscribe] = useState(false)
@@ -46,23 +46,23 @@ const HeaderPost = ({data} : any) => {
       }
     })
   }, [mobxStore?.user?.subscriptions]);
+  console.log(user);
   
   return (
     <header className={styles.header}>
       <div className={styles.leftBlock}>
-        <Link href={`/profile/${data.username}`}>
+        <Link href={`/profile/${data.userId}`}>
           <ImageLoader
               className={styles.avatar}
-              src="https://i.pinimg.com/736x/78/a6/de/78a6dee0461f3a04c067b4198730bfb2.jpg"
+              src={`${process.env.NEXT_PUBLIC_AVATARS_URL}${user?.avatarPath}`}
               wrapper={React.createFactory('div')}
               preloader={preloader}>
-            Image load failed!
           </ImageLoader>
+          <div className={styles.info}>
+            <span className={styles.name}>{user?.username} <CheckIcon /></span>
+            <span className={styles.date}>{formatDistance(+data.publishedDate, Date.now(), { addSuffix: true, locale: ru })}</span>
+          </div>
         </Link>
-        <div className={styles.info}>
-          <span className={styles.name}>{data.username} <CheckIcon /></span>
-          <span className={styles.date}>{formatDistance(+data.publishedDate, Date.now(), { addSuffix: true, locale: ru })}</span>
-        </div>
       </div>
       {
         isRoleHandler(mobxStore?.user?.id, data.userId) ? ( 
@@ -79,7 +79,7 @@ const HeaderPost = ({data} : any) => {
       }
 
     </header>
-  );
+  )
 };
 
 export default observer(HeaderPost);

@@ -8,7 +8,7 @@ const Subscriptions = ({user} : any) => {
     
     return (
         <div className={styles.subs}>
-            <h3 className={styles.title}>Подписки <span>{user ? user.subscriptions.length : ''}</span></h3>
+            <h3 className={styles.title}>Подписки <span>{user ? user?.subscriptions?.length : ''}</span></h3>
             <div>
                 {
                     user && user.subscriptions?.map((item: any, index: number) => (

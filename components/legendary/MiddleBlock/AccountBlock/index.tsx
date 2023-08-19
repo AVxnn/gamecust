@@ -46,10 +46,10 @@ const AccountBlock = () => {
         {
             mobxStore?.user?.email ? (
                 <>
-                    <Link href={`/profile/${mobxStore.user.username}`} className={`${styles.block} ${styles.mrBottom}`}>
+                    <Link href={`/profile/${mobxStore.user.id}`} className={`${styles.block} ${styles.mrBottom}`}>
                         <div className={styles.userMenu}>
                             <div className={`${styles.avatar}`}>
-                                <Image layout={'fill'} src={'https://i.pinimg.com/736x/78/a6/de/78a6dee0461f3a04c067b4198730bfb2.jpg'} alt="ads"/>
+                                <Image layout={'fill'} src={`${process.env.NEXT_PUBLIC_AVATARS_URL}${mobxStore.user.avatarPath}`} alt="ads"/>
                             </div>
                             <p className={styles.userName}>{mobxStore.user.username}</p>
                             <div className={styles.arrow}>

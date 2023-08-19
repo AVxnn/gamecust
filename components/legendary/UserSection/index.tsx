@@ -11,6 +11,7 @@ import Sun from "../../../public/img/svg/Sun";
 import Moon from "../../../public/img/svg/Moon";
 import { Context } from '../../../pages/_app';
 import changeTheme from '../../../features/ChangeTheme';
+import { observer } from 'mobx-react-lite';
 
 const UserSection = () => {
 
@@ -66,10 +67,10 @@ const UserSection = () => {
           isDropOpen && (
             <div className={styles.menu}>
               <h4 className={styles.title}>Моя информация</h4>
-              <Link href={`/profile/${mobxStore.user.username}`}>
+              <Link href={`/profile/${mobxStore.user.id}`}>
                 <div className={styles.userMenu}>
                   <div className={styles.avatar}>
-                    <Image layout={'fill'} src={'https://i.pinimg.com/736x/78/a6/de/78a6dee0461f3a04c067b4198730bfb2.jpg'} alt="ads"/>
+                    <Image layout={'fill'} src={`${process.env.NEXT_PUBLIC_AVATARS_URL}${mobxStore.user.avatarPath}`} alt="ads"/>
                   </div>
                   <p className={styles.userName}>Мой профиль</p>
                 </div>
@@ -123,4 +124,4 @@ const UserSection = () => {
   );
 };
 
-export default UserSection;
+export default observer(UserSection);

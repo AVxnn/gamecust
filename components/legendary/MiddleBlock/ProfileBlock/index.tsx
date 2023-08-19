@@ -34,7 +34,7 @@ const ProfileBlock = () => {
     }
   ]
 
-  return (
+  return mobxStore.user && (
     <div className={styles.container}>
       <div onClick={() => router.back()} className={styles.topBar}>
         <Arrow/>

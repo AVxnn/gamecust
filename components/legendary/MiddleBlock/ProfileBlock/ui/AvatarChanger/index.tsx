@@ -1,12 +1,19 @@
-import React, { useContext, useState } from 'react'
+import React, { useCallback, useContext, useState } from 'react'
 import styles from "./AvatarChanger.module.scss"
 import Image from "next/image"
 import Button from '../../../../common/Button'
 import { Context } from '../../../../../../pages/_app'
+import Cropper, { Area, Point } from 'react-easy-crop'
+import { observer } from 'mobx-react-lite'
+import PopupCrop from './ui/PopupCrop'
 
 const AvatarChanger = () => {
 
     const {mobxStore} = useContext(Context);
+
+    const [avatar, setAvatar] = useState({
+        imgSrc: ''
+    }) as any;
 
     const sendData = (file : any, type: any) => {
         let files = file.currentTarget.files[0]
@@ -25,21 +32,31 @@ const AvatarChanger = () => {
         .then(response => response.text())
         .then(result => {
             console.log(result);
-            
             mobxStore.reSaveUser({id: mobxStore.user.id, avatarPath: JSON.parse(result)});
         })
         .catch(error => console.log('error', error));
+        mobxStore.deleteAvatar({ pathUrl: mobxStore.user.avatarPath});
     }
     console.log(mobxStore.user);
     
-    return (
+    return mobxStore.user && (
         <div className={styles.avatarChanger}>
-            <div className={styles.avatar}>
-                <Image layout={'fill'} src={`${process.env.NEXT_PUBLIC_AVATARS_URL}${mobxStore.user.avatarPath}`} alt={''} />
-            </div>
+            {/* {
+                avatar.imgSrc && (
+                    <PopupCrop avatar={avatar.imgSrc} />
+                )
+            } */}
+            {
+                !avatar.imgSrc && (
+                    <div className={styles.avatar}>
+                        <Image layout={'fill'} src={`${process.env.NEXT_PUBLIC_AVATARS_URL}${mobxStore.user.avatarPath}`} alt={''} />
+                    </div>
+                )
+            }
+            
             <div className={styles.buttons}>
                 <label htmlFor={'img'} className={styles.info}>
-                    <div>
+                    <div className={styles.button}>
                         Изменить аватарку
                     </div>
                     <input multiple={true} onChange={(e) => sendData(e, 'click')} className={styles.file} type="file" id="img" name="img" accept="image/*"/>
@@ -52,4 +69,4 @@ const AvatarChanger = () => {
     )
 }
 
-export default AvatarChanger
+export default observer(AvatarChanger)

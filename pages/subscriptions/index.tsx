@@ -21,7 +21,7 @@ const Subscriptions = ({ props } : any) => {
   const menuRef = useRef<HTMLUListElement>(null);
   console.log(process.env.NEXT_PUBLIC_API_URL);
 
-  const [data, setData] = useState();
+  const [data, setData] = useState(props);
   
   const {mobxStore} = useContext(Context);
   
@@ -39,13 +39,10 @@ const Subscriptions = ({ props } : any) => {
         resultProps = resultData.filter((i : any) => i.userId === subscription)
     })
     setData(resultProps);
+    console.log(resultProps);
     
     return resultProps
   }
-
-  useEffect(() => {
-    fetchData(1)
-  }, [props])
 
   return (
     <>
@@ -61,7 +58,7 @@ const Subscriptions = ({ props } : any) => {
       </Head>
       <Header />
       <MainLayout>
-            <PostList PostData={data} fetchData={fetchData} />
+        <PostList PostData={data} fetchData={fetchData} />
       </MainLayout>
     </>
   )
