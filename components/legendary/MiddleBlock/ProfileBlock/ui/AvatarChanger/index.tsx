@@ -3,9 +3,7 @@ import styles from "./AvatarChanger.module.scss"
 import Image from "next/image"
 import Button from '../../../../common/Button'
 import { Context } from '../../../../../../pages/_app'
-import Cropper, { Area, Point } from 'react-easy-crop'
 import { observer } from 'mobx-react-lite'
-import PopupCrop from './ui/PopupCrop'
 
 const AvatarChanger = () => {
 
