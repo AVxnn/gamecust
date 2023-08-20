@@ -5,6 +5,7 @@ import PostList from "../components/legendary/MiddleBlock/PostList";
 import { Context } from './_app';
 import { observer } from 'mobx-react'
 import MainLayout from '../components/layout/MainLayout';
+import { YMInitializer } from 'react-yandex-metrika';
 
 const Home = ({ props } : any) => {
   
@@ -38,6 +39,12 @@ const Home = ({ props } : any) => {
       <MainLayout>
         <PostList PostData={props ? props : null} fetchData={fetchData}/>
       </MainLayout>
+      <YMInitializer accounts={[94688000]} options={{
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true,
+        webvisor:true
+      }} />
     </>
   )
 }

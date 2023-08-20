@@ -43,6 +43,7 @@
     "react-textarea-autosize": "^8.4.1",
     "react-transition-group": "^4.4.5",
     "react-uuid": "^2.0.0",
+    "react-yandex-metrika": "^2.6.0",
     "react-zoom-pan-pinch": "^2.6.1",
     "sass": "^1.57.1",
     "slick-carousel": "^1.8.1",
