@@ -17,7 +17,8 @@ const PostList = ({PostData, fetchData} : any) => {
     setIsLoading(true);
     const newItems = await fetchData(page);
     
-    setItems(newItems);
+    await setItems(newItems);
+    
     
     setIsLoading(false);
     setPage(page + 1);
