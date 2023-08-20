@@ -9,7 +9,7 @@ import { Context } from '../_app';
 const New = ({ props } : any) => {
   
   const menuRef = useRef<HTMLUListElement>(null);
-  console.log(process.env.NEXT_PUBLIC_API_URL);
+  console.log('new', props.length);
 
   const {mobxStore} = useContext(Context);
   
@@ -39,7 +39,7 @@ const New = ({ props } : any) => {
       </Head>
       <Header />
       <MainLayout>
-        <PostList PostData={props ? props : null} fetchData={fetchData}/>
+        <PostList PostData={props} fetchData={fetchData}/>
       </MainLayout>
     </>
   )
@@ -48,7 +48,7 @@ const New = ({ props } : any) => {
 
 export async function getServerSideProps(context : any) {
   
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/post/getPosts/1`);
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/post/getPosts/0`);
   
   return {
     props: {props : await res?.json()}, // will be passed to the page component as props

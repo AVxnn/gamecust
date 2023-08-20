@@ -7,8 +7,6 @@ const Counter = ({data} : any) => {
 
   const {mobxStore, postCreateStore} = useContext(Context);
 
-  console.log(data);
-
   const setCounterHandler = () => {
     data?.likes?.length ? data.likes.map((item: any, index : any) => {
       if (item === mobxStore.user.id) {

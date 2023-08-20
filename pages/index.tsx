@@ -44,7 +44,7 @@ const Home = ({ props } : any) => {
         trackLinks:true,
         accurateTrackBounce:true,
         webvisor:true
-      }} />
+      }} version="2" />
     </>
   )
 }
@@ -52,7 +52,7 @@ const Home = ({ props } : any) => {
 
 export async function getServerSideProps(context : any) {
   
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/post/getPosts/rec/1`);
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/post/getPosts/rec/0`);
   
   return {
     props: {props : await res?.json()}, // will be passed to the page component as props

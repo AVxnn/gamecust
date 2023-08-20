@@ -12,9 +12,6 @@ const ChangeProfileBlock = ({data} : any) => {
 
     const fetchData = async (page : any) => {
         const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/post/getPosts/filter/${data[0].userId}/${page}`);
-        console.log(data[0].userId);
-        console.log(`${process.env.NEXT_PUBLIC_API_URL}/api/post/getPosts/filter/${data[0].userId}/${page}`);
-        
         
         return await res?.json()
     }

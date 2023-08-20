@@ -16,8 +16,13 @@ const PostList = ({PostData, fetchData} : any) => {
 
     setIsLoading(true);
     const newItems = await fetchData(page);
+
+    if (newItems.length === 0) {
+      // Все данные загружены, больше нет данных
+      return;
+    }
     
-    await setItems(newItems);
+    await setItems([...items, ...newItems]);
     
     
     setIsLoading(false);
@@ -27,7 +32,7 @@ const PostList = ({PostData, fetchData} : any) => {
   useEffect(() => {
     const handleScroll = () => {
       const isNearBottom =
-        window.innerHeight + document.documentElement.scrollTop + 200 >=
+        window.innerHeight + document.documentElement.scrollTop + 600 >=
         document.documentElement.offsetHeight;
 
       if (isNearBottom) {

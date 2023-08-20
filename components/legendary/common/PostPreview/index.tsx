@@ -12,30 +12,19 @@ import { Context } from '../../../../pages/_app';
 const PostPreview = ({data} : any) => {
 
   const {postCreateStore} = useContext(Context);
-  const [userData, setUserData] = useState()
+
   const openPost = () => {
     let newData = data
     newData.viewsCount = data.viewsCount + 1
-    console.log(newData);
     
     postCreateStore.updatePost(newData);
   }
-  
-  useEffect(() => {
-    const getUser = async () => {
-      const user = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/user/getUserId/${data.userId}`);
-      console.log(user);
-      
-      setUserData(await user?.json())
-    }
-    getUser()
-  }, [])
 
-  return userData ? (
+  return (
     <div
       className={styles.postPreview}>
       <div className={styles.headerContainer}>
-        <HeaderPost user={userData} data={data}/>
+        <HeaderPost data={data}/>
       </div>
       <section className={styles.tags}>
         {
@@ -84,7 +73,7 @@ const PostPreview = ({data} : any) => {
         <Toolbar data={data} />
       </div>
     </div>
-  ) : null
+  );
 };
 
 export default PostPreview;

@@ -33,7 +33,6 @@ const HeaderPost = ({data, user} : any) => {
       return popupHandlers.authPopupOpen()
     }
     let res = await mobxStore.updateAuth(data.userId, mobxStore.user.id);
-    console.log(await res);
     setSubscribe(!subscribe)
   }
 
@@ -46,20 +45,25 @@ const HeaderPost = ({data, user} : any) => {
       }
     })
   }, [mobxStore?.user?.subscriptions]);
-  console.log(user);
   
   return (
     <header className={styles.header}>
       <div className={styles.leftBlock}>
         <Link href={`/profile/${data.userId}`}>
-          <ImageLoader
-              className={styles.avatar}
-              src={`${process.env.NEXT_PUBLIC_AVATARS_URL}${user?.avatarPath}`}
-              wrapper={React.createFactory('div')}
-              preloader={preloader}>
-          </ImageLoader>
+          {
+            data?.userAvatar ? (
+              <ImageLoader
+                  className={styles.avatar}
+                  src={`${process.env.NEXT_PUBLIC_AVATARS_URL}${data?.userAvatar}`}
+                  wrapper={React.createFactory('div')}
+                  preloader={preloader}>
+              </ImageLoader>
+            ) : (
+              <div className={styles.avatarBg}></div>
+            )
+          }
           <div className={styles.info}>
-            <span className={styles.name}>{user?.username} <CheckIcon /></span>
+            <span className={styles.name}>{data?.username} <CheckIcon /></span>
             <span className={styles.date}>{formatDistance(+data.publishedDate, Date.now(), { addSuffix: true, locale: ru })}</span>
           </div>
         </Link>

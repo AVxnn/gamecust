@@ -6,7 +6,6 @@ import Image from 'next/image'
 const ImageAndSlider = ({data}: any) => {
 
   const [countImages, setCountImages] = useState(0) as any
-  console.log(data);
   
   let settings = {
     className: "",

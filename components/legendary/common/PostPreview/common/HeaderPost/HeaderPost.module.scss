@@ -24,6 +24,13 @@
       text-decoration: none;
     }
 
+    .avatarBg {
+      width: 32px;
+      height: 32px;
+      border-radius: 99px;
+      background-color: $d_main_bg_color;
+    }
+
     .avatar {
 
       img {

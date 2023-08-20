@@ -1,18 +1,8 @@
 import Head from 'next/head'
-import styles from './New.module.scss'
 import React, {useContext, useEffect, useRef, useState} from "react";
 import { observer } from 'mobx-react-lite'
 import { Context } from '../_app';
-import CreatePostRight from '../../components/legendary/RightBlock/CreatePostRight';
-import Premium from '../../components/legendary/RightBlock/Premium';
-import TopUsers from '../../components/legendary/RightBlock/TopUsers';
-import NewsSliderSmall from '../../components/legendary/RightBlock/NewsSliderSmall';
-import TopGroup from '../../components/legendary/RightBlock/TopGroup';
-import Contacts from '../../components/legendary/RightBlock/Contacts';
-import Layout from '../../components/layout';
 import PostList from '../../components/legendary/MiddleBlock/PostList';
-import Navigation from '../../components/legendary/MiddleBlock/Navigation';
-import UserLeft from '../../components/legendary/LeftBlock/UserLeft';
 import Header from '../../components/legendary/header';
 import MainLayout from '../../components/layout/MainLayout';
 
@@ -21,28 +11,35 @@ const Subscriptions = ({ props } : any) => {
   const menuRef = useRef<HTMLUListElement>(null);
   console.log(process.env.NEXT_PUBLIC_API_URL);
 
-  const [data, setData] = useState(props);
+  const [data, setData] = useState([]);
   
   const {mobxStore} = useContext(Context);
-  
-  useEffect(() => {
-    if(localStorage.getItem('token')) {
-      mobxStore.checkAuth()
-    }
-  }, [])
 
-  const fetchData = async (page : any) => {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/post/getPosts/${page}`);
-    const resultData = await res?.json();
+  const fetchData = async (page : any, type = false ) => {
+    let resultData = null as any
+    if (type) {
+      resultData = props
+    } else {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/post/getPosts/${page}`);
+      resultData = await response?.json();
+    }
+    console.log(resultData);
+    
     let resultProps = [] as any;
     let result = mobxStore?.user?.subscriptions?.forEach(subscription => {
         resultProps = resultData.filter((i : any) => i.userId === subscription)
     })
     setData(resultProps);
-    console.log(resultProps);
     
     return resultProps
   }
+
+  useEffect(() => {
+    if(localStorage.getItem('token')) {
+      mobxStore.checkAuth()
+    }
+    fetchData(0, true)
+  }, [])
 
   return (
     <>
@@ -66,8 +63,7 @@ const Subscriptions = ({ props } : any) => {
 
 
 export async function getServerSideProps(context : any) {
-  
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/post/getPosts/1`);
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/post/getPosts/0`);
   
   return {
     props: {props : await res?.json()}, // will be passed to the page component as props
