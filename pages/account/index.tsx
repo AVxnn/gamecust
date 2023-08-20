@@ -18,7 +18,7 @@ const Account = () => {
       }
     }
     checkHandler()
-  }, [])
+  }, [mobxStore])
 
     return (
         <>

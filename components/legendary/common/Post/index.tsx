@@ -1,29 +1,29 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './Post.module.scss'
 import HeaderPost from "../PostPreview/common/HeaderPost";
 import Tag from "../Tag";
 import HashTag from "../PostPreview/common/hashtag";
 import Toolbar from "../PostPreview/common/toolbar";
 import Comments from "../Comments";
-import Image from 'next/image'
 import ReactPlayer from 'react-player';
 import ImgPopup from '../ImgPopup';
 
 
 const Post = ({data} : any) => {
 
-  if (!data?.username) return <>Loading...</>
+  const [userData, setUserData] = useState() as any
 
-  const [userData, setUserData] = useState()
+  const getUser = async () => {
+    const user = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/user/getUserId/${data.userId}`);  
+
+    setUserData(await user?.json())
+  }
+
   useEffect(() => {
-    const getUser = async () => {
-      const user = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/user/getUserId/${data.userId}`);
-      console.log(user);
-      
-      setUserData(await user?.json())
-    }
     getUser()
-  }, [])
+  }, [data])
+
+  if (!data?.username) return <>Loading...</>
   
   return (
     <div className={styles.postContainer}>
