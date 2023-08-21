@@ -38,7 +38,7 @@ const Login = ({setAuth} : any) => {
 
     const login = async () => {
         let result = await mobxStore.login(email.email, password.password)
-        if (result.status as any == 400) { 
+        if (result?.status == 400) { 
             notificationStore.addItem({title: result.errors, status: 'error', timeLife: 2500})
         } else {
             notificationStore.addItem({title: 'Вы авторизировались', status: 'success', timeLife: 2500})
