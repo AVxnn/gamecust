@@ -29,12 +29,17 @@ export default class MobxStore {
     async login(email: string, password: string) {
         try {
             const response = await AuthService.login(email, password);
-            console.log(response, email, password);
-            localStorage.setItem('token', response.data.accessToken);
-            this.setAuth(true);
-            this.setUser(response.data.user);
+            console.log(response);
+            
+            if (response.data !== undefined) {
+                localStorage.setItem('token', response.data.accessToken);
+                this.setAuth(true);
+                this.setUser(response.data.user);
+                return await response.data
+            }
         } catch (error: any) {
             console.log(error.response?.data?.message)
+            return error.response?.data?.message
         }
     }
 
@@ -68,7 +73,6 @@ export default class MobxStore {
         try {
             const response = await AuthService.check()
             localStorage.setItem('token', response.data.accessToken);
-            console.log('work');
             
             this.setAuth(true);
             this.setUser(response.data.user);
@@ -82,9 +86,8 @@ export default class MobxStore {
     async updateAuth(id: string, uId: string) {
         try {
             const response = await AuthService.updateSubs(id, uId);
-            console.log(await response)
             this.setUser(response.data.user);
-            return response;
+            return await response;
         } catch (error: any) {
             console.log(error.response?.data?.message)
         }

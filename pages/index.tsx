@@ -1,22 +1,13 @@
 import Head from 'next/head'
 import Header from "../components/legendary/header";
-import React, {useContext, useEffect, useRef} from "react";
+import React from "react";
 import PostList from "../components/legendary/MiddleBlock/PostList";
-import { Context } from './_app';
 import { observer } from 'mobx-react'
 import MainLayout from '../components/layout/MainLayout';
 import { YMInitializer } from 'react-yandex-metrika';
 
 const Home = ({ props } : any) => {
   
-  const {mobxStore} = useContext(Context);
-  
-  useEffect(() => {
-    if(localStorage.getItem('token')) {
-      mobxStore.checkAuth()
-    }
-  }, [])
-
   const fetchData = async (page : any) => {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/post/getPosts/rec/${page}`);
   

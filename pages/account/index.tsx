@@ -1,24 +1,12 @@
-import React, { useContext, useEffect } from 'react'
+import React from 'react'
 import Head from "next/head";
 import Header from "../../components/legendary/header";
 import Layout from "../../components/layout";
 import styles from './Account.module.scss'
 import AccountBlock from '../../components/legendary/MiddleBlock/AccountBlock';
 import { observer } from 'mobx-react-lite';
-import { Context } from '../_app';
 
 const Account = () => {
-
-  const {mobxStore} = useContext(Context);
-
-  useEffect(() => {
-    const checkHandler = async () => {
-      if(localStorage.getItem('token')) {
-        await mobxStore.checkAuth()
-      }
-    }
-    checkHandler()
-  }, [mobxStore])
 
     return (
         <>

@@ -16,10 +16,11 @@ const ProfileBlock = () => {
 
   const [username, setUsername] = useState(mobxStore?.user?.username)
   const [description, setDescription] = useState(mobxStore?.user?.description)
+  const [avatarPath, setAvatarPath] = useState(mobxStore?.user?.avatarPath)
   const [privateBlog, setPrivate] = useState(mobxStore?.user?.private) as any
 
   const saveHandler = () => {
-    mobxStore.reSaveUser({id: mobxStore.user.id, username: username, description: description, private: privateBlog});
+    mobxStore.reSaveUser({id: mobxStore.user.id, username: username, avatarPath: avatarPath, description: description, private: privateBlog});
     console.log('work');
   }
 
@@ -40,7 +41,7 @@ const ProfileBlock = () => {
         <Arrow/>
       </div>
       <div className={styles.mainBlocks}>
-        <AvatarChanger />
+        <AvatarChanger setValue={setAvatarPath}/>
         <NewInput title={'Отображаемое имя'} value={username} setValue={setUsername} maxValue={24}/>
         <NewInput title={'Описание к блогу'} value={description} setValue={setDescription} maxValue={32}/>
         <NewDropMenu data={dataBlog} title={'Записи в блоге'} value={privateBlog} setValue={setPrivate}/>

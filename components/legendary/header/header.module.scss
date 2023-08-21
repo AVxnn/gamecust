@@ -36,6 +36,10 @@
       cursor: pointer;
       width: 127px;
 
+      a {
+        height: 40px !important;
+      }
+
       @media (max-width: 720px) {
         margin-left: 24px;
       }

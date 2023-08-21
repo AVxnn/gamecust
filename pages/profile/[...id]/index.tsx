@@ -18,17 +18,8 @@ import ChangeProfileBlock from '../../../components/legendary/MiddleBlock/Change
 import Subscriptions from '../../../components/legendary/RightBlock/Subscriptions';
 
 const Profile = ({user, posts} : any) => {
-  console.log(user, posts);
   
   const menuRef = useRef<HTMLUListElement>(null);
-
-  const {mobxStore} = useContext(Context);
-  
-  useEffect(() => {
-    if(localStorage.getItem('token')) {
-      mobxStore.checkAuth()
-    }
-  }, [])
 
   return (
     <>

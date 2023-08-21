@@ -11,17 +11,8 @@ import TopGroup from "../../../components/legendary/RightBlock/TopGroup";
 import Contacts from "../../../components/legendary/RightBlock/Contacts";
 import Post from "../../../components/legendary/common/Post";
 import LoginRight from "../../../components/legendary/RightBlock/LoginRight";
-import { Context } from '../../_app';
 
 const OnePost = ({props} : any) => {
-
-  const {mobxStore} = useContext(Context);
-  
-  useEffect(() => {
-    if(localStorage.getItem('token')) {
-      mobxStore.checkAuth()
-    }
-  }, [])
 
   return (
     <>

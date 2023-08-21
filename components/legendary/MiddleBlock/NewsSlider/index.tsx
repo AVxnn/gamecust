@@ -8,12 +8,12 @@ const NewsSlider = () => {
 
   const data = [
     {
-      background: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Anime_Girl.png/2560px-Anime_Girl.png',
-      title: 'Новая ММОРПГ игра основанная на стрельбе и строительстве, реализованная на новом движке UNREAL ENGINE 7'
+      background: 'https://gamecust.online/static/48e5fe68-0b99-4f59-a730-774628e792c1.jpg',
+      title: 'Обновки за 15 августа'
     },
     {
-      background: 'https://assets3.thrillist.com/v1/image/3055763/1200x630/flatten;crop_down;webp=auto;jpeg_quality=70',
-      title: 'Новая ММОРПГ игра основанная на стрельбе и строительстве, реализованная на новом движке UNREAL ENGINE 7'
+      background: 'https://gamecust.online/static/8621e171-c041-4443-bf33-343f50540568.png',
+      title: 'Сиквел Сноураннер, Бладраннер, доступность игры в Стим и ЕГС и другие новости'
     },
   ]
 

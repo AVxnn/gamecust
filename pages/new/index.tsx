@@ -1,23 +1,11 @@
 import Head from 'next/head'
-import React, {useContext, useEffect, useRef} from "react";
+import React from "react";
 import { observer } from 'mobx-react'
 import PostList from '../../components/legendary/MiddleBlock/PostList';
 import Header from '../../components/legendary/header';
 import MainLayout from '../../components/layout/MainLayout';
-import { Context } from '../_app';
 
 const New = ({ props } : any) => {
-  
-  const menuRef = useRef<HTMLUListElement>(null);
-  console.log('new', props.length);
-
-  const {mobxStore} = useContext(Context);
-  
-  useEffect(() => {
-    if(localStorage.getItem('token')) {
-      mobxStore.checkAuth()
-    }
-  }, [])
 
   const fetchData = async (page : any) => {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/post/getPosts/${page}`);

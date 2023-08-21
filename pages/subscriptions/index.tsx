@@ -35,9 +35,6 @@ const Subscriptions = ({ props } : any) => {
   }
 
   useEffect(() => {
-    if(localStorage.getItem('token')) {
-      mobxStore.checkAuth()
-    }
     fetchData(0, true)
   }, [])
 

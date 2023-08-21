@@ -12,9 +12,7 @@ const Subscriptions = ({user} : any) => {
             <div>
                 {
                     user && user.subscriptions?.map((item: any, index: number) => (
-                        <>
-                            <ItemSub user={item} key={index} />
-                        </>
+                        <ItemSub user={item} key={index} />
                     ))
                 }
             </div>

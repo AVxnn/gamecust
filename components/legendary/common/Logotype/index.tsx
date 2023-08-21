@@ -23,11 +23,11 @@ const Logotype = () => {
 
   return (
     <>
-      <div ref={menuRef} className={styles.logotype}>
-        <Link href={'/'}>
+      <Link href={'/'}>
+        <div ref={menuRef} className={styles.logotype}>
           <LogotypeIcon />
-        </Link>
-      </div>
+        </div>
+      </Link>
     </>
   );
 };

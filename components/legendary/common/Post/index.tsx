@@ -7,6 +7,7 @@ import Toolbar from "../PostPreview/common/toolbar";
 import Comments from "../Comments";
 import ReactPlayer from 'react-player';
 import ImgPopup from '../ImgPopup';
+import Br from '../PostPreview/common/SelectForm/ui/Br';
 
 
 const Post = ({data} : any) => {
@@ -58,6 +59,10 @@ const Post = ({data} : any) => {
             } else if (item.type === 'media') {
               return (
                 <ImgPopup key={index} data={item} />
+              )
+            } else if (item.type === 'br') {
+              return (
+                <Br key={index} data={item} />
               )
             }
           })

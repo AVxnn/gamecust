@@ -15,10 +15,6 @@ const Editor = ({props} : any) => {
   
   useEffect(() => {
     const checkHandler = async () => {
-      if(localStorage.getItem('token')) {
-        await mobxStore.checkAuth()
-      }
-      
       if (!mobxStore.user.isActivated) {
         notificationStore.addItem({title: 'Нужно выполнить авторизацию', status: 'error', timeLife: 2500})
         await router.push('/')

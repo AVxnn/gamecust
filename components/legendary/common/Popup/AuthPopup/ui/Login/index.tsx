@@ -33,12 +33,17 @@ const Login = ({setAuth} : any) => {
             setPassword({error: 3, password: value})
         } else {
             setPassword({error: 0, password: value})
-        }
+        }   
     }
 
-    const login = () => {
-        mobxStore.login(email.email, password.password)
-        notificationStore.addItem({title: 'Вы авторизировались', status: 'success', timeLife: 2500})
+    const login = async () => {
+        let result = await mobxStore.login(email.email, password.password)
+        if (result.status as any == 400) { 
+            notificationStore.addItem({title: result.errors, status: 'error', timeLife: 2500})
+        } else {
+            notificationStore.addItem({title: 'Вы авторизировались', status: 'success', timeLife: 2500})
+        }
+        
         popupHandlers.authPopupClose();
     }
 

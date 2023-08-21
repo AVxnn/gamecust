@@ -27,20 +27,26 @@ export const Context = createContext<State>({
 })
 
 export default function App({ Component, pageProps }: AppProps) {
-  console.log(process.env.NEXT_PUBLIC_API_URL);
+
   useEffect(() => {
+    
     const checkHandler = async () => {
       if(localStorage.getItem('token')) {
+        console.log('checkUser');
+        
         await mobxStore.checkAuth()
       }
     }
+
     checkHandler()
+
     const Theme = localStorage.getItem('Theme')
     if (Theme == 'white') {
       document.body.setAttribute('dark', '');
     } else {
       document.body.removeAttribute('dark');
     }
+
   })
 
   return (

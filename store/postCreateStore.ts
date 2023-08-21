@@ -137,17 +137,17 @@ export default class PostCreateStore {
         try {
             const post = {
                 username: data.username,
-                userAvatar: '',
+                userAvatar: data.userAvatar,
                 userId: data.userId,
                 published: data.published,
                 publishedDate: data.publishedDate,
                 postId: data.postId,
                 data: data.data,
                 stared: data.data.filter((item:any) => item.stared === true),
-                tags: [],
-                hashtags: [],
-                likes: [],
-                comments: [],
+                tags: data.tags,
+                hashtags: data.hashtags,
+                likes: data.likes,
+                comments: data.comments,
                 viewsCount: data.viewsCount,
             }
             const response = await CreatePostService.updatePost(data.postId, post);

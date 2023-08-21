@@ -21,14 +21,12 @@ const ItemSub = ({user} : any) => {
             const userData = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/user/getUserId/${user}`);
             setUserData(await userData?.json())
         }
-
         getUser()
     }, [user])
-    console.log(userData);
     
     return (
-       <Link href={`/profile/${userData.id}`}> 
-        <div className={styles.item}>
+       <Link href={`/profile/${userData._id}`}> 
+            <div className={styles.item}>
                 <div className={styles.image}>
                     <ImageLoader
                         className={styles.avatar}

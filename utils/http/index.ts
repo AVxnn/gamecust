@@ -15,6 +15,7 @@ $api.interceptors.request.use((config) => {
 
 
 $api.interceptors.response.use((config) => {
+    console.log(config)
     return config;
 }, async (error) => {
     const originalRequest = error.config;
@@ -26,7 +27,6 @@ $api.interceptors.response.use((config) => {
             return $api.request(originalRequest)
         } catch (error) {
             console.log('Не авторизован');
-            
         }
     }
 })

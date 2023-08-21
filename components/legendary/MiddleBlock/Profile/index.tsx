@@ -44,8 +44,6 @@ const ProfileBlock = ({data} : any) => {
   }
   
   useEffect(() => {
-    console.log(router.query.id[1]);
-    
     switch (router.query.id[1]) {
       case 'entries':
         return setActive(0)
