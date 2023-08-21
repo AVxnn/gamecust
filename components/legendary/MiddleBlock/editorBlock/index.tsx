@@ -8,7 +8,7 @@ import { observer } from "mobx-react"
 import { Reorder, useDragControls } from 'framer-motion';
 import useDebounce from '../../../../features/Hooks/useDebounce';
 
-const EditorBlock = observer(() => {
+const EditorBlock = () => {
 
   const {mobxStore, postCreateStore, notificationStore} = useContext(Context);
   const dragControls = useDragControls();
@@ -16,7 +16,6 @@ const EditorBlock = observer(() => {
   const [pressKey, setPressKey] = useState(false)
 
   const saveHandler = () => {
-    notificationStore.addItem({title: 'Пост сохранен', status: 'success', timeLife: 2500})
     postCreateStore.reSavePost(mobxStore.user, postCreateStore.data, postCreateStore.postId)
     setPressKey(false)
   }
@@ -24,10 +23,19 @@ const EditorBlock = observer(() => {
   const debouncedSave = useDebounce(saveHandler, 2500)
 
   const keyPress = useCallback(
-    (e: any) => {
+    () => {
       setPressKey(true)
       debouncedSave()
-      if (e.keyCode === 9) {
+    },
+    []
+  );
+
+  const createNewPost = () => {
+    if (postCreateStore.data.length >= 1) {
+      if (!postCreateStore.data[postCreateStore?.data?.length - 1].value && postCreateStore.data[postCreateStore?.data?.length - 1].type == 'text') {
+        console.log('noWork');
+        
+      } else {
         let res = {
           type: 'text',
           value: '',
@@ -35,14 +43,29 @@ const EditorBlock = observer(() => {
         }
         postCreateStore.addItem(res);
       }
-    },
-    []
-  );
-
+    } else {
+      let res = {
+        type: 'text',
+        value: '',
+        id: postCreateStore.data.length,
+      }
+      postCreateStore.addItem(res);
+    }
+  }
+  
   useEffect(() => {
     document.addEventListener('keydown', keyPress);
-    return () => document.removeEventListener('keydown', keyPress);
+    document.addEventListener('click', keyPress);
+    return () => {
+      document.removeEventListener('keydown', keyPress)
+      document.removeEventListener('click', keyPress)
+    }
   }, [keyPress]);
+
+  useEffect(() => {
+    console.log('save');
+    keyPress()
+  }, []);
   
   return (
     <div className={styles.editor}>
@@ -53,10 +76,12 @@ const EditorBlock = observer(() => {
                 <ConstructorBlocks data={item} key={index}/>
             ))
           } 
+          <div onClick={() => createNewPost()} className={styles.createNewBlock}>
+          </div>
       </div>
       <ToolBar pressKey={pressKey} />
     </div>
   );
-});
+};
 
-export default EditorBlock;
+export default observer(EditorBlock);

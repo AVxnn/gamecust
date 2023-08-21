@@ -95,9 +95,9 @@ const LinkUpload = observer(({item} : any) => {
                     ) : ''
                 }
                 {
-                    hover && !item.href && (
-                        <DropDownForm ref={popupRef} setIsClicked={setIsClicked} isClicked={isClicked} />
-                    )
+                    hover && !item.href || focus && !item.href ? (
+                        <DropDownForm hoverChange={hoverChange} id={item.id} focus={focus} setFocus={setFocus} ref={popupRef} setIsClicked={setIsClicked} isClicked={isClicked} />
+                    ) : null
                 }
                 {
                     hover && item.href && (

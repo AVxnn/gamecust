@@ -4,7 +4,6 @@
   position: relative;
   width: 100%;
   max-width: 640px;
-  height: calc(100vh - 140px);
   border-radius: 8px;
   display: flex;
   flex-direction: column;
@@ -31,6 +30,7 @@
   .lists {
     display: flex;
     flex-direction: column;
+    margin-bottom: 32px;
   }
 
   .block {

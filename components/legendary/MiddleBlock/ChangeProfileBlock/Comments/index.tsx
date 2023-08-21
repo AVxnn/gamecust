@@ -1,8 +1,9 @@
 import React from 'react'
+import Empty from '../../../common/Empty'
 
 const Comments = () => {
   return (
-    <div>Comments</div>
+    <Empty text={'В процессе разработки'} subtext={'Следите за обновлениями в телеграм канале'} />
   )
 }
 

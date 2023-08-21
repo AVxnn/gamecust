@@ -27,11 +27,10 @@
 
   .editor_list {
     width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
-    height: 100%;
     gap: 16px;
-    padding-bottom: 300px;
     overflow-x: hidden;
     overflow-y: scroll;
 
@@ -49,6 +48,12 @@
       -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.2);
       border-radius: 10px;
       background-color: $d_main_text_color;
+    }
+
+    .createNewBlock {
+      width: 100%;
+      height: 100px;
+      min-height: 300px;
     }
 
     .titleInput {

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styles from './PostList.module.scss'
 import PostPreview from "../../common/PostPreview";
 import NewsSlider from "../NewsSlider";
+import Empty from '../../common/Empty';
 
 const PostList = ({PostData, fetchData} : any) => {
 
@@ -46,7 +47,7 @@ const PostList = ({PostData, fetchData} : any) => {
     };
   }, [isLoading]);
 
-  return items ? (
+  return items?.length ? (
     <div className={styles.postList}>
       {
         items?.length ? items.map((item : any, index : number) => {
@@ -61,12 +62,10 @@ const PostList = ({PostData, fetchData} : any) => {
           return (
             <PostPreview key={index} data={item} />
           )
-        }) : (
-          <h3 className={styles.blank}>Похоже тут пусто</h3>
-        )
+        }) : null
       }
     </div>
-  ) : null
+  ) :<Empty text={'Похоже тут пусто'} subtext={'Создайте свой первый пост'} />
 };
 
 export default PostList;

@@ -21,7 +21,7 @@ const ProfileBlock = () => {
 
   const saveHandler = () => {
     mobxStore.reSaveUser({id: mobxStore.user.id, username: username, avatarPath: avatarPath, description: description, private: privateBlog});
-    console.log('work');
+    console.log('work', {avatarPath: avatarPath});
   }
 
   let dataBlog = [

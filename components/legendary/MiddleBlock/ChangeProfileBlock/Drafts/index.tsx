@@ -1,21 +1,26 @@
 import React from 'react'
 import styles from "./Drafts.module.scss"
 import DraftItem from './DraftItem'
+import Empty from '../../../common/Empty';
 
 const Drafts = ({data} : any) => {
-  return (
-    <>
-        <div className={styles.drafts}>
+    return (
+        <>
             {
-                data && data.map((item : any, index : number) => {
-                    return (
-                        <DraftItem key={index} data={item} />
-                    )
-                })
+                data.length ? (
+                    <div className={styles.drafts}>
+                        {
+                            data.map((item : any, index : number) => {
+                                return (
+                                    <DraftItem key={index} data={item} />
+                                )
+                            })
+                        }
+                    </div>
+                ) : <Empty text={'Похоже тут пусто ;('} />
             }
-        </div>
-    </>
-  )
+        </>
+    )
 }
 
 export default Drafts

@@ -47,7 +47,7 @@ const UserSection = () => {
     <>
       <Notification notifi={notifi} setNotifi={setNotifi} openMenus={isDropOpen}/>
       <div ref={Button} className={`${styles.container} ${isDropOpen ? styles.active : ''}`}>
-        <Link href={`/profile/${mobxStore.user.username}`}>
+        <Link href={`/profile/${mobxStore.user.id}`}>
           <div className={`${styles.user} ${isDropOpen ? styles.active : ''}`}>
             <div className={styles.avatar}>
               {

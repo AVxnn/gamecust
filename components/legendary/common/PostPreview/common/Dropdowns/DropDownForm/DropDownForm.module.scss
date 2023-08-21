@@ -23,6 +23,7 @@
         outline: none;
         padding: 2px;
         cursor: pointer;
+        z-index: -2;
 
         @media (max-width: 768px) {
             padding: 4px;
@@ -63,6 +64,7 @@
         background-color: $d_main_bg_color;
         border-radius: 8px;
         top: 30px;
+        z-index: 12;
 
         @media (max-width: 768px) {
             position: fixed;

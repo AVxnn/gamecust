@@ -6,6 +6,7 @@ import { Context } from "../pages/_app";
 
 export default class PostCreateStore {
     postId = ''
+    save = false
     data = [
         {
             type: 'h1',
@@ -19,14 +20,28 @@ export default class PostCreateStore {
         makeAutoObservable(this)
     }
 
+    saveHandler() {
+        this.save = true;
+    }
+
+    deleteSaveHandler() {
+        this.save = false;
+    }
+
     setPostId(data : any) {
         this.postId = data;
         console.log(this.data);
     }
 
-    addItem(data : any) {
-        this.data.push(data);
-        console.log(this.data);
+    addItem(data : any, id = this.data.length) {
+        if (this.data.length === id + 1) {
+            this.data.push(data);
+        } else {
+            this.data.splice(id + 1, 0, data);
+        }
+        console.log('data', this.data, data, id);
+        
+        
     }
 
     sortArray(data : any) {

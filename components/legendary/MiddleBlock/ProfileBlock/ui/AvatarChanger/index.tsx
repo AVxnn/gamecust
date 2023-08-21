@@ -28,8 +28,8 @@ const AvatarChanger = ({setValue} : any) => {
         })
         .then(response => response.text())
         .then(result => {
-            console.log(result);
-            setValue(result)
+            console.log(JSON.parse(result));
+            setValue(JSON.parse(result))
         })
         .catch(error => console.log('error', error));
         mobxStore.deleteAvatar({ pathUrl: mobxStore.user.avatarPath});

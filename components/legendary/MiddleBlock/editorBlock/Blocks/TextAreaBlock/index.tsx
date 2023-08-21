@@ -7,11 +7,13 @@ import { Context } from "../../../../../../pages/_app";
 import { observer } from "mobx-react";
 import InformationBlock from "../../InformationBlock";
 
-const TextAreaBlock = observer(({item} : any) => {
+const TextAreaBlock = ({item} : any) => {
 
     const popupRef = useRef<HTMLDivElement>(null);
     const labelRef = useRef<HTMLElement>(null) as any;
+    const inputText = useRef<HTMLElement>(null) as any;
 
+    const [value, setValue] = useState<string>('');
     const [hover, setHover] = useState<boolean>(false);
     
     const [focus, setFocus] = useState<boolean>(false);
@@ -21,6 +23,8 @@ const TextAreaBlock = observer(({item} : any) => {
     
     const updateHandler = (value : any) => {
         console.log(value)
+        setFocus(true);
+        setValue(value)
         postCreateStore.updateItem({...item, value: value})
     }
 
@@ -33,7 +37,7 @@ const TextAreaBlock = observer(({item} : any) => {
     }
 
     const handleClickOutside = (e: any) => {
-        if (isClicked) {
+        if (isClicked || hover) {
             if (labelRef.current &&
                 !labelRef.current.contains(e.target)) {
                     setFocus(false)
@@ -41,20 +45,40 @@ const TextAreaBlock = observer(({item} : any) => {
         }
     }
 
+    const keyPress = (e : any) => {
+        console.log(focus, hover, value);
+        
+        if (focus && item.value == '') {
+            console.log(e.keyCode);
+            if (e.keyCode === 8) {
+                console.log('deleted', item);
+                postCreateStore.removeItem(item)
+                setIsClicked(false)
+            }
+        }
+    }
+    
     useEffect(() => {
-        if (typeof document !== "undefined" && isClicked) {
+        document.addEventListener('keydown', keyPress);
+        return () => {
+            document.removeEventListener('keydown', keyPress)
+        }
+    });
+
+    useEffect(() => {
+        if (typeof document !== "undefined" && isClicked || hover) {
             document.addEventListener('click', (e: any) => {
-            handleClickOutside(e);
-        })
-        return document.removeEventListener('click', (e: any) => {
-            handleClickOutside(e);
-        })
+                handleClickOutside(e);
+            })
+            return document.removeEventListener('click', (e: any) => {
+                handleClickOutside(e);
+            })
         }
     })
 
     useEffect(() => {
-        labelRef.current.focus()
-    }, [labelRef])
+        inputText.current.focus()
+    }, [postCreateStore.data])
 
     return (
         <>
@@ -65,17 +89,19 @@ const TextAreaBlock = observer(({item} : any) => {
                 className={styles.container}>
                 <TextareaAutosize
                     contentEditable={true}
+                    ref={inputText}
                     className={`${styles.inputMain} ${styles[item.type]}`}
                     onChange={(e) => updateHandler(e.currentTarget.value)}
+                    onClick={() => setFocus(true)}
                     onFocus={() => setFocus(true)}
                     value={item.value || ''}
                     suppressContentEditableWarning={true}
                     placeholder="Нажмите Tab для выбора инструмента"
                 />
                 {
-                    hover && !item.value && (
-                        <DropDownForm hoverChange={hoverChange} ref={popupRef} setIsClicked={setIsClicked} isClicked={isClicked} />
-                    )
+                    hover && !item.value || focus && !item.value ? (
+                        <DropDownForm hoverChange={hoverChange} id={item.id} focus={focus} setFocus={setFocus} ref={popupRef} setIsClicked={setIsClicked} isClicked={isClicked} />
+                    ) : null
                 }
                 {
                     hover && item.value && (
@@ -86,6 +112,6 @@ const TextAreaBlock = observer(({item} : any) => {
             </div>
         </>
     );
-})
+}
  
-export default TextAreaBlock;
+export default observer(TextAreaBlock);

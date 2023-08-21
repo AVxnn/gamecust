@@ -17,7 +17,7 @@ const DraftItem = ({data} : any) => {
     const deleteHandler = (e: any) => {
         e.preventDefault();
         postCreateStore.deletePost(data.postId);
-        router.push('/profile/' + mobxStore.user.username + '/drafts')
+        router.push('/profile/' + mobxStore.user.id + '/drafts')
     }
     
     return (
@@ -34,7 +34,7 @@ const DraftItem = ({data} : any) => {
                     
                 </div>
                 <div className={styles.mainInfo}>
-                    <h2 className={styles.title}>{data.data.filter((e: any) => e.type == 'h1')[0].value}</h2>
+                    <h2 className={styles.title}>{data?.data?.filter((e: any) => e.type == 'h1')[0]?.value}</h2>
                     <div className={styles.bottomInfo}>
                         {/* <ReactTimeAgo className={styles.date} date={data.publishedDate} locale="ru-RU"/> */}
                         <div onClick={(e) => deleteHandler(e)} className={styles.delete}>

@@ -11,7 +11,7 @@ import { Context } from "../../../../../../../pages/_app";
 import { motion } from "framer-motion";
 import { observer } from "mobx-react";
 
-const DropDownForm = observer(({setIsClicked, isClicked, hoverChange} : any) => {
+const DropDownForm = observer(({setIsClicked, isClicked, hoverChange, setFocus, id} : any) => {
 
     const popupRef = useRef<HTMLDivElement>(null);
     const labelRef = useRef<HTMLDivElement>(null);
@@ -23,6 +23,7 @@ const DropDownForm = observer(({setIsClicked, isClicked, hoverChange} : any) => 
             if (labelRef.current &&
                 !labelRef.current.contains(e.target)) {
                     setIsClicked(false)
+                    setFocus(false)
             }
         }
     }
@@ -66,9 +67,16 @@ const DropDownForm = observer(({setIsClicked, isClicked, hoverChange} : any) => 
                 id: postCreateStore.data.length
             }
         }
-        postCreateStore.addItem(result);
+        postCreateStore.addItem(result, id);
         setIsClicked(false)
+        setFocus(false)
         hoverChange('off')
+        postCreateStore.saveHandler();
+    }
+
+    const onBlurHandler = () => {
+        setIsClicked(false)
+        setFocus(false)
     }
 
     useEffect(() => {
@@ -85,9 +93,16 @@ const DropDownForm = observer(({setIsClicked, isClicked, hoverChange} : any) => 
     return ( 
         <>
             <div ref={labelRef} className={styles.toolbar}>
-                <button onClick={() => setIsClicked(!isClicked)} className={cn(styles.newForm, isClicked && styles.active)}><Plus /></button>
+                <button 
+                    tabIndex={0} 
+                    onFocus={() => setIsClicked(true)} 
+                    onClick={() => setIsClicked(true)} 
+                    className={cn(styles.newForm, isClicked && styles.active)}
+                >
+                    <Plus />
+                </button>
                 {
-                    isClicked && (
+                    isClicked ? (
                         <motion.div 
                             initial={{ y: 10, opacity: 0 }}
                             animate={{ y: 0, opacity: 1 }}
@@ -95,29 +110,29 @@ const DropDownForm = observer(({setIsClicked, isClicked, hoverChange} : any) => 
                             transition={{ duration: 0.2 }}  
                             ref={popupRef} 
                             className={styles.dropDownForm}
-                            >
-                            <div onClick={() => createNewFormChange('text')} className={styles.item}>
+                        >
+                            <li tabIndex={0} onClick={() => createNewFormChange('text')} className={styles.item}>
                                 <Text />
                                 <p className={styles.text}>Текст</p>
-                            </div>
-                            <div onClick={() => createNewFormChange('h1')} className={styles.item}>
+                            </li>
+                            <li tabIndex={0} onClick={() => createNewFormChange('h1')} className={styles.item}>
                                 <Heading />
                                 <p className={styles.text}>Заголовок</p>
-                            </div>
-                            <div onClick={() => createNewFormChange('media')} className={styles.item}>
+                            </li>
+                            <li tabIndex={0} onClick={() => createNewFormChange('media')} className={styles.item}>
                                 <ImageIcon />
                                 <p className={styles.text}>Фото или видео</p>
-                            </div>
-                            <div onClick={() => createNewFormChange('link')} className={styles.item}>
+                            </li>
+                            <li tabIndex={0} onClick={() => createNewFormChange('link')} className={styles.item}>
                                 <LinkIcon />
                                 <p className={styles.text}>Вставить</p>
-                            </div>
-                            <div onClick={() => createNewFormChange('br')} className={styles.item}>
+                            </li>
+                            <li onBlur={() => onBlurHandler()} tabIndex={0} onClick={() => createNewFormChange('br')} className={styles.item}>
                                 <DotsIcon />
                                 <p className={styles.text}>Разделитель</p>
-                            </div>
+                            </li>
                         </motion.div>
-                    )
+                    ) : null
                 }
             </div>
         </>
