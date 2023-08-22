@@ -49,7 +49,7 @@ const AvatarChanger = ({setValue} : any) => {
                     </div>
                 ) : (
                     <div className={styles.avatar}>
-                        <Image layout={'fill'} src={`${process.env.NEXT_PUBLIC_AVATARS_URL}${mobxStore.user.avatarPath}`} alt={''} />
+                        <Image layout={'fill'} src={`${mobxStore.user.avatarPath}`} alt={''} />
                     </div>
                 )
             }

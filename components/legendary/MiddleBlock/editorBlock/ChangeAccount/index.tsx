@@ -1,12 +1,15 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import Image from "next/image"
 import styles from "./ChangeAccount.module.scss"
 import Arrow from '../../../../../public/img/svg/Arrow'
 import AccountDrop from './AccountDrop'
 import { motion } from 'framer-motion'
+import { Context } from '../../../../../pages/_app'
 
 const ChangeAccount = () => {
 
+  const {mobxStore} = useContext(Context);
+  
   const popupRef = useRef<HTMLDivElement>(null);
   const labelRef = useRef<HTMLDivElement>(null);
 
@@ -41,7 +44,7 @@ const ChangeAccount = () => {
       className={`${styles.profile} ${clicked ? styles.active : ''}`
       }>
         <div className={styles.avatar}>
-          <Image layout={'fill'} src={'https://i.pinimg.com/736x/78/a6/de/78a6dee0461f3a04c067b4198730bfb2.jpg'} alt="ads"/>
+          <Image layout={'fill'} src={`${mobxStore.user.avatarPath}`} alt="ads"/>
         </div>
         <p ref={popupRef} className={styles.name}>Личный блог</p>
         <Arrow />

@@ -27,7 +27,7 @@ const Home = ({ props } : any) => {
       </Head>
       <Header />
       <MainLayout>
-        <PostList PostData={props ? props : null} fetchData={fetchData}/>
+        <PostList PostData={props ? props : null} fetchData={fetchData} textEmpty={'Создайте свой первый пост'}/>
       </MainLayout>
       <YMInitializer accounts={[94688000]} options={{
         clickmap:true,

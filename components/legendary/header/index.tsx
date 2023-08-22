@@ -27,7 +27,7 @@ const Header = () => {
           </a>
           <div className={styles.profile}>
             {
-              mobxStore?.user?.email ? (
+              mobxStore.user.email ? (
                 <UserSection />
               ) : (
                 <>

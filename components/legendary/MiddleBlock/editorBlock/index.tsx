@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useRef, useState } from 'react';
 import styles from './editorBlock.module.scss'
 import ToolBar from './ToolBar';
 import ChangeAccount from './ChangeAccount';
@@ -12,6 +12,8 @@ const EditorBlock = () => {
 
   const {mobxStore, postCreateStore, notificationStore} = useContext(Context);
   const dragControls = useDragControls();
+
+  const editor = useRef<HTMLDivElement>() as any
 
   const [pressKey, setPressKey] = useState(false)
 
@@ -55,10 +57,10 @@ const EditorBlock = () => {
   
   useEffect(() => {
     document.addEventListener('keydown', keyPress);
-    document.addEventListener('click', keyPress);
+    editor?.current?.addEventListener('click', keyPress);
     return () => {
-      document.removeEventListener('keydown', keyPress)
-      document.removeEventListener('click', keyPress)
+      document.removeEventListener('keydown', keyPress);
+      editor?.current?.removeEventListener('click', keyPress);
     }
   }, [keyPress]);
 
@@ -70,7 +72,7 @@ const EditorBlock = () => {
   return (
     <div className={styles.editor}>
       <ChangeAccount />
-      <div className={styles.editor_list}>
+      <div ref={editor} className={styles.editor_list}>
           {
             postCreateStore.data.map((item: any, index: number) => (
                 <ConstructorBlocks data={item} key={index}/>

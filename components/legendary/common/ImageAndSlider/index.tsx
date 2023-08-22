@@ -42,7 +42,7 @@ const ImageAndSlider = ({data}: any) => {
 
   return (
     <div className={styles.imgCont}>
-      <Image layout={'fill'} className={styles.img} src={`${process.env.NEXT_PUBLIC_IMAGES_URL}${data?.href}`} alt=""/>
+      <Image layout={'fill'} className={styles.img} src={`${data?.href}`} alt=""/>
     </div>
   )
 };

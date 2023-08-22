@@ -12,6 +12,10 @@ export default class AuthService {
         return $api.post<AuthResponse>('/api/user/registration', {username, email, password});
     }
 
+    static async registrationGoogle(username: string, email: string, picture: string, sub : number, email_verified: boolean): Promise<AxiosResponse<AuthResponse>> {
+        return $api.post<AuthResponse>('/api/user/registration/Google', {username, email, picture, sub, email_verified});
+    }
+
     static async updateSubs(id: string, uId: string): Promise<AxiosResponse<AuthResponse>> {
         return $api.post<AuthResponse>('/api/user/addSubscriptions', {id, uId});
     }

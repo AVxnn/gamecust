@@ -9,7 +9,9 @@
   .avatar {
     position: relative;
     width: 42px;
+    min-width: 42px;
     height: 42px;
+    min-height: 42px;
     border-radius: 99px;
     margin-right: 8px;
 
@@ -34,6 +36,9 @@
     .name {
       margin: 0;
       font-size: 12px;
+      white-space: nowrap;
+      max-width: 50px;
+      overflow: hidden;
       color: $d_main_text_color;
       margin-top: 4px;
     }

@@ -20,7 +20,8 @@ import Subscriptions from '../../../components/legendary/RightBlock/Subscription
 const Profile = ({user, posts} : any) => {
   
   const menuRef = useRef<HTMLUListElement>(null);
-
+  console.log(user);
+  
   return (
     <>
       <Head>
@@ -39,7 +40,7 @@ const Profile = ({user, posts} : any) => {
         <div className={styles.middleColumn}>
           <ProfileBlock data={user} />
           <div className={styles.postListContainer}>
-            <ChangeProfileBlock data={posts}/>
+            <ChangeProfileBlock data={posts} user={user}/>
           </div>
         </div>
         <div className={styles.rightColumn}>

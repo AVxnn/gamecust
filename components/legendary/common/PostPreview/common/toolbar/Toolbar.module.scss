@@ -2,6 +2,7 @@
 
 .toolbar {
   display: flex;
+  margin-top: 16px;
   align-items: center;
   justify-content: space-between;
 
@@ -12,9 +13,10 @@
     .views {
       display: flex;
       align-items: center;
+      
       svg {
-        width: 20px;
-        height: 20px;
+        width: 22px;
+        height: 22px;
 
         path {
           fill: $d_main_text_color
@@ -23,7 +25,7 @@
       .title {
         margin-left: 6px;
         width: 20px;
-        font-size: 14px;
+        font-size: 15px;
         font-weight: 500;
         color: $d_main_text_color;
         cursor: default;
@@ -36,11 +38,18 @@
       cursor: pointer;
 
       svg {
-        width: 20px;
-        height: 20px;
+        width: 22px;
+        height: 22px;
 
         path {
           stroke: $d_main_text_color
+        }
+      }
+
+      &:hover {
+        
+        path {
+          stroke: $d_main_color;
         }
       }
     }
@@ -61,9 +70,8 @@
       cursor: pointer;
 
       svg {
-        width: 20px;
-
-        height: 20px;
+        width: 22px;
+        height: 22px;
         path {
           fill: $d_main_text_color
         }
@@ -71,17 +79,16 @@
 
       &:hover {
         .title {
-          color: $d_main_text_hover_color;
+          color: $d_main_color;
         }
         path {
-          transition: all 0.1s ease-in-out;
-          fill: $d_main_text_hover_color;
+          fill: $d_main_color;
         }
       }
 
       .title {
         margin-top: 1px;
-        font-size: 14px;
+        font-size: 15px;
         margin-left: 6px;
         font-weight: 500;
         color: $d_main_text_color;

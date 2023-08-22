@@ -3,6 +3,7 @@
 .header {
   display: flex;
   position: relative;
+  align-items: center;
   justify-content: space-between;
 
   .leftBlock {
@@ -12,8 +13,8 @@
     cursor: pointer;
 
     .avatarLoader {
-      width: 32px;
-      height: 32px;
+      width: 38px;
+      height: 38px;
       border-radius: 99px;
       background-color: $d_main_bg_color;
     }
@@ -25,8 +26,8 @@
     }
 
     .avatarBg {
-      width: 32px;
-      height: 32px;
+      width: 42px;
+      height: 42px;
       border-radius: 99px;
       background-color: $d_main_bg_color;
     }
@@ -35,8 +36,8 @@
 
       img {
         position: relative;
-        width: 32px;
-        height: 32px;
+        width: 42px;
+        height: 42px;
         border-radius: 99px;
         cursor: pointer;
         transition: all 0.1s ease-in-out;
@@ -50,20 +51,31 @@
     .info {
       display: flex;
       flex-direction: column;
-      gap: 2px;
+      justify-content: center;
+      gap: 4px;
+      margin-top: -4px;
       cursor: pointer;
 
       .name {
         display: flex;
         align-items: center;
-        font-size: 14px;
+        font-size: 16px;
         margin-left: 8px;
         color: $d_main_text_color;
         font-weight: 600;
         cursor: pointer;
+
+        &:hover {
+          color: $d_main_color;
+        }
   
         svg {
-          margin-left: 2px;
+          margin-left: 8px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 16px;
+          height: 16px;
         }
       }
       .date {

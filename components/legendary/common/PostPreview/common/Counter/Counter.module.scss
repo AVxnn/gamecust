@@ -3,58 +3,34 @@
 .counter {
   display: flex;
   align-items: center;
-  height: 20px;
+  height: 22px;
   gap: 6px;
 
   .like {
-    transform: rotate(180deg);
-    width: 20px;
-    height: 20px;
-    order: 2;
+    width: 22px;
+    height: 22px;
     cursor: pointer;
     transition: all 0.1s ease-in-out;
 
     &:hover {
       path {
-        fill: #3FC344;
+        fill: $d_main_color;
       }
     }
     &:hover ~ .title {
-      color: #3FC344;
+      color: $d_main_color;
     }
 
     svg {
-      width: 20px;
-      height: 20px;
-      path {
-        fill: $d_main_text_color;
-      }
-    }
-  }
-  .dislike {
-    cursor: pointer;
-    width: 20px;
-    height: 20px;
-
-    &:hover {
-      path {
-        fill: #F05353;
-      }
-    }
-    &:hover ~ .title {
-      color: #F05353;
-    }
-
-    svg {
-      width: 20px;
-      height: 20px;
+      width: 22px;
+      height: 22px;
       path {
         fill: $d_main_text_color;
       }
     }
   }
   .title {
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 500;
     color: $d_main_text_color;
   }

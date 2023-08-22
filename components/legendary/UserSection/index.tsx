@@ -12,15 +12,19 @@ import Moon from "../../../public/img/svg/Moon";
 import { Context } from '../../../pages/_app';
 import changeTheme from '../../../features/ChangeTheme';
 import { observer } from 'mobx-react-lite';
+import { useRouter } from 'next/router';
 
 const UserSection = () => {
 
   const [isDropOpen, setIsDropOpen] = useState(false)
   const [theme, setTheme] = useState('')
   const [notifi, setNotifi] = useState(false)
-  const menuRef = useRef<HTMLDivElement>(null);
 
+  const router = useRouter()
+
+  const menuRef = useRef<HTMLDivElement>(null);
   const {mobxStore} = useContext(Context);
+  const [user, setUser] = useState(mobxStore.user.username)
 
     const Button = useRef<HTMLDivElement>(null);
     
@@ -42,6 +46,15 @@ const UserSection = () => {
     changeTheme()
     setTheme(localStorage.getItem('Theme') as any)
   }
+
+  const logOut = () => {
+    mobxStore.logout()
+    router.push('/')
+  }
+
+  useEffect(() => {
+    setUser(mobxStore.user.username)
+  }, [mobxStore.user.username])
   
   return (
     <>
@@ -52,13 +65,13 @@ const UserSection = () => {
             <div className={styles.avatar}>
               {
                 mobxStore.user.avatarPath ? (
-                  <Image layout={'fill'} src={`${process.env.NEXT_PUBLIC_AVATARS_URL}${mobxStore?.user?.avatarPath}`} alt="ads"/>
+                  <Image layout={'fill'} src={`${mobxStore?.user?.avatarPath}`} alt="ads"/>
                 ) : null
               }
               
             </div>
             <div className={styles.info}>
-              <h4 className={styles.name}>{mobxStore.user.username}</h4>
+              <h4 className={styles.name}>{user}</h4>
               <span className={styles.subtitle}>
                 Ур. 2
               </span>
@@ -75,7 +88,7 @@ const UserSection = () => {
               <Link href={`/profile/${mobxStore.user.id}`}>
                 <div className={styles.userMenu}>
                   <div className={styles.avatar}>
-                    <Image layout={'fill'} src={`${process.env.NEXT_PUBLIC_AVATARS_URL}${mobxStore.user.avatarPath}`} alt="ads"/>
+                    <Image layout={'fill'} src={`${mobxStore.user.avatarPath}`} alt="ads"/>
                   </div>
                   <p className={styles.userName}>Мой профиль</p>
                 </div>
@@ -113,7 +126,7 @@ const UserSection = () => {
                   </div>
                 </div>
               </Link>
-              <Link onClick={() => mobxStore.logout()} href={'#'}>
+              <Link onClick={() => logOut()} href={'#'}>
                 <div className={`${styles.userMenu} ${styles.exit}`}>
                   <div className={styles.bgAvatar}>
                     <Exit/>

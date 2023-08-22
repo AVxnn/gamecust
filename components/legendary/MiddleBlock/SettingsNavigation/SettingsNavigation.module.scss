@@ -4,7 +4,6 @@
     width: 100%;
     padding: 16px 10px;
     box-sizing: border-box;
-    background-color: $d_main_subbg_color;
     border-radius: 8px;
 
     a {
@@ -12,8 +11,8 @@
     }
 
     .title {
-        margin: 0 0 20px 14px;
-        padding: 0;
+        font-size: 16px;
+        margin: 0 0 16px 16px;
         color: $d_main_text_color;
     }
     .list {
@@ -22,16 +21,75 @@
         gap: 4px;
     }
     .item {
-        padding: 16px 14px;
+        background-color: $d_main_subbg_color;
+        padding: 8px 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
         border-radius: 8px;
-        color: $d_main_text_color;
+    
+        .userMenu {
+            position: relative;
+            display: flex;
+            width: 100%;
+            align-items: center;
+            gap: 16px;
+            border-radius: 99px;
+            transition: all 0.1s ease-in-out;
         
-        &:hover {
-            background-color: $d_main_bg_color;
+        
+            .bgAvatar {
+                width: 28px;
+                height: 28px;
+                border-radius: 8px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+        
+                path {
+                    fill: $const_main_text_color;
+                }
+            }
+        
+            .arrow {
+                width: 18px;
+                height: 18px;
+                position: absolute;
+                margin-top: 5px;
+                transform: rotate(-90deg);
+                right: 0;
+          
+                svg {
+                    path {
+                        fill: $d_main_subtext_color;
+                    }
+                }
+            }
+        
+            .userName {
+                margin: 0;
+                color: $d_main_text_color;
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 400;
+            }
+            
         }
     }
+}
 
-    .active {
-        background-color: $d_main_bg_color;
-    }
+.orange {
+    background: linear-gradient(56deg, #FFC635 0%, #FF8A00 100%);
+}
+
+.purple {
+    background: linear-gradient(56deg, #950ED4 0%, #B300C2 100%);
+}
+
+.green {
+    background: linear-gradient(56deg, #4EBF09 0%, #00C294 100%);
+}
+
+.gray {
+    background: linear-gradient(56deg, #858585 0%, #D2D2D2 100%);
 }

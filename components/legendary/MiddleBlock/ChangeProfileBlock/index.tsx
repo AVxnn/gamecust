@@ -6,7 +6,7 @@ import Comments from './Comments'
 import PostList from '../PostList'
 import { Context } from '../../../../pages/_app'
 
-const ChangeProfileBlock = ({data} : any) => {
+const ChangeProfileBlock = ({data, user} : any) => {
 
     const {mobxStore} = useContext(Context);
 
@@ -19,18 +19,16 @@ const ChangeProfileBlock = ({data} : any) => {
     const posts = data.filter((e: any) => e.published)
     const drafts = data.filter((e: any) => !e.published)
     const router = useRouter() as any
-    
-    console.log(posts);
 
     switch (router.query.id[1]) {
         case 'entries':
-            return <PostList PostData={posts} fetchData={fetchData}/>
+            return <PostList PostData={posts} fetchData={fetchData} textEmpty={'Создайте свой первый пост'}/>
         case 'comments':
             return <Comments />
         case 'drafts':
-            return <Drafts data={drafts} />
+            return <Drafts data={drafts} user={user}/>
         default:
-            return <PostList PostData={posts} fetchData={fetchData}/>;
+            return <PostList PostData={posts} fetchData={fetchData} textEmpty={'Создайте свой первый пост'}/>;
     }
 }
 

@@ -55,6 +55,18 @@ export default class MobxStore {
         }
     }
 
+    async registrationGoogle(username: string, email: string, picture: string, sub : number, email_verified: boolean) {
+        try {
+            const response = await AuthService.registrationGoogle(username, email, picture, sub, email_verified);
+            console.log(response, username, email, picture, sub, email_verified);
+            localStorage.setItem('token', response.data.accessToken);
+            this.setAuth(true);
+            this.setUser(response.data.user);
+        } catch (error: any) {
+            console.log(error.response?.data?.message)
+        }
+    }
+
     async logout() {
         try {
             const response = await AuthService.logout();
@@ -97,7 +109,7 @@ export default class MobxStore {
         try {
             const response = await AuthService.reSaveUser(data);
             console.log(await response)
-            this.setUser(await response.data as any);
+            this.setUser(await response.data.user as any);
             return response;
         } catch (error: any) {
             console.log(error.response?.data?.message)

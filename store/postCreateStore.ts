@@ -89,7 +89,7 @@ export default class PostCreateStore {
         try {
             const post = {
                 username: user.username,
-                userAvatar: '',
+                userAvatar: user.avatarPath,
                 userId: user.id,
                 published: true,
                 publishedDate: `${Date.now()}`,
@@ -128,7 +128,7 @@ export default class PostCreateStore {
         try {
             const post = {
                 username: user.username,
-                userAvatar: '',
+                userAvatar: user.avatarPath,
                 userId: user.id,
                 published: false,
                 publishedDate: `${Date.now()}`,

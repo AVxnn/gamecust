@@ -4,6 +4,10 @@ import { Context } from '../../../../../../../pages/_app';
 import { useDispatch, useSelector } from 'react-redux';
 import { close } from '../../../../../../../features/Popup/PopupAuthSlice'
 import InputCustom from '../../../../PostPreview/common/InputCustom';
+import Google from "../../../../../../../public/img/google.png"
+import Image from "next/image"
+import { GoogleLogin, GoogleOAuthProvider } from '@react-oauth/google';
+import jwt_decode from "jwt-decode"
 
 const Login = ({setAuth} : any) => {
 
@@ -47,6 +51,12 @@ const Login = ({setAuth} : any) => {
         popupHandlers.authPopupClose();
     }
 
+    const loginWithGoogle = async (item: any, token: any) => {
+        mobxStore.registrationGoogle(item.name, item.email, item.picture, item.sub, item.email_verified)
+        notificationStore.addItem({title: 'Аккаунт зарегистрирован', status: 'success', timeLife: 2500})
+        popupHandlers.authPopupClose();
+    }
+    
     return (
         <>
             <div className={styles.rightBlock}>
@@ -56,7 +66,24 @@ const Login = ({setAuth} : any) => {
                 <InputCustom value={email.email} error={email.error} onChange={validateEmail} type={'email'} placeholder={'Email'}/>
                 <InputCustom value={password.password} onChange={validatePassword} type={'password'} placeholder={'Password'}/>
                 <input className={styles.button} onClick={() => login()} type="button" value={'Войти'} />
-                <span className={styles.text} ><span className={styles.link} onClick={() => setAuth(1)}>Регистрация</span></span>
+                <GoogleOAuthProvider clientId={`${process.env.NEXT_PUBLIC_GOOGLE_API}`}>
+                    <div className={styles.oauth}>
+                        <span className={styles.subTitle}>или</span>
+                        <div className={styles.google}>
+                            <Image src={Google} alt={''}/>
+                            <GoogleLogin
+                                onSuccess={(credentialResponse : any)  => {
+                                    var decoded = jwt_decode(credentialResponse.credential)
+                                    loginWithGoogle(decoded, credentialResponse.credential);
+                                }}
+                                onError={() => {
+                                    console.log('Login Failed');
+                                }}
+                            />
+                        </div>
+                    </div>
+                </GoogleOAuthProvider>
+                <span className={styles.text} >Нет аккаунта? <span className={styles.link} onClick={() => setAuth(1)}>Регистрация</span></span>
             </div>
         </>
     )

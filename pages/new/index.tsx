@@ -27,7 +27,7 @@ const New = ({ props } : any) => {
       </Head>
       <Header />
       <MainLayout>
-        <PostList PostData={props} fetchData={fetchData}/>
+        <PostList PostData={props} fetchData={fetchData} textEmpty={'Создайте свой первый пост'}/>
       </MainLayout>
     </>
   )

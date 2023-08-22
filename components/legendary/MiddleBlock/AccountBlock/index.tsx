@@ -49,7 +49,7 @@ const AccountBlock = () => {
                     <Link href={`/profile/${mobxStore.user.id}`} className={`${styles.block} ${styles.mrBottom}`}>
                         <div className={styles.userMenu}>
                             <div className={`${styles.avatar}`}>
-                                <Image layout={'fill'} src={`${process.env.NEXT_PUBLIC_AVATARS_URL}${mobxStore.user.avatarPath}`} alt="ads"/>
+                                <Image layout={'fill'} src={`${mobxStore.user.avatarPath}`} alt="ads"/>
                             </div>
                             <p className={styles.userName}>{mobxStore.user.username}</p>
                             <div className={styles.arrow}>
@@ -61,13 +61,13 @@ const AccountBlock = () => {
             ) : (
                 <div className={`${styles.block} ${styles.mrBottom}`} onClick={() => popupHandlers.authPopupOpen()}>
                     <div className={styles.userMenu}>
-                    <div className={styles.avatar}>
-                        <Avatar />
-                    </div>
-                    <p className={styles.userName}>Войдите в аккаунт</p>
-                    <div className={styles.arrow}>
-                        <Arrow/>
-                    </div>
+                        <div className={styles.avatar}>
+                            <Avatar />
+                        </div>
+                        <p className={styles.userName}>Войдите в аккаунт</p>
+                        <div className={styles.arrow}>
+                            <Arrow/>
+                        </div>
                     </div>
                 </div>
             )
@@ -77,13 +77,13 @@ const AccountBlock = () => {
                     <div className={`${styles.block} ${styles.mrBottom}`}>
                         <Link href={'#'}>
                             <div className={styles.userMenu}>
-                            <div className={`${styles.bgAvatar} ${styles.blue}`}>
-                                <Mark type={true}/>
-                            </div>
-                            <p className={styles.userName}>Заметки (скоро)</p>
-                            <div className={styles.arrow}>
-                                <Arrow/>
-                            </div>
+                                <div className={`${styles.bgAvatar} ${styles.blue}`}>
+                                    <Mark type={true}/>
+                                </div>
+                                <p className={styles.userName}>Заметки (скоро)</p>
+                                <div className={styles.arrow}>
+                                    <Arrow/>
+                                </div>
                             </div>
                         </Link>
                         <Link href={`/profile/${mobxStore.user.id}/drafts`}>

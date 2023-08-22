@@ -6,6 +6,7 @@ import ButtonChanger from './ui/ButtonChanger';
 import { useRouter } from 'next/router';
 import { Context } from '../../../../pages/_app';
 import { observer } from 'mobx-react';
+import IconHandler from '../../common/PostPreview/common/IconHandler';
 
 const dataTag = [
   {
@@ -63,15 +64,15 @@ const ProfileBlock = ({data} : any) => {
           <div className={styles.left}>
             <div className={styles.avatar}>
               <div className={styles.contImg}>
-                <img src={`${process.env.NEXT_PUBLIC_AVATARS_URL}${data.avatarPath}`} alt=""/>
+                <img src={`${data.avatarPath}`} alt=""/>
               </div>
             </div>
           </div>
           <div className={styles.rightText}>
-          {
+            {
               data && (
                 <>
-                  <span className={styles.name}>{data.username}<CheckIcon /></span>
+                  <span className={styles.name}>{data.username}<IconHandler user={data}/></span>
                   <span className={styles.description}>{data?.description}</span>
                 </>
               )
@@ -84,7 +85,7 @@ const ProfileBlock = ({data} : any) => {
             {
               data && (
                 <>
-                  <span className={styles.name}>{data.username}<CheckIcon /></span>
+                  <span className={styles.name}>{data.username}<IconHandler user={data}/></span>
                   <span className={styles.description}>{data?.description}</span>
                 </>
               )
@@ -92,7 +93,7 @@ const ProfileBlock = ({data} : any) => {
           </div>
             <div className={styles.headers}>
             <span className={styles.lvl}>
-              Ур. 2
+              Ур. {data.level}
             </span>
             <span className={styles.subs}>
               {data.subscribers ? data.subscribers.length : 0} подписчиков

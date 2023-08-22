@@ -42,13 +42,13 @@ const MobileMenu = () => {
                     <PlusMenu />
                 </Link>
                 <Link className={styles.link} href={'/'}>
-                    <Notification />
+                    <Notification type="true" />
                 </Link>
                 {
                 mobxStore?.user?.email ? (
                     <Link className={styles.link} href={'/account'}>
                     <div className={styles.avatar}>
-                        <Image layout={'fill'} src={`${process.env.NEXT_PUBLIC_AVATARS_URL}${mobxStore.user.avatarPath}`} alt="ads"/>
+                        <Image layout={'fill'} src={`${mobxStore.user.avatarPath}`} alt="ads"/>
                     </div>
                     </Link>
                 ) : (

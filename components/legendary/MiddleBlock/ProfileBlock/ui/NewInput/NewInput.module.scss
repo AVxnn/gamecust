@@ -30,7 +30,9 @@
         .maxValue {
             position: absolute;
             right: 16px;
-            top: 14px;
+            top: 10px;
+            padding: 4px 0 4px 4px;
+            background-color: $d_main_bg_color;
             color: $d_main_subtext_color;
             font-size: 12px;
         }

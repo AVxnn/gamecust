@@ -3,11 +3,14 @@
 .avatarChanger {
     display: flex;
     gap: 32px;
+    flex-wrap: wrap;
     align-items: center;
 
     .avatar {
         width: 100px;
+        min-width: 100px;
         height: 100px;
+        min-height: 100px;
         position: relative;
         overflow: hidden;
         border-radius: 99px;
@@ -20,6 +23,10 @@
     .buttons {
         display: flex;
         gap: 16px;
+
+        @media screen and (max-width: 720px) {
+            flex-direction: column;
+        }
 
         .file {
             display: none;

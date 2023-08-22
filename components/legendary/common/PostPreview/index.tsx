@@ -26,15 +26,19 @@ const PostPreview = ({data} : any) => {
       <div className={styles.headerContainer}>
         <HeaderPost data={data}/>
       </div>
-      <section className={styles.tags}>
-        {
-          data?.tags?.map((item : any, index : number) => {
-            return (
-              <Tag key={index} popular={item.important} postDay={item.postDay}>{item.title}</Tag>
-            )
-          })
-        }
-      </section>
+      { 
+        data?.tags?.length ? (
+          <section className={styles.tags}>
+            {
+              data.tags.map((item : any, index : number) => {
+                return (
+                  <Tag key={index} data={item}>{item.title}</Tag>
+                )
+              })
+            }
+          </section>
+        ) : null
+      }
       <Link onClick={() => openPost()} className={styles.post} href={`/post/${data.postId}`}>
         <section className={styles.mainInfo}>
           {
@@ -53,22 +57,32 @@ const PostPreview = ({data} : any) => {
                 )
               } else if (item.type === 'br') {
                 return (
-                  <Br key={index} data={item} />
+                  <div key={index} className={styles.container}>
+                      <div className={styles.br}>
+                          <div className={styles.oval}></div>
+                          <div className={styles.oval}></div>
+                          <div className={styles.oval}></div>
+                      </div> 
+                  </div>
                 )
               }
             })
           }
         </section>
       </Link>
-      <section className={styles.hashList}>
-        {
-          data?.hashTags?.map((item : any, index : number) => {
-            return (
-              <HashTag key={index} data={item}/>
-            )
-          })
-        }
-      </section>
+      { 
+        data?.hashTags?.length ? (
+          <section className={styles.hashList}>
+            {
+              data?.hashTags?.map((item : any, index : number) => {
+                return (
+                  <HashTag key={index} data={item}/>
+                )
+              })
+            }
+          </section>
+        ) : null
+      }
       <div className={styles.toolBarContainer}>
         <Toolbar data={data} />
       </div>

@@ -33,11 +33,13 @@ const Subscriptions = ({ props } : any) => {
     
     return resultProps
   }
-
+  
   useEffect(() => {
-    fetchData(0, true)
-  }, [])
 
+    document.addEventListener("DOMContentLoaded", () => fetchData(0, true))
+    
+  }, [])
+  
   return (
     <>
       <Head>
@@ -52,7 +54,7 @@ const Subscriptions = ({ props } : any) => {
       </Head>
       <Header />
       <MainLayout>
-        <PostList PostData={data} fetchData={fetchData} />
+        <PostList PostData={data} fetchData={fetchData} textEmpty={'Подпишись на кого-нибудь'}/>
       </MainLayout>
     </>
   )

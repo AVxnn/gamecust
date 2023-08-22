@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import styles from './Counter.module.scss'
-import Arrow from "../../../../../../public/img/svg/Arrow";
+import Like from "../../../../../../public/img/svg/Like";
 import { Context } from '../../../../../../pages/_app';
 
 const Counter = ({data} : any) => {
@@ -19,11 +19,8 @@ const Counter = ({data} : any) => {
 
   return (
     <div className={styles.counter}>
-      <div onClick={() => setCounterHandler()} className={styles.dislike}>
-        <Arrow />
-      </div>
       <div onClick={() => setCounterHandler()} className={styles.like}>
-          <Arrow />
+        <Like type={true}/>
       </div>
       <span className={styles.title}>{data?.likes?.length}</span>
     </div>

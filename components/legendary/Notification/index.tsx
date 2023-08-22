@@ -42,7 +42,7 @@ const Notification = ({openMenus, setNotifi} : any) => {
     return (
     <>
         <div ref={menuRef} onMouseEnter={() => setOpenMenu(!openMenu)} className={styles.notification}>
-            <NotificationIcon />
+            <NotificationIcon type={'true'}/>
         </div>
         <div ref={dropdownTypesRef} onMouseLeave={() => setOpenMenu(true)} className={`${styles.menu} ${openMenu && styles.menuItem}`}></div>
     </>

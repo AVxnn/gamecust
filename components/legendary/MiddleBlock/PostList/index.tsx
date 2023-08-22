@@ -4,11 +4,13 @@ import PostPreview from "../../common/PostPreview";
 import NewsSlider from "../NewsSlider";
 import Empty from '../../common/Empty';
 
-const PostList = ({PostData, fetchData} : any) => {
+const PostList = ({PostData, fetchData, textEmpty} : any) => {
 
   const [items, setItems] = useState(PostData) as any;
   const [isLoading, setIsLoading] = useState(false);
   const [page, setPage] = useState(1) as any;
+
+  const [userData, setUserData] = useState() as any;
 
   const loadMore = async () => {
     if (isLoading) {
@@ -47,10 +49,12 @@ const PostList = ({PostData, fetchData} : any) => {
     };
   }, [isLoading]);
 
-  return items?.length ? (
+  
+
+  return items.length ? (
     <div className={styles.postList}>
       {
-        items?.length ? items.map((item : any, index : number) => {
+        items.map((item : any, index : number) => {
           if (index > 0 && index % 6 == 0) {
             return (
                 <div className={styles.container} key={index}>
@@ -60,12 +64,12 @@ const PostList = ({PostData, fetchData} : any) => {
             )
           }
           return (
-            <PostPreview key={index} data={item} />
+            <PostPreview key={index} data={item}/>
           )
-        }) : null
+        })
       }
     </div>
-  ) :<Empty text={'Похоже тут пусто'} subtext={'Создайте свой первый пост'} />
+  ) : <Empty text={'Похоже тут пусто'} subtext={textEmpty} />
 };
 
 export default PostList;
