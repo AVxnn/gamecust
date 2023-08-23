@@ -158,6 +158,19 @@ input {
     }
 }
 
+a {
+    color: #9E5BF0;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #D5B5FF;
+}
+
+a:active {
+    color: #A762FF;
+}
+
 @keyframes progressBar {
     0% {
         width: 0;

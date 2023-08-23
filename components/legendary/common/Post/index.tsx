@@ -44,11 +44,11 @@ const Post = ({data} : any) => {
             console.log(item);
             if (item.type === 'h1') {
               return (
-                <h4 key={index} className={styles.title}>{item.value}</h4>
+                <h4 key={index} className={styles.title} dangerouslySetInnerHTML={{__html: item.value}}></h4>
               )
             } else if (item.type === 'text') {
               return (
-                <p key={index} className={styles.subtitle}>{item.value}</p>
+                <p key={index} className={styles.subtitle} dangerouslySetInnerHTML={{__html: item.value}}></p>
               )
             } else if (item.type === 'link') {
               return (

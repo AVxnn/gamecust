@@ -100,6 +100,7 @@ export default class PostCreateStore {
                 hashtags: [],
                 likes: [],
                 comments: [],
+                views: [],
                 viewsCount: 0,
             }
             const response = await CreatePostService.reSavePost(user.id, post);
@@ -139,6 +140,7 @@ export default class PostCreateStore {
                 hashtags: [],
                 likes: [],
                 comments: [],
+                views: [],
                 viewsCount: 0,
             }
             const response = await CreatePostService.reSavePost(user.id, post);
@@ -163,6 +165,7 @@ export default class PostCreateStore {
                 hashtags: data.hashtags,
                 likes: data.likes,
                 comments: data.comments,
+                views: data.views,
                 viewsCount: data.viewsCount,
             }
             const response = await CreatePostService.updatePost(data.postId, post);

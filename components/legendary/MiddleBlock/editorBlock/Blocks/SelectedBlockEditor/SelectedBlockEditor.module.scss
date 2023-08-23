@@ -1,0 +1,70 @@
+@import "/styles/variables.scss";
+
+.block {
+    position: absolute;
+    top: -40px;
+    border-radius: 8px;
+    background-color: $d_main_bg_color;
+    display: flex;
+    gap: 4px;
+    flex-direction: row;
+    padding: 4px;
+    align-items: center;
+    list-style: none;
+    margin-bottom: 12px;
+
+    .item {
+        padding: 4px;
+        height: 20px;
+        width: 20px;
+        border-radius: 8px;
+        cursor: pointer;
+
+        &:hover {
+            background-color: $d_main_color;
+        }
+
+        svg {
+            width: 20px;
+            height: 20px;
+
+            path {
+                fill: $d_main_text_color;
+            }
+        }
+    }
+
+    .arrow {
+        padding: 4px;
+        height: 20px;
+        width: 20px;
+        border-radius: 8px;
+        cursor: pointer;
+
+        &:hover {
+            background-color: $d_main_color;
+        }
+
+        svg {
+            width: 20px;
+            height: 20px;
+            position: relative;
+            transform: rotate(90deg);
+
+            path {
+                fill: $d_main_text_color;
+            }
+        }
+    }
+
+    .input {
+        
+        input {
+            border-radius: 8px;
+            background-color: $d_main_subbg_color;
+            font-size: 16px;
+            padding: 4px 8px;
+            color: $d_main_text_color;
+        }
+    }
+}

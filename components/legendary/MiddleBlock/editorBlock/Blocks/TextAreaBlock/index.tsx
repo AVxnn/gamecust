@@ -1,11 +1,13 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import styles from "./TextAreaBlock.module.scss"
-import TextareaAutosize from 'react-textarea-autosize';
 import DropDownForm from "../../../../common/PostPreview/common/Dropdowns/DropDownForm";
 import DropDownEdit from "../../../../common/PostPreview/common/Dropdowns/DropDownEdit";
 import { Context } from "../../../../../../pages/_app";
 import { observer } from "mobx-react";
 import InformationBlock from "../../InformationBlock";
+import SelectedBlockEditor from "../SelectedBlockEditor/SelectedBlockEditor";
+import DOMPurify from 'dompurify';
+import ContentEditable from "react-contenteditable";
 
 const TextAreaBlock = ({item} : any) => {
 
@@ -13,19 +15,24 @@ const TextAreaBlock = ({item} : any) => {
     const labelRef = useRef<HTMLElement>(null) as any;
     const inputText = useRef<HTMLElement>(null) as any;
 
-    const [value, setValue] = useState<string>('');
     const [hover, setHover] = useState<boolean>(false);
+    const [selectedText, setSelectedText] = useState<string>('');
     
     const [focus, setFocus] = useState<boolean>(false);
     const [isClicked, setIsClicked] = useState<boolean>(false);
+
+    const [posPopup, setPosPopup] = useState({
+        left: 0,
+        top: 0
+    }) as any
 
     const {postCreateStore} = useContext(Context);
     
     const updateHandler = (value : any) => {
         console.log(value)
         setFocus(true);
-        setValue(value)
-        postCreateStore.updateItem({...item, value: value})
+        const sanitizedHtml = DOMPurify.sanitize(value);
+        postCreateStore.updateItem({...item, value: sanitizedHtml})
     }
 
     const hoverChange = (type : any) => {
@@ -45,9 +52,14 @@ const TextAreaBlock = ({item} : any) => {
         }
     }
 
+    const handleTextSelection = () => {
+        if (document) {
+            const text = document.getSelection()?.toString() as any;
+            setSelectedText(text);
+        }
+    };
+
     const keyPress = (e : any) => {
-        console.log(focus, hover, value);
-        
         if (focus && item.value == '') {
             console.log(e.keyCode);
             if (e.keyCode === 8) {
@@ -57,6 +69,31 @@ const TextAreaBlock = ({item} : any) => {
             }
         }
     }
+
+    // Функция отлавливающая вставленный текст
+    const handlePaste = (e : any) => {
+        e.preventDefault();
+        const pastedText = e.clipboardData.getData('text/plain'); // Получаем вставленный текст
+        updateHandler(pastedText)
+    };
+
+    const getSelectedWordCoordinates = () => {
+        if (inputText.current) {
+          const selection = window.getSelection() as any; // Получаем текущее выделение
+          if (selection.rangeCount > 0) {
+            const range = selection.getRangeAt(0); // Получаем первый Range в выделении
+            const rect = range.getBoundingClientRect(); // Получаем координаты выделенного текста
+            setPosPopup({left: rect.left, top: rect.top})
+            console.log(`Left: ${rect.left}, Top: ${rect.top}`);
+          } else {
+            console.log('Текст не выделен.');
+          }
+        }
+    };
+    
+    useEffect(() => {
+        getSelectedWordCoordinates();
+    }, [selectedText]);
     
     useEffect(() => {
         document.addEventListener('keydown', keyPress);
@@ -87,16 +124,18 @@ const TextAreaBlock = ({item} : any) => {
                 onMouseEnter={() => hoverChange('on')}
                 onMouseLeave={() => hoverChange('off')} 
                 className={styles.container}>
-                <TextareaAutosize
+                <ContentEditable
                     contentEditable={true}
-                    ref={inputText}
+                    innerRef={inputText}
                     className={`${styles.inputMain} ${styles[item.type]}`}
-                    onChange={(e) => updateHandler(e.currentTarget.value)}
+                    onChange={(e) => updateHandler(e.target.value)}
+                    onMouseUp={handleTextSelection}
+                    onPaste={handlePaste}
                     onClick={() => setFocus(true)}
                     onFocus={() => setFocus(true)}
-                    value={item.value || ''}
+                    html={item.value}
+                    tagName='article'
                     suppressContentEditableWarning={true}
-                    placeholder="Нажмите Tab для выбора инструмента"
                 />
                 {
                     hover && !item.value || focus && !item.value ? (
@@ -110,6 +149,11 @@ const TextAreaBlock = ({item} : any) => {
                 }
                 <InformationBlock item={item} />
             </div>
+            {
+                selectedText ? (
+                    <SelectedBlockEditor ref={popupRef} posLeft={posPopup} selectedText={selectedText} item={item} />
+                ) : null
+            }
         </>
     );
 }

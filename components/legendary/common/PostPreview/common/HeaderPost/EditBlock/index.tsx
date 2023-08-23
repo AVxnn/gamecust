@@ -19,7 +19,6 @@ const EditBlock = ({ postId }: any) => {
         e.preventDefault();
         notificationStore.addItem({title: 'Пост удален', status: 'success', timeLife: 2500})
         postCreateStore.deletePost(postId);
-        router.push('/')
     }
     
     useEffect(() => {

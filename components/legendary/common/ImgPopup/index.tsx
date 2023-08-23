@@ -13,7 +13,7 @@ const ImgPopup = ({data} : any) => {
       <div className={styles.container}>
         <motion.img
           className={styles.imageCont}
-          src={process.env.NEXT_PUBLIC_IMAGES_URL + data?.href}
+          src={data?.href}
           onClick={() => setActive(true)}
           layoutId={"image" + data.href} />
       </div>
@@ -42,7 +42,7 @@ const ImgPopup = ({data} : any) => {
                 animate={{ opacity: 0.5 }}
                 exit={{ opacity: 0 }}
               />
-              <motion.img src={process.env.NEXT_PUBLIC_IMAGES_URL + data?.href} layoutId={"image" + data.href} onClick={() => setActive(null)} />
+              <motion.img src={data?.href} layoutId={"image" + data.href} onClick={() => setActive(null)} />
             </div>
           )}
         </AnimatePresence>

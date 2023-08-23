@@ -4,6 +4,7 @@ import DraftItem from './DraftItem'
 import Empty from '../../../common/Empty';
 import { Context } from '../../../../../pages/_app';
 import { useRouter } from 'next/router';
+import { observer } from 'mobx-react-lite';
 
 const Drafts = ({data, user} : any) => {
 
@@ -11,7 +12,6 @@ const Drafts = ({data, user} : any) => {
 
     const router = useRouter()
 
-    console.log('w', mobxStore.user.id, user._id);
     useEffect(() => {
         if (mobxStore.user.id !== user._id) {
             router.back()
@@ -37,4 +37,4 @@ const Drafts = ({data, user} : any) => {
     )
 }
 
-export default Drafts
+export default observer(Drafts);

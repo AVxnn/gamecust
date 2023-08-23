@@ -95,7 +95,7 @@ const MediaUpload = observer(({item} : any) => {
                   {
                     item?.href ? (
                       <div className={styles.uploadImage}>
-                        <Image layout={'fill'} src={process.env.NEXT_PUBLIC_IMAGES_URL + item.href} alt="" />
+                        <Image layout={'fill'} src={item.href} alt="" />
                       </div>
                     ) : !dragActive ? (
                       <label htmlFor={'img'} className={styles.info}>

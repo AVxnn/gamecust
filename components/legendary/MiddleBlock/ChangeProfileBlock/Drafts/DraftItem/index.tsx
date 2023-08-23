@@ -5,6 +5,7 @@ import Trash from '../../../../../../public/img/svg/Trash'
 import Link from 'next/link'
 import { Context } from '../../../../../../pages/_app'
 import { useRouter } from 'next/router'
+import { observer } from 'mobx-react-lite'
 
 const DraftItem = ({data} : any) => {
     
@@ -48,4 +49,4 @@ const DraftItem = ({data} : any) => {
     )
 }
 
-export default DraftItem
+export default observer(DraftItem);

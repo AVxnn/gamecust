@@ -5,6 +5,7 @@ import Drafts from './Drafts'
 import Comments from './Comments'
 import PostList from '../PostList'
 import { Context } from '../../../../pages/_app'
+import { observer } from 'mobx-react-lite'
 
 const ChangeProfileBlock = ({data, user} : any) => {
 
@@ -32,4 +33,4 @@ const ChangeProfileBlock = ({data, user} : any) => {
     }
 }
 
-export default ChangeProfileBlock
+export default observer(ChangeProfileBlock)

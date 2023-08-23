@@ -11,13 +11,13 @@ import { Context } from '../../../../pages/_app';
 
 const PostPreview = ({data} : any) => {
 
-  const {postCreateStore} = useContext(Context);
+  const {mobxStore, postCreateStore} = useContext(Context);
 
   const openPost = () => {
-    let newData = data
-    newData.viewsCount = data.viewsCount + 1
+    let result = data.views.filter((user: string) => user == mobxStore.user.id)
     
-    postCreateStore.updatePost(newData);
+    if (!result.length) postCreateStore.updatePost({...data, views: [...data.views, mobxStore.user.id], viewsCount: data.viewsCount + 1});
+
   }
 
   return (
@@ -45,11 +45,11 @@ const PostPreview = ({data} : any) => {
             data?.stared.map((item: any, index: number) => {
               if (item.type === 'h1') {
                 return (
-                  <h4 key={index} className={styles.title}>{item.value}</h4>
+                  <h4 key={index} className={styles.title} dangerouslySetInnerHTML={{__html: item.value}}></h4>
                 )
               } else if (item.type === 'text') {
                 return (
-                  <p key={index} className={styles.subtitle}>{item.value}</p>
+                  <p key={index} className={styles.subtitle} dangerouslySetInnerHTML={{__html: item.value}}></p>
                 )
               } else if (item.type === 'media') {
                 return (
