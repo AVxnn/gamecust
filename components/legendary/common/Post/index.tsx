@@ -64,7 +64,7 @@ const Post = ({post, comments} : any) => {
               )
             } else if (item.type === 'br') {
               return (
-                <div className={styles.container}>
+                <div key={index} className={styles.container}>
                     <div className={styles.br}>
                         <div className={styles.oval}></div>
                         <div className={styles.oval}></div>
