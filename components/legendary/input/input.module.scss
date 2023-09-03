@@ -14,25 +14,25 @@
 
   .search,
   .active {
-    font-size: 16px;
-    box-sizing: border-box;
-    font-weight: 500;
-    padding: 12px 24px;
+    padding: 11px 16px;
+    border: 1px solid $d_main_bg_color;
     border-radius: 8px;
-    color: $d_main_text_color;
+    font-size: 16px;
     background-color: $d_main_bg_color;
-    border: 1px solid $d_main-Bg-color-hover;
+    color: $d_main_text_color;
     transition: all 0.1s ease-in-out;
-
+  
     &:hover {
-      background-color: rgba(0, 0, 0, 0);
-      border-color: $d_main_bg_color;
+      background-color: $d_main_subbg_color;
+      border: 1px solid $d_main_color;
+      box-shadow: 0 0 2px 3px rgba(#9E5BF0, 0.2);
     }
   }
 
   .active {
-    background-color: rgba(0, 0, 0, 0);
-    border-color: $d_main_black_color;
+    background-color: $d_main_subbg_color;
+    border: 1px solid $d_main_color;
+    box-shadow: 0 0 2px 3px rgba(#9E5BF0, 0.2);
   }
 }
 

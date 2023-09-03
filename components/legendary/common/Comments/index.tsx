@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import styles from './Comments.module.scss'
 import Smile from '../../../../public/img/svg/Smile'
 import ImageAdd from '../../../../public/img/svg/ImageAdd'
@@ -6,6 +6,7 @@ import Button from "../Button";
 import Tabs from "../Tabs";
 import TextareaAutosize from 'react-textarea-autosize';
 import Item from "./Item";
+import { Context } from '../../../../pages/_app';
 
 const list = [
   {
@@ -16,13 +17,22 @@ const list = [
   }
 ]
 
-const Comments = ({data} : any) => {
+const Comments = ({dataS} : any) => {
 
   const [active, setActive] = useState(0)
   const [value, setValue] = useState('')
 
+  
+  const {mobxStore, commentsCreateStore} = useContext(Context);
+
   const changePage = (index : number) => {
     setActive(index)
+  }
+  console.log(dataS);
+  
+  const createPost = () => {
+      console.log('send');
+      commentsCreateStore.createComment(mobxStore.user, {text: value, createdAt: new Date(), postId: dataS.postId}, dataS)
   }
 
   return (
@@ -32,15 +42,15 @@ const Comments = ({data} : any) => {
         <div className={styles.footer}>
           <div className={styles.left}>
             <div className={styles.icon}>
-              <Smile />
+              <ImageAdd />
             </div>
             <div className={styles.icon}>
-              <ImageAdd />
+              <Smile />
             </div>
           </div>
           <div>
             {
-              value && <Button type={'primary'} size={'small'}>Отправить</Button>
+              value && <Button clb={createPost} type={'primary'} size={'small'}>Отправить</Button>
             }
           </div>
         </div>
@@ -56,7 +66,7 @@ const Comments = ({data} : any) => {
       </ul>
       <div className={styles.listComments}>
         {
-          data?.comments?.map((item : any, index : number) => {
+          dataS?.comments?.map((item : any, index : number) => {
             return (
               <Item key={index} data={item}/>
             )

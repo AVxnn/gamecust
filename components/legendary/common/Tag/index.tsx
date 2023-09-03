@@ -9,13 +9,13 @@ const Tag = ({data} : any) => {
       case 'popular':
         return (
           <div className={`${styles.tag} ${styles.important}`}>
-            <Fire />{data.text}
+            <Fire /><span>{data.text}</span>
           </div>
         )
-      case 'postDay':
+      case 'postday':
         return (
           <div className={`${styles.tag} ${styles.postDay}`}>
-            {data.text}
+            <span>{data.text}</span>
           </div>
         )
     }

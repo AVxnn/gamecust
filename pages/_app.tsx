@@ -7,25 +7,27 @@ import MobxStore from '../store/mobxStore';
 import PostCreateStore from '../store/postCreateStore';
 import NotificationStore from '../store/notificationStore';
 import PopupHandlers from '../store/popupHandlers'
-import { AnimatePresence } from 'framer-motion';
+import CommentsCreateStore from '../store/commentsCreateStore';
 import Head from 'next/head';
-import { GoogleOAuthProvider } from '@react-oauth/google';
 interface State {
   mobxStore: MobxStore;
   postCreateStore: PostCreateStore;
   notificationStore: NotificationStore;
   popupHandlers: PopupHandlers;
+  commentsCreateStore: CommentsCreateStore;
 }
 const mobxStore = new MobxStore()
 const postCreateStore = new PostCreateStore()
 const notificationStore = new NotificationStore()
 const popupHandlers = new PopupHandlers()
+const commentsCreateStore = new CommentsCreateStore()
 
 export const Context = createContext<State>({
   mobxStore,
   postCreateStore,
   notificationStore,
-  popupHandlers
+  popupHandlers,
+  commentsCreateStore
 })
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -60,10 +62,11 @@ export default function App({ Component, pageProps }: AppProps) {
         <link rel="manifest" href="/site.webmanifest" />
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
         <meta name="msapplication-TileColor" content="#da532c" />
+        <meta name="yandex-verification" content="444594329f6f2654" />
         <meta name="theme-color" content="#ffffff"></meta>
       </Head>
       <Provider store={store}>
-        <Context.Provider value={{mobxStore, postCreateStore, notificationStore, popupHandlers}}>
+        <Context.Provider value={{mobxStore, postCreateStore, notificationStore, popupHandlers, commentsCreateStore}}>
           <Component {...pageProps} />
         </Context.Provider>
       </ Provider>

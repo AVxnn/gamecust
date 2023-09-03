@@ -33,7 +33,7 @@ const Post = ({data} : any) => {
         {
           data?.tags?.map((item : any, index : number) => {
             return (
-              <Tag key={index} popular={item.important} postDay={item.postDay}>{item.title}</Tag>
+              <Tag key={index} data={item}></Tag>
             )
           })
         }
@@ -79,7 +79,7 @@ const Post = ({data} : any) => {
       </section>
       <div id='comments'></div>
       <Toolbar data={data} />
-      <Comments data={data}/>
+      <Comments dataS={data}/>
     </div>
   );
 };

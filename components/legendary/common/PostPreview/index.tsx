@@ -6,7 +6,6 @@ import HashTag from "./common/hashtag";
 import Toolbar from "./common/toolbar";
 import HeaderPost from "./common/HeaderPost";
 import ImageAndSlider from "../ImageAndSlider";
-import Br from './common/SelectForm/ui/Br';
 import { Context } from '../../../../pages/_app';
 
 const PostPreview = ({data} : any) => {

@@ -3,10 +3,8 @@
 .tag,
 .important,
 .postDay {
-  padding: 4px 8px;
   font-size: 10px;
   color: $const_main_text_color;
-  background-color: #4A7EE1;
   border-radius: 99px;
 }
 
@@ -26,5 +24,49 @@
 }
 
 .postDay {
-  background: linear-gradient(96.56deg, #8146FF 0%, #F282EE 100%);
+  position: relative;
+  padding: 6px 12px;
+  font-size: 12px;
+  background: linear-gradient(96.56deg, #8146FF 0%, #bb49b7 100%);
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  overflow: hidden;
+
+  span {
+    z-index: 2;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: 0;
+    width: 20px;
+    height: 40px;
+    transform: rotate(20deg);
+    filter: blur(5px);
+    transition: all 0.2 ease;
+    background-color: rgba(255, 255, 255, 0.5);
+    animation: animGradient 5s ease-in-out infinite;
+  }
+
+  &:hover {
+    transition: all 0.2s ease-in-out;
+    transform: rotate(-7deg);
+  }
+}
+
+@keyframes animGradient {
+  0% {
+    left: -30px;
+  }
+  40% {
+    left: -30px;
+  }
+  70% {
+    left: 100px;
+  }
+  100% {
+    left: 200px;
+  }
 }
