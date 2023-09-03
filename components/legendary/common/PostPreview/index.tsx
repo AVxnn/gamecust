@@ -15,8 +15,7 @@ const PostPreview = ({data} : any) => {
   const openPost = () => {
     let result = data.views.filter((user: string) => user == mobxStore.user.id)
     
-    if (!result.length) postCreateStore.updatePost({...data, views: [...data.views, mobxStore.user.id], viewsCount: data.viewsCount + 1});
-
+    if (!result.length && mobxStore.user.id) postCreateStore.updatePost({...data, views: [...data.views, mobxStore.user.id], viewsCount: data.viewsCount + 1});
   }
 
   return (

@@ -138,19 +138,23 @@ const TextAreaBlock = ({item} : any) => {
                     suppressContentEditableWarning={true}
                 />
                 {
+                    !item.value && <span className={`${styles.placeholder} ${styles[item.type]}`}>Введи текст или нажми Tab</span>
+                }
+                
+                {
                     hover && !item.value || focus && !item.value ? (
                         <DropDownForm hoverChange={hoverChange} id={item.id} focus={focus} setFocus={setFocus} ref={popupRef} setIsClicked={setIsClicked} isClicked={isClicked} />
                     ) : null
                 }
                 {
-                    hover && item.value && (
+                    hover && item.value || focus && item.value ? (
                         <DropDownEdit ref={popupRef} item={item} setIsClicked={setIsClicked} isClicked={isClicked} />
-                    )
+                    ) : null
                 }
                 <InformationBlock item={item} />
             </div>
             {
-                selectedText ? (
+                selectedText && focus ? (
                     <SelectedBlockEditor ref={popupRef} posLeft={posPopup} selectedText={selectedText} item={item} />
                 ) : null
             }

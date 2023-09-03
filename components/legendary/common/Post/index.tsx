@@ -10,28 +10,30 @@ import ImgPopup from '../ImgPopup';
 import Br from '../PostPreview/common/SelectForm/ui/Br';
 
 
-const Post = ({data} : any) => {
+const Post = ({post, comments} : any) => {
+
+  console.log(comments);
 
   const [userData, setUserData] = useState() as any
 
   const getUser = async () => {
-    const user = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/user/getUserId/${data.userId}`);  
+    const user = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/user/getUserId/${post.userId}`);  
 
     setUserData(await user?.json())
   }
 
   useEffect(() => {
     getUser()
-  }, [data])
+  }, [post])
 
-  if (!data?.username) return <>Loading...</>
+  if (!post?.username) return <>Loading...</>
   
   return (
     <div className={styles.postContainer}>
-      <HeaderPost data={data} user={userData}/>
+      <HeaderPost data={post} user={userData}/>
       <section className={styles.tags}>
         {
-          data?.tags?.map((item : any, index : number) => {
+          post?.tags?.map((item : any, index : number) => {
             return (
               <Tag key={index} data={item}></Tag>
             )
@@ -40,7 +42,7 @@ const Post = ({data} : any) => {
       </section>
       <section className={styles.mainInfo}>
         {
-          data?.data?.map((item: any, index: number) => {
+          post?.data?.map((item: any, index: number) => {
             console.log(item);
             if (item.type === 'h1') {
               return (
@@ -62,7 +64,13 @@ const Post = ({data} : any) => {
               )
             } else if (item.type === 'br') {
               return (
-                <Br key={index} data={item} />
+                <div className={styles.container}>
+                    <div className={styles.br}>
+                        <div className={styles.oval}></div>
+                        <div className={styles.oval}></div>
+                        <div className={styles.oval}></div>
+                    </div>  
+                </div>
               )
             }
           })
@@ -70,7 +78,7 @@ const Post = ({data} : any) => {
       </section>
       <section className={styles.hashList}>
         {
-          data?.hashTags?.map((item : any, index : number) => {
+          post?.hashTags?.map((item : any, index : number) => {
             return (
               <HashTag key={index} data={item}/>
             )
@@ -78,8 +86,8 @@ const Post = ({data} : any) => {
         }
       </section>
       <div id='comments'></div>
-      <Toolbar data={data} />
-      <Comments dataS={data}/>
+      <Toolbar data={post} />
+      <Comments dataS={post} comments={comments}/>
     </div>
   );
 };

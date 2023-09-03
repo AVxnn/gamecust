@@ -112,7 +112,29 @@
       img {
           object-fit: contain;
       }
-  }
+    }
+
+    
+    .container {
+      display: flex;
+      position: relative;
+      padding: 16px 0;
+      justify-content: center;
+
+      .br {
+        display: flex;
+        gap: 8px;
+        position: relative;
+        margin: 0 auto;
+  
+        .oval {
+            width: 8px;
+            height: 8px;
+            border-radius: 99px;
+            background-color: $d_main_text_color;
+        }
+      }
+    }
   }
 
   .hashList {

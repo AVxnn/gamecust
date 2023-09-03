@@ -23,6 +23,17 @@
         font-size: 26px;
     }
 
+    .placeholder {
+        user-select: none;
+        pointer-events: none;
+        top: 0;
+        padding: 8px 0;
+        font-size: 26px;
+        color: $d_main_subtext_color;
+        position: absolute;
+        cursor: text;
+    }
+
     .text {
         padding: 8px 0;
         font-weight: 500;

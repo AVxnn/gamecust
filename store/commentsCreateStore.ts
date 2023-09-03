@@ -9,14 +9,13 @@ export default class CommentsCreateStore {
 
     async createComment(user: any, data: any, dataS: any) {
         try {
-            console.log(data);
-            
             const comment = {
                 text: data.text,
                 avatarPath: user.avatarPath,
                 author: user.username,
                 userId: user.id,
                 postId: data.postId,
+                commentId: data.commentId,
                 repliesId: data.repliesId || '',
                 createdAt: `${Date.now()}`,
                 likes: [],

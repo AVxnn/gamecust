@@ -18,7 +18,9 @@ const EditorBlock = () => {
   const [pressKey, setPressKey] = useState(false)
 
   const saveHandler = () => {
-    postCreateStore.reSavePost(mobxStore.user, postCreateStore.data, postCreateStore.postId)
+    if (postCreateStore.data.length > 1 && mobxStore.user.id) {
+      postCreateStore.reSavePost(mobxStore.user, postCreateStore.data, postCreateStore.postId)
+    }
     setPressKey(false)
   }
 

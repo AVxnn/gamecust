@@ -17,7 +17,6 @@ const ToolComment = ({data} : any) => {
         </div>
       </div>
       <div className={styles.rightBlock}>
-        <Counter data={data}/>
       </div>
     </section>
   );

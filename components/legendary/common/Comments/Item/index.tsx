@@ -3,6 +3,8 @@ import styles from './Item.module.scss'
 import ToolComment from "../ToolComment";
 import ImgPopup from "../../ImgPopup";
 import Image from 'next/image'
+import { formatDistance } from 'date-fns'
+import { ru } from 'date-fns/locale';
 
 const Item = ({data} : any) => {
   return (
@@ -10,11 +12,11 @@ const Item = ({data} : any) => {
       <div className={styles.comment}>
         <div className={styles.topBlock}>
           <div className={styles.avatar}>
-            <Image layout={'fill'} src={'https://i.pinimg.com/736x/78/a6/de/78a6dee0461f3a04c067b4198730bfb2.jpg'} alt="ads"/>
+            <Image layout={'fill'} src={`${data.AvatarPath}`} alt="ads"/>
           </div>
           <div className={styles.rightInfo}>
-            <span className={styles.name}>{data.name}</span>
-            <span className={styles.date}>25  минут</span>
+            <span className={styles.name}>{data.author}</span>
+            <span className={styles.date}>{formatDistance(+data.createdAt, Date.now(), { addSuffix: true, locale: ru })}</span>
             <div className={styles.content}>
               <p className={styles.text}>{data.text}</p>
               {

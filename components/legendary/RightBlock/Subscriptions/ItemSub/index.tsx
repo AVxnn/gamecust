@@ -30,11 +30,11 @@ const ItemSub = ({user} : any) => {
                 <div className={styles.image}>
                     <ImageLoader
                         className={styles.avatar}
-                        src={`${process.env.NEXT_PUBLIC_AVATARS_URL}${user?.avatarPath}`}
+                        src={`${user?.avatarPath}`}
                         wrapper={React.createFactory('div')}
                         preloader={preloader}>
                     </ImageLoader>
-                    <Image layout={'fill'} src={`${process.env.NEXT_PUBLIC_AVATARS_URL}${userData.avatarPath}`} alt="ads"/>
+                    <Image layout={'fill'} src={`${userData.avatarPath}`} alt="ads"/>
                 </div>
                 <span className={styles.username}>{userData.username}</span>
             </div>

@@ -12,7 +12,7 @@ import Contacts from "../../../components/legendary/RightBlock/Contacts";
 import Post from "../../../components/legendary/common/Post";
 import LoginRight from "../../../components/legendary/RightBlock/LoginRight";
 
-const OnePost = ({props} : any) => {
+const OnePost = ({post, comments} : any) => {
 
   return (
     <>
@@ -29,7 +29,7 @@ const OnePost = ({props} : any) => {
       <Header />
       <Layout>
         <div className={styles.middleColumn}>
-          <Post data={props} />
+          <Post post={post} comments={comments}/>
         </div>
         <div className={styles.rightColumn}>
           <LoginRight />
@@ -48,10 +48,14 @@ const OnePost = ({props} : any) => {
 
 export async function getServerSideProps(context : any) {
 
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/post/getPost/${context.params.post}`);
+  const post = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/post/getPost/${context.params.post}`);
+  const comments = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/comment/getComments/${context.params.post}`);
   
   return {
-    props: {props : await res?.json()}, // will be passed to the page component as props
+    props: {
+      post : await post?.json(),
+      comments: await comments?.json()
+    }, // will be passed to the page component as props
   }
 }
 
