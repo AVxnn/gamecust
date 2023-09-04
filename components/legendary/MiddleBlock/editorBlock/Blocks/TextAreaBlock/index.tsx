@@ -9,7 +9,7 @@ import SelectedBlockEditor from "../SelectedBlockEditor/SelectedBlockEditor";
 import DOMPurify from 'dompurify';
 import ContentEditable from "react-contenteditable";
 
-const TextAreaBlock = ({item} : any) => {
+const TextAreaBlock = ({item, dragControls} : any) => {
 
     const popupRef = useRef<HTMLDivElement>(null);
     const labelRef = useRef<HTMLElement>(null) as any;
@@ -122,7 +122,7 @@ const TextAreaBlock = ({item} : any) => {
             <div
                 ref={labelRef}
                 onMouseEnter={() => hoverChange('on')}
-                onMouseLeave={() => hoverChange('off')} 
+                onMouseLeave={() => hoverChange('off')}
                 className={styles.container}>
                 <ContentEditable
                     contentEditable={true}
@@ -143,12 +143,12 @@ const TextAreaBlock = ({item} : any) => {
                 
                 {
                     hover && !item.value || focus && !item.value ? (
-                        <DropDownForm hoverChange={hoverChange} id={item.id} focus={focus} setFocus={setFocus} ref={popupRef} setIsClicked={setIsClicked} isClicked={isClicked} />
+                        <DropDownForm dragControls={dragControls} hoverChange={hoverChange} id={item.id} focus={focus} setFocus={setFocus} ref={popupRef} setIsClicked={setIsClicked} isClicked={isClicked} />
                     ) : null
                 }
                 {
-                    hover && item.value || focus && item.value ? (
-                        <DropDownEdit ref={popupRef} item={item} setIsClicked={setIsClicked} isClicked={isClicked} />
+                    hover && item.value ? (
+                        <DropDownEdit dragControls={dragControls} ref={popupRef} item={item} setIsClicked={setIsClicked} isClicked={isClicked} />
                     ) : null
                 }
                 <InformationBlock item={item} />

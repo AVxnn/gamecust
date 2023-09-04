@@ -7,7 +7,6 @@ import Toolbar from "../PostPreview/common/toolbar";
 import Comments from "../Comments";
 import ReactPlayer from 'react-player';
 import ImgPopup from '../ImgPopup';
-import Br from '../PostPreview/common/SelectForm/ui/Br';
 
 
 const Post = ({post, comments} : any) => {
@@ -30,7 +29,7 @@ const Post = ({post, comments} : any) => {
   
   return (
     <div className={styles.postContainer}>
-      <HeaderPost data={post} user={userData}/>
+      <HeaderPost data={post} user={userData} fixed={true}/>
       <section className={styles.tags}>
         {
           post?.tags?.map((item : any, index : number) => {

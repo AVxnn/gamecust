@@ -27,7 +27,7 @@ const DraftItem = ({data} : any) => {
                 <div className={styles.image}>
                     {
                         image ? (
-                            <Image layout={'fill'} src={process.env.NEXT_PUBLIC_IMAGES_URL + image} alt={''} />
+                            <Image layout={'fill'} src={image} alt={''} />
                         ) : (
                             <div className={styles.noImage}></div>
                         )
@@ -35,7 +35,7 @@ const DraftItem = ({data} : any) => {
                     
                 </div>
                 <div className={styles.mainInfo}>
-                    <h2 className={styles.title}>{data?.data?.filter((e: any) => e.type == 'h1')[0]?.value}</h2>
+                    <h2 className={styles.title} dangerouslySetInnerHTML={{ __html: data?.data?.filter((e: any) => e.type == 'h1')[0]?.value}}></h2>
                     <div className={styles.bottomInfo}>
                         {/* <ReactTimeAgo className={styles.date} date={data.publishedDate} locale="ru-RU"/> */}
                         <div onClick={(e) => deleteHandler(e)} className={styles.delete}>

@@ -8,7 +8,7 @@ import Image from "next/image"
 import DropDownEdit from "../../../Dropdowns/DropDownEdit";
 import InformationBlock from "../../../../../../MiddleBlock/editorBlock/InformationBlock";
 
-const MediaUpload = observer(({item} : any) => {
+const MediaUpload = observer(({item, dragControls} : any) => {
 
     const popupRef = useRef<HTMLDivElement>(null);
     const labelRef = useRef<HTMLDivElement>(null);
@@ -118,7 +118,7 @@ const MediaUpload = observer(({item} : any) => {
                   }
                 {
                     hover && (
-                        <DropDownEdit ref={popupRef} item={item} setIsClicked={setIsClicked} isClicked={isClicked} />
+                        <DropDownEdit dragControls={dragControls} ref={popupRef} item={item} setIsClicked={setIsClicked} isClicked={isClicked} />
                     )
                 }
                 <InformationBlock item={item} />

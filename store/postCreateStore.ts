@@ -40,13 +40,12 @@ export default class PostCreateStore {
             this.data.splice(id + 1, 0, data);
         }
         console.log('data', this.data, data, id);
-        
-        
     }
 
     sortArray(data : any) {
-        const result = sortIds(this.data)
+        const result = sortIds(data)
         this.data = result;
+        return result
     }
 
     updateArray(data : any) {

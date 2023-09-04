@@ -11,6 +11,7 @@ import { formatDistance } from 'date-fns'
 import { ru } from 'date-fns/locale';
 import { observer } from 'mobx-react';
 import IconHandler from '../IconHandler';
+import { useMotionValueEvent, useScroll } from 'framer-motion';
 
 function preloader() {
   return (
@@ -20,10 +21,24 @@ function preloader() {
   )
 }
 
-const HeaderPost = ({data} : any) => {
+const HeaderPost = ({data, fixed} : any) => {
   
   const {mobxStore, popupHandlers, notificationStore} = useContext(Context);
   const [subscribe, setSubscribe] = useState(false)
+
+  const [isfixed, setIsFixed] = useState(false)
+
+  const { scrollY } = useScroll()
+
+  useMotionValueEvent(scrollY, "change", (latest: any) => {
+    console.log(latest);
+    
+    if (latest > 14) {
+      setIsFixed(true)
+    } else {
+      setIsFixed(false)
+    }
+  })
 
   const changeSub = async () => {
     if(!mobxStore.user.email) {
@@ -46,7 +61,7 @@ const HeaderPost = ({data} : any) => {
   console.log(data);
   
   return (
-    <header className={styles.header}>
+    <header className={`${styles.header} ${fixed && isfixed ? styles.fixed : null}`}>
       <div className={styles.leftBlock}>
         <Link href={`/profile/${data.userId}`}>
           {
@@ -67,20 +82,21 @@ const HeaderPost = ({data} : any) => {
           </div>
         </Link>
       </div>
-      {
-        isRoleHandler(mobxStore?.user?.id, data.userId) ? ( 
-          <EditBlock postId={data.postId} />
-        ) : mobxStore?.user?.subscriptions?.filter((e) => e === data.userId).length ? (
-          <Button clb={() => changeSub()} type={'primary'} size={'small'}>
-            Отписаться
-          </Button>
-        ) : (
-          <Button clb={() => changeSub()} type={'primary'} size={'small'}>
-            Подписаться
-          </Button>
-        )
-      }
-
+      <div className={styles.rightBlock}>
+        {
+          isRoleHandler(mobxStore?.user?.id, data.userId) ? ( 
+            <EditBlock postId={data.postId} />
+          ) : mobxStore?.user?.subscriptions?.filter((e) => e === data.userId).length ? (
+            <Button clb={() => changeSub()} type={'primary'} size={'small'}>
+              Отписаться
+            </Button>
+          ) : (
+            <Button clb={() => changeSub()} type={'primary'} size={'small'}>
+              Подписаться
+            </Button>
+          )
+        }
+      </div>
     </header>
   )
 };

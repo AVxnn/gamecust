@@ -33,6 +33,7 @@
     }
 
     .avatar {
+      max-height: 42px;
 
       img {
         position: relative;
@@ -102,3 +103,45 @@
   }
 }
 
+.fixed {
+  background-color: $d_main_subbg_glass_color;
+  backdrop-filter: blur(8px);
+  margin: 0 -24px;
+  margin-top: -7px;
+  position: fixed;
+  top: 67px;
+  width: 936px;
+  z-index: 2;
+
+  @media screen and (max-width: 1280px) {
+    width: 670px;
+  }
+
+  @media screen and (max-width: 1024px) {
+    max-width: 936px;
+    width: 100%;
+  }
+
+  .rightBlock {
+    height: 46px;
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin: 0 24px;
+  }
+
+  .leftBlock {
+    margin: 0 24px;
+
+    .info {
+      margin: 0;
+      .date {
+        display: none;
+      }
+    }
+
+    .btn {
+      margin: 0 24px;
+    }
+  } 
+}

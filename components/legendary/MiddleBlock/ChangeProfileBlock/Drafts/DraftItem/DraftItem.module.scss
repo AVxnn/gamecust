@@ -11,6 +11,10 @@
     border-radius: 8px;
     cursor: pointer;
 
+    @media screen and (max-width: 540px) {
+        flex-direction: column;
+    }
+
     &:hover {
         background-color: $d_main_bg_color;
     }
@@ -23,17 +27,33 @@
         position: relative;
         min-width: 200px;
         height: 120px;
-        border-radius: 8px;
-        overflow: hidden;
 
-        .noImage {
+        @media screen and (max-width: 768px) {
+            min-width: 140px;
+            height: 80px;
+        }
+
+        @media screen and (max-width: 540px) {
+            min-width: 0;
             width: 100%;
-            height: 100%;
-            background-image: url("../../../../../../public/img/noImageDrafts.png");
+            height: 200px;
+            overflow: visible;
         }
 
         img {
             object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .noImage {
+            background-size: 100%;
+            background-position: 100% 50%;
+            background-repeat: no-repeat;
+            border-radius: 8px;
+            width: 100%;
+            background-color: #9E5BF0;
+            height: 100%;
+            background-image: url("../../../../../../public/img/noImageDrafts.png");
         }
     }
 
@@ -43,10 +63,19 @@
         flex-direction: column;
         justify-content: space-between;
 
+        @media screen and (max-width: 540px) {
+            gap: 24px;
+        }
+
         .title {
             margin: 0;
             padding: 0;
+            font-size: 24px;
             color: $d_main_text_color;
+
+            @media screen and (max-width: 768px) {
+                font-size: 18px;
+            }
         }
         .bottomInfo {
             display: flex;
@@ -62,6 +91,12 @@
                 gap: 8px;
                 cursor: pointer;
 
+                @media screen and (max-width: 768px) {
+                    width: 18px;
+                    min-width: 18px;
+                    height: 18px;
+                }
+
                 &:hover {
                     path {
                         fill: $d_main_text_hover_color;
@@ -73,6 +108,12 @@
 
                 svg {
                     margin-top: -1px;
+
+                    @media screen and (max-width: 768px) {
+                        width: 18px;
+                        min-width: 18px;
+                        height: 18px;
+                    }
                     path {
                         fill: $d_main_text_color;
                     }
@@ -81,6 +122,7 @@
                 p {
                     margin: 0;
                     padding: 0;
+                    white-space: nowrap;
                     color: $d_main_text_color;
                 }
             }

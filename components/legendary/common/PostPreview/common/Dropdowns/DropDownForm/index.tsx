@@ -10,8 +10,9 @@ import cn from "classnames";
 import { Context } from "../../../../../../../pages/_app";
 import { motion } from "framer-motion";
 import { observer } from "mobx-react";
+import uuid from "react-uuid";
 
-const DropDownForm = observer(({setIsClicked, isClicked, hoverChange, setFocus, id} : any) => {
+const DropDownForm = observer(({setIsClicked, dragControls, isClicked, hoverChange, setFocus, id} : any) => {
 
     const popupRef = useRef<HTMLDivElement>(null);
     const labelRef = useRef<HTMLDivElement>(null);
@@ -35,6 +36,7 @@ const DropDownForm = observer(({setIsClicked, isClicked, hoverChange, setFocus, 
                 type: 'text',
                 value: '',
                 stared: false,
+                unicalId: uuid(),
                 id: postCreateStore.data.length
             }
         } else if (type == 'h1') {
@@ -42,6 +44,7 @@ const DropDownForm = observer(({setIsClicked, isClicked, hoverChange, setFocus, 
                 type: 'h1',
                 value: '',
                 stared: false,
+                unicalId: uuid(),
                 id: postCreateStore.data.length
             }
         } else if (type == 'media') {
@@ -50,6 +53,7 @@ const DropDownForm = observer(({setIsClicked, isClicked, hoverChange, setFocus, 
                 value: '',
                 stared: false,
                 href: '',
+                unicalId: uuid(),
                 id: postCreateStore.data.length
             }
         } else if (type == 'link') {
@@ -58,12 +62,14 @@ const DropDownForm = observer(({setIsClicked, isClicked, hoverChange, setFocus, 
                 typeMedia: '',
                 stared: false,
                 href: '',
+                unicalId: uuid(),
                 id: postCreateStore.data.length
             }
         } else if (type == 'br') {
             result = {
                 type: 'br',
                 stared: false,
+                unicalId: uuid(),
                 id: postCreateStore.data.length
             }
         }
@@ -94,8 +100,9 @@ const DropDownForm = observer(({setIsClicked, isClicked, hoverChange, setFocus, 
         <>
             <div ref={labelRef} className={styles.toolbar}>
                 <button 
+                    onPointerDown={(event) => dragControls.start(event)}
                     tabIndex={0} 
-                    onFocus={() => setIsClicked(true)} 
+                    onMouseUp={() => setIsClicked(true)} 
                     onClick={() => setIsClicked(true)} 
                     className={cn(styles.newForm, isClicked && styles.active)}
                 >

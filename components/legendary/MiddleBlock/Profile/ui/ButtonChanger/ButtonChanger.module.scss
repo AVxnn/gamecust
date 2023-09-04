@@ -23,6 +23,11 @@
         cursor: pointer;
         transition: all 0.15s ease-in-out;
 
+        @media (max-width: 720px) {
+            padding: 2px 12px;
+            top: 24px;
+        }
+
         &:hover {
             background-color: $d_main_hover;
         }

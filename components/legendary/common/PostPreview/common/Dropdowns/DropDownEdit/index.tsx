@@ -11,7 +11,7 @@ import { Context } from "../../../../../../../pages/_app";
 import { observer } from "mobx-react";
 import { motion } from "framer-motion";
 
-const DropDownEdit = observer(({item, setIsClicked, isClicked} : any) => {
+const DropDownEdit = observer(({item, setIsClicked, isClicked, dragControls} : any) => {
 
     const popupRef = useRef<HTMLDivElement>(null);
     const labelRef = useRef<HTMLDivElement>(null);
@@ -62,7 +62,7 @@ const DropDownEdit = observer(({item, setIsClicked, isClicked} : any) => {
     return ( 
         <>
             <div ref={labelRef} className={styles.toolbar}>
-                <button onClick={() => setIsClicked(!isClicked)} className={cn(styles.newForm, isClicked && styles.active)}><NewForm /></button>
+                <button onPointerDown={(event) => dragControls.start(event)} onClick={() => setIsClicked(!isClicked)} className={cn(styles.newForm, isClicked && styles.active)}><NewForm /></button>
                 {
                     isClicked && (
                         <motion.div 

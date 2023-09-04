@@ -6,6 +6,7 @@ import styles from './Editor.module.scss'
 import EditorBlock from "../../../components/legendary/MiddleBlock/editorBlock";
 import { Context } from '../../_app';
 import { useRouter } from 'next/router';
+import uuid from 'react-uuid';
 
 const Editor = ({props} : any) => {
   
@@ -36,6 +37,7 @@ const Editor = ({props} : any) => {
             type: 'h1',
             value: '',
             stared: false,
+            unicalId: uuid(),
             id: 0,
         },
       ])
