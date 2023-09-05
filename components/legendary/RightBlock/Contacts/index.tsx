@@ -10,7 +10,7 @@ const Contacts = () => {
       <div className={styles.contacts}>
         <h3 className={styles.title}>Контакты</h3>
         <div className={styles.item}>
-          <Tg /> <a href='https://t.me/+YUehvP6Vwhs0NmVi' target="_blank">GameCust Dev</a>
+          <Tg /> <a href='https://t.me/+YUehvP6Vwhs0NmVi'>GameCust Dev</a>
         </div>
         <div className={styles.item}>
           <Discord /> <a href='https://discord.gg/DsYhXz9GZq'>Vx1nGh Server</a>
