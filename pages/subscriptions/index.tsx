@@ -7,11 +7,8 @@ import Header from '../../components/legendary/header';
 import MainLayout from '../../components/layout/MainLayout';
 
 const Subscriptions = ({ props } : any) => {
-  
-  const menuRef = useRef<HTMLUListElement>(null);
-  console.log(process.env.NEXT_PUBLIC_API_URL);
 
-  const [data, setData] = useState([]);
+  const [data, setData] = useState([]) as any;
   
   const {mobxStore} = useContext(Context);
 
@@ -35,9 +32,10 @@ const Subscriptions = ({ props } : any) => {
   }
   
   useEffect(() => {
-
     document.addEventListener("DOMContentLoaded", () => fetchData(0, true))
-    
+    return () => {
+      document.removeEventListener("DOMContentLoaded", () => fetchData(0, true))
+    }
   }, [])
   
   return (
@@ -54,7 +52,7 @@ const Subscriptions = ({ props } : any) => {
       </Head>
       <Header />
       <MainLayout>
-        <PostList PostData={data} fetchData={fetchData} textEmpty={'Подпишись на кого-нибудь'}/>
+        <PostList PostData={data} fetchData={fetchData} textEmpty={'В разработке'}/>
       </MainLayout>
     </>
   )

@@ -25,14 +25,14 @@
     &:hover {
       background-color: $d_main_subbg_color;
       border: 1px solid $d_main_color;
-      box-shadow: 0 0 2px 3px rgba(#9E5BF0, 0.2);
+      box-shadow: 0 0 2px 3px rgba($d_main_color, 0.4);
     }
   }
 
   .active {
     background-color: $d_main_subbg_color;
     border: 1px solid $d_main_color;
-    box-shadow: 0 0 2px 3px rgba(#9E5BF0, 0.2);
+    box-shadow: 0 0 2px 3px rgba($d_main_color, 0.4);
   }
 }
 

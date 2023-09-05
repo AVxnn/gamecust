@@ -3,6 +3,8 @@
 .contacts {
   padding: 16px 24px;
   display: flex;
+  background-color: $d_main_subbg_color;
+  border-radius: 8px;
   flex-direction: column;
   gap: 12px;
 
@@ -18,18 +20,39 @@
     a {
       text-decoration: none;
       color: $d_main_text_color;
-      font-size: 12px;
+      font-size: 14px;
       padding-bottom: 2px;
       margin-top: 2px;
       border-bottom: 1px dashed rgba(0, 0, 0, 0);
 
       &:hover {
-        border-bottom: 1px dashed $d_main_text_hover_color;
+        color: $d_main_color;
       }
     }
     svg {
+      width: 24px;
+      height: 24px;
       margin-top: -1px;
-      margin-right: 4px;
+      margin-right: 8px;
+    }
+  }
+}
+
+.politics {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 12px;
+  padding: 0 24px;
+
+  a {
+    color: $d_main_subtext_color;
+
+    &:hover {
+      color: $d_main_hover;
+    }
+    &:active {
+      color: $d_main_active;
     }
   }
 }

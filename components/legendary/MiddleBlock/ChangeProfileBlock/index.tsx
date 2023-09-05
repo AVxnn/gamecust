@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import styles from "./ChangeProfileBlock.module.scss"
 import { useRouter } from 'next/router'
 import Drafts from './Drafts'
@@ -20,6 +20,10 @@ const ChangeProfileBlock = ({data, user} : any) => {
     const posts = data.filter((e: any) => e.published)
     const drafts = data.filter((e: any) => !e.published)
     const router = useRouter() as any
+
+    useEffect(() => {
+        fetchData(0)
+    }, [data])
 
     switch (router.query.id[1]) {
         case 'entries':

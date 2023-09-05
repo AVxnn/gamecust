@@ -25,7 +25,7 @@ const SettingsNavigation = () => {
             case '/settings/notification':
                 setActive(2);
                 break;
-            case '/settings/SubscriptionsSettings':
+            case '/settings/subscription':
                 setActive(3);
                 break;
             default:
@@ -40,7 +40,7 @@ const SettingsNavigation = () => {
             <div className={styles.navigation}>
                 <h3 className={styles.title}>Настройки</h3>
                 <div className={styles.list}>
-                    <Link onClick={() => setActive(0)} className={`${styles.item}`} href={`/settings/profile`}>
+                    <Link onClick={() => setActive(0)} className={`${styles.item} ${active == 0 ? styles.active : ''}`} href={`/settings/profile`}>
                         <div className={styles.userMenu}>
                             <div className={`${styles.bgAvatar} ${styles.purple}`}>
                                 <User />
@@ -51,7 +51,7 @@ const SettingsNavigation = () => {
                             </div>
                         </div>
                     </Link>
-                    <Link onClick={() => setActive(0)} className={`${styles.item}`} href={`/settings/main`}>
+                    <Link onClick={() => setActive(1)} className={`${styles.item} ${active == 1 ? styles.active : ''}`} href={`/settings/main`}>
                         <div className={styles.userMenu}>
                             <div className={`${styles.bgAvatar} ${styles.green}`}>
                                 <Pacman />
@@ -62,7 +62,7 @@ const SettingsNavigation = () => {
                             </div>
                         </div>
                     </Link>
-                    <Link onClick={() => setActive(0)} className={`${styles.item}`} href={`/settings/notification`}>
+                    <Link onClick={() => setActive(2)} className={`${styles.item} ${active == 2 ? styles.active : ''}`} href={`/settings/notification`}>
                         <div className={styles.userMenu}>
                             <div className={`${styles.bgAvatar} ${styles.gray}`}>
                                 <Notification type={false}/>
@@ -73,7 +73,7 @@ const SettingsNavigation = () => {
                             </div>
                         </div>
                     </Link>
-                    <Link onClick={() => setActive(0)} className={`${styles.item}`} href={`/settings/subscription`}>
+                    <Link onClick={() => setActive(3)} className={`${styles.item} ${active == 3 ? styles.active : ''}`} href={`/settings/subscription`}>
                         <div className={styles.userMenu}>
                             <div className={`${styles.bgAvatar} ${styles.orange}`}>
                                 <Gift />

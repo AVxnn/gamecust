@@ -85,7 +85,16 @@
     width: 100%;
 
     .penCreate {
-
+      &:hover {
+        path {
+          fill: $d_main_hover;
+        }
+      }
+      &:active {
+        path {
+          fill: $d_main_active;
+        }
+      }
       @media (max-width: 720px) {
         margin-right: 24px;
       }

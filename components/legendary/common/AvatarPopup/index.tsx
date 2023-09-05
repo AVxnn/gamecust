@@ -40,7 +40,7 @@ const AvatarPopup = ({src} : any) => {
                 animate={{ opacity: 0.5 }}
                 exit={{ opacity: 0 }}
               />
-              <motion.img src={src} layoutId={"image" + src} onClick={() => setActive(null)} />
+              <motion.img initial={{ borderRadius: '999px' }} animate={{ borderRadius: '8' }} exit={{ borderRadius: '999px' }} src={src} layoutId={"image" + src} onClick={() => setActive(null)} />
             </div>
           )}
         </AnimatePresence>

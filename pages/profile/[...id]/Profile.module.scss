@@ -43,37 +43,43 @@
   }
 
   .postListContainer {
+    @media (max-width: 1000px) {
+      max-width: 9999px;
+    }
     @media (max-width: 1280px) {
       max-width: 680px;
     }
-
-    @media (max-width: 1024px) {
+    @media (max-width: 1000px) {
       max-width: 9999px;
     }
   }
 }
 
-.rightColumn,
-.rightColumnFixed {
-  margin-top: -46px;
+.rightColumn {
   display: flex;
+  min-width: 296px;
   flex-direction: column;
   gap: 16px;
   max-width: 296px;
 
-  @media (max-width: 1024px) {
+  @media (max-width: 1000px) {
     display: none;
   }
 
-  .fixedBar {
-    margin: -12px 0 0 0;
+  .containerRight {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
   }
-}
 
-.rightColumnFixed {
-  user-select: none;
-  z-index: -2;
-  margin-top: -1396px;
-  background-color: $d_main_bg_color;
-  position: fixed;
+  .fixed {
+    top: -820px;
+    min-width: 296px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 296px;
+    position: fixed;
+  }
+
 }

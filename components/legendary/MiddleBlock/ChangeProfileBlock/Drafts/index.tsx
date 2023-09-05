@@ -8,17 +8,18 @@ import { observer } from 'mobx-react-lite';
 
 const Drafts = ({data, user} : any) => {
 
-    const {mobxStore} = useContext(Context);
+    const {mobxStore, notificationStore} = useContext(Context);
 
     const router = useRouter()
 
     useEffect(() => {
         if (mobxStore.user.id !== user._id) {
+            notificationStore.addItem({title: 'Аккаунт зарегистрирован', status: 'success', timeLife: 2500})
             router.back()
         }
     }, [data, mobxStore])
 
-    return (
+    return mobxStore.user && mobxStore.user.id == user._id ? (
         <>
             {
                 data.length ? (
@@ -34,7 +35,7 @@ const Drafts = ({data, user} : any) => {
                 ) : <Empty text={'Похоже тут пусто ;('} />
             }
         </>
-    )
+    ) : <></>
 }
 
 export default observer(Drafts);

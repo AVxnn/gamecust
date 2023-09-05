@@ -135,6 +135,10 @@
           svg {
             width: 20px;
             height: 20px;
+            max-height: 20px;
+          }
+          div {
+            max-height: 22px;
           }
         }
         .description {

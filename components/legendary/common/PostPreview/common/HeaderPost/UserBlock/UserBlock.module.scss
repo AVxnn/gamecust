@@ -1,0 +1,94 @@
+@import "/styles/variables.scss";
+
+.container {
+    position: absolute;
+    right: 116px;
+    
+    .button {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        border: 0;
+        outline: none;
+        background-color: $d_main_subbg_color;
+        border-radius: 99px;
+        padding: 4px 4px;
+        color: $const_main_text_color;
+        cursor: pointer;
+        transition: all 0.15s ease-in-out;
+
+        svg {
+            transform: rotate(90deg);
+            width: 24px;
+            height: 24px;
+            position: relative;
+            top: 1px;
+        }
+
+        path {
+            fill: $d_main_text_color;
+        }
+    }
+
+    .dropMenu {
+        position: absolute;
+        width: 200px;
+        margin-top: 8px;
+        display: flex;
+        gap: 4px;
+        flex-direction: column;
+        align-content: flex-start;
+        background-color: $d_main_subbg_color;
+        padding: 8px;
+        box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.50);
+        border-radius: 8px;
+        z-index: 2;
+        right: 0;
+
+        a {
+            text-decoration: none;
+        }
+
+        .dropItem {
+            background-color: rgba(0, 0, 0, 0);
+            border: 0;
+            outline: none;
+            display: flex;
+            align-items: center;
+            text-align: left;
+            gap: 8px;
+            padding: 10px;
+            color: $d_main_text_color;
+            border-radius: 8px;
+            cursor: pointer;
+
+            svg {
+                width: 20px;
+                height: 20px;
+                min-height: 20px;
+                min-width: 20px;
+                margin-top: -1px;
+            }
+
+            &:hover {
+                background-color: $d_main_bg_color;
+            }
+        }
+
+        .dropItem:first-child {
+            path {
+                fill: $d_main_text_color;
+            } 
+        }
+    }
+    
+}
+
+.active {
+    padding-left: 95px;
+    padding-bottom: 8px;
+
+    .button {
+        background-color: $d_main_bg_color;
+    }
+}

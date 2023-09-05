@@ -1,0 +1,18 @@
+@import "/styles/variables.scss";
+
+.info {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 100px;
+
+    h2 {
+        color: $d_main_text_color;
+        font-size: 36px;
+    }
+
+    span {
+        color: $d_main_text_color;
+        font-size: 24px;
+    }
+}

@@ -8,7 +8,6 @@ import { Reorder, useDragControls } from 'framer-motion';
 const ConstructorBlocks = (data : any) => {
 
     const dragControls = useDragControls();
-    console.log(data.data.unicalId);
     
     switch (data.data.type) {
       case 'media':
@@ -30,6 +29,12 @@ const ConstructorBlocks = (data : any) => {
           </Reorder.Item>
         )
       case 'h1':
+        return (
+          <Reorder.Item dragListener={false} key={data.data.unicalId} dragControls={dragControls} value={data.data}>
+            <TextAreaBlock item={data.data} dragControls={dragControls}/>
+          </Reorder.Item>
+        )
+      case 'h2':
         return (
           <Reorder.Item dragListener={false} key={data.data.unicalId} dragControls={dragControls} value={data.data}>
             <TextAreaBlock item={data.data} dragControls={dragControls}/>

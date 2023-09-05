@@ -47,6 +47,14 @@ const DropDownForm = observer(({setIsClicked, dragControls, isClicked, hoverChan
                 unicalId: uuid(),
                 id: postCreateStore.data.length
             }
+        } else if (type == 'h2') {
+            result = {
+                type: 'h2',
+                value: '',
+                stared: false,
+                unicalId: uuid(),
+                id: postCreateStore.data.length
+            }
         } else if (type == 'media') {
             result = {
                 type: 'media',
@@ -121,7 +129,7 @@ const DropDownForm = observer(({setIsClicked, dragControls, isClicked, hoverChan
                                 <Text />
                                 <p className={styles.text}>Текст</p>
                             </li>
-                            <li tabIndex={0} onClick={() => createNewFormChange('h1')} className={styles.item}>
+                            <li tabIndex={0} onClick={() => createNewFormChange('h2')} className={styles.item}>
                                 <Heading />
                                 <p className={styles.text}>Заголовок</p>
                             </li>

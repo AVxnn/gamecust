@@ -1,0 +1,19 @@
+@import "/styles/variables.scss";
+
+.info {
+    background-color: $d_main_subbg_color;
+    margin-top: 16px;
+    padding: 32px;
+    border-radius: 8px;
+    width: 100%;
+    color: $d_main_text_color;
+    margin-bottom: 68px;
+
+    h2 {
+        margin: 0;
+    }
+
+    p {
+        line-height: 22px;
+    }
+}

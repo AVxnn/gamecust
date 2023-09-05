@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import styles from './MainLayout.module.scss'
 import { observer } from 'mobx-react';
 import AuthPopup from '../../legendary/common/Popup/AuthPopup';
@@ -12,9 +12,20 @@ import TopUsers from '../../legendary/RightBlock/TopUsers';
 import NewsSliderSmall from '../../legendary/RightBlock/NewsSliderSmall';
 import TopGroup from '../../legendary/RightBlock/TopGroup';
 import Contacts from '../../legendary/RightBlock/Contacts';
-import { motion } from 'framer-motion';
+import { useMotionValueEvent, useScroll } from 'framer-motion';
+import LoginRight from '../../legendary/RightBlock/LoginRight';
 
 const MainLayout = ({children}: any) => {
+
+  const { scrollY } = useScroll()
+  const [isfixed, setIsFixed] = useState(false)
+  useMotionValueEvent(scrollY, "change", (latest: any) => {
+    if (latest > 840) {
+      setIsFixed(true)
+    } else {
+      setIsFixed(false)
+    }
+  })
   
   return (
     <>
@@ -35,12 +46,15 @@ const MainLayout = ({children}: any) => {
             </div>
             </div>
             <div className={styles.rightColumn}>
-            <CreatePostRight />
-            <Premium />
-            <TopUsers />
-            <NewsSliderSmall />
-            <TopGroup />
-            <Contacts />
+              <div className={`${styles.containerRight} ${isfixed ? styles.fixed : ''}`}>
+                <LoginRight />
+                <CreatePostRight />
+                <Premium />
+                <TopUsers />
+                <NewsSliderSmall />
+                <TopGroup />
+                <Contacts />
+              </div>
             </div>
         </div>
         <MobileMenu />

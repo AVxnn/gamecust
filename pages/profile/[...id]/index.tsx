@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef} from 'react';
+import React, { useContext, useEffect, useRef, useState} from 'react';
 import Head from "next/head";
 import Header from "../../../components/legendary/header";
 import Layout from "../../../components/layout";
@@ -13,14 +13,22 @@ import BackWallpaper from "../../../components/legendary/BackWallpaper";
 import LoginRight from "../../../components/legendary/RightBlock/LoginRight";
 import ProfileBlock from "../../../components/legendary/MiddleBlock/Profile";
 import { observer } from 'mobx-react-lite';
-import { Context } from '../../_app';
 import ChangeProfileBlock from '../../../components/legendary/MiddleBlock/ChangeProfileBlock';
 import Subscriptions from '../../../components/legendary/RightBlock/Subscriptions';
+import { useMotionValueEvent, useScroll } from 'framer-motion';
 
 const Profile = ({user, posts} : any) => {
+  console.log(user, posts);
   
-  const menuRef = useRef<HTMLUListElement>(null);
-  console.log(user);
+  const { scrollY } = useScroll()
+  const [isfixed, setIsFixed] = useState(false)
+  useMotionValueEvent(scrollY, "change", (latest: any) => {
+    if (latest > 1200) {
+      setIsFixed(true)
+    } else {
+      setIsFixed(false)
+    }
+  })
   
   return (
     <>
@@ -44,15 +52,16 @@ const Profile = ({user, posts} : any) => {
           </div>
         </div>
         <div className={styles.rightColumn}>
-          <LoginRight />
-          <Subscriptions user={user} />
-          <CreatePostRight />
-          <Premium />
-          <TopUsers />
-          <ul className={styles.fixedBar} ref={menuRef}></ul>
-          <NewsSliderSmall />
-          <TopGroup />
-          <Contacts />
+          <div className={`${styles.containerRight} ${isfixed ? styles.fixed : ''}`}>
+            <LoginRight />
+            <Subscriptions user={user} />
+            <CreatePostRight />
+            <Premium />
+            <TopUsers />
+            <NewsSliderSmall />
+            <TopGroup />
+            <Contacts />
+          </div>
         </div>
       </Layout>
     </>

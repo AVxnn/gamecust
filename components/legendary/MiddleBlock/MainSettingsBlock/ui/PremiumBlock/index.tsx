@@ -7,7 +7,7 @@ const PremiumBlock = () => {
     <div className={styles.premium}>
         <h4 className={styles.title}>Подписка GameCust Plus</h4>
         <p className={styles.status}>Не активна</p>
-        <Link className={styles.link} href={'/settings/subscription'}>Купить подписку</Link>
+        <Link className={styles.link} href={'/gamecustplus'}>Купить подписку</Link>
     </div>
   )
 }

@@ -62,7 +62,12 @@ const DropDownEdit = observer(({item, setIsClicked, isClicked, dragControls} : a
     return ( 
         <>
             <div ref={labelRef} className={styles.toolbar}>
-                <button onPointerDown={(event) => dragControls.start(event)} onClick={() => setIsClicked(!isClicked)} className={cn(styles.newForm, isClicked && styles.active)}><NewForm /></button>
+                <button 
+                    onPointerDown={(event) => dragControls.start(event)} 
+                    onClick={() => setIsClicked(!isClicked)} 
+                    className={cn(styles.newForm, isClicked && styles.active)}>
+                        <NewForm />
+                    </button>
                 {
                     isClicked && (
                         <motion.div 

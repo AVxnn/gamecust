@@ -6,6 +6,17 @@
     gap: 16px;
     align-items: center;
 
+    &:hover {
+        .username {
+            color: $d_main_hover;
+        }
+    }
+    &:active {
+        .username {
+            color: $d_main_active;
+        }
+    }
+
     .noImage {
         width: 40px;
         height: 40px;

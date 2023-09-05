@@ -41,7 +41,7 @@ const TopGroup = () => {
 
   return (
     <div className={styles.topGroup}>
-      <h3 className={styles.title}>Топ пользователей</h3>
+      <h3 className={styles.title}>Топ сообществ</h3>
       <div className={styles.list}>
         {
           data.map((item : any, index : number) => {

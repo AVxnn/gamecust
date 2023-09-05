@@ -2,8 +2,9 @@
 
 .navigation {
     width: 100%;
-    padding: 16px 10px;
+    padding: 24px 10px;
     box-sizing: border-box;
+    background-color: $d_main_subbg_color;
     border-radius: 8px;
 
     a {
@@ -22,7 +23,7 @@
     }
     .item {
         background-color: $d_main_subbg_color;
-        padding: 8px 16px;
+        padding: 10px 16px;
         display: flex;
         flex-direction: column;
         gap: 16px;
@@ -75,6 +76,10 @@
             }
             
         }
+    }
+
+    .active {
+        background-color: $d_main_bg_color;
     }
 }
 

@@ -11,8 +11,19 @@ import TopGroup from "../../../components/legendary/RightBlock/TopGroup";
 import Contacts from "../../../components/legendary/RightBlock/Contacts";
 import Post from "../../../components/legendary/common/Post";
 import LoginRight from "../../../components/legendary/RightBlock/LoginRight";
+import { useMotionValueEvent, useScroll } from 'framer-motion';
 
 const OnePost = ({post, comments} : any) => {
+
+  const { scrollY } = useScroll()
+  const [isfixed, setIsFixed] = useState(false)
+  useMotionValueEvent(scrollY, "change", (latest: any) => {
+      if (latest > 840) {
+      setIsFixed(true)
+      } else {
+      setIsFixed(false)
+      }
+  })
 
   return (
     <>
@@ -32,14 +43,15 @@ const OnePost = ({post, comments} : any) => {
           <Post post={post} comments={comments}/>
         </div>
         <div className={styles.rightColumn}>
-          <LoginRight />
-          <CreatePostRight />
-          <Premium />
-          <TopUsers />
-          <ul className={styles.fixedBar}></ul>
-          <NewsSliderSmall />
-          <TopGroup />
-          <Contacts />
+          <div className={`${styles.containerRight} ${isfixed ? styles.fixed : ''}`}>
+            <LoginRight />
+            <CreatePostRight />
+            <Premium />
+            <TopUsers />
+            <NewsSliderSmall />
+            <TopGroup />
+            <Contacts />
+          </div>
         </div>
       </Layout>
     </>

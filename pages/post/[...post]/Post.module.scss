@@ -41,31 +41,31 @@
   }
 }
 
-.rightColumn,
-.rightColumnFixed {
+.rightColumn {
   margin-top: 64px;
   display: flex;
+  min-width: 296px;
   flex-direction: column;
   gap: 16px;
   max-width: 296px;
 
-  @media (max-width: 1024px) {
+  @media (max-width: 1000px) {
     display: none;
   }
 
-  .fixedBar {
-    margin: -12px 0 0 0;
+  .containerRight {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
   }
 
-  .fixedBar {
-    margin: -12px 0 0 0;
+  .fixed {
+    top: -720px;
+    min-width: 296px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 296px;
+    position: fixed;
   }
-}
-
-.rightColumnFixed {
-  user-select: none;
-  z-index: -2;
-  margin-top: -1074px;
-  background-color: $d_main_bg_color;
-  position: fixed;
 }

@@ -57,6 +57,50 @@
       }
     }
 
+    .active {
+
+      path {
+        fill: $d_main_color
+      }
+      rect {
+        stroke: $d_main_color;
+      }
+      &:hover {
+        path {
+          fill: $d_main_hover;
+        }
+        rect {
+          stroke: $d_main_hover;
+        }
+      }
+
+      .avatar {
+        z-index: 2;
+        &:before {
+          content: '';
+          position: absolute;
+          width: 32px;
+          height: 32px;
+          left: -2px;
+          top: -2px;
+          background-color: $d_main_bg_color;
+          border-radius: 99px;
+        }
+        &:after {
+          content: '';
+          position: absolute;
+          left: -4px;
+          top: -4px;
+          width: 36px;
+          height: 36px;
+          background-color: $d_main_color;
+          border-radius: 99px;
+          z-index: -1;
+        }
+      }
+      
+    }
+
     @media (max-width: 720px) {
       display: flex;
     }

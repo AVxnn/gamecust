@@ -49,7 +49,9 @@ const PostList = ({PostData, fetchData, textEmpty} : any) => {
     };
   }, [isLoading]);
 
-  
+  useEffect(() => {
+    setItems(PostData)
+  }, [PostData]);
 
   return items.length ? (
     <div className={styles.postList}>
@@ -68,6 +70,7 @@ const PostList = ({PostData, fetchData, textEmpty} : any) => {
           )
         })
       }
+      <Empty text={'Похоже это конец'} />
     </div>
   ) : <Empty text={'Похоже тут пусто'} subtext={textEmpty} />
 };

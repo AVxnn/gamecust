@@ -67,23 +67,34 @@
         }
     }
     
-    .rightColumn,
-    .rightColumnFixed {
-        margin-top: 64px;
+    .rightColumn {
+      margin-top: 64px;
+      display: flex;
+      min-width: 296px;
+      flex-direction: column;
+      gap: 16px;
+      max-width: 296px;
+  
+      @media (max-width: 1000px) {
+        display: none;
+      }
+
+      .containerRight {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+  
+      .fixed {
+        top: -720px;
+        min-width: 296px;
         display: flex;
         flex-direction: column;
         gap: 16px;
         max-width: 296px;
-    
-        @media (max-width: 1000px) {
-        display: none;
-        }
-    
-        .fixedBar {
-        margin: -12px 0 0 0;
-        }
+        position: fixed;
+      }
     }
-    
   }
   
   @media (max-width: 1280px) {

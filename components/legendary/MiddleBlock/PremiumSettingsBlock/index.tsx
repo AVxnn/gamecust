@@ -73,7 +73,7 @@ const PremiumSettingsBlock = () => {
                 </li>
             </div>
             <div className={styles.bottom}>
-                <span className={styles.text}>Нажимая кнопку, вы принимаете <br /> <Link href={'/'}>условия соглашения</Link>.</span>
+                <span className={styles.text}>Нажимая кнопку, вы принимаете <br /> <Link href={'/agreement'}>условия соглашения</Link>.</span>
                 <button className={styles.button}>
                     Месяц за 69 ₽
                 </button>

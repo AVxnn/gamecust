@@ -67,6 +67,9 @@ const TextAreaBlock = ({item, dragControls} : any) => {
                 postCreateStore.removeItem(item)
                 setIsClicked(false)
             }
+            if (e.keyCode === 9) {
+                setIsClicked(true)
+            }
         }
     }
 

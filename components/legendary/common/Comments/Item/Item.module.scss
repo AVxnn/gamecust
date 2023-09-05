@@ -16,8 +16,14 @@
   .rightInfo {
     width: 100%;
     display: flex;
+    margin-top: 5px;
     flex-direction: column;
-    margin-top: 4px;
+    gap: 8px;
+
+    a {
+      margin-bottom: 8px;
+    }
+
     .name {
       color: $d_main_text_color;
       font-size: 16px;
@@ -71,9 +77,14 @@
     position: relative;
     width: 45px;
     height: 45px;
+    min-width: 45px;
+    min-height: 45px;
+    max-width: 45px;
+    max-height: 45px;
     border-radius: 99px;
 
     img {
+      object-fit: cover;
       width: 45px;
       height: 45px;
       border-radius: 99px;

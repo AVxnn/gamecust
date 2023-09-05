@@ -9,7 +9,9 @@
 
     @media (max-width: 768px) {
       width: calc(100% - 64px);
-      margin: 0 32px;
+      flex-wrap: wrap-reverse;
+      gap: 16px;
+      margin: 12px 32px 0 32px !important;
     }
 
     .left {

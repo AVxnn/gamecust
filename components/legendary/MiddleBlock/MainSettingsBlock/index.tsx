@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Context } from '../../../../pages/_app';
 import styles from "./MainSettingsBlock.module.scss"
 import { useRouter } from 'next/router';
@@ -7,6 +7,7 @@ import NewInput from '../ProfileBlock/ui/NewInput';
 import PremiumBlock from './ui/PremiumBlock';
 import Link from 'next/link';
 import NewDropMenu from '../ProfileBlock/ui/NewDropMenu';
+import { observer } from 'mobx-react-lite';
 
 const MainSettingsBlock = () => {
 
@@ -15,7 +16,7 @@ const MainSettingsBlock = () => {
     const {mobxStore} = useContext(Context);
 
     const [email, setEmail] = useState(mobxStore?.user?.email)
-    const [mainColor, setMainColor] = useState('gamecust')
+    const [mainColor, setMainColor] = useState()
 
     let dataBlog = [
       {
@@ -41,7 +42,6 @@ const MainSettingsBlock = () => {
     ]
 
     const changeColor = (value : any) => {
-      console.log(value, localStorage.getItem('color'));
       document.body.removeAttribute('red');
       document.body.removeAttribute('pink');
       document.body.removeAttribute('green');
@@ -70,6 +70,12 @@ const MainSettingsBlock = () => {
       mobxStore.reSaveUser({id: mobxStore.user.id});
     }
 
+    useEffect(() => {
+      let color = localStorage.getItem('color') as any
+      setMainColor(color)
+      setEmail(mobxStore.user.email)
+    }, [mobxStore.user])
+
     return mobxStore.user && (
         <div className={styles.container}>
           <div onClick={() => router.back()} className={styles.topBar}>
@@ -88,4 +94,4 @@ const MainSettingsBlock = () => {
       )
 }
 
-export default MainSettingsBlock
+export default observer(MainSettingsBlock)

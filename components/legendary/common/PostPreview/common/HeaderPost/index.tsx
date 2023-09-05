@@ -12,6 +12,7 @@ import { ru } from 'date-fns/locale';
 import { observer } from 'mobx-react';
 import IconHandler from '../IconHandler';
 import { useMotionValueEvent, useScroll } from 'framer-motion';
+import UserBlock from './UserBlock';
 
 function preloader() {
   return (
@@ -73,13 +74,19 @@ const HeaderPost = ({data, fixed} : any) => {
           isRoleHandler(mobxStore?.user?.id, data.userId) ? ( 
             <EditBlock postId={data.postId} />
           ) : mobxStore?.user?.subscriptions?.filter((e) => e === data.userId).length ? (
-            <Button clb={() => changeSub()} type={'primary'} size={'small'}>
-              Отписаться
-            </Button>
+            <>
+              <UserBlock postId={data.postId} data={data} />
+              <Button clb={() => changeSub()} type={'primary'} size={'small'}>
+                Отписаться
+              </Button>
+            </>
           ) : (
-            <Button clb={() => changeSub()} type={'primary'} size={'small'}>
-              Подписаться
-            </Button>
+            <>
+              <UserBlock postId={data.postId} data={data} />
+              <Button clb={() => changeSub()} type={'primary'} size={'small'}>
+                Подписаться
+              </Button>
+            </>
           )
         }
       </div>

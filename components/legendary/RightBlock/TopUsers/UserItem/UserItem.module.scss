@@ -52,6 +52,10 @@
         font-size: 16px;
         color: $d_main_text_color;
 
+        &:hover {
+          color: $d_main_hover;
+        } 
+
         svg {
           margin-left: 4px;
         }
@@ -65,9 +69,19 @@
       font-size: 12px;
       background-color: $d_main_bg_color;
       border-radius: 99px;
+      transition: all 0.1s ease-in-out;
       rect {
         fill: $d_main_text_color;
+        transition: all 0.1s ease-in-out;
       }
+
+      &:hover {
+        background-color: $d_main_hover;
+
+        rect {
+          fill: $d_main_bg_color;
+        }
+      } 
     }
     .rating {
       display: flex;

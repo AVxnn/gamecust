@@ -89,6 +89,7 @@ export default class PostCreateStore {
                 userAvatar: user.avatarPath,
                 userId: user.id,
                 published: true,
+                iconActive: user.iconActive,
                 publishedDate: `${Date.now()}`,
                 postId: postId,
                 data: data,
