@@ -4,7 +4,7 @@ import DropDownEdit from "../../../Dropdowns/DropDownEdit";
 import { Context } from "../../../../../../../../pages/_app";
 import InformationBlock from "../../../../../../MiddleBlock/editorBlock/InformationBlock";
 
-const Br = ({item} : any) => {
+const Br = ({item, dragControls} : any) => {
 
     const popupRef = useRef<HTMLDivElement>(null);
     const labelRef = useRef<HTMLDivElement>(null);
@@ -73,7 +73,7 @@ const Br = ({item} : any) => {
                 </div>
                 {
                     hover && (
-                        <DropDownEdit ref={popupRef} item={item} setIsClicked={setIsClicked} isClicked={isClicked} />
+                        <DropDownEdit dragControls={dragControls} ref={popupRef} item={item} setIsClicked={setIsClicked} isClicked={isClicked} />
                     )
                 }
                 <InformationBlock item={item} />

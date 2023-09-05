@@ -1,12 +1,12 @@
 import React, {useContext, useEffect, useRef, useState} from 'react';
 import styles from './Profile.module.scss'
-import CheckIcon from "../../../../public/img/svg/CheckIcon";
 import Tabs from "../../common/Tabs";
 import ButtonChanger from './ui/ButtonChanger';
 import { useRouter } from 'next/router';
 import { Context } from '../../../../pages/_app';
 import { observer } from 'mobx-react';
 import IconHandler from '../../common/PostPreview/common/IconHandler';
+import AvatarPopup from '../../common/AvatarPopup';
 
 const dataTag = [
   {
@@ -64,7 +64,7 @@ const ProfileBlock = ({data} : any) => {
           <div className={styles.left}>
             <div className={styles.avatar}>
               <div className={styles.contImg}>
-                <img src={`${data.avatarPath}`} alt=""/>
+                <AvatarPopup src={data.avatarPath} />
               </div>
             </div>
           </div>

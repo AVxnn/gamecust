@@ -8,7 +8,7 @@ import { observer } from 'mobx-react-lite'
 import Arrow from '../../../../../../public/img/svg/Arrow'
 import { motion } from 'framer-motion'
 
-const SelectedBlockEditor = ({posLeft, selectedText, item} : any) => {
+const SelectedBlockEditor = ({ posLeft, selectedText, item} : any) => {
 
     const {postCreateStore} = useContext(Context);
 
@@ -80,7 +80,7 @@ const SelectedBlockEditor = ({posLeft, selectedText, item} : any) => {
     }
 
     const isLinkHandler = () => {
-        setIsLinkOpen(!isLinkOpen)
+        setIsLinkOpen(true)
     }
 
     const LinkHandler = () => {
@@ -100,7 +100,7 @@ const SelectedBlockEditor = ({posLeft, selectedText, item} : any) => {
 
 
     return (
-        <motion.div 
+        <motion.div
             initial={{ y: 10, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: -10, opacity: 0 }}

@@ -7,19 +7,31 @@ import Toolbar from "../PostPreview/common/toolbar";
 import Comments from "../Comments";
 import ReactPlayer from 'react-player';
 import ImgPopup from '../ImgPopup';
+import { useMotionValueEvent, useScroll } from 'framer-motion';
 
 
 const Post = ({post, comments} : any) => {
 
+  const { scrollY } = useScroll()
   console.log(comments);
 
   const [userData, setUserData] = useState() as any
+
+  const [isfixed, setIsFixed] = useState(false)
 
   const getUser = async () => {
     const user = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/user/getUserId/${post.userId}`);  
 
     setUserData(await user?.json())
   }
+
+  useMotionValueEvent(scrollY, "change", (latest: any) => {
+    if (latest > 16) {
+      setIsFixed(true)
+    } else {
+      setIsFixed(false)
+    }
+  })
 
   useEffect(() => {
     getUser()
@@ -28,8 +40,8 @@ const Post = ({post, comments} : any) => {
   if (!post?.username) return <>Loading...</>
   
   return (
-    <div className={styles.postContainer}>
-      <HeaderPost data={post} user={userData} fixed={true}/>
+    <div className={`${styles.postContainer} ${isfixed ? styles.fixed : null}`}>
+      <HeaderPost data={post} user={userData} fixed={isfixed} scrollY={scrollY}/>
       <section className={styles.tags}>
         {
           post?.tags?.map((item : any, index : number) => {
@@ -45,7 +57,7 @@ const Post = ({post, comments} : any) => {
             console.log(item);
             if (item.type === 'h1') {
               return (
-                <h4 key={index} className={styles.title} dangerouslySetInnerHTML={{__html: item.value}}></h4>
+                <h1 key={index} className={styles.title} dangerouslySetInnerHTML={{__html: item.value}}></h1>
               )
             } else if (item.type === 'text') {
               return (
@@ -59,7 +71,7 @@ const Post = ({post, comments} : any) => {
               )
             } else if (item.type === 'media') {
               return (
-                <ImgPopup key={index} data={item} />
+                <ImgPopup key={index} src={item?.href} />
               )
             } else if (item.type === 'br') {
               return (

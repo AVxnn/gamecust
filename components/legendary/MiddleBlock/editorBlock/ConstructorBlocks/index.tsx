@@ -20,13 +20,13 @@ const ConstructorBlocks = (data : any) => {
       case 'link':
         return (
           <Reorder.Item dragListener={false} key={data.data.unicalId} dragControls={dragControls} value={data.data}>
-            <LinkUpload item={data.data} />
+            <LinkUpload item={data.data} dragControls={dragControls}/>
           </Reorder.Item>
         )
       case 'br':
         return (
           <Reorder.Item dragListener={false} key={data.data.unicalId} dragControls={dragControls} value={data.data}>
-            <Br item={data.data} />
+            <Br item={data.data} dragControls={dragControls}/>
           </Reorder.Item>
         )
       case 'h1':

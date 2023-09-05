@@ -2,6 +2,7 @@ import React from 'react'
 import SettingsLayout from '../../../components/layout/SettingsLayout'
 import Header from '../../../components/legendary/header'
 import Head from 'next/head'
+import PremiumSettingsBlock from '../../../components/legendary/MiddleBlock/PremiumSettingsBlock'
 
 const SubscriptionSettings = () => {
   return (
@@ -18,7 +19,7 @@ const SubscriptionSettings = () => {
         </Head>
         <Header />
         <SettingsLayout>
-            subscription
+            <PremiumSettingsBlock />
         </SettingsLayout>
     </>
   )

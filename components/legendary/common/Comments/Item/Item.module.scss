@@ -21,7 +21,25 @@
     .name {
       color: $d_main_text_color;
       font-size: 16px;
-      font-weight: 700;
+      display: flex;
+      align-items: center;
+      font-size: 16px;
+      color: $d_main_text_color;
+      font-weight: 600;
+      cursor: pointer;
+
+      &:hover {
+        color: $d_main_color;
+      }
+
+      svg {
+        margin-left: 8px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 16px;
+        height: 16px;
+      }
     }
     .date {
       color: $d_main_subtext_color;

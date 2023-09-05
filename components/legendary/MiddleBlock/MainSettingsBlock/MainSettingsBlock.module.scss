@@ -29,6 +29,12 @@
         flex-direction: column;
         gap: 24px;
 
+        .first {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
         .buttonCustom {
             width: 120px;
             height: 36px;

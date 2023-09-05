@@ -44,11 +44,11 @@ const TextAreaBlock = ({item, dragControls} : any) => {
     }
 
     const handleClickOutside = (e: any) => {
-        if (isClicked || hover) {
             if (labelRef.current &&
                 !labelRef.current.contains(e.target)) {
+                    hoverChange('off')
+                    setIsClicked(false)
                     setFocus(false)
-            }
         }
     }
 
@@ -142,7 +142,7 @@ const TextAreaBlock = ({item, dragControls} : any) => {
                 }
                 
                 {
-                    hover && !item.value || focus && !item.value ? (
+                    hover && !item.value ? (
                         <DropDownForm dragControls={dragControls} hoverChange={hoverChange} id={item.id} focus={focus} setFocus={setFocus} ref={popupRef} setIsClicked={setIsClicked} isClicked={isClicked} />
                     ) : null
                 }
@@ -154,7 +154,7 @@ const TextAreaBlock = ({item, dragControls} : any) => {
                 <InformationBlock item={item} />
             </div>
             {
-                selectedText && focus ? (
+                selectedText ? (
                     <SelectedBlockEditor ref={popupRef} posLeft={posPopup} selectedText={selectedText} item={item} />
                 ) : null
             }

@@ -1,0 +1,24 @@
+@import "/styles/variables.scss";
+
+.premium {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    .title{
+        font-size: 16px;
+        font-weight: 700;
+        color: $d_main_text_color;
+        margin: 0;
+    }
+    .status {
+        color: $d_main_text_color;
+        font-size: 16px;
+        margin: 0;
+    }
+    .link {
+        font-size: 16px;
+        margin: 0;
+    }
+}
+

@@ -22,7 +22,7 @@ const ToolBar = ({pressKey} : any) => {
   return (
     <div className={styles.toolBar}>
         <div className={styles.left}>
-            <Button clb={submitHandler} type={'primary'} size={''}>Опубликовать</Button>
+            <Button clb={submitHandler} type={'primary'} size={'big'}>Опубликовать</Button>
             <Dots />
         </div>
         <div className={styles.right}>

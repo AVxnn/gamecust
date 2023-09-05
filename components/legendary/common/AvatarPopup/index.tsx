@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
-import styles from './ImgPopup.module.scss'
+import styles from './AvatarPopup.module.scss'
 import { motion, AnimatePresence } from "framer-motion";
 
-const ImgPopup = ({src} : any) => {
+const AvatarPopup = ({src} : any) => {
 
   const [active, setActive] = useState(null) as any;
 
@@ -17,7 +17,7 @@ const ImgPopup = ({src} : any) => {
       </div>
       <div className={styles.imgPopup}>
         <AnimatePresence>
-          {active !== null && (
+          {active && (
             <div
               style={{
                 position: "fixed",
@@ -49,4 +49,4 @@ const ImgPopup = ({src} : any) => {
   );
 };
 
-export default ImgPopup;
+export default AvatarPopup

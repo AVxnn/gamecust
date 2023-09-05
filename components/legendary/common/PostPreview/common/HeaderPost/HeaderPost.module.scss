@@ -54,7 +54,6 @@
       flex-direction: column;
       justify-content: center;
       gap: 4px;
-      margin-top: -4px;
       cursor: pointer;
 
       .name {
@@ -132,6 +131,30 @@
 
   .leftBlock {
     margin: 0 24px;
+
+    .avatarBg {
+      width: 32px;
+      height: 32px;
+      border-radius: 99px;
+      background-color: $d_main_bg_color;
+    }
+
+    .avatar {
+      max-height: 32px;
+
+      img {
+        position: relative;
+        width: 32px;
+        height: 32px;
+        border-radius: 99px;
+        cursor: pointer;
+        transition: all 0.1s ease-in-out;
+      }
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
 
     .info {
       margin: 0;

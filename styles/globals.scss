@@ -70,6 +70,30 @@ body[dark] {
     --d_main-Bg-color-hover: #232324;
 }
 
+body[red] {
+    --d_main_color: #f05b5b;
+    --d_main_hover: #ffb5b5;
+    --d_main_active: #ff6262;
+}
+
+body[pink] {
+    --d_main_color: #f05b94;
+    --d_main_hover: #ffb5de;
+    --d_main_active: #ff62b8;
+}
+
+body[green] {
+    --d_main_color: #60f05b;
+    --d_main_hover: #beffb5;
+    --d_main_active: #62ff6a;
+}
+
+body[blue] {
+    --d_main_color: #5d5bf0;
+    --d_main_hover: #b5bcff;
+    --d_main_active: #626cff;
+}
+
 input {
     outline: none;
     border: none;
@@ -159,16 +183,16 @@ input {
 }
 
 a {
-    color: #9E5BF0;
+    color: $d_main_color;
     text-decoration: none;
 }
 
 a:hover {
-    color: #D5B5FF;
+    color: $d_main_hover;
 }
 
 a:active {
-    color: #A762FF;
+    color: $d_main_active;
 }
 
 @keyframes progressBar {

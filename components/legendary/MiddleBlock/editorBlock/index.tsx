@@ -65,10 +65,8 @@ const EditorBlock = () => {
   }
 
   const handleReorder = (newList : any) => {
-    const reorderedItems = [...items];
-    console.log(newList);
     let result = postCreateStore.sortArray(newList)
-    console.log(result);
+    const reorderedItems = [...result];
     setItems(reorderedItems);
   };
 

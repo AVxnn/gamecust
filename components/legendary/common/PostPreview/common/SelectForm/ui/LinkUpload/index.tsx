@@ -8,7 +8,7 @@ import InformationBlock from "../../../../../../MiddleBlock/editorBlock/Informat
 import ReactPlayer from 'react-player'
 import Image from 'next/image'
 
-const LinkUpload = observer(({item} : any) => {
+const LinkUpload = observer(({item, dragControls} : any) => {
 
     const popupRef = useRef<HTMLDivElement>(null);
     const labelRef = useRef<HTMLDivElement>(null);
@@ -96,12 +96,12 @@ const LinkUpload = observer(({item} : any) => {
                 }
                 {
                     hover && !item.href || focus && !item.href ? (
-                        <DropDownForm hoverChange={hoverChange} id={item.id} focus={focus} setFocus={setFocus} ref={popupRef} setIsClicked={setIsClicked} isClicked={isClicked} />
+                        <DropDownForm dragControls={dragControls} hoverChange={hoverChange} id={item.id} focus={focus} setFocus={setFocus} ref={popupRef} setIsClicked={setIsClicked} isClicked={isClicked} />
                     ) : null
                 }
                 {
                     hover && item.href && (
-                        <DropDownEdit ref={popupRef} item={item} setIsClicked={setIsClicked} isClicked={isClicked} />
+                        <DropDownEdit dragControls={dragControls} ref={popupRef} item={item} setIsClicked={setIsClicked} isClicked={isClicked} />
                     )
                 }
                 <InformationBlock item={item} />

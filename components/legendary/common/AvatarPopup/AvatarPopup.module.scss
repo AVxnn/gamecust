@@ -1,0 +1,58 @@
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    width: calc(100% + 48px);
+    justify-content: center;
+    margin: 0 -24px 16px -24px;
+    
+    gap: 8;
+  }
+  
+  .imageCont {
+    width: 100%;
+    max-height: 128px;
+    object-fit: contain;
+    transform: none !important;
+    transform-origin: none !important;
+    opacity: 1 !important;
+  }
+  
+  .img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    object-fit: contain;
+    z-index: unset;
+    padding: 50px;
+    animation: anim 0.4s ease-in-out forwards;
+  }
+  
+  .imgPopup {
+    position: fixed;
+    left: 0;
+    top: 0;
+    max-width: 20%;
+    padding: 50px;
+    border-radius: 8px;
+    z-index: 2222;
+  
+    img {
+      max-width: 100%;
+      width: 100%;
+      max-height: 40%;
+      border-radius: 8px;
+      object-fit: contain;
+    }
+  }
+  
+  @keyframes anim {
+    0% {
+      opacity: 0;
+    }
+    99% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }

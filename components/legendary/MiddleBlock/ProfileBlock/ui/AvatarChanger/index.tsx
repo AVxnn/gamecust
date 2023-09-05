@@ -61,9 +61,9 @@ const AvatarChanger = ({setValue} : any) => {
                     </div>
                     <input multiple={true} onChange={(e) => sendData(e, 'click')} className={styles.file} type="file" id="img" name="img" accept="image/*"/>
                 </label>
-                <Button clb={() => console.log('w')} type={'primary'}>
+                <div className={styles.button}>
                     Изменить рамку
-                </Button>
+                </div>
             </div>
         </div>
     )

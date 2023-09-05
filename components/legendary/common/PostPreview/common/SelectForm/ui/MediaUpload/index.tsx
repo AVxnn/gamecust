@@ -64,6 +64,26 @@ const MediaUpload = observer(({item, dragControls} : any) => {
         }
       }, []);
 
+    const handleClickOutside = (e: any) => {
+      if (isClicked || hover) {
+        if (labelRef.current &&
+            !labelRef.current.contains(e.target)) {
+              hoverChange('off')
+              setIsClicked(false)
+        }
+      }
+    }
+    useEffect(() => {
+      if (typeof document !== "undefined" && isClicked || hover) {
+          document.addEventListener('click', (e: any) => {
+              handleClickOutside(e);
+          })
+          return document.removeEventListener('click', (e: any) => {
+              handleClickOutside(e);
+          })
+      }
+    })
+
     const handleDrop = (e : any) => {
       e.preventDefault();
       e.stopPropagation();
@@ -99,15 +119,12 @@ const MediaUpload = observer(({item, dragControls} : any) => {
                       </div>
                     ) : !dragActive ? (
                       <label htmlFor={'img'} className={styles.info}>
-                      <form onSubmit={(e) => e.preventDefault()} onDragEnter={handleDrag} className={styles.fileBlock}>
-                        
-                            <ImageAdd />
-                            <span className={styles.text}>Загрузите или перетащите изображение</span> 
-                        
-                        
-                        <input multiple={true} onChange={(e) => sendData(e, 'click')} className={styles.file} type="file" id="img" name="img" accept="image/*"/>
-                      </form>
-                    </label> 
+                        <form onSubmit={(e) => e.preventDefault()} onDragEnter={handleDrag} className={styles.fileBlock}>
+                              <ImageAdd />
+                              <span className={styles.text}>Загрузите или перетащите изображение</span> 
+                          <input multiple={true} onChange={(e) => sendData(e, 'click')} className={styles.file} type="file" id="img" name="img" accept="image/*"/>
+                        </form>
+                      </label> 
                     ) : (
                       <>
                         <div className={styles.fileBlockDrag} onDragEnter={handleDrag} onDragLeave={handleDrag} onDragOver={handleDrag} onDrop={handleDrop}>

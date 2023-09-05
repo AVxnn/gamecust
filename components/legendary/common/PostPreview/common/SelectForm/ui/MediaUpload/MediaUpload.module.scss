@@ -47,6 +47,8 @@
         .text {
             color: $d_main_text_color;
             user-select: none;
+            font-weight: 700;
+            font-size: 16px;
             pointer-events: none;
         }
 
@@ -56,12 +58,12 @@
     }
 
     .fileBlock {
-    
         padding: 24px 0;
         user-select: none;
         position: relative;
         display: flex;
         height: 48px;
+        gap: 8px;
         justify-content: center;
         align-items: center;
         background-color: $d_main_text_color;
@@ -71,28 +73,23 @@
         &:hover {
             background-color: $d_main_text_hover_color;
         }
-    
-        .info {
-            display: flex;
-            align-items: center;
-            gap: 8px;
             
+        .text {
+            margin-top: 2px;
+            color: $d_main_bg_color;
+            font-size: 16px;
+        }
+
+        svg {
+            width: 31px;
+            height: 31px;
+        }
+
+        @media (max-width: 430px) {
+            flex-direction: column;
+
             span {
-                color: $d_main_bg_color;
-                font-size: 16px;
-            }
-    
-            svg {
-                width: 31px;
-                height: 31px;
-            }
-
-            @media (max-width: 430px) {
-                flex-direction: column;
-
-                span {
-                    text-align: center;
-                }
+                text-align: center;
             }
         }
     

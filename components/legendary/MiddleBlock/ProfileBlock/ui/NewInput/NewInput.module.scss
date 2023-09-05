@@ -3,11 +3,12 @@
 .newInput {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 12px;
 
     .title {
         color: $d_main_text_color;
-        font-size: 16px;
+        font-size: 17px;
+        font-weight: 700;
         padding: 0;
         margin: 0;
     }

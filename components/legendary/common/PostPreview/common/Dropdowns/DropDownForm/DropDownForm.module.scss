@@ -4,7 +4,6 @@
     position: absolute;
     top: 6px;
     left: 28px;
-    z-index: 10;
 
     @media (max-width: 768px) {
         top: auto;
@@ -43,6 +42,8 @@
         }
 
         svg {
+            width: 28px;
+            height: 28px;
             transition: all 0.2s ease-in-out;
         }
     }

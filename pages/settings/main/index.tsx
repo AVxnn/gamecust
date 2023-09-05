@@ -2,6 +2,7 @@ import React from 'react'
 import SettingsLayout from '../../../components/layout/SettingsLayout'
 import Header from '../../../components/legendary/header'
 import Head from 'next/head'
+import MainSettingsBlock from '../../../components/legendary/MiddleBlock/MainSettingsBlock'
 
 const MainSettings = () => {
   return (
@@ -18,7 +19,7 @@ const MainSettings = () => {
         </Head>
         <Header />
         <SettingsLayout>
-            Main
+            <MainSettingsBlock />
         </SettingsLayout>
     </>
   )

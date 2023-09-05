@@ -51,6 +51,19 @@ export default function App({ Component, pageProps }: AppProps) {
       document.body.removeAttribute('dark');
     }
 
+    const color = localStorage.getItem('color')
+    if (color == 'red') {
+      document.body.setAttribute('red', '');
+    } else if (color == 'pink') {
+      document.body.setAttribute('pink', '');
+    } else if (color == 'blue') {
+      document.body.setAttribute('blue', '');
+    } else if (color == 'green') {
+      document.body.setAttribute('green', '');
+    } else {
+      document.body.setAttribute('gamecust', '');
+    }
+
   })
 
   return (

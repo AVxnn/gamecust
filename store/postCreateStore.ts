@@ -1,8 +1,6 @@
 import { makeAutoObservable } from "mobx";
 import sortIds from "../features/Sort/SortIds";
 import CreatePostService from "../utils/createPost/CreatePostService";
-import { useContext } from "react";
-import { Context } from "../pages/_app";
 
 export default class PostCreateStore {
     postId = ''
@@ -35,7 +33,7 @@ export default class PostCreateStore {
 
     addItem(data : any, id = this.data.length) {
         if (this.data.length === id + 1) {
-            this.data.push(data);
+            this.data.splice(id, 1, data);
         } else {
             this.data.splice(id + 1, 0, data);
         }

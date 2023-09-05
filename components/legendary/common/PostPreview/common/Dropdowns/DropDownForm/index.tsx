@@ -102,8 +102,7 @@ const DropDownForm = observer(({setIsClicked, dragControls, isClicked, hoverChan
                 <button 
                     onPointerDown={(event) => dragControls.start(event)}
                     tabIndex={0} 
-                    onMouseUp={() => setIsClicked(true)} 
-                    onClick={() => setIsClicked(true)} 
+                    onClick={() => setIsClicked(!isClicked)} 
                     className={cn(styles.newForm, isClicked && styles.active)}
                 >
                     <Plus />

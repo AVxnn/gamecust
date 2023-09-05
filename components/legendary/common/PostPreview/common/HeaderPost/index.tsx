@@ -26,20 +26,6 @@ const HeaderPost = ({data, fixed} : any) => {
   const {mobxStore, popupHandlers, notificationStore} = useContext(Context);
   const [subscribe, setSubscribe] = useState(false)
 
-  const [isfixed, setIsFixed] = useState(false)
-
-  const { scrollY } = useScroll()
-
-  useMotionValueEvent(scrollY, "change", (latest: any) => {
-    console.log(latest);
-    
-    if (latest > 14) {
-      setIsFixed(true)
-    } else {
-      setIsFixed(false)
-    }
-  })
-
   const changeSub = async () => {
     if(!mobxStore.user.email) {
       notificationStore.addItem({title: 'Нужно выполнить авторизацию', status: 'error', timeLife: 2500})
@@ -61,7 +47,7 @@ const HeaderPost = ({data, fixed} : any) => {
   console.log(data);
   
   return (
-    <header className={`${styles.header} ${fixed && isfixed ? styles.fixed : null}`}>
+    <header className={`${styles.header} ${fixed ? styles.fixed : null}`}>
       <div className={styles.leftBlock}>
         <Link href={`/profile/${data.userId}`}>
           {
