@@ -58,6 +58,10 @@
         z-index: 2;
         right: 0;
 
+        @media (max-width: 720px) {
+            width: 180px
+        }
+
         a {
             text-decoration: none;
         }
@@ -71,6 +75,10 @@
             color: $d_main_text_color;
             border-radius: 8px;
             cursor: pointer;
+
+            @media (max-width: 720px) {
+                font-size: 14px;
+            }
 
             &:hover {
                 background-color: $d_main_bg_color;

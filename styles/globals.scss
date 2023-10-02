@@ -139,6 +139,8 @@ input {
     li {
         height: 6px;
         width: 6px;
+        background-color: $d_main_color;
+        border-radius: 99px;
         margin: 0 4px;
     }
 
@@ -152,6 +154,7 @@ input {
         div {
             background-color: $d_main_color !important;
             border-radius: 99px;
+            height: 6px;
             animation: progressBar 6.1s linear infinite;
         }
     }

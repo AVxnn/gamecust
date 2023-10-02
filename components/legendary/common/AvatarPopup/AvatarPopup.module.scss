@@ -4,7 +4,7 @@
     width: calc(100% + 48px);
     justify-content: center;
     margin: 0 -24px 16px -24px;
-    
+
     gap: 8;
   }
   
@@ -13,7 +13,7 @@
     height: 100%;
     max-height: 120px;
     max-width: 120px;
-    object-fit: contain;
+    object-fit: cover;
     transform: none !important;
     transform-origin: none !important;
     opacity: 1 !important;
@@ -28,7 +28,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    object-fit: contain;
+    object-fit: cover;
     z-index: unset;
     padding: 50px;
     animation: anim 0.4s ease-in-out forwards;

@@ -28,6 +28,27 @@ export default class CommentsCreateStore {
         }
     }
 
+    async replyComment(user: any, data: any, dataS: any) {
+        try {
+            const comment = {
+                text: data.text,
+                avatarPath: user.avatarPath,
+                author: user.username,
+                userId: user.id,
+                postId: data.postId,
+                commentId: data.commentId,
+                repliesId: data.repliesId,
+                createdAt: `${Date.now()}`,
+                likes: [],
+                replies: []
+            }
+            const response = await CreateCommentsService.replyСomment(comment);
+            await console.log('comment 1', response);
+        } catch (error: any) {
+            console.log(error)
+        }
+    }
+
     async deletePost(id: any) {
         try {
             const response = await CreateCommentsService.deletePost(id);

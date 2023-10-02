@@ -7,6 +7,8 @@ import { Context } from '../../../../pages/_app';
 import { observer } from 'mobx-react';
 import IconHandler from '../../common/PostPreview/common/IconHandler';
 import AvatarPopup from '../../common/AvatarPopup';
+import isRoleHandler from '../../../../features/isRoleHandler';
+import Button from '../../common/Button';
 
 const dataTag = [
   {
@@ -43,7 +45,7 @@ const ProfileBlock = ({data} : any) => {
   const changePage = (index : number) => {
     setActive(index)
   }
-  
+
   useEffect(() => {
     switch (router.query.id[1]) {
       case 'entries':
@@ -118,7 +120,11 @@ const ProfileBlock = ({data} : any) => {
             </ul>
           </div>
         </div>
-        <ButtonChanger />
+        {
+          isRoleHandler(mobxStore?.user?.id, data._id) ? ( 
+            <ButtonChanger />
+          ) : ''
+        }
       </div>
     </>
   );

@@ -21,13 +21,17 @@
     .topBar {
         position: absolute;
         top: 24px;
-        width: 384px;
+        width: calc(100% - 96px);
         height: 4px;
         display: flex;
         gap: 12px;
 
+        @media (max-width: 768px) {
+            width: calc(100% - 48px);
+        }
+
         .line {
-            width: 120px;
+            width: 100%;
             position: relative;
             height: 4px;
             background-color: $d_main_subbg_color;
@@ -41,7 +45,7 @@
             }
         }
         .lineProgress {
-            width: 120px;
+            width: 100%;
             position: relative;
             height: 4px;
             background-color: $d_main_subbg_color;
@@ -55,7 +59,7 @@
             }
         }
         .lineFull {
-            width: 120px;
+            width: 100%;
             position: relative;
             height: 4px;
             background-color: $d_main_subbg_color;
@@ -72,6 +76,7 @@
 
     .title {
         font-size: 24px;
+        margin: 48px 0 24px 0;
         color: $d_main_text_color;
     }
 

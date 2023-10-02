@@ -1,8 +1,6 @@
 import React, { useContext, useState } from 'react'
 import styles from "./Login.module.scss"
 import { Context } from '../../../../../../../pages/_app';
-import { useDispatch, useSelector } from 'react-redux';
-import { close } from '../../../../../../../features/Popup/PopupAuthSlice'
 import InputCustom from '../../../../PostPreview/common/InputCustom';
 import Google from "../../../../../../../public/img/google.png"
 import Image from "next/image"

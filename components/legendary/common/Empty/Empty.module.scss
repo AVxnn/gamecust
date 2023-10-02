@@ -2,20 +2,23 @@
 
 .empty {
     display: flex;
-    width: 100%;
+    width: calc(100% - 48px);
     height: 200px;
     align-items: center;
     justify-content: center;
     flex-direction: column;
     gap: 16px;
+    padding: 0 24px;
 
     h4 {
         color: $d_main_text_color;
         margin: 0;
+        text-align: center;
     }
 
     p {
         color: $d_main_subtext_color;
         margin: 0;
+        text-align: center;
     }
 }

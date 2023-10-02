@@ -32,6 +32,7 @@ const UserBlock = ({ postId, data }: any) => {
     })
 
     const copyClick = () => {
+        notificationStore.addItem({title: 'Ссылка вставлена в буфер обмена', status: 'success', timeLife: 2500})
         navigator.clipboard.writeText(`https://gamecust.online/post/${postId}`).then(function() {
             console.log('Текст успешно скопирован в буфер обмена');
         }, function(err) {

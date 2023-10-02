@@ -71,7 +71,7 @@ const MainSettingsBlock = () => {
     }
 
     useEffect(() => {
-      let color = localStorage.getItem('color') as any
+      let color = localStorage.getItem('color') || 'gamecust' as any
       setMainColor(color)
       setEmail(mobxStore.user.email)
     }, [mobxStore.user])

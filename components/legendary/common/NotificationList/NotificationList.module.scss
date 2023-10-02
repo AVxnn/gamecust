@@ -12,6 +12,12 @@
     height: 500px;
     z-index: 1000;
 
+    @media screen and (max-width: 720px) {
+        width: calc(100% - 24px);
+        right: auto;
+        left: auto;
+    }
+
     li {
         list-style: none;
     }

@@ -98,6 +98,7 @@ export default class PostCreateStore {
                 hashtags: [],
                 likes: [],
                 comments: [],
+                commentsCount: 0,
                 views: [],
                 viewsCount: 0,
             }
@@ -138,6 +139,7 @@ export default class PostCreateStore {
                 hashtags: [],
                 likes: [],
                 comments: [],
+                commentsCount: 0,
                 views: [],
                 viewsCount: 0,
             }
@@ -163,6 +165,7 @@ export default class PostCreateStore {
                 hashtags: data.hashtags,
                 likes: data.likes,
                 comments: data.comments,
+                commentsCount: data.commentsCount,
                 views: data.views,
                 viewsCount: data.viewsCount,
             }

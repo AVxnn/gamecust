@@ -64,13 +64,11 @@ const EditorBlock = () => {
     }
   }
 
-  const handleReorder = (newList : any) => {
+  const handleReorder = useCallback((newList : any) => {
     let result = postCreateStore.sortArray(newList)
     const reorderedItems = [...result];
     setItems(reorderedItems);
-  };
-
-  
+  }, [items]);
   
   useEffect(() => {
     document.addEventListener('keydown', keyPress);

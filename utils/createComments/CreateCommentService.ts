@@ -8,6 +8,10 @@ export default class CreateCommentsService {
         return $api.post<any>('/api/comment/create', {data});
     }
 
+    static async replyСomment (data: any): Promise<AxiosResponse<any>> {
+        return $api.post<any>('/api/comment/reply', {data});
+    }
+
     static async getPost (id: any): Promise<AxiosResponse<any>> {
         return $api.get<any>(`/api/post/getPost/${id}`);
     }

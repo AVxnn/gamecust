@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState} from 'react';
 import styles from './Item.module.scss'
 import ToolComment from "../ToolComment";
 import ImgPopup from "../../ImgPopup";
@@ -8,7 +8,10 @@ import { ru } from 'date-fns/locale';
 import IconHandler from '../../PostPreview/common/IconHandler';
 import Link from 'next/link';
 
-const Item = ({data} : any) => {
+const Item = ({comments, data, dataPost} : any) => {
+  // console.log('====================================');
+  console.log(comments.filter((item : any) => item.repliesId === data.commentId));
+  console.log(comments);
   return (
     <>
       <div className={styles.comment}>
@@ -33,16 +36,16 @@ const Item = ({data} : any) => {
                 )
               }
             </div>
-            <ToolComment data={{views: 324, count: 121, comments: 32}}/>
+            <ToolComment data={data} dataPost={dataPost}/>
+            {
+              comments.filter((item : any) => item.repliesId === data.commentId).map((item: any, index: number) => {
+                return item.repliesId ? (
+                  <Item comments={comments} key={index} data={item} dataPost={dataPost}/>
+                ) : ''
+              })
+            }
           </div>
         </div>
-        {
-          data.reply && data.reply.map((item: any, index: number) => {
-            return (
-              <Item data={item} key={index}/>
-            )
-          })
-        }
       </div>
     </>
   );

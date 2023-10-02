@@ -37,7 +37,7 @@ const Comments = ({dataS, comments} : any) => {
     console.log(commentId);
     
     if (dataPost.data.length && mobxStore.user.id) {
-      await postCreateStore.updatePost({...dataPost, comments: [...dataPost.comments, commentId]});
+      await postCreateStore.updatePost({...dataPost, comments: [...dataPost.comments, commentId], commentsCount: dataPost.commentsCount + 1,});
       await commentsCreateStore.createComment(mobxStore.user, {text: value, commentId: commentId, createdAt: new Date(), postId: dataPost.postId}, dataPost)
     }
     await getComments()
@@ -83,9 +83,9 @@ const Comments = ({dataS, comments} : any) => {
       </ul>
       <div className={styles.listComments}>
         {
-          dataComments?.map((item : any, index : number) => {
+          dataComments.filter((item : any) => !item.repliesId)?.map((item : any, index : number) => {
             return (
-              <Item key={index} data={item}/>
+              <Item comments={comments} key={index} data={item} dataPost={dataPost}/>
             )
           })
         }
