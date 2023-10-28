@@ -37,7 +37,7 @@ const DropDownForm = observer(({setIsClicked, dragControls, isClicked, hoverChan
                 value: '',
                 stared: false,
                 unicalId: uuid(),
-                id: postCreateStore.data.length
+                id: postCreateStore.data.length - 1
             }
         } else if (type == 'h1') {
             result = {
@@ -45,7 +45,7 @@ const DropDownForm = observer(({setIsClicked, dragControls, isClicked, hoverChan
                 value: '',
                 stared: false,
                 unicalId: uuid(),
-                id: postCreateStore.data.length
+                id: postCreateStore.data.length - 1
             }
         } else if (type == 'h2') {
             result = {
@@ -53,7 +53,7 @@ const DropDownForm = observer(({setIsClicked, dragControls, isClicked, hoverChan
                 value: '',
                 stared: false,
                 unicalId: uuid(),
-                id: postCreateStore.data.length
+                id: postCreateStore.data.length - 1
             }
         } else if (type == 'media') {
             result = {
@@ -62,7 +62,7 @@ const DropDownForm = observer(({setIsClicked, dragControls, isClicked, hoverChan
                 stared: false,
                 href: '',
                 unicalId: uuid(),
-                id: postCreateStore.data.length
+                id: postCreateStore.data.length - 1
             }
         } else if (type == 'link') {
             result = {
@@ -71,14 +71,14 @@ const DropDownForm = observer(({setIsClicked, dragControls, isClicked, hoverChan
                 stared: false,
                 href: '',
                 unicalId: uuid(),
-                id: postCreateStore.data.length
+                id: postCreateStore.data.length - 1
             }
         } else if (type == 'br') {
             result = {
                 type: 'br',
                 stared: false,
                 unicalId: uuid(),
-                id: postCreateStore.data.length
+                id: postCreateStore.data.length - 1
             }
         }
         postCreateStore.addItem(result, id);

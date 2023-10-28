@@ -40,6 +40,7 @@ const EditorBlock = () => {
   );
 
   const createNewPost = () => {
+    console.log(postCreateStore.data.length);
     if (postCreateStore.data.length >= 1) {
       if (!postCreateStore.data[postCreateStore?.data?.length - 1].value && postCreateStore.data[postCreateStore?.data?.length - 1].type == 'text') {
         console.log('noWork');
