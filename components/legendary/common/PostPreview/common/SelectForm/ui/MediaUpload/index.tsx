@@ -21,9 +21,15 @@ const MediaUpload = observer(({item, dragControls} : any) => {
     const {postCreateStore} = useContext(Context);
     
     const sendData = (file : any, type: any) => {
-      let files = file.currentTarget.files[0]
+      let files
+      if (type === 'input') {
+        files = file.currentTarget.files[0]
+      }
       if (type === 'drag') {
         files = file.dataTransfer.files[0]
+      }
+      if (type === 'paste') {
+        files = file
       }
       var formdata = new FormData();
       formdata.append("image", files);
@@ -105,6 +111,24 @@ const MediaUpload = observer(({item, dragControls} : any) => {
       }
     };
 
+    function handlePaste(e: any) {
+      const items = (e.clipboardData || e.originalEvent.clipboardData).items;
+    
+      for (let i = 0; i < items.length; i++) {
+        if (items[i].type.indexOf('image') !== -1) {
+          const file = items[i].getAsFile();
+          sendData(file, 'paste')
+        }
+      }
+    }
+
+    useEffect(() => {
+      document.addEventListener('paste', handlePaste);
+      return () => {
+        document.removeEventListener('paste', handlePaste);
+      };
+    }, []);
+
     return (
         <>
             <div
@@ -122,7 +146,7 @@ const MediaUpload = observer(({item, dragControls} : any) => {
                         <form onSubmit={(e) => e.preventDefault()} onDragEnter={handleDrag} className={styles.fileBlock}>
                               <ImageAdd />
                               <span className={styles.text}>Загрузите или перетащите изображение</span> 
-                          <input multiple={true} onChange={(e) => sendData(e, 'click')} className={styles.file} type="file" id="img" name="img" accept="image/*"/>
+                          <input multiple={true} onChange={(e) => sendData(e, 'input')} className={styles.file} type="file" id="img" name="img" accept="image/*"/>
                         </form>
                       </label> 
                     ) : (

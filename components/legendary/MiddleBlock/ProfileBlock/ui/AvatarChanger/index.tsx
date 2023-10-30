@@ -13,6 +13,23 @@ const AvatarChanger = ({setValue} : any) => {
 
     const sendData = (file : any, type: any) => {
         let files = file.currentTarget.files[0]
+        console.log('w' + mobxStore.user.avatarPath)
+        if (mobxStore.user.avatarPath) {
+            const regex = /\/(?:[^/]*\/){3}(.+)/;
+            const link = mobxStore.user.avatarPath as any
+            const match = link.match(regex)[1];
+            var formdataDelete = new FormData();
+            formdataDelete.append("pathUrl", match);
+            fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/file/deleteAvatar`, {
+              method: 'POST',
+              body: formdataDelete,
+              redirect: 'follow'
+            })
+              .then(response => {
+                console.log(response);
+              })
+              .catch(error => console.log('error', error));
+          }
         if (type === 'drag') {
           files = file.dataTransfer.files[0]
         }
