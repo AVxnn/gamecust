@@ -6,6 +6,8 @@ import Link from 'next/link'
 import { Context } from '../../../../../../pages/_app'
 import { useRouter } from 'next/router'
 import { observer } from 'mobx-react-lite'
+import { formatDistance } from 'date-fns'
+import { ru } from 'date-fns/locale';
 
 const DraftItem = ({data} : any) => {
     
@@ -37,7 +39,7 @@ const DraftItem = ({data} : any) => {
                 <div className={styles.mainInfo}>
                     <h2 className={styles.title} dangerouslySetInnerHTML={{ __html: data?.data?.filter((e: any) => e.type == 'h1')[0]?.value}}></h2>
                     <div className={styles.bottomInfo}>
-                        {/* <ReactTimeAgo className={styles.date} date={data.publishedDate} locale="ru-RU"/> */}
+                    <span className={styles.date}>Изменение было {formatDistance(+data.publishedDate, Date.now(), { addSuffix: false, locale: ru })} назад</span>
                         <div onClick={(e) => deleteHandler(e)} className={styles.delete}>
                             <Trash />
                             <p>Удалить черновик</p>

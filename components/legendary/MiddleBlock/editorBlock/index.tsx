@@ -12,15 +12,12 @@ import uuid from 'react-uuid';
 const EditorBlock = () => {
 
   const {mobxStore, postCreateStore, notificationStore} = useContext(Context);
-  const dragControls = useDragControls();
 
   const [items, setItems] = useState(postCreateStore.data);
 
   const editor = useRef<HTMLDivElement>() as any
 
   const [pressKey, setPressKey] = useState(false)
-
-  const [mouseDrop, setMouseDrop] = useState(false)
 
   const saveHandler = () => {
     if (postCreateStore.data.length > 1 && mobxStore.user.id) {

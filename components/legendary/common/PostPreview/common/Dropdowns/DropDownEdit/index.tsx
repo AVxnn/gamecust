@@ -31,9 +31,12 @@ const DropDownEdit = observer(({item, setIsClicked, isClicked, dragControls} : a
     }
 
     const staredHandler = (flag : boolean) => {
-        console.log('addStar', item.id, postCreateStore.data);
-        postCreateStore.updateItem({...item, stared: flag})
-        setIsClicked(false)
+        postCreateStore.data.filter(item => item.stared === true).length
+        if (postCreateStore.data.filter(item => item.stared === true).length < 2) {
+            console.log('addStar', item.id, postCreateStore.data);
+            postCreateStore.updateItem({...item, stared: flag})
+            setIsClicked(false)
+        }
     }
 
 

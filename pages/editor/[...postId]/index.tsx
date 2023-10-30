@@ -36,7 +36,7 @@ const Editor = ({props} : any) => {
         {
             type: 'h1',
             value: '',
-            stared: false,
+            stared: true,
             unicalId: uuid(),
             id: 0,
         },

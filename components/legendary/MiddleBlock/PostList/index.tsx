@@ -57,7 +57,7 @@ const PostList = ({PostData, fetchData, textEmpty} : any) => {
     <div className={styles.postList}>
       {
         items.map((item : any, index : number) => {
-          if (index > 0 && index % 6 == 0) {
+          if (index > 0 && index % 5 == 0 || index == 1) {
             return (
                 <div className={styles.container} key={index}>
                   <NewsSlider />

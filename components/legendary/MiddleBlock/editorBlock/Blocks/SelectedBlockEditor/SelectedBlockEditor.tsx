@@ -85,7 +85,7 @@ const SelectedBlockEditor = ({ posLeft, selectedText, item} : any) => {
 
     const LinkHandler = () => {
         if (link !== '') {
-            const resultText = item.value.replace(`${selectedText}`, `<a href='${link} target="_blank"'>${selectedText}</a>`)
+            const resultText = item.value.replace(`${selectedText}`, `<a href='${link}' target="_blank">${selectedText}</a>`)
             postCreateStore.updateItem({...item, value: resultText})
         }
         // const newContent = item.value.replace(new RegExp(`<a href="[^"]+">${selectedText}</a>`), selectedText);

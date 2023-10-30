@@ -1,0 +1,27 @@
+@import "/styles/variables.scss";
+
+.createNewCommunities {
+  width: 48px;
+  height: 100%;
+  background-color: $d_main_bg_color;
+  border-radius: 8px;
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.1s ease-in-out all;
+
+  &:hover {
+    background-color: $d_main_subbg_color;
+  }
+
+  svg {
+    width: 24px;
+    height: 24px;
+
+    rect {
+      fill: $d_main_text_color;
+    }
+  }
+}

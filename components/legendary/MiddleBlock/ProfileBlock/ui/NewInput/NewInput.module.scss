@@ -7,8 +7,8 @@
 
     .title {
         color: $d_main_text_color;
-        font-size: 17px;
-        font-weight: 700;
+        font-size: 16px;
+        font-weight: 500;
         padding: 0;
         margin: 0;
     }
@@ -17,15 +17,27 @@
         position: relative;
         display: flex;
         width: 100%;
-
+    
         .input {
-            padding: 12px 16px;
+            padding: 11px 15px;
+            box-sizing: border-box;
             width: 100%;
             font-size: 16px;
             border-radius: 8px;
             color: $d_main_text_color;
+            border: 1px solid $d_main_bg_color;
             box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
             background-color: $d_main_bg_color;
+            transition: 0.1s ease-in-out all;
+
+            &:hover {
+                background-color: $d_main-Bg-color-hover;
+            }
+
+            &:focus {
+                border: 1px solid $d_main_text_color;
+                background-color: $d_main-Bg-color-hover;
+            }
         }
     
         .maxValue {
@@ -33,11 +45,9 @@
             right: 16px;
             top: 10px;
             padding: 4px 0 4px 4px;
-            background-color: $d_main_bg_color;
+            background-color: rgba(0, 0, 0, 0);
             color: $d_main_subtext_color;
             font-size: 12px;
         }
     }
-
-    
 }

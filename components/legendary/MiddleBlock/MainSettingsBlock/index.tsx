@@ -8,6 +8,8 @@ import PremiumBlock from './ui/PremiumBlock';
 import Link from 'next/link';
 import NewDropMenu from '../ProfileBlock/ui/NewDropMenu';
 import { observer } from 'mobx-react-lite';
+import TitleCard from '../ProfileBlock/ui/TitleCard';
+import CommunitiesBlock from './ui/CommunitiesBlock';
 
 const MainSettingsBlock = () => {
 
@@ -81,12 +83,14 @@ const MainSettingsBlock = () => {
           <div onClick={() => router.back()} className={styles.topBar}>
             <Arrow/>
           </div>
+        <TitleCard title={'Основные'} />
           <div className={styles.mainBlocks}>
             <div className={styles.first}>
                 <NewInput title={'Почта и пароль'} value={email} setValue={setEmail}/>
                 <Link href={'/settings/main'} className={styles.changePassword}>Изменить пароль</Link>
             </div>
             <NewDropMenu data={dataBlog} title={'Выбери акцентный цвет сайта'} value={mainColor} setValue={changeColor}/>
+            <CommunitiesBlock />
             <PremiumBlock />
             <button onClick={() => saveHandler()} className={styles.buttonCustom}>Сохранить</button>
           </div>

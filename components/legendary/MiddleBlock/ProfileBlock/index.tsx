@@ -7,6 +7,7 @@ import Button from '../../common/Button'
 import { useRouter } from 'next/router'
 import { Context } from '../../../../pages/_app'
 import AvatarChanger from './ui/AvatarChanger'
+import TitleCard from './ui/TitleCard'
 
 const ProfileBlock = () => {
 
@@ -40,6 +41,7 @@ const ProfileBlock = () => {
       <div onClick={() => router.back()} className={styles.topBar}>
         <Arrow/>
       </div>
+      <TitleCard title={'Профиль'} />
       <div className={styles.mainBlocks}>
         <AvatarChanger setValue={setAvatarPath}/>
         <NewInput title={'Отображаемое имя'} value={username} setValue={setUsername} maxValue={24}/>
