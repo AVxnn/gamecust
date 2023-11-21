@@ -12,6 +12,7 @@ const ImgPopup = ({src} : any) => {
         <motion.img
           className={styles.imageCont}
           src={src}
+          loading="lazy"
           onClick={() => setActive(true)}
           layoutId={"image" + src} />
       </div>
@@ -40,7 +41,7 @@ const ImgPopup = ({src} : any) => {
                 animate={{ opacity: 0.5 }}
                 exit={{ opacity: 0 }}
               />
-              <motion.img src={src} layoutId={"image" + src} onClick={() => setActive(null)} />
+              <motion.img loading="lazy" src={src} layoutId={"image" + src} onClick={() => setActive(null)} />
             </div>
           )}
         </AnimatePresence>
