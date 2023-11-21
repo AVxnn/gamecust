@@ -11,6 +11,7 @@ export const nextAuthOptions = {
       clientId: process.env.DISCORD_CLIENT_ID,
       clientSecret: process.env.DISCORD_CLIENT_SECRET,
       authorization: { params: { scope: scopes } },
+      redirect_uri: process.env.NEXTAUTH_URL,
     }),
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID,
