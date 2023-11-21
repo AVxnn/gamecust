@@ -7,9 +7,6 @@ const scopes = ['identify', 'email'].join(' ')
 
 export const nextAuthOptions = {
   debug: true,
-  jwt: {
-    secret: process.env.NEXT_PUBLIC_JWT_SECRET_KEY // Doesn't seems to work.
-  },
   providers: [
     DiscordProvider({
       clientId: process.env.NEXT_PUBLIC_DISCORD_CLIENT_ID ?? "",
