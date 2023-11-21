@@ -7,6 +7,10 @@ body {
     background-color: $d_main_white20_color;
     box-sizing: border-box;
     transition: all 0.2s ease-in-out;
+
+    
+    --border-radius-: #D5B5FF;
+    --d_main_active: #A762FF;
 }
 
 body {
@@ -92,6 +96,10 @@ body[blue] {
     --d_main_color: #5d5bf0;
     --d_main_hover: #b5bcff;
     --d_main_active: #626cff;
+}
+
+.body-overflow-hidden {
+    overflow: hidden !important;
 }
 
 input {

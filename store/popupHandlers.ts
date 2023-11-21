@@ -9,11 +9,14 @@ export default class NotificationStore {
   
     authPopupOpen() {
         this.authPopup = true
+        const body = document.body;
+        body.classList.add('body-overflow-hidden');
     }
 
     authPopupClose() {
         this.authPopup = false
-        
+        const body = document.body;
+        body.classList.remove('body-overflow-hidden');
     }
 
 }

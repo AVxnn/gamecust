@@ -12,11 +12,10 @@
 
     .container {
         position: relative;
-        width: 640px;
         display: flex;
-        height: 531px;
         border-radius: 8px;
         background-color: $d_main_bg_color;
+        overflow: hidden;
 
         @media (max-width: 768px) {
             width: 100%;
@@ -29,29 +28,17 @@
             position: absolute;
             top: 32px;
             right: 32px;
+            height: 18px;
             cursor: pointer;
+            padding: 8px;
 
             svg {
-                width: 32px;
-                height: 32px;
-                transform: rotate(45deg);
+                width: 18px;
+                height: 18px;
             }
-            rect {
-                fill: $d_main_color
-            }
-        }
 
-        .leftBlock {
-            width: 160px;
-            height: 100%;
-            position: relative;
-            overflow: hidden;
-            border-radius: 8px 0 0 8px;
-
-            @media (max-width: 768px) {
-                width: 100%;
-                height: 40%;
-                max-height: 320px;
+            path {
+                fill: $d_main_gray_color
             }
         }
     }

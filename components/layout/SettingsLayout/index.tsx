@@ -3,8 +3,8 @@ import styles from './SettingsLayout.module.scss'
 import { observer } from 'mobx-react';
 import SettingsNavigation from '../../legendary/MiddleBlock/SettingsNavigation';
 import NotificationList from '../../legendary/common/NotificationList';
-import AuthPopup from '../../legendary/common/Popup/AuthPopup';
 import MobileMenu from '../../legendary/common/MobileMenu';
+import AuthPopup from '../../auth/authPopup';
 
 const SettingsLayout = ({children}: any) => {
   return (

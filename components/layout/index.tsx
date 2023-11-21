@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
 import styles from './layout.module.scss'
 
-import AuthPopup from '../legendary/common/Popup/AuthPopup';
 import { observer } from 'mobx-react-lite';
 import MobileMenu from '../legendary/common/MobileMenu';
 import NotificationList from '../legendary/common/NotificationList';
+import AuthPopup from '../auth/authPopup';
 
 const Layout = ({children}: any) => {
   

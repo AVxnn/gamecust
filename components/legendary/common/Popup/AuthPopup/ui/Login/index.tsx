@@ -61,12 +61,13 @@ const Login = ({setAuth} : any) => {
                 <div className={styles.topBar} >
                 </div>
                 <h2 className={styles.title}>Войти в аккаунт</h2>
+                <p className={styles.description}>Вы сможете комментировать статьи и создавать собственные!</p>
                 <InputCustom value={email.email} error={email.error} onChange={validateEmail} type={'email'} placeholder={'Email'}/>
                 <InputCustom value={password.password} onChange={validatePassword} type={'password'} placeholder={'Password'}/>
                 <input className={styles.button} onClick={() => login()} type="button" value={'Войти'} />
                 <GoogleOAuthProvider clientId={`${process.env.NEXT_PUBLIC_GOOGLE_API}`}>
                     <div className={styles.oauth}>
-                        <span className={styles.subTitle}>или</span>
+                        <span className={styles.subTitle}>Через соцсеть</span>
                         <div className={styles.google}>
                             <Image src={Google} alt={''}/>
                             <GoogleLogin

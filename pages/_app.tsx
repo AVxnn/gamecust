@@ -9,6 +9,7 @@ import NotificationStore from '../store/notificationStore';
 import PopupHandlers from '../store/popupHandlers'
 import CommentsCreateStore from '../store/commentsCreateStore';
 import Head from 'next/head';
+import NextAuthProvider from '../features/provider/nextAuthProvider';
 interface State {
   mobxStore: MobxStore;
   postCreateStore: PostCreateStore;
@@ -79,9 +80,11 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta name="theme-color" content="#ffffff"></meta>
       </Head>
       <Provider store={store}>
-        <Context.Provider value={{mobxStore, postCreateStore, notificationStore, popupHandlers, commentsCreateStore}}>
-          <Component {...pageProps} />
-        </Context.Provider>
+        <NextAuthProvider>
+          <Context.Provider value={{mobxStore, postCreateStore, notificationStore, popupHandlers, commentsCreateStore}}>
+            <Component {...pageProps} />
+          </Context.Provider>
+        </NextAuthProvider>
       </ Provider>
     </>
   )

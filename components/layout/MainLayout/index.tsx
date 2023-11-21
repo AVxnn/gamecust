@@ -1,7 +1,6 @@
 import React, { useContext, useState } from 'react';
 import styles from './MainLayout.module.scss'
 import { observer } from 'mobx-react';
-import AuthPopup from '../../legendary/common/Popup/AuthPopup';
 import NotificationList from '../../legendary/common/NotificationList';
 import MobileMenu from '../../legendary/common/MobileMenu';
 import Navigation from '../../legendary/MiddleBlock/Navigation';
@@ -14,6 +13,7 @@ import TopGroup from '../../legendary/RightBlock/TopGroup';
 import Contacts from '../../legendary/RightBlock/Contacts';
 import { useMotionValueEvent, useScroll } from 'framer-motion';
 import LoginRight from '../../legendary/RightBlock/LoginRight';
+import AuthPopup from '../../auth/authPopup';
 
 const MainLayout = ({children}: any) => {
 

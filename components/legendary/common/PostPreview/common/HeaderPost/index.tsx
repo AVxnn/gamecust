@@ -46,7 +46,6 @@ const HeaderPost = ({data, fixed} : any) => {
     })
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [mobxStore?.user?.subscriptions]);
-  console.log(data);
   
   return (
     <header className={`${styles.header} ${fixed ? styles.fixed : null}`}>

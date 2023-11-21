@@ -1,0 +1,90 @@
+@import "/styles/variables.scss";
+
+.customInput {
+    background-color: #FFFFFF;
+    display: flex;
+    width: auto;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    height: 36px;
+    color: #3ABEF6;
+    padding: 0;
+    gap: 12px;
+    font-weight: 600;
+    border-radius: $border_radius_24;
+    border: none;
+    box-shadow: $s_main_shadow;
+    transition: all 0.1s ease-in-out;
+    font-weight: 500;
+    cursor: pointer;
+
+    &::-moz-placeholder { color: $t_black_description; }
+    &::-webkit-input-placeholder { color: $t_black_description; }
+}
+
+.default {
+    color: $t_black_title;
+    background-color: $b_secondary_default;
+    border: 2px solid $b_inactive;
+    
+    &:hover {
+        background-color: $b_secondary_default;
+        border: 2px solid $b_main_active;
+    }
+
+    &:focus {
+        outline: none;
+        background-color: $b_secondary_default;
+        border: 2px solid $b_main_active;
+    }
+}
+
+.error {
+    color: $t_black_title;
+    background-color: $c_error_bg;
+    border: 2px solid $c_error;
+    
+    &:hover {
+        background-color: $c_error_bg;
+        border: 2px solid $c_error;
+    }
+
+    &:focus {
+        outline: none;
+        background-color: $c_error_bg;
+        border: 2px solid $c_error;
+    }
+}
+
+.errorText {
+    position: absolute;
+    color: $c_error;
+    display: flex;
+    gap: 6px;
+    margin-top: 4px;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 500;
+    margin-left: 16px;
+
+    svg {
+        width: 12px;
+        height: 12px;
+    }
+}
+
+.width {
+    width: 100%;
+}
+
+.s {
+    font-size: 14px;
+    padding: 9px 16px; 
+    height: 36px;
+}
+.m {
+    font-size: 16px; 
+    padding: 14px 32px; 
+    height: 48px;
+}
