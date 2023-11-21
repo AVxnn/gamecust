@@ -36,6 +36,7 @@ const Subscriptions = ({ props } : any) => {
     return () => {
       document.removeEventListener("DOMContentLoaded", () => fetchData(0, true))
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   
   return (

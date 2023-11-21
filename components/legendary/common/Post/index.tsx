@@ -35,6 +35,7 @@ const Post = ({ post, comments }: any) => {
 
   useEffect(() => {
     getUser();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [post]);
 
   if (!post?.username) return <>Loading...</>;

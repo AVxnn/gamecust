@@ -42,10 +42,12 @@ const Editor = ({props} : any) => {
         },
       ])
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   
   useEffect(() => {
     postCreateStore.setPostId(postId ? postId[1] : '')
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [postId])
 
   return (

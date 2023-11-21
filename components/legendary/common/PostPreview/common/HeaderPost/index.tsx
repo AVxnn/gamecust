@@ -44,6 +44,7 @@ const HeaderPost = ({data, fixed} : any) => {
         setSubscribe(false)
       }
     })
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [mobxStore?.user?.subscriptions]);
   console.log(data);
   

@@ -127,6 +127,7 @@ const MediaUpload = observer(({item, dragControls} : any) => {
       return () => {
         document.removeEventListener('paste', handlePaste);
       };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (

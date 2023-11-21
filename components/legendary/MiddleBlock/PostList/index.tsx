@@ -47,6 +47,7 @@ const PostList = ({PostData, fetchData, textEmpty} : any) => {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLoading]);
 
   useEffect(() => {

@@ -17,6 +17,7 @@ const Drafts = ({data, user} : any) => {
             notificationStore.addItem({title: 'Аккаунт зарегистрирован', status: 'success', timeLife: 2500})
             router.back()
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [data, mobxStore])
 
     return mobxStore.user && mobxStore.user.id == user._id ? (

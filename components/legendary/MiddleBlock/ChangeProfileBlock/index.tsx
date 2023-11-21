@@ -23,6 +23,7 @@ const ChangeProfileBlock = ({data, user} : any) => {
 
     useEffect(() => {
         fetchData(0)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [data])
 
     switch (router.query.id[1]) {

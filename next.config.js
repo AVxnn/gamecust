@@ -1,11 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: false,
+  reactStrictMode: true,
   optimizeFonts: true,
-  distDir: "build",
   images: {
     unoptimized: true,
-    domains: ['localhost', 'img.freepik.com', 'gamecust.ru'],
+    domains: ["localhost", "img.freepik.com", "gamecust.ru"],
     remotePatterns: [
       {
         protocol: "https",
@@ -58,6 +57,6 @@ const nextConfig = {
     ],
     minimumCacheTTL: 15000000,
   },
-}
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
