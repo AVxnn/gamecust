@@ -53,6 +53,10 @@
           height: 32px;
         }
 
+        path {
+          fill: $d_main_text_color
+        }
+
         @media (max-width: 768px) {
           display: block;
         }
@@ -62,6 +66,7 @@
         font-size: 24px;
         font-weight: 700;
         margin: 0 0 32px 0;
+        color: $d_main_text_color;
       }
   
       .buttonList {
@@ -98,6 +103,12 @@
               color: $d_main_text_color;
               font-size: 16px;
               font-weight: 400;
+            }
+          }
+
+          .mail {
+            path {
+              fill: $d_main_text_color;
             }
           }
   

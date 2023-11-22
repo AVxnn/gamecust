@@ -21,7 +21,7 @@ const Home = ({ props }: any) => {
 
   const getAuth = async () => {
     console.log(authpopup, session)
-    if (authpopup && session) {
+    if (session) {
       const ses = session?.session
       const data = {
         username: ses?.user.name || session.token.name,

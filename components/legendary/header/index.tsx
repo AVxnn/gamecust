@@ -20,11 +20,11 @@ const Header = () => {
         </div>
         <div className={styles.middleColumn}>
           <Input placeholder={'Поиск'} width={300}/>
-        </div>
-        <div className={styles.rightColumn}>
           <a className={styles.penCreate}>
             <PenCreate />
           </a>
+        </div>
+        <div className={styles.rightColumn}>
           <div className={styles.profile}>
             {
               mobxStore.user.email ? (

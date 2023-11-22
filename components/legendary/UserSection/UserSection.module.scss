@@ -30,15 +30,16 @@
     display: flex;
     flex-direction: column;
     gap: 4px;
-    margin-right: 32px;
+    margin-right: 8px;
     justify-content: center;
 
     .name {
       margin: 0;
       font-size: 12px;
       white-space: nowrap;
-      max-width: 50px;
+      max-width: 80px;
       overflow: hidden;
+      text-overflow: ellipsis;
       color: $d_main_text_color;
       margin-top: 4px;
     }

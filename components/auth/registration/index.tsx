@@ -31,14 +31,8 @@ const Registration = ({ setAuth } : any) => {
                 <span>Discord</span>
               </div>
             </button>
-            <button onClick={() => signIn('vk')} className={styles.buttonAuth}>
-              <div className={styles.div}>
-                <Vk />
-                <span>ВКонтакте</span>
-              </div>
-            </button>
             <button className={styles.buttonAuth}>
-              <div className={styles.div}>
+              <div className={`${styles.div} ${styles.mail}`}>
                 <Mail />
                 <span>Почта</span>
               </div>

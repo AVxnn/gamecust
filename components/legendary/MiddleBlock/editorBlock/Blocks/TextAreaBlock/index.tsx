@@ -62,7 +62,7 @@ const TextAreaBlock = ({item, dragControls} : any) => {
     const keyPress = (e : any) => {
         if (focus && item.value == '') {
             console.log(e.keyCode);
-            if (e.keyCode === 8) {
+            if (e.keyCode === 8 && item.type !== 'h1') {
                 console.log('deleted', item);
                 postCreateStore.removeItem(item)
                 setIsClicked(false)
@@ -145,19 +145,19 @@ const TextAreaBlock = ({item, dragControls} : any) => {
                 }
                 
                 {
-                    hover && !item.value ? (
+                    hover && !item.value && item.type !== 'h1' ? (
                         <DropDownForm dragControls={dragControls} hoverChange={hoverChange} id={item.id} focus={focus} setFocus={setFocus} ref={popupRef} setIsClicked={setIsClicked} isClicked={isClicked} />
                     ) : null
                 }
                 {
-                    hover && item.value ? (
+                    hover && item.value && item.type !== 'h1' ? (
                         <DropDownEdit dragControls={dragControls} ref={popupRef} item={item} setIsClicked={setIsClicked} isClicked={isClicked} />
                     ) : null
                 }
                 <InformationBlock item={item} />
             </div>
             {
-                selectedText ? (
+                selectedText && item.type !== 'h1' ? (
                     <SelectedBlockEditor ref={popupRef} posLeft={posPopup} selectedText={selectedText} item={item} />
                 ) : null
             }

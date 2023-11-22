@@ -17,12 +17,14 @@ const ToolComment = ({data, dataPost} : any) => {
   const {mobxStore, postCreateStore, commentsCreateStore} = useContext(Context);
 
   const createComment = async () => {
-    let commentId = uuid()
-    console.log(commentId);
-    
-    if (mobxStore.user.id) {
-      await postCreateStore.updatePost({...dataPost, comments: [...dataPost.comments, {commentId: commentId, repliesId: data.commentId}], commentsCount: dataPost.commentsCount + 1,});
-      await commentsCreateStore.replyComment(mobxStore.user, {text: value, commentId: commentId, createdAt: new Date(), postId: dataPost.postId, repliesId: data.commentId}, dataPost)
+    if (value) {
+      setValue('')
+      let commentId = uuid()
+      console.log(commentId);
+      if (mobxStore.user.id) {
+        await postCreateStore.updatePost({...dataPost, comments: [...dataPost.comments, {commentId: commentId, repliesId: data.commentId}], commentsCount: dataPost.commentsCount + 1,});
+        await commentsCreateStore.replyComment(mobxStore.user, {text: value, commentId: commentId, createdAt: new Date(), postId: dataPost.postId, repliesId: data.commentId}, dataPost)
+      }
     }
   }
 
@@ -48,9 +50,6 @@ const ToolComment = ({data, dataPost} : any) => {
             <div className={styles.left}>
               <div className={styles.icon}>
                 <ImageAdd />
-              </div>
-              <div className={styles.icon}>
-                <Smile />
               </div>
             </div>
             <div>

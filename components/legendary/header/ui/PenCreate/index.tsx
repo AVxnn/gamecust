@@ -4,6 +4,7 @@ import styles from "./PenCreate.module.scss"
 import { Context } from '../../../../../pages/_app'
 import { useRouter } from 'next/router'
 import uuid from 'react-uuid'
+import Plus from '../../../../../public/img/svg/Plus'
 
 const PenCreate = () => {
 
@@ -21,7 +22,8 @@ const PenCreate = () => {
 
     return (
         <div onClick={() => redirectLink(`/editor/${mobxStore.user.id}/${uuid()}-${mobxStore.user.username}`)} className={styles.penCreate}>
-            <Pen type={false}/>
+            <Plus />
+            Создать
         </div>
     )
 }

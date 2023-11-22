@@ -26,7 +26,7 @@ const EditorBlock = () => {
     setPressKey(false)
   }
 
-  const debouncedSave = useDebounce(saveHandler, 2500)
+  const debouncedSave = useDebounce(saveHandler, 200)
 
   const keyPress = useCallback(
     () => {

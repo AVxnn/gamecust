@@ -1,8 +1,6 @@
 import NextAuth from "next-auth";
-import VkProvider from "next-auth/providers/vk";
 import DiscordProvider from "next-auth/providers/discord";
 import GoogleProvider from "next-auth/providers/google";
-import axios from 'axios';
 
 const scopes = ['identify', 'email'].join(' ')
 
@@ -19,15 +17,18 @@ export const nextAuthOptions = {
       clientId: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
     }),
-    VkProvider({
-      clientId: process.env.VK_CLIENT_ID,
-      clientSecret: process.env.VK_CLIENT_SECRET,
-    }),
   ],
   callbacks: {
     session: async (session, user) => {
       session.user = user;
       return Promise.resolve(session);
+    },
+    async redirect({ url, baseUrl }) {
+      // Allows relative callback URLs
+      if (url.startsWith("/")) return `${baseUrl}${url}/?authpopup=true`
+      // Allows callback URLs on the same origin
+      else if (new URL(url).origin === baseUrl) return url
+      return baseUrl
     },
     async signIn(user, account, profile) {
       console.log(user)

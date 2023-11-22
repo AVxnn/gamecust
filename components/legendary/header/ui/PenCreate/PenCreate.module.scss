@@ -1,10 +1,31 @@
 @import "/styles/variables.scss";
 
 .penCreate {
-    height: 28px;
+    display: flex;
+    gap: 5px;
+    align-items: center;
     cursor: pointer;
+    color: #FFFFFF;
+    background-color: $d_main_color;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: all 0.1s ease;
 
-    path {
-        fill: $d_main_text_color;
+    @media screen and (max-width: 768px) {
+        display: none;
+    }
+
+    &:hover {
+        background-color: $d_main_hover;
+        box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.50);
+    }
+    &:active {
+        background-color: $d_main_active;
+        box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.50);
+    }
+
+    rect {
+        fill: #FFFFFF;
     }
 }

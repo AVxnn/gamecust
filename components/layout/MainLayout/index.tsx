@@ -48,7 +48,6 @@ const MainLayout = ({children}: any) => {
             <div className={styles.rightColumn}>
               <div className={`${styles.containerRight} ${isfixed ? styles.fixed : ''}`}>
                 <LoginRight />
-                <CreatePostRight />
                 <Premium />
                 <TopUsers />
                 <NewsSliderSmall />

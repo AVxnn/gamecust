@@ -33,15 +33,17 @@ const Comments = ({dataS, comments} : any) => {
   }
   
   const createComment = async () => {
-    let commentId = uuid()
-    console.log(commentId);
-    
-    if (dataPost.data.length && mobxStore.user.id) {
-      await postCreateStore.updatePost({...dataPost, comments: [...dataPost.comments, commentId], commentsCount: dataPost.commentsCount + 1,});
-      await commentsCreateStore.createComment(mobxStore.user, {text: value, commentId: commentId, createdAt: new Date(), postId: dataPost.postId}, dataPost)
+    if (value) {
+      setValue('')
+      let commentId = uuid()
+      console.log(commentId);
+      
+      if (dataPost.data.length && mobxStore.user.id) {
+        await postCreateStore.updatePost({...dataPost, comments: [...dataPost.comments, commentId], commentsCount: dataPost.commentsCount + 1,});
+        await commentsCreateStore.createComment(mobxStore.user, {text: value, commentId: commentId, createdAt: new Date(), postId: dataPost.postId}, dataPost)
+      }
+      await getComments()
     }
-    await getComments()
-    
   }
 
   const getComments = async () => {
@@ -60,9 +62,6 @@ const Comments = ({dataS, comments} : any) => {
           <div className={styles.left}>
             <div className={styles.icon}>
               <ImageAdd />
-            </div>
-            <div className={styles.icon}>
-              <Smile />
             </div>
           </div>
           <div>
