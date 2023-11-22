@@ -10,6 +10,7 @@ import PopupHandlers from '../store/popupHandlers'
 import CommentsCreateStore from '../store/commentsCreateStore';
 import Head from 'next/head';
 import NextAuthProvider from '../features/provider/nextAuthProvider';
+
 interface State {
   mobxStore: MobxStore;
   postCreateStore: PostCreateStore;
@@ -32,7 +33,7 @@ export const Context = createContext<State>({
 })
 
 export default function App({ Component, pageProps }: AppProps) {
-
+  
   useEffect(() => {
     
     const checkHandler = async () => {

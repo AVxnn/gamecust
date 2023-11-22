@@ -12,25 +12,15 @@ const AuthPopup = () => {
   const labelRef = useRef<HTMLElement>(null) as any;
   const { popupHandlers } = useContext(Context);
   const [auth, setAuth] = useState(false);
-  const [isOpen, setIsOpen] = useState(popupHandlers.authPopup);
 
   const closePopup = () => {
     popupHandlers.authPopupClose();
-    setIsOpen(false)
   };
-
-  useEffect(() => {
-      setIsOpen(popupHandlers.authPopup);
-  }, [popupHandlers.authPopup]);
-
-  if (!popupHandlers.authPopup) {
-    return <></>;
-  }
 
   return (
     <>
-      <AnimatePresence>
-        {isOpen ? (
+      <AnimatePresence initial={false} mode="wait">
+        {popupHandlers.authPopup && (
           <motion.div
             exit={{ opacity: 0 }}
             initial={{ opacity: 0 }}
@@ -51,8 +41,6 @@ const AuthPopup = () => {
               </AnimatePresence>
             </div>
           </motion.div>
-        ) : (
-          null
         )}
       </AnimatePresence>
     </>

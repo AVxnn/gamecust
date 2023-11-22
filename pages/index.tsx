@@ -1,12 +1,44 @@
 import Head from "next/head";
 import Header from "../components/legendary/header";
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import PostList from "../components/legendary/MiddleBlock/PostList";
 import { observer } from "mobx-react";
 import MainLayout from "../components/layout/MainLayout";
 import { YMInitializer } from "react-yandex-metrika";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/router";
+import registrationEmail from "../features/provider/registrationEmail";
+import { Context } from "./_app";
 
 const Home = ({ props }: any) => {
+
+  const { status, data: session } = useSession() as any;
+  
+  const {mobxStore} = useContext(Context);
+
+  const router = useRouter();
+  const { authpopup } = router.query;
+
+  const getAuth = async () => {
+    console.log(authpopup, session)
+    if (authpopup && session) {
+      const ses = session?.session
+      const data = {
+        username: ses?.user.name || session.token.name,
+        email: ses?.user.email || session.token.email,
+        picture:ses?.user.picture || session.token.picture,
+        sub: ses?.user.sub || session.token.sub,
+        email_verified: false,
+      }
+      mobxStore.registrationGoogle(data.username, data.email, data.picture, data.sub, data.email_verified)
+      console.log(session);
+    }
+  }
+
+  useEffect(() => {
+    getAuth()
+  }, [])
+
   const fetchData = async (page: any) => {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/api/post/getPosts/rec/${page}`

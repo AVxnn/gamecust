@@ -16,9 +16,9 @@ body {
 body {
     transition: none;
     background-color: #F0F0F0;
-    --d_main_color: #9E5BF0;
-    --d_main_hover: #D5B5FF;
-    --d_main_active: #A762FF;
+    --d_main_color: #5500C1;
+    --d_main_hover: #5b00d1;
+    --d_main_active: #4a00ac;
 
     --d_main_red: #F05353;
 
@@ -65,7 +65,6 @@ body[dark] {
     --d_main_subtext_color: #999999;
     --d_main_subtext_hover_color: #7c7c7c;
     --d_main_subtext_active_color: #787878;
-
 
     --d_main_gray_color: #888888;
     --d_main_black_color: #24292E;

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import styles from "./InputCustom.module.scss"
 import Eye from '../../../../../../public/img/svg/Eye';
 
-const InputCustom = ({value, statusBar, onChange, error, type, placeholder} : any) => {
+const InputCustom = ({value, statusBar, onChange, error, type, ...props} : any) => {
 
     const [focus, setFocus] = useState<boolean>(false);
 
@@ -10,7 +10,7 @@ const InputCustom = ({value, statusBar, onChange, error, type, placeholder} : an
 
     return (
         <div className={styles.formInput} onFocus={() => setFocus(true)} onBlur={() => setFocus(false)}>
-            <input className={`${styles.input} ${error && !focus ? styles.error : ''}`} onChange={(e) => onChange(e.target.value)} value={value} type={typeS} placeholder={placeholder} />
+            <input className={`${styles.input} ${error && !focus ? styles.error : ''}`} onChange={onChange} value={value} type={typeS} {...props}/>
             {
                 error && !focus ? <span className={styles.errorText}>{error}</span> : ''
             }

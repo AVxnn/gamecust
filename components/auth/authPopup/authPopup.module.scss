@@ -25,12 +25,17 @@
         }
 
         .close {
+            display: none;
             position: absolute;
             top: 32px;
             right: 32px;
             height: 18px;
             cursor: pointer;
             padding: 8px;
+
+            @media (max-width: 768px) {
+                display: block;
+            }
 
             svg {
                 width: 18px;
