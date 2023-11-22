@@ -77,7 +77,7 @@ const Editor = ({props} : any) => {
 };
 
 export async function getServerSideProps(context : any) {
-
+  
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/post/getPost/${context.params.postId[1]}`);
   
   return {

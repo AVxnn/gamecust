@@ -37,7 +37,7 @@ const Home = ({ props }: any) => {
 
   useEffect(() => {
     getAuth()
-  }, [])
+  }, [session])
 
   const fetchData = async (page: any) => {
     const res = await fetch(

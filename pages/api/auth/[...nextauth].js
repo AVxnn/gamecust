@@ -32,17 +32,6 @@ export const nextAuthOptions = {
     async signIn(user, account, profile) {
       console.log(user)
       try {
-        // Отправка данных на сервер с API Mongoose
-        const res = await axios.post('https://gamecust.online/api/user/registration/Google', {
-          email: user.account.email,
-          username: user.user.name, 
-          picture: user.user.image, 
-          sub: 'wew',
-          email_verified: true
-          // Добавьте другие данные из профиля или account при необходимости
-        });
-        session.user = res.data
-        console.log('create', res.data)
         return Promise.resolve(user);
       } catch (error) {
         console.error('Error saving user data:', error);
