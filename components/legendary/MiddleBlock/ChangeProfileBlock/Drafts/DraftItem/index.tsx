@@ -4,7 +4,7 @@ import Image from "next/image"
 import Trash from '../../../../../../public/img/svg/Trash'
 import Link from 'next/link'
 import { Context } from '../../../../../../pages/_app'
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 import { observer } from 'mobx-react-lite'
 import { formatDistance } from 'date-fns'
 import { ru } from 'date-fns/locale';

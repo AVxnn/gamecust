@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styles from './PostList.module.scss'
-import PostPreview from "../../common/PostPreview";
-import NewsSlider from "../NewsSlider";
 import Empty from '../../common/Empty';
+import PostItem from '../../../../newComponents/post/postItem';
 
 const PostList = ({PostData, fetchData, textEmpty} : any) => {
 
@@ -58,16 +57,8 @@ const PostList = ({PostData, fetchData, textEmpty} : any) => {
     <div className={styles.postList}>
       {
         items.map((item : any, index : number) => {
-          if (index > 0 && index % 5 == 0 || index == 1) {
-            return (
-                <div className={styles.container} key={index}>
-                  <NewsSlider />
-                  <PostPreview data={item} />
-                </div>
-            )
-          }
           return (
-            <PostPreview key={index} data={item}/>
+            <PostItem key={index} data={item}/>
           )
         })
       }
