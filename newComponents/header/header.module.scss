@@ -1,0 +1,39 @@
+@import "/styles/variables.scss";
+
+.header {
+  display: flex;
+  width: 100%;
+  position: fixed;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--d_main_subbg_glass_color);
+  gap: 24px;
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  z-index: 6;
+  height: 60px;
+
+  .layout {
+    position: relative;
+    max-width: 1256px;
+    width: 100%;
+    height: 34px;
+    gap: 24px;
+    justify-content: center;
+    display: flex;
+
+    .leftColumn {
+      max-width: 272px;
+      width: 100%;
+    }
+
+    .middleColumn {
+      width: 100%;
+    }
+
+    .rightColumn {
+      max-width: 296px;
+      width: 100%;
+    }
+  }
+}

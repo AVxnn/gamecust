@@ -1,5 +1,5 @@
 import React, {useEffect, useRef, useState} from 'react';
-import styles from "../../header/header.module.scss";
+import styles from "./logotype.module.scss";
 import LogotypeIcon from '../../../../public/img/svg/Logotype'
 import Link from "next/link";
 

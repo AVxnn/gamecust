@@ -1,0 +1,28 @@
+@import "/styles/variables.scss";
+
+.logotype{
+  margin-left: 16px;
+  height: 34px;
+  cursor: pointer;
+  width: 127px;
+
+  a {
+    height: 34px !important;
+  }
+
+  @media (max-width: 720px) {
+    margin-left: 24px;
+  }
+
+  path {
+    fill: $d_main_text_color;
+  }
+
+  svg:active {
+
+    path {
+      transition: all 80ms ease-in-out;
+      fill: $d_main_text_color;
+    }
+  }
+}
