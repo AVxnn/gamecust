@@ -1,0 +1,49 @@
+@import "/styles/variables.scss";
+
+.container {
+  display: flex;
+  position: relative;
+  padding: 16px 0;
+  justify-content: center;
+
+  .br {
+    display: flex;
+    gap: 12px;
+    position: relative;
+    margin: 0 auto;
+
+    .oval:nth-child(1) {
+      width: 16px;
+      height: 16px;
+      border-radius: 99px;
+      background-color: $d_main_text_color;
+      transition: all 0.05s ease-in-out;
+
+      &:hover {
+        transform: rotate(-15deg) scale(1.1);
+      }
+    }
+    .oval:nth-child(2) {
+      width: 16px;
+      height: 16px;
+      background-color: $d_main_text_color;
+      transition: all 0.05s ease-in-out;
+      &:hover {
+        transform: rotate(15deg) scale(1.1);
+      }
+    }
+    .oval:nth-child(3) {
+      width: 16px;
+      height: 16px;
+      width: 0;
+      height: 0;
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      border-bottom: 16px solid $d_main_text_color;
+      transition: all 0.05s ease-in-out;
+      &:hover {
+        transform: rotate(-15deg) scale(1.1);
+      }
+    }
+  }
+}

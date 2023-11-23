@@ -8,7 +8,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Context } from '../../../../pages/_app'
 import Avatar from '../../../../public/img/svg/Avatar'
-import { useRouter } from 'next/router'
+import { usePathname, useRouter } from 'next/navigation'
 import { useDispatch } from 'react-redux'
 import {open} from '../../../../features/Popup/PopupAuthSlice'
 import uuid from 'react-uuid'
@@ -21,6 +21,7 @@ const MobileMenu = () => {
     const {mobxStore} = useContext(Context);
 
     const router = useRouter();
+    const pathname = usePathname();
 
     const [active, setActive] = useState(null) as any;
 
@@ -38,20 +39,20 @@ const MobileMenu = () => {
     console.log(router);
     
     useEffect(() => {
-        switch (router.pathname) {
-            case '/':
+        switch (pathname) {
+            case '/nv':
                 setActive(0);
                 break;
-            case '/search':
+            case '/nv/search':
                 setActive(1);
                 break;
-            case '/editor/[...postId]':
+            case '/nv/editor/[...postId]':
                 setActive(2);
                 break;
-            case '/notifications':
+            case '/nv/notifications':
                 setActive(3);
                 break;
-            case '/account':
+            case '/nv/account':
                 setActive(4);
                 break;
             default:

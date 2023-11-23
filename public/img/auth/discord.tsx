@@ -9,7 +9,7 @@ const Discord = () => {
       viewBox="0 0 22 18"
       fill="none"
     >
-      <g clip-path="url(#clip0_1064_358)">
+      <g clipPath="url(#clip0_1064_358)">
         <mask
           id="mask0_1064_358"
           maskUnits="userSpaceOnUse"

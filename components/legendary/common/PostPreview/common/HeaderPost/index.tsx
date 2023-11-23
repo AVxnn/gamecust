@@ -75,14 +75,12 @@ const HeaderPost = ({data, fixed} : any) => {
             <EditBlock postId={data.postId} />
           ) : mobxStore?.user?.subscriptions?.filter((e) => e === data.userId).length ? (
             <>
-              <UserBlock postId={data.postId} data={data} />
               <Button clb={() => changeSub()} type={'primary'} size={'small'}>
                 Отписаться
               </Button>
             </>
           ) : (
             <>
-              <UserBlock postId={data.postId} data={data} />
               <Button clb={() => changeSub()} type={'primary'} size={'small'}>
                 Подписаться
               </Button>

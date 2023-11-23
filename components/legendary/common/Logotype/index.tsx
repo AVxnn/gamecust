@@ -25,7 +25,10 @@ const Logotype = () => {
     <>
       <Link href={'/'}>
         <div ref={menuRef} className={styles.logotype}>
-          <LogotypeIcon />
+          <LogotypeIcon small={false} />
+        </div>
+        <div ref={menuRef} className={styles.smallLogotype}>
+          <LogotypeIcon small={true} />
         </div>
       </Link>
     </>

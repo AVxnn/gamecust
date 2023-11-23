@@ -5,7 +5,7 @@ import Edit from '../../../../../../../public/img/svg/Edit';
 import Trash from '../../../../../../../public/img/svg/Trash';
 import Link from 'next/link';
 import { Context } from '../../../../../../../pages/_app';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import Tg from '../../../../../../../public/img/svg/social/Tg';
 import LinkIcon from '../../../../../../../public/img/svg/LinkIcon';
 
@@ -14,8 +14,6 @@ const UserBlock = ({ postId, data }: any) => {
     const Button = useRef<HTMLDivElement>(null);
 
     const {mobxStore, postCreateStore, notificationStore} = useContext(Context);
-
-    const router = useRouter();
     
     useEffect(() => {
         if (Button.current) {

@@ -1,0 +1,9 @@
+@import "/styles/variables.scss";
+
+.postItem {
+  width: 100%;
+  padding: 16px 24px;
+  border-radius: 8px;
+  background-color: $d_main_subbg_color;
+  box-sizing: border-box;
+}
