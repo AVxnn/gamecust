@@ -29,10 +29,6 @@ const ChangeProfileBlock = ({data, user} : any) => {
     switch ('entries') {
         case 'entries':
             return <PostList PostData={posts} fetchData={fetchData} textEmpty={'Создайте свой первый пост'}/>
-        case 'comments':
-            return <Comments />
-        case 'drafts':
-            return <Drafts data={drafts} user={user}/>
     }
 }
 
