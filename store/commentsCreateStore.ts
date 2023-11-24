@@ -22,7 +22,7 @@ export default class CommentsCreateStore {
                 replies: []
             }
             const response = await CreateCommentsService.createСomment(comment);
-            await console.log('comment 1', response);
+            return response
         } catch (error: any) {
             console.log(error)
         }

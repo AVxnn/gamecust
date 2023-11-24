@@ -11,6 +11,7 @@
     left: 0;
     top: -256px;
     position: absolute;
+    background-color: $d_main_subbg_color;
     overflow: hidden;
     border-radius: 0 0 8px 8px;
 
@@ -41,6 +42,7 @@
           width: 120px;
           height: 120px;
           overflow: hidden;
+          background-color: $d_main_bg_color;
           border-radius: 99px;
 
           @media (max-width: 768px) {

@@ -16,7 +16,7 @@ const PostItem = ({ data }: any) => {
       <div className={styles.headerContainer}>
         <HeaderPost data={data} />
       </div>
-      <Link href={`/post/${data.postId}`}>
+      <Link href={`/nv/post/${data.postId}`}>
         <section className={styles.mainInfo}>
           {data?.stared.map((item: any, index: number) => {
             if (item.type === "h1") {

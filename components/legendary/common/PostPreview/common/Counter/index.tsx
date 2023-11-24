@@ -3,7 +3,6 @@ import styles from './Counter.module.scss'
 import Like from "../../../../../../public/img/svg/Like";
 import { Context } from '../../../../../../pages/_app';
 import { observer } from 'mobx-react-lite';
-import useDebounce from '../../../../../../features/Hooks/useDebounce';
 
 const Counter = ({data} : any) => {
 

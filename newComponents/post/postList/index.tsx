@@ -18,13 +18,12 @@ const PostList = ({ fetchPosts }: any) => {
   const getMorePost = async () => {
     const res = await fetchPosts(page);
     const newPosts = await res;
-    console.log(newPosts)
+
     if (newPosts.length <= 1) {
       setHasMore(false)
     }
     setPosts((post: any) => [...post, ...newPosts]);
     setPage(page + 1)
-    console.log(hasMore)
   };
 
   const getFirstPosts = async () => {

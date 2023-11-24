@@ -9,23 +9,24 @@ import { useRouter } from "next/router";
 import { observer } from "mobx-react-lite";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Loading from "../../../../../newComponents/post/postList/loading";
+import isRoleHandler from "../../../../../features/isRoleHandler";
 
 const Drafts = ({ fetchPosts }: any) => {
   const [hasMore, setHasMore] = useState(true);
 
   const [posts, setPosts] = useState([]) as any;
   const [page, setPage] = useState(1) as any;
+  
+  const {mobxStore} = useContext(Context);
 
   const getMorePost = async () => {
     const res = await fetchPosts(page);
     const newPosts = await res.filter((e: any) => !e.published);
-    console.log(newPosts);
     if (newPosts.length <= 1) {
       setHasMore(false);
     }
     setPosts((post: any) => [...post, ...newPosts]);
     setPage(page + 1);
-    console.log(hasMore);
   };
 
   const getFirstPosts = async () => {

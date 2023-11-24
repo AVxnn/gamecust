@@ -170,7 +170,7 @@ export default class PostCreateStore {
                 viewsCount: data.viewsCount,
             }
             const response = await CreatePostService.updatePost(data.postId, post);
-            await console.log('+', response);
+            return response
         } catch (error: any) {
             console.log(error)
         }

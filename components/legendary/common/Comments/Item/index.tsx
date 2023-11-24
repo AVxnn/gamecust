@@ -8,7 +8,7 @@ import { ru } from 'date-fns/locale';
 import IconHandler from '../../PostPreview/common/IconHandler';
 import Link from 'next/link';
 
-const Item = ({comments, data, dataPost} : any) => {
+const Item = ({comments, data, dataPost, getComments} : any) => {
   // console.log('====================================');
   console.log(comments.filter((item : any) => item.repliesId === data.commentId));
   console.log(comments);
@@ -36,7 +36,7 @@ const Item = ({comments, data, dataPost} : any) => {
                 )
               }
             </div>
-            <ToolComment data={data} dataPost={dataPost}/>
+            <ToolComment getComments={getComments} data={data} dataPost={dataPost}/>
             {
               comments.filter((item : any) => item.repliesId === data.commentId).map((item: any, index: number) => {
                 return item.repliesId ? (
