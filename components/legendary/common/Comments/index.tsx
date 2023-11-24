@@ -19,7 +19,7 @@ const list = [
   },
 ];
 
-const Comments = ({ dataS, comments }: any) => {
+const Comments = ({ dataS, comments, getNewComments }: any) => {
   const [active, setActive] = useState(0);
   const [value, setValue] = useState("");
   const [dataComments, setDataComments] = useState(comments);
@@ -31,16 +31,22 @@ const Comments = ({ dataS, comments }: any) => {
   const changePage = (index: number) => {
     setActive(index);
   };
-  console.log('1', dataPost.data.length, mobxStore.user.id)
+
+  const getComments = async () => {
+    const comments = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/comment/getComments/${dataPost.postId}`
+    );
+    setDataComments(await comments?.json());
+    const post = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/post/getPost/${dataPost.postId}`
+    );
+    setDataPost(await post?.json());
+  };
+
   const createComment = async () => {
     if (value) {
       let commentId = uuid();
       if (dataPost.data.length && mobxStore.user.id) {
-        await postCreateStore.updatePost({
-          ...dataPost,
-          comments: [...dataPost.comments, commentId],
-          commentsCount: dataPost.commentsCount + 1,
-        });
         await commentsCreateStore.createComment(
           mobxStore.user,
           {
@@ -52,21 +58,9 @@ const Comments = ({ dataS, comments }: any) => {
           dataPost
         );
       }
-      setValue("");
+      await setValue("");
       await getComments();
     }
-  };
-
-  const getComments = async () => {
-    const comments = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/api/comment/getComments/${dataPost.postId}`
-    );
-    setDataComments(await comments?.json());
-    const post = await fetch(
-      `${process.env.NEXT_PUBLIC_API_URL}/api/post/getPost/${dataPost.postId}`
-    );
-    setDataPost(await post?.json());
-    await setValue("");
   };
 
   return (
@@ -111,7 +105,7 @@ const Comments = ({ dataS, comments }: any) => {
           ?.map((item: any, index: number) => {
             return (
               <Item
-                getComments={getComments}
+                getNewComments={getNewComments}
                 comments={comments}
                 key={index}
                 data={item}

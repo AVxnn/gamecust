@@ -9,7 +9,7 @@ import uuid from "react-uuid";
 import { observer } from "mobx-react-lite";
 import { Context } from "../../../../../app/(pages)/layout";
 
-const ToolComment = ({ data, dataPost, getComments }: any) => {
+const ToolComment = ({ data, dataPost, getNewComments }: any) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const [value, setValue] = useState("");
@@ -17,18 +17,10 @@ const ToolComment = ({ data, dataPost, getComments }: any) => {
   const { mobxStore, postCreateStore, commentsCreateStore } =
     useContext(Context);
 
-  const createComment = async () => {
+  const replyComment = async () => {
     if (value) {
       let commentId = uuid();
       if (dataPost.data.length && mobxStore.user.id) {
-        await postCreateStore.updatePost({
-          ...dataPost,
-          comments: [
-            ...dataPost.comments,
-            { commentId: commentId, repliesId: data.commentId },
-          ],
-          commentsCount: dataPost.commentsCount + 1,
-        });
         await commentsCreateStore.createComment(
           mobxStore.user,
           {
@@ -42,7 +34,7 @@ const ToolComment = ({ data, dataPost, getComments }: any) => {
         );
       }
       setValue("");
-      await getComments();
+      getNewComments();
     }
   };
 
@@ -78,7 +70,7 @@ const ToolComment = ({ data, dataPost, getComments }: any) => {
             </div>
             <div>
               {value && (
-                <Button clb={createComment} type={"primary"} size={"small"}>
+                <Button clb={replyComment} type={"primary"} size={"small"}>
                   Отправить
                 </Button>
               )}

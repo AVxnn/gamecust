@@ -18,9 +18,9 @@ body {
 body {
     transition: background 0.1s ease-in-out;
     background-color: #F0F0F0;
-    --d_main_color: #5500C1;
-    --d_main_hover: #5b00d1;
-    --d_main_active: #4a00ac;
+    --d_main_color: #6339DC;
+    --d_main_hover: #4b2bac;
+    --d_main_active: #3a1e90;
 
     --d_main_red: #F05353;
 
@@ -48,9 +48,9 @@ body {
 body[dark] {
     transition: background 0.1s ease-in-out;
     background-color: #161617;
-    --d_main_color: #5500C1;
-    --d_main_hover: #5b00d1;
-    --d_main_active: #4a00ac;
+    --d_main_color: #6339DC;
+    --d_main_hover: #4b2bac;
+    --d_main_active: #3a1e90;
 
     --d_main_red: #F05353;
 

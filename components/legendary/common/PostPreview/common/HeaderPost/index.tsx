@@ -4,7 +4,6 @@ import Button from "../../../Button";
 import Link from "next/link";
 import ImageLoader from 'react-imageloader';
 import ContentLoader from "react-content-loader";
-import { Context } from '../../../../../../pages/_app';
 import isRoleHandler from '../../../../../../features/isRoleHandler';
 import EditBlock from './EditBlock';
 import { formatDistance } from 'date-fns'
@@ -13,6 +12,7 @@ import { observer } from 'mobx-react';
 import IconHandler from '../IconHandler';
 import { useMotionValueEvent, useScroll } from 'framer-motion';
 import UserBlock from './UserBlock';
+import { Context } from '../../../../../../app/(pages)/layout';
 
 function preloader() {
   return (
@@ -46,7 +46,7 @@ const HeaderPost = ({data, fixed} : any) => {
     })
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [mobxStore?.user?.subscriptions]);
-  
+  console.log(data.userId, mobxStore.user)
   return (
     <header className={`${styles.header} ${fixed ? styles.fixed : null}`}>
       <div className={styles.leftBlock}>
@@ -71,7 +71,7 @@ const HeaderPost = ({data, fixed} : any) => {
       </div>
       <div className={styles.rightBlock}>
         {
-          isRoleHandler(mobxStore?.user?.id, data.userId) ? ( 
+          isRoleHandler(mobxStore.user.id, data.userId) ? ( 
             <EditBlock postId={data.postId} />
           ) : mobxStore?.user?.subscriptions?.filter((e) => e === data.userId).length ? (
             <>

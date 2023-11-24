@@ -4,7 +4,6 @@ import { useParams, usePathname, useRouter } from "next/navigation";
 import React, { useContext, useEffect, useRef, useState } from "react";
 import styles from "./profile.module.scss";
 import Image from "next/image";
-import { Context } from "../../app/(pages)/layout";
 import { getUserId } from "../../features/new/getUserId/getUserId";
 import { getPostsId } from "../../features/new/getPostsId/getPostsId";
 import AvatarPopup from "../../components/legendary/common/AvatarPopup";
@@ -13,6 +12,7 @@ import Tabs from "../../components/legendary/common/Tabs";
 import ButtonChanger from "../../components/legendary/MiddleBlock/Profile/ui/ButtonChanger";
 import isRoleHandler from "../../features/isRoleHandler";
 import { observer } from "mobx-react-lite";
+import { Context } from "../../app/(pages)/layout";
 
 const Profile = () => {
   const [active, setActive] = useState(0);
@@ -133,7 +133,7 @@ const Profile = () => {
                   )
                 }) : ''
               } */}
-              {dataTagAccount.map((item: any, index: number) => {
+              {dataTagAccount && dataTagAccount.map((item: any, index: number) => {
                 return (
                   <Tabs
                     link={`/nv/profile/${data._id}/${item.link}`}

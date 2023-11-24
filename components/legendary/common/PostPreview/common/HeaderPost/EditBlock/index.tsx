@@ -5,15 +5,12 @@ import Edit from "../../../../../../../public/img/svg/Edit";
 import Trash from "../../../../../../../public/img/svg/Trash";
 import Link from "next/link";
 import { Context } from "../../../../../../../pages/_app";
-import { useRouter } from "next/router";
 
 const EditBlock = ({ postId }: any) => {
   const [isDropOpen, setIsDropOpen] = useState<boolean>(false);
   const Button = useRef<HTMLDivElement>(null);
 
   const { mobxStore, postCreateStore, notificationStore } = useContext(Context);
-
-  const router = useRouter();
 
   const deleteHandler = (e: any) => {
     e.preventDefault();

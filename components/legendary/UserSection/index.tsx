@@ -106,7 +106,7 @@ const UserSection = () => {
               className={styles.menu}
             >
               <h4 className={styles.title}>Мой профиль</h4>
-              <Link href={`/profile/${mobxStore.user.id}`}>
+              <Link href={`/nv/profile/${mobxStore.user.id}`}>
                 <div className={styles.userMenu}>
                   <div className={styles.avatar}>
                     <Image
@@ -121,7 +121,7 @@ const UserSection = () => {
                   </div>
                 </div>
               </Link>
-              <Link href={`/profile/${mobxStore.user.id}/drafts`}>
+              <Link href={`/nv/profile/${mobxStore.user.id}/drafts`}>
                 <div onClick={() => closePopup()} className={styles.userMenu}>
                   <div className={styles.bgAvatar}>
                     <Edit />
@@ -129,7 +129,7 @@ const UserSection = () => {
                   <p className={styles.text}>Черновики</p>
                 </div>
               </Link>
-              <Link href={"/settings"}>
+              <Link href={"/nv/settings"}>
                 <div onClick={() => closePopup()} className={styles.userMenu}>
                   <div className={styles.bgAvatar}>
                     <Cog />

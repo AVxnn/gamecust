@@ -34,6 +34,7 @@ const PostList = ({ fetchPosts }: any) => {
 
   useEffect(() => {
     getFirstPosts()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   
   return (
