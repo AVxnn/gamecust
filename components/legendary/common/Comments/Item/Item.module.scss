@@ -7,6 +7,16 @@
   gap: 12px;
   margin-top: 24px;
 
+  // &:before {
+  //   content: "";
+  //   position: absolute;
+  //   width: 2px;
+  //   background-color: red;
+  //   height: 100%;
+  //   left: -32px;
+  //   bottom: 0;
+  // }
+
   .topBlock {
     position: relative;
     display: flex;

@@ -1,10 +1,11 @@
 .container {
   display: flex;
+  position: relative;
   flex-wrap: wrap;
   width: calc(100% + 48px);
   justify-content: center;
   margin: 16px -24px 16px -24px;
-  
+  max-height: 500px;
   gap: 8;
 }
 
@@ -15,13 +16,8 @@
 }
 
 .img {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  object-fit: contain;
-  z-index: unset;
-  padding: 50px;
-  animation: anim 0.4s ease-in-out forwards;
+  width: 100%;
+  max-height: 500px;
 }
 
 .imgPopup {
@@ -37,6 +33,19 @@
     width: 100%;
     max-height: 92%;
     object-fit: contain;
+  }
+}
+
+.dialog {
+
+  [data-rmiz-modal-overlay="hidden"] {
+    background-color: rgba(0, 0, 0, 0);
+  }
+  [data-rmiz-modal-overlay="visible"] {
+    background-color: rgba(0, 0, 0, 0.6) !important;
+  }
+  [data-rmiz] {
+    position: relative;
   }
 }
 
