@@ -80,9 +80,18 @@
         width: 50%;
       }
     }
-
   }
 
+  .replyComments {
+    margin-left: -30px;
+  }
+
+  .comment .rightInfo > .replyComments .comment .rightInfo > .replyComments .comment .rightInfo > .replyComments .comment .rightInfo > .replyComments .comment .rightInfo {
+    .replyComments {
+      margin-left: -57px;
+
+    }
+  }
 
   .avatar {
     position: relative;

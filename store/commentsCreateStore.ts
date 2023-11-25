@@ -11,6 +11,7 @@ export default class CommentsCreateStore {
         try {
             const comment = {
                 text: data.text,
+                image: data.image,
                 avatarPath: user.avatarPath,
                 author: user.username,
                 userId: user.id,

@@ -6,6 +6,7 @@ import UserSection from "../../components/legendary/UserSection";
 import UnAuthProfile from "../../components/legendary/UnAuthProfile";
 import { observer } from "mobx-react-lite";
 import { Context } from "../../app/(pages)/layout";
+import CreateButton from "../createButton";
 
 const Header = () => {
   const { mobxStore } = useContext(Context);
@@ -20,6 +21,9 @@ const Header = () => {
           <div className={styles.middleColumn}>
             <div className={styles.mLogotype}>
               <Logotype />
+            </div>
+            <div className={styles.mCreate}>
+              <CreateButton />
             </div>
             <div className={styles.search}>
               <SearchComponent />

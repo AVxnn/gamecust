@@ -212,6 +212,13 @@ input {
     }
 }
 
+[data-rmiz-modal-overlay="hidden"] {
+    background-color: rgba(0, 0, 0, 0);
+}
+[data-rmiz-modal-overlay="visible"] {
+    background-color: rgba(0, 0, 0, 0.6) !important;
+}
+
 a {
     color: $d_main_color;
     text-decoration: none;

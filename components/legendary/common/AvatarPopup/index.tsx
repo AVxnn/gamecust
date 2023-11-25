@@ -1,10 +1,9 @@
-import React, {useState} from 'react';
-import styles from './AvatarPopup.module.scss'
+import React, { useState } from "react";
+import styles from "./AvatarPopup.module.scss";
 import { motion, AnimatePresence } from "framer-motion";
 
-const AvatarPopup = ({src} : any) => {
-
-  const [active, setActive] = useState(null) as any;
+const AvatarPopup = ({ src }: any) => {
+  const [active, setActive] = useState(false) as any;
 
   return (
     <>
@@ -13,7 +12,8 @@ const AvatarPopup = ({src} : any) => {
           className={styles.imageCont}
           src={src}
           onClick={() => setActive(true)}
-          layoutId={"image" + src} />
+          layoutId={"image" + src}
+        />
       </div>
       <div className={styles.imgPopup}>
         <AnimatePresence>
@@ -25,22 +25,29 @@ const AvatarPopup = ({src} : any) => {
                 zIndex: 222,
                 display: "flex",
                 alignItems: "center",
-                justifyContent: "center"
+                justifyContent: "center",
               }}
             >
               <motion.div
-                onClick={() => setActive(null)}
+                onClick={() => setActive(false)}
                 style={{
                   position: "absolute",
                   zIndex: -1,
                   inset: 0,
-                  background: "black"
+                  background: "black",
                 }}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 0.5 }}
                 exit={{ opacity: 0 }}
               />
-              <motion.img initial={{ borderRadius: '999px' }} animate={{ borderRadius: '8' }} exit={{ borderRadius: '999px' }} src={src} layoutId={"image" + src} onClick={() => setActive(null)} />
+              <motion.img
+                initial={{ borderRadius: "999px" }}
+                animate={{ borderRadius: "8" }}
+                exit={{ borderRadius: "999px" }}
+                src={src}
+                layoutId={"image" + src}
+                onClick={() => setActive(false)}
+              />
             </div>
           )}
         </AnimatePresence>
@@ -49,4 +56,4 @@ const AvatarPopup = ({src} : any) => {
   );
 };
 
-export default AvatarPopup
+export default AvatarPopup;

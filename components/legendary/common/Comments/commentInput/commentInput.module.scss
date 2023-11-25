@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
-  margin-top: 48px;
+  margin-top: 12px;
   padding: 12px 16px;
   border: 1px solid $d_main_bg_color;
   border-radius: 8px;
@@ -20,8 +20,8 @@
   input {
     font-size: 16px;
     overflow-y: hidden;
+    margin-bottom: 16px;
     width: 100%;
-    margin-bottom: 8px;
     font-family: 'Roboto', sans-serif;
     color: $d_main_text_color;
     background-color: rgba(0, 0, 0, 0);
@@ -33,13 +33,38 @@
 
   .footer {
     display: flex;
-    align-items: center;
-    height: 32px;
+    align-items: flex-end;
+    min-height: 32px;
     justify-content: space-between;
 
     .left {
       display: flex;
       gap: 12px;
+
+      .photo {
+        position: relative;
+        width: 64px;
+        height: 64px;
+        overflow: hidden;
+        border-radius: 8px;
+
+        [data-rmiz-modal-overlay="hidden"] {
+          background-color: rgba(0, 0, 0, 0);
+        }
+        [data-rmiz-modal-overlay="visible"] {
+          background-color: rgba(0, 0, 0, 0.6) !important;
+        }
+        [data-rmiz] {
+          height: 64px;
+        }
+
+        img {
+          position: absolute;
+          width: 100%;
+          object-fit: cover;
+          height: 100%;
+        }
+      }
 
       .icon {
         width: 32px;
@@ -64,19 +89,16 @@
         }
       }
     }
+
+    .buttonlist {
+      display: flex;
+      gap: 16px;
+    }
   }
 }
 
-.navigation {
-  margin: 34px 0 0 0;
-  padding: 0;
-  border-bottom: 1px solid $d_main_white20_color;
-  padding-bottom: 16px;
-  display: flex;
-  gap: 32px;
-}
-
-.listComments {
-  display: flex;
-  flex-direction: column;
+.active {
+  background-color: $d_main_subbg_color;
+  border: 1px solid $d_main_color;
+  box-shadow: 0 0 2px 3px rgba(#9E5BF0, 0.2);
 }

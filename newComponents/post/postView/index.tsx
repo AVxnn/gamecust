@@ -41,9 +41,9 @@ const PostView = () => {
 
   const getNewComments = async () => {
     const comments = await getComments(uid);
-    console.log(await comments)
+    console.log(await comments);
     setCommentsData(await comments);
-  }
+  };
 
   useMotionValueEvent(scrollY, "change", (latest: any) => {
     if (latest > 16) {
@@ -60,16 +60,21 @@ const PostView = () => {
 
   useEffect(() => {
     const addView = async () => {
-      if (!mobxStore.user.id && !localStorage.getItem("localToken")) {
-        const localToken = uuid();
-        localStorage.setItem("localToken", localToken);
-        await addViewPost(localToken, postData.postId);
-        return true
-      } else if (!mobxStore.user.id && localStorage.getItem("localToken")) {
-        await addViewPost(localStorage.getItem("localToken"), postData.postId);
-        return true
-      } else {
-        await addViewPost(mobxStore.user.id, postData.postId);
+      if (postData.postId) {
+        if (!mobxStore.user.id && !localStorage.getItem("localToken")) {
+          const localToken = uuid();
+          localStorage.setItem("localToken", localToken);
+          await addViewPost(localToken, postData.postId);
+          return true;
+        } else if (!mobxStore.user.id && localStorage.getItem("localToken")) {
+          await addViewPost(
+            localStorage.getItem("localToken"),
+            postData.postId
+          );
+          return true;
+        } else {
+          await addViewPost(mobxStore.user.id, postData.postId);
+        }
       }
     };
     if (postData?.postId) {
@@ -88,17 +93,11 @@ const PostView = () => {
         {postData?.data?.map((item: any, index: number) => {
           console.log(item);
           if (item.type === "h1") {
-            return (
-              <Title key={index} text={item.value} />
-            );
+            return <Title key={index} text={item.value} />;
           } else if (item.type === "h2") {
-            return (
-              <SubTitle key={index} text={item.value} />
-            );
+            return <SubTitle key={index} text={item.value} />;
           } else if (item.type === "text") {
-            return (
-              <Description key={index} text={item.value} />
-            );
+            return <Description key={index} text={item.value} />;
           } else if (item.type === "link") {
             if (item.typeMedia === "image") {
               return <ImgPopup key={index} src={item?.href} />;
@@ -114,9 +113,13 @@ const PostView = () => {
       </section>
       <div id="comments"></div>
       <Toolbar data={postData} />
-      {
-        commentsData && <Comments getNewComments={() => getNewComments()} dataS={postData} comments={commentsData} />
-      }
+      {commentsData && (
+        <Comments
+          getNewComments={() => getNewComments()}
+          dataS={postData}
+          comments={commentsData}
+        />
+      )}
     </div>
   );
 };

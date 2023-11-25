@@ -110,15 +110,20 @@
   margin-top: -7px;
   position: fixed;
   top: 67px;
-  width: 936px;
+  width: 640px;
   z-index: 2;
 
   @media screen and (max-width: 1280px) {
-    width: 670px;
+    width: 620px;
   }
 
   @media screen and (max-width: 1024px) {
-    max-width: 936px;
+    width: 630px;
+  }
+  @media screen and (max-width: 980px) {
+    width: 640px;
+  }
+  @media screen and (max-width: 640px) {
     width: 100%;
   }
 

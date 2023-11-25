@@ -107,7 +107,7 @@ const UserSection = () => {
             >
               <h4 className={styles.title}>Мой профиль</h4>
               <Link href={`/nv/profile/${mobxStore.user.id}`}>
-                <div className={styles.userMenu}>
+                <div onClick={() => closePopup()} className={styles.userMenu}>
                   <div className={styles.avatar}>
                     <Image
                       layout={"fill"}

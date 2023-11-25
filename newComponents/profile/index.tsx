@@ -87,8 +87,8 @@ const Profile = () => {
       <div className={styles.profileBlock}>
         <div className={styles.bgImage}>
           {
-            data.avatarPath ? (
-              <Image layout={"fill"} src={data.avatarPath} alt={"bg"} />
+            data?.avatarPath ? (
+              <Image layout={"fill"} src={data?.avatarPath} alt={"bg"} />
             ) : (
               <div className={styles.solidAvatar}></div>
             )
@@ -98,7 +98,7 @@ const Profile = () => {
           <div className={styles.left}>
             <div className={styles.avatar}>
               <div className={styles.contImg}>
-                <AvatarPopup src={data.avatarPath} />
+                <AvatarPopup src={data?.avatarPath} />
               </div>
             </div>
           </div>
@@ -109,7 +109,7 @@ const Profile = () => {
               {data && (
                 <>
                   <span className={styles.name}>
-                    {data.username}
+                    {data?.username}
                     <IconHandler user={data} />
                   </span>
                   <span className={styles.description}>
@@ -121,7 +121,7 @@ const Profile = () => {
             <div className={styles.headers}>
               <span className={styles.lvl}>Ур. {data.level}</span>
               <span className={styles.subs}>
-                {data.subscribers ? data.subscribers.length : 0} подписчиков
+                {data?.subscribers ? data.subscribers.length : 0} подписчиков
               </span>
             </div>
             <div className={styles.date}>На проекте с 12 фев 2021</div>

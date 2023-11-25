@@ -28,6 +28,7 @@
     }
     @media screen and (max-width: 1024px) {
       max-width: 976px;
+      margin: 0 24px;
     }
     @media screen and (max-width: 980px) {
       max-width: 640px;
@@ -53,6 +54,10 @@
       display: flex;
       align-items: center;
 
+      @media screen and (max-width: 1024px) {
+        justify-content: space-between;
+      }
+
       .search {
         width: 100%;
         
@@ -62,6 +67,14 @@
       }
 
       .mLogotype {
+        display: none;
+        
+        @media screen and (max-width: 1024px) {
+          display: block;
+        }
+      }
+
+      .mCreate {
         display: none;
         
         @media screen and (max-width: 1024px) {

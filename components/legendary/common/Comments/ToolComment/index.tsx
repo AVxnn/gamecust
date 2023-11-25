@@ -8,23 +8,29 @@ import Button from "../../Button";
 import uuid from "react-uuid";
 import { observer } from "mobx-react-lite";
 import { Context } from "../../../../../app/(pages)/layout";
+import CommentInput from "../commentInput";
+import { addImageComment } from "../../../../../features/new/addImageComment/addImageComment"
 
 const ToolComment = ({ data, dataPost, getNewComments }: any) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const [value, setValue] = useState("");
+  const [image, setImage] = useState();
 
   const { mobxStore, postCreateStore, commentsCreateStore } =
     useContext(Context);
 
-  const replyComment = async () => {
+  const replyComment = async (event: any) => {
+    event.preventDefault();
     if (value) {
       let commentId = uuid();
       if (dataPost.data.length && mobxStore.user.id) {
+        const link = await addImageComment(image);
         await commentsCreateStore.createComment(
           mobxStore.user,
           {
             text: value,
+            image: link ? link : '',
             commentId: commentId,
             createdAt: new Date(),
             postId: dataPost.postId,
@@ -56,27 +62,7 @@ const ToolComment = ({ data, dataPost, getNewComments }: any) => {
       </div> */}
       </section>
       {isOpen ? (
-        <div className={styles.comments}>
-          <TextareaAutosize
-            value={value}
-            onChange={(e) => setValue(e.currentTarget.value)}
-            placeholder={"Оставьте свой комментарий!"}
-          />
-          <div className={styles.footer}>
-            <div className={styles.left}>
-              <div className={styles.icon}>
-                <ImageAdd />
-              </div>
-            </div>
-            <div>
-              {value && (
-                <Button clb={replyComment} type={"primary"} size={"small"}>
-                  Отправить
-                </Button>
-              )}
-            </div>
-          </div>
-        </div>
+        <CommentInput value={value} setValue={setValue} callback={replyComment} setIsOpen={setIsOpen} setImage={setImage}/>
       ) : (
         ""
       )}

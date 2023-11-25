@@ -9,6 +9,8 @@ import Item from "./Item";
 import uuid from "react-uuid";
 import { observer } from "mobx-react";
 import { Context } from "../../../../app/(pages)/layout";
+import CommentInput from "./commentInput";
+import { addImageComment } from "../../../../features/new/addImageComment/addImageComment";
 
 const list = [
   {
@@ -22,6 +24,9 @@ const list = [
 const Comments = ({ dataS, comments, getNewComments }: any) => {
   const [active, setActive] = useState(0);
   const [value, setValue] = useState("");
+  const [image, setImage] = useState();
+
+  setImage;
   const [dataComments, setDataComments] = useState(comments);
   const [dataPost, setDataPost] = useState(dataS);
 
@@ -43,14 +48,17 @@ const Comments = ({ dataS, comments, getNewComments }: any) => {
     setDataPost(await post?.json());
   };
 
-  const createComment = async () => {
+  const createComment = async (event: any) => {
+    event.preventDefault();
     if (value) {
       let commentId = uuid();
       if (dataPost.data.length && mobxStore.user.id) {
+        const link = await addImageComment(image);
         await commentsCreateStore.createComment(
           mobxStore.user,
           {
             text: value,
+            image: link ? JSON.stringify(link) : '',
             commentId: commentId,
             createdAt: new Date(),
             postId: dataPost.postId,
@@ -65,27 +73,13 @@ const Comments = ({ dataS, comments, getNewComments }: any) => {
 
   return (
     <>
-      <div className={styles.comments}>
-        <TextareaAutosize
-          value={value}
-          onChange={(e) => setValue(e.currentTarget.value)}
-          placeholder={"Оставьте свой комментарий!"}
-        />
-        <div className={styles.footer}>
-          <div className={styles.left}>
-            <div className={styles.icon}>
-              <ImageAdd />
-            </div>
-          </div>
-          <div>
-            {value && (
-              <Button clb={createComment} type={"primary"} size={"small"}>
-                Отправить
-              </Button>
-            )}
-          </div>
-        </div>
-      </div>
+      <CommentInput
+        callback={createComment}
+        value={value}
+        setValue={setValue}
+        setIsOpen={() => {}}
+        setImage={setImage}
+      />
       <ul className={styles.navigation}>
         {list.map((item: any, index: number) => {
           return (

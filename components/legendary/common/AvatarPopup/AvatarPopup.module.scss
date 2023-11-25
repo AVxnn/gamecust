@@ -4,7 +4,6 @@
     width: calc(100% + 48px);
     justify-content: center;
     margin: 0 -24px 16px -24px;
-
     gap: 8;
   }
   
@@ -31,7 +30,6 @@
     object-fit: cover;
     z-index: unset;
     padding: 50px;
-    animation: anim 0.4s ease-in-out forwards;
   }
   
   .imgPopup {
@@ -49,17 +47,5 @@
       max-height: 40%;
       border-radius: 8px;
       object-fit: contain;
-    }
-  }
-  
-  @keyframes anim {
-    0% {
-      opacity: 0;
-    }
-    99% {
-      opacity: 0;
-    }
-    100% {
-      opacity: 1;
     }
   }
