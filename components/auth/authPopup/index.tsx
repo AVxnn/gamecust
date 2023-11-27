@@ -2,11 +2,11 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import styles from "./authPopup.module.scss";
 import Image from "next/image";
 import { observer } from "mobx-react";
-import { Context } from "../../../pages/_app";
 import Login from "../login";
 import Registration from "../registration";
 import Close from "../../../public/img/svg/close";
 import { AnimatePresence, motion } from "framer-motion";
+import { Context } from "../../../app/(pages)/layout";
 
 const AuthPopup = () => {
   const labelRef = useRef<HTMLElement>(null) as any;

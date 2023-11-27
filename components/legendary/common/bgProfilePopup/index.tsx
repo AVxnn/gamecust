@@ -4,12 +4,15 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import ImageAdd from "../../../../public/img/svg/ImageAdd";
 import { Context } from "../../../../app/(pages)/layout";
+import isRoleHandler from "../../../../features/isRoleHandler";
+import { useParams } from "next/navigation";
 
 const BgProfilePopup = ({ src }: any) => {
   const [isHover, setIsHover] = useState(false) as any;
 
   const [avatar, setAvatar] = useState('') as any;
   const { postCreateStore, mobxStore } = useContext(Context);
+  const path = useParams() as any;
 
   const sendData = async (file: any, type: any) => {
     let files = file.currentTarget.files[0];
@@ -80,7 +83,8 @@ const BgProfilePopup = ({ src }: any) => {
               <Image layout={"fill"} src={src} alt={"bg"} />
           )}
         </div>
-        <AnimatePresence initial={false} mode="wait">
+        {isRoleHandler(path.uid, mobxStore.user.id) && (
+          <AnimatePresence initial={false} mode="wait">
           {isHover && (
             <label htmlFor={"img"} className={styles.info}>
               <motion.div
@@ -106,6 +110,7 @@ const BgProfilePopup = ({ src }: any) => {
             </label>
           )}
         </AnimatePresence>
+        )}
       </div>
     </>
   );

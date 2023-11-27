@@ -82,16 +82,16 @@ const Profile = () => {
   useEffect(() => {
     getFirstUser();
   }, [pathname]);
-
+  console.log(data)
   return (
     <>
       <div className={styles.profileBlock}>
         <div className={styles.bgImage}>
-          <BgProfilePopup src={data?.bgPath} />
+          <BgProfilePopup src={data.bgPath} />
         </div>
         <div className={styles.header}>
           <div className={styles.left}>
-            <AvatarPopup src={data?.avatarPath} />
+            <AvatarPopup src={data.avatarPath} />
           </div>
         </div>
         <div className={styles.info}>

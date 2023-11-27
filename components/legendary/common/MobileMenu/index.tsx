@@ -64,27 +64,27 @@ const MobileMenu = () => {
     return (
         <>
             <div className={styles.mobileMenu}>
-                <Link onClick={() => setActive(0)} className={`${styles.link} ${active == 0 ? styles.active : ''}`} href={'/'}>
+                <Link onClick={() => setActive(0)} className={`${styles.link} ${active == 0 ? styles.active : ''}`} href={'/nv'}>
                     <Home />
                 </Link>
-                <Link onClick={() => setActive(1)} className={`${styles.link} ${active == 1 ? styles.active : ''}`} href={'/'}>
+                <Link onClick={() => setActive(1)} className={`${styles.link} ${active == 1 ? styles.active : ''}`} href={'/nv'}>
                     <Search />
                 </Link>
-                <Link onClick={() => editorLink()} className={`${styles.link} ${active == 2 ? styles.active : ''}`} href={`/editor/${mobxStore?.user?.id}/${uuid()}-${mobxStore?.user?.username}`}>
+                <Link onClick={() => editorLink()} className={`${styles.link} ${active == 2 ? styles.active : ''}`} href={`/nv/editor/${mobxStore?.user?.id}/${uuid()}-${mobxStore?.user?.username}`}>
                     <PlusMenu />
                 </Link>
-                <Link onClick={() => setActive(3)} className={`${styles.link} ${active == 3 ? styles.active : ''}`} href={'/'}>
+                <Link onClick={() => setActive(3)} className={`${styles.link} ${active == 3 ? styles.active : ''}`} href={'/nv'}>
                     <Notification type="true" />
                 </Link>
                 {
                 mobxStore?.user?.email ? (
-                    <Link onClick={() => setActive(4)} className={`${styles.link} ${active == 4 ? styles.active : ''}`} href={'/account'}>
+                    <Link onClick={() => setActive(4)} className={`${styles.link} ${active == 4 ? styles.active : ''}`} href={'/nv/account'}>
                     <div className={styles.avatar}>
                         <Image layout={'fill'} src={`${mobxStore.user.avatarPath}`} alt="ads"/>
                     </div>
                     </Link>
                 ) : (
-                    <Link onClick={() => setActive(4)} className={`${styles.link} ${active == 4 ? styles.active : ''}`} href={'/account'}>
+                    <Link onClick={() => setActive(4)} className={`${styles.link} ${active == 4 ? styles.active : ''}`} href={'/nv/account'}>
                     <div className={styles.avatar}>
                         <Avatar />
                     </div>

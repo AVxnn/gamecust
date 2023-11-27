@@ -22,7 +22,7 @@ const TopUsers = () => {
       <h3 className={styles.title}>Топ пользователей</h3>
       <div className={styles.list}>
         {
-          users.length && users?.map((item : any, index : number) => {
+          users?.length && users?.map((item : any, index : number) => {
             return (
               <UserItem key={index} index={index} get={active} set={setActive} data={item}/>
             )

@@ -7,17 +7,19 @@
   height: 22px;
   gap: 6px;
   cursor: pointer;
+  transition: all 0.1s ease-in-out;
 
   &:hover {
     .like {
+      background-color: $d_main_bg_color;
       svg {
         path {
-          fill: $d_main_color;
+          fill: #F05353;
         }
       }
     }
     .title {
-      color: $d_main_color;
+      color: #F05353;
     }
   }
 
@@ -25,6 +27,9 @@
     width: 22px;
     height: 22px;
     cursor: pointer;
+    padding: 4px;
+    border-radius: 16px;
+    background-color: $d_main_subbg_color;
     transition: all 0.1s ease-in-out;
 
     svg {
