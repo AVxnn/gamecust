@@ -30,7 +30,7 @@ const ToolComment = ({ data, dataPost, getNewComments }: any) => {
           mobxStore.user,
           {
             text: value,
-            image: link ? link : '',
+            image: link ? JSON.parse(link) : '',
             commentId: commentId,
             createdAt: new Date(),
             postId: dataPost.postId,

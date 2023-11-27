@@ -19,7 +19,7 @@ const PostList = ({ fetchPosts }: any) => {
     const res = await fetchPosts(page);
     const newPosts = await res;
 
-    if (newPosts.length <= 1) {
+    if (newPosts.length <= 10) {
       setHasMore(false)
     }
     setPosts((post: any) => [...post, ...newPosts]);
@@ -29,6 +29,10 @@ const PostList = ({ fetchPosts }: any) => {
   const getFirstPosts = async () => {
     const res = await fetchPosts(0);
     const newPosts = await res;
+
+    if (newPosts.length <= 10) {
+      setHasMore(false)
+    }
     setPosts((post: any) => [...newPosts]);
   };
 

@@ -23,7 +23,7 @@ const Logotype = () => {
 
   return (
     <>
-      <Link href={'/'}>
+      <Link href={'/nv'}>
         <div ref={menuRef} className={styles.logotype}>
           <LogotypeIcon small={false} />
         </div>

@@ -24,7 +24,7 @@ const list = [
 const Comments = ({ dataS, comments, getNewComments }: any) => {
   const [active, setActive] = useState(0);
   const [value, setValue] = useState("");
-  const [image, setImage] = useState();
+  const [image, setImage] = useState() as any;
 
   setImage;
   const [dataComments, setDataComments] = useState(comments);
@@ -58,7 +58,7 @@ const Comments = ({ dataS, comments, getNewComments }: any) => {
           mobxStore.user,
           {
             text: value,
-            image: link ? JSON.stringify(link) : '',
+            image: link ? JSON.parse(link) : '',
             commentId: commentId,
             createdAt: new Date(),
             postId: dataPost.postId,
@@ -67,6 +67,7 @@ const Comments = ({ dataS, comments, getNewComments }: any) => {
         );
       }
       await setValue("");
+      await setImage({});
       await getComments();
     }
   };

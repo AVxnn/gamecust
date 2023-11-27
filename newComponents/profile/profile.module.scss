@@ -24,11 +24,14 @@
     display: flex;
     position: relative;
     gap: 24px;
+    box-sizing: border-box;
     margin-top: -80px;
+    width: 120px;
     left: 24px;
     
     @media (max-width: 768px) {
       margin-top: -70px;
+      width: 120px;
     }
 
     .left {

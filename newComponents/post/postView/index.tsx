@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useContext, useEffect, useState } from "react";
+import React, { Suspense, useContext, useEffect, useState } from "react";
 import Br from "../postItem/UI/data/br/br";
 import styles from "./postView.module.scss";
 import ImgPopup from "../../../components/legendary/common/ImgPopup";
@@ -19,6 +19,7 @@ import uuid from "react-uuid";
 import Title from "../postItem/UI/data/title";
 import SubTitle from "../postItem/UI/data/subtitle";
 import Description from "../postItem/UI/data/description";
+import Loading from "./loading";
 
 const PostView = () => {
   const { uid } = useParams() as any;
@@ -83,10 +84,10 @@ const PostView = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [postData]);
 
-  console.log(postData, commentsData);
-  if (!postData?.username) return <>Loading...</>;
+  if (!postData?.username) return <Loading />;
 
   return (
+    <Suspense fallback={<Loading />}>
     <div className={`${styles.postContainer} ${isfixed ? styles.fixed : null}`}>
       <HeaderPost data={postData} fixed={isfixed} scrollY={scrollY} />
       <section className={styles.mainInfo}>
@@ -121,6 +122,7 @@ const PostView = () => {
         />
       )}
     </div>
+    </Suspense>
   );
 };
 

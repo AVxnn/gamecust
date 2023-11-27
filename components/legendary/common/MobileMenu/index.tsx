@@ -6,13 +6,13 @@ import Search from '../../../../public/img/svg/Search'
 import styles from "./MobileMenu.module.scss"
 import Link from "next/link";
 import Image from "next/image";
-import { Context } from '../../../../pages/_app'
 import Avatar from '../../../../public/img/svg/Avatar'
 import { usePathname, useRouter } from 'next/navigation'
 import { useDispatch } from 'react-redux'
 import {open} from '../../../../features/Popup/PopupAuthSlice'
 import uuid from 'react-uuid'
 import { observer } from 'mobx-react'
+import { Context } from '../../../../app/(pages)/layout'
 
 const MobileMenu = () => {
 
@@ -60,7 +60,7 @@ const MobileMenu = () => {
                 break;
         }
         
-    }, [router]);
+    }, [pathname]);
 
     return (
         <>
