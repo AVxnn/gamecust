@@ -11,7 +11,7 @@
     left: 0;
     top: -256px;
     position: absolute;
-    background-color: $d_main_subbg_color;
+    background-color: $d_main_text_color;
     overflow: hidden;
     border-radius: 0 0 8px 8px;
 
@@ -46,7 +46,7 @@
           height: 120px;
           overflow: hidden;
           background-color: $d_main_bg_color;
-          border-radius: 99px;
+          border-radius: 8px;
 
           @media (max-width: 768px) {
             width: 100px;
@@ -71,7 +71,7 @@
 
     @media (max-width: 768px) {
       height: auto;
-      padding: 24px 24px 0 24px;
+      padding: 8px 24px 0 24px;
     }
 
     .left {

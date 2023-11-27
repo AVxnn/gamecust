@@ -16,13 +16,13 @@ const DraftsPage = () => {
   const router = useRouter();
 
   useEffect(() => {
-    if (isRoleHandler(mobxStore?.user?.id, uid)) {
+    if (isRoleHandler(mobxStore.user.id, uid)) {
       console.log('есть доступ')
       setLoading(true)
     } else {
       router.push(`/nv/profile/${uid}`)
     }
-  }, [])
+  }, [mobxStore.user])
   
   const getFirstPosts = async (page = 0) => {
     return getPostsId(uid, page);

@@ -58,7 +58,6 @@ export default class MobxStore {
     async registrationGoogle(username: string, email: string, picture: string, sub : number, email_verified: boolean) {
         try {
             const response = await AuthService.registrationGoogle(username, email, picture, sub, email_verified);
-            console.log(response, username, email, picture, sub, email_verified);
             localStorage.setItem('token', response.data.accessToken);
             this.setAuth(true);
             this.setUser(response.data.user);
@@ -108,7 +107,7 @@ export default class MobxStore {
     async reSaveUser(data: any) {
         try {
             const response = await AuthService.reSaveUser(data);
-            console.log(await response)
+            console.log(await response.data.user)
             this.setUser(await response.data.user as any);
             return response;
         } catch (error: any) {

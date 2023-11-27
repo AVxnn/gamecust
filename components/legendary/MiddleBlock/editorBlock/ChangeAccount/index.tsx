@@ -3,8 +3,9 @@ import Image from "next/image"
 import styles from "./ChangeAccount.module.scss"
 import Arrow from '../../../../../public/img/svg/Arrow'
 import AccountDrop from './AccountDrop'
-import { motion } from 'framer-motion'
-import { Context } from '../../../../../pages/_app'
+import { AnimatePresence, motion } from 'framer-motion'
+import { Context } from '../../../../../app/(pages)/layout'
+import { observer } from 'mobx-react-lite'
 
 const ChangeAccount = () => {
 
@@ -48,13 +49,16 @@ const ChangeAccount = () => {
         </div>
         <p ref={popupRef} className={styles.name}>Личный блог</p>
         <Arrow />
-        {
-          clicked && (
-              <AccountDrop />
-          )
-        }
+        
+        <AnimatePresence initial={false} mode="wait">
+          {
+            clicked && (
+                <AccountDrop />
+            )
+          }
+        </AnimatePresence>
     </div>
   )
 }
 
-export default ChangeAccount;
+export default observer(ChangeAccount);

@@ -9,6 +9,7 @@ import Br from "./UI/data/br/br";
 import ImagePost from "./UI/data/imagePost";
 import Video from "./UI/data/video";
 import Link from "next/link";
+import Tag from "../../../components/legendary/common/Tag";
 
 const PostItem = ({ data }: any) => {
   return (
@@ -16,6 +17,17 @@ const PostItem = ({ data }: any) => {
       <div className={styles.headerContainer}>
         <HeaderPost data={data} />
       </div>
+      {data?.tags?.length ? (
+        <section className={styles.tags}>
+          {data.tags.map((item: any, index: number) => {
+            return (
+              <Tag key={index} data={item}>
+                {item.title}
+              </Tag>
+            );
+          })}
+        </section>
+      ) : null}
       <Link href={`/nv/post/${data.postId}`}>
         <section className={styles.mainInfo}>
           {data?.stared.map((item: any, index: number) => {

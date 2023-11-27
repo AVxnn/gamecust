@@ -27,7 +27,7 @@ const CreateButton = () => {
       <button
         onClick={() =>
           redirectLink(
-            `/editor/${mobxStore.user.id}/${uuid()}-${mobxStore.user.username}`
+            `/nv/editor/${mobxStore.user.id}/${uuid()}-${mobxStore.user.username}`
           )
         }
         className={`${styles.button}`}
@@ -37,7 +37,7 @@ const CreateButton = () => {
       <button
         onClick={() =>
           redirectLink(
-            `/editor/${mobxStore.user.id}/${uuid()}-${mobxStore.user.username}`
+            `/nv/editor/${mobxStore.user.id}/${uuid()}-${mobxStore.user.username}`
           )
         }
         className={`${styles.smallButton}`}

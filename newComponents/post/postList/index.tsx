@@ -30,7 +30,7 @@ const PostList = ({ fetchPosts }: any) => {
     const res = await fetchPosts(0);
     const newPosts = await res;
 
-    if (newPosts.length <= 10) {
+    if (newPosts.length < 10) {
       setHasMore(false)
     }
     setPosts((post: any) => [...newPosts]);

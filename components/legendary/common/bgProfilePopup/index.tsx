@@ -1,11 +1,11 @@
 import React, { useContext, useState } from "react";
-import styles from "./AvatarPopup.module.scss";
+import styles from "./bgProfilePopup.module.scss";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import ImageAdd from "../../../../public/img/svg/ImageAdd";
 import { Context } from "../../../../app/(pages)/layout";
 
-const AvatarPopup = ({ src }: any) => {
+const BgProfilePopup = ({ src }: any) => {
   const [isHover, setIsHover] = useState(false) as any;
 
   const [avatar, setAvatar] = useState('') as any;
@@ -13,10 +13,10 @@ const AvatarPopup = ({ src }: any) => {
 
   const sendData = async (file: any, type: any) => {
     let files = file.currentTarget.files[0];
-    console.log("w" + mobxStore.user.avatarPath);
-    if (mobxStore.user.avatarPath) {
+    console.log("w" + mobxStore.user.bgPath);
+    if (mobxStore.user.bgPath) {
       const regex = /\/(?:[^/]*\/){3}(.+)/;
-      const link = mobxStore.user.avatarPath as any;
+      const link = mobxStore.user.bgPath as any;
       const match = link.match(regex)[1];
       var formdataDelete = new FormData();
       formdataDelete.append("pathUrl", match);
@@ -49,13 +49,13 @@ const AvatarPopup = ({ src }: any) => {
         resave(JSON.parse(result));
       })
       .catch((error) => console.log("error", error));
-    mobxStore.deleteAvatar({ pathUrl: mobxStore.user.avatarPath });
+    mobxStore.deleteAvatar({ pathUrl: mobxStore.user.bgPath });
   };
 
   const resave = (result: any) => {
     mobxStore.reSaveUser({
       id: mobxStore.user.id,
-      avatarPath: result,
+      bgPath: result,
     });
   }
 
@@ -77,14 +77,7 @@ const AvatarPopup = ({ src }: any) => {
               />
             </div>
           ) : (
-            <div className={styles.avatar}>
-              <Image
-                className={styles.imageCont}
-                layout={"fill"}
-                src={mobxStore.user.avatarPath}
-                alt={""}
-              />
-            </div>
+              <Image layout={"fill"} src={src} alt={"bg"} />
           )}
         </div>
         <AnimatePresence initial={false} mode="wait">
@@ -118,4 +111,4 @@ const AvatarPopup = ({ src }: any) => {
   );
 };
 
-export default AvatarPopup;
+export default BgProfilePopup;

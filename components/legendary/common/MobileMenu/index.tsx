@@ -36,7 +36,6 @@ const MobileMenu = () => {
         setActive(2)
         redirectLink(`/editor/${mobxStore?.user?.id}/${uuid()}-${mobxStore.user.username}`)
     }
-    console.log(router);
     
     useEffect(() => {
         switch (pathname) {

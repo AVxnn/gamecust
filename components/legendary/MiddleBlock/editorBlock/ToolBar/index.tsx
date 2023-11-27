@@ -4,7 +4,7 @@ import Button from '../../../common/Button'
 import Dots from '../../../../../public/img/svg/Dots'
 import Check from '../../../../../public/img/svg/Check'
 import { Context } from '../../../../../pages/_app'
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 
 const ToolBar = ({pressKey} : any) => {
 

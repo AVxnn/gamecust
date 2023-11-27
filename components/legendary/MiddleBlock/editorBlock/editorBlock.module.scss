@@ -2,6 +2,7 @@
 
 .editor {
   max-width: 700px;
+  height: calc(100dvh - 90px);
   display: flex;
   width: 100%;
   box-sizing: border-box;
@@ -15,6 +16,7 @@
   @media (max-width: 768px) {
     width: 100%;
     min-width: 0;
+    height: calc(100dvh - 120px);
     padding: 12px 0;
     margin-bottom: 50px;
     margin-top: 42px;

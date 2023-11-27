@@ -7,6 +7,7 @@ import NavigationLayout from "../../../../newComponents/navigation/navigationLay
 import CreateButton from "../../../../newComponents/createButton";
 import Premium from "../../../../components/legendary/RightBlock/Premium";
 import Contacts from "../../../../components/legendary/RightBlock/Contacts";
+import TopUsers from "../../../../components/legendary/RightBlock/TopUsers";
 
 const LayoutPages = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -19,6 +20,7 @@ const LayoutPages = ({ children }: { children: React.ReactNode }) => {
         <div className={styles.middleColumn}>{children}</div>
         <div className={styles.rightColumn}>
           <Premium />
+          <TopUsers />
           <Contacts />
         </div>
       </div>

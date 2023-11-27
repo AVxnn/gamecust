@@ -30,7 +30,7 @@ const ToolComment = ({ data, dataPost, getNewComments }: any) => {
           mobxStore.user,
           {
             text: value,
-            image: link ? JSON.parse(link) : '',
+            image: link ? link : '',
             commentId: commentId,
             createdAt: new Date(),
             postId: dataPost.postId,
@@ -57,7 +57,6 @@ const ToolComment = ({ data, dataPost, getNewComments }: any) => {
             <Dots />
           </div>
         </div>
-
         {/* <div className={styles.rightBlock}>
       </div> */}
       </section>

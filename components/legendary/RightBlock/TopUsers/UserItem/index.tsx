@@ -4,6 +4,7 @@ import CheckIcon from "../../../../../public/img/svg/CheckIcon";
 import Trand from "../../../../../public/img/svg/Trand";
 import Plus from "../../../../../public/img/svg/Plus";
 import Image from 'next/image'
+import { checkColor, checkLevel } from '../../../../../newComponents/componentColors/checkColor';
 
 const UserItem = ({data, index, get, set} : any) => {
 
@@ -16,16 +17,16 @@ const UserItem = ({data, index, get, set} : any) => {
       <header className={styles.header}>
         <div className={styles.left}>
           <div className={styles.avatar}>
-            <div className={styles.images}>
-              <Image layout={'fill'} src={'https://i.pinimg.com/736x/78/a6/de/78a6dee0461f3a04c067b4198730bfb2.jpg'} alt="ads"/>
+            <div style={{ borderColor: checkColor(data.level).color}} className={styles.images}>
+              <Image layout={'fill'} src={data.avatarPath} alt="ads"/>
             </div>
-            <span className={styles.number}>{data.number}</span>
+            <span style={{ backgroundColor: checkColor(data.level).color}} className={styles.number}>{checkLevel(data.exp)?.lvl}</span>
           </div>
-          <span className={styles.name}>{data.name} <CheckIcon /></span>
+          <span className={styles.name}>{data.username} <CheckIcon /></span>
         </div>
         {
-          data.rating ? (
-            <span className={styles.rating}><Trand /> {data.rating}</span>
+          data.level >= 0 ? (
+            <span className={styles.rating}><Trand /> {data.exp}</span>
           ) : (
             <span className={styles.add}><Plus /></span>
           )

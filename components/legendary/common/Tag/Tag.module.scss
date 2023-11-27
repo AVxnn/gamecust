@@ -9,17 +9,48 @@
 }
 
 .important {
-  background-color: $d_main_red;
+  position: relative;
   display: flex;
   align-items: center;
-  gap: 2px;
+  padding: 6px 12px;
+  font-size: 12px;
+  background: linear-gradient(96.56deg, #ff4646 0%, rgb(187, 96, 73) 100%);
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  gap: 4px;
+  overflow: hidden;
+
+  span {
+    z-index: 2;
+    color: #FFFFFF;
+  }
 
   svg {
+    margin-top: -1px;
     width: 12px;
     height: 12px;
     path {
-      fill: $const_main_text_color;
+      fill: #FFFFFF;
     }
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: 0;
+    width: 20px;
+    height: 40px;
+    transform: rotate(20deg);
+    filter: blur(5px);
+    transition: all 0.2 ease;
+    background-color: rgba(255, 255, 255, 0.5);
+    animation: animGradient 5s ease-in-out infinite;
+  }
+
+  &:hover {
+    transition: all 0.2s ease-in-out;
+    transform: rotate(-7deg);
   }
 }
 

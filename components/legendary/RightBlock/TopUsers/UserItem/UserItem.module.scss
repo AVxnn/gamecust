@@ -32,11 +32,13 @@
 
         .number {
           position: absolute;
-          font-size: 8px;
-          bottom: 1px;
-          right: 1px;
+          font-size: 9px;
+          bottom: 0px;
+          right: 0px;
           background-color: #F2C94C;
           padding: 2px 4px;
+          font-weight: 700;
+          color: #FFFFFF;
           border-radius: 99px;
         }
 
@@ -50,6 +52,8 @@
         align-items: center;
         margin-left: 8px;
         font-size: 16px;
+        max-width: 130px;
+        text-overflow: ellipsis;
         color: $d_main_text_color;
 
         &:hover {

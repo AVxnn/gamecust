@@ -25,8 +25,6 @@ const Comments = ({ dataS, comments, getNewComments }: any) => {
   const [active, setActive] = useState(0);
   const [value, setValue] = useState("");
   const [image, setImage] = useState() as any;
-
-  setImage;
   const [dataComments, setDataComments] = useState(comments);
   const [dataPost, setDataPost] = useState(dataS);
 
@@ -41,10 +39,10 @@ const Comments = ({ dataS, comments, getNewComments }: any) => {
     const comments = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/api/comment/getComments/${dataPost.postId}`
     );
-    setDataComments(await comments?.json());
     const post = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/api/post/getPost/${dataPost.postId}`
     );
+    setDataComments(await comments?.json());
     setDataPost(await post?.json());
   };
 
@@ -53,12 +51,12 @@ const Comments = ({ dataS, comments, getNewComments }: any) => {
     if (value) {
       let commentId = uuid();
       if (dataPost.data.length && mobxStore.user.id) {
-        const link = await addImageComment(image);
+        const link = await addImageComment(image) as any;
         await commentsCreateStore.createComment(
           mobxStore.user,
           {
             text: value,
-            image: link ? JSON.parse(link) : '',
+            image: link ? link : '',
             commentId: commentId,
             createdAt: new Date(),
             postId: dataPost.postId,

@@ -13,6 +13,7 @@ import ButtonChanger from "../../components/legendary/MiddleBlock/Profile/ui/But
 import isRoleHandler from "../../features/isRoleHandler";
 import { observer } from "mobx-react-lite";
 import { Context } from "../../app/(pages)/layout";
+import BgProfilePopup from "../../components/legendary/common/bgProfilePopup";
 
 const Profile = () => {
   const [active, setActive] = useState(0);
@@ -86,21 +87,11 @@ const Profile = () => {
     <>
       <div className={styles.profileBlock}>
         <div className={styles.bgImage}>
-          {
-            data?.avatarPath ? (
-              <Image layout={"fill"} src={data?.avatarPath} alt={"bg"} />
-            ) : (
-              <div className={styles.solidAvatar}></div>
-            )
-          }
+          <BgProfilePopup src={data?.bgPath} />
         </div>
         <div className={styles.header}>
           <div className={styles.left}>
-            <div className={styles.avatar}>
-              <div className={styles.contImg}>
-                <AvatarPopup src={data?.avatarPath} />
-              </div>
-            </div>
+            <AvatarPopup src={data?.avatarPath} />
           </div>
         </div>
         <div className={styles.info}>
@@ -148,7 +139,6 @@ const Profile = () => {
             </ul>
           </div>
         </div>
-        {isRoleHandler(mobxStore?.user?.id, data._id) ? <ButtonChanger /> : ""}
       </div>
     </>
   );

@@ -78,6 +78,15 @@
       }
       .img {
         width: 50%;
+
+        div {
+          display: flex;
+          justify-content: flex-start;
+          width: auto;
+          margin: 0;
+          overflow: hidden;
+          border-radius: 8px;
+        }
       }
     }
   }

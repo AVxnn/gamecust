@@ -7,6 +7,7 @@ import DropDownForm from "../../../Dropdowns/DropDownForm";
 import Image from "next/image"
 import DropDownEdit from "../../../Dropdowns/DropDownEdit";
 import InformationBlock from "../../../../../../MiddleBlock/editorBlock/InformationBlock";
+import { AnimatePresence } from "framer-motion";
 
 const MediaUpload = observer(({item, dragControls} : any) => {
 

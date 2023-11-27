@@ -42,7 +42,6 @@ const PostView = () => {
 
   const getNewComments = async () => {
     const comments = await getComments(uid);
-    console.log(await comments);
     setCommentsData(await comments);
   };
 
@@ -92,7 +91,6 @@ const PostView = () => {
       <HeaderPost data={postData} fixed={isfixed} scrollY={scrollY} />
       <section className={styles.mainInfo}>
         {postData?.data?.map((item: any, index: number) => {
-          console.log(item);
           if (item.type === "h1") {
             return <Title key={index} text={item.value} />;
           } else if (item.type === "h2") {

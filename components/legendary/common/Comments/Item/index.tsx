@@ -9,7 +9,6 @@ import IconHandler from "../../PostPreview/common/IconHandler";
 import Link from "next/link";
 
 const Item = ({ comments, data, dataPost, getNewComments }: any) => {
-  console.log(data.image)
   return (
     <>
       <div className={styles.comment}>
@@ -34,7 +33,7 @@ const Item = ({ comments, data, dataPost, getNewComments }: any) => {
             </Link>
             <div className={styles.content}>
               <p className={styles.text}>{data.text}</p>
-              {data.image && (
+              {data.image && data.image !== 'Произошла непредвиденная ошибка' && (
                 <div className={styles.img}>
                   <ImgPopup src={data.image} />
                 </div>
