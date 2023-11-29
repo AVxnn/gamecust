@@ -3,8 +3,8 @@ import styles from "./ToolBar.module.scss"
 import Button from '../../../common/Button'
 import Dots from '../../../../../public/img/svg/Dots'
 import Check from '../../../../../public/img/svg/Check'
-import { Context } from '../../../../../pages/_app'
 import { useRouter } from 'next/navigation'
+import { Context } from '../../../../../app/(pages)/layout'
 
 const ToolBar = ({pressKey} : any) => {
 

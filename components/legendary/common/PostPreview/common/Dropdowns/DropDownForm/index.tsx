@@ -7,10 +7,10 @@ import DotsIcon from "../../../../../../../public/img/svg/DotsIcon";
 import { useContext, useEffect, useRef } from "react";
 import Plus from "../../../../../../../public/img/svg/Plus";
 import cn from "classnames";
-import { Context } from "../../../../../../../pages/_app";
 import { AnimatePresence, motion } from "framer-motion";
 import { observer } from "mobx-react";
 import uuid from "react-uuid";
+import { Context } from "../../../../../../../app/(pages)/layout";
 
 const DropDownForm = observer(
   ({

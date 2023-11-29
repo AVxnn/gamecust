@@ -28,7 +28,7 @@ export default class PostCreateStore {
 
     setPostId(data : any) {
         this.postId = data;
-        console.log(this.data);
+        console.log(data); 
     }
 
     addItem(data : any, id = this.data.length) {

@@ -22,7 +22,7 @@ const UserItem = ({data, index, get, set} : any) => {
             </div>
             <span style={{ backgroundColor: checkColor(data.level).color}} className={styles.number}>{checkLevel(data.exp)?.lvl}</span>
           </div>
-          <span className={styles.name}>{data.username} <CheckIcon /></span>
+          <span className={styles.name}><span>{data.username}</span> <CheckIcon /></span>
         </div>
         {
           data.level >= 0 ? (

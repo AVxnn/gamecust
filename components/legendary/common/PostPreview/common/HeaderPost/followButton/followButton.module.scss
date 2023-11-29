@@ -1,0 +1,33 @@
+@import "/styles/variables.scss";
+
+.followBtn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: $d_main_color;
+  font-weight: 500;
+  cursor: pointer;
+
+  svg {
+    path {
+      fill: $d_main_color;
+    }
+  }
+
+  &:hover {
+    color: $d_main_hover;
+    svg {
+      path {
+        fill: $d_main_hover;
+      }
+    }
+  }
+  &:active {
+    color: $d_main_active;
+    svg {
+      path {
+        fill: $d_main_active;
+      }
+    }
+  }
+}

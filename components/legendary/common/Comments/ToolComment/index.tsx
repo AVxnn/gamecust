@@ -10,6 +10,7 @@ import { observer } from "mobx-react-lite";
 import { Context } from "../../../../../app/(pages)/layout";
 import CommentInput from "../commentInput";
 import { addImageComment } from "../../../../../features/new/addImageComment/addImageComment"
+import getCommentsId from "../../../../../features/new/getCommentsId/getCommentsId";
 
 const ToolComment = ({ data, dataPost, getNewComments }: any) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,27 +18,41 @@ const ToolComment = ({ data, dataPost, getNewComments }: any) => {
   const [value, setValue] = useState("");
   const [image, setImage] = useState();
 
-  const { mobxStore, postCreateStore, commentsCreateStore } =
+  const { mobxStore, postCreateStore, notificationStore, commentsCreateStore } =
     useContext(Context);
 
   const replyComment = async (event: any) => {
     event.preventDefault();
     if (value) {
       let commentId = uuid();
-      if (dataPost.data.length && mobxStore.user.id) {
-        const link = await addImageComment(image);
-        await commentsCreateStore.createComment(
-          mobxStore.user,
-          {
-            text: value,
-            image: link ? link : '',
-            commentId: commentId,
-            createdAt: new Date(),
-            postId: dataPost.postId,
-            repliesId: data.commentId,
-          },
-          dataPost
-        );
+      let commentsNow = await getCommentsId(mobxStore.user.id);
+      if (commentsNow.length <= 3 || mobxStore.user.premium) {
+
+        if (dataPost.data.length && mobxStore.user.id) {
+          let link
+          if (image) {
+            link = await addImageComment(image);
+          }
+          await commentsCreateStore.createComment(
+            mobxStore.user,
+            {
+              text: value,
+              image: link ? link : '',
+              commentId: commentId,
+              createdAt: new Date(),
+              postId: dataPost.postId,
+              repliesId: data.commentId,
+            },
+            dataPost
+          );
+        }
+      } else {
+        console.log('w')
+        notificationStore.addItem({
+          title: "Ваш лимит комментариев на сегодня закончился ;(",
+          status: "error",
+          timeLife: 2500,
+        });
       }
       setValue("");
       getNewComments();

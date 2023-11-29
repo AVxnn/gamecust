@@ -17,22 +17,22 @@ const NotificationItem = ({ item } : any) => {
     return (
         <>
             <div onClick={() => closeItem()}
-                 className={`${styles.notificationItem} ${styles[item.status]}`}>
+                 className={`${styles.notificationItem} ${styles[item?.status]}`}>
                 <div className={styles.icon}>
                     <div className={styles.bg}>
                     {
-                        item.status == 'success' ? (
+                        item?.status == 'success' ? (
                             <Check />
                         ) : ''
                     }
                     {
-                        item.status == 'error' ? (
+                        item?.status == 'error' ? (
                             <Plus />
                         ) : ''
                     }
                     </div>
                 </div>
-                <p className={styles.title}>{item.title}</p>
+                <p className={styles.title}>{item?.title}</p>
             </div>
         </>
     )

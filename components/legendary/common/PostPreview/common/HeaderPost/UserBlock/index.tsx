@@ -6,7 +6,6 @@ import Trash from '../../../../../../../public/img/svg/Trash';
 import Link from 'next/link';
 import { Context } from '../../../../../../../pages/_app';
 import { useRouter } from 'next/navigation';
-import Tg from '../../../../../../../public/img/svg/social/Tg';
 import LinkIcon from '../../../../../../../public/img/svg/LinkIcon';
 
 const UserBlock = ({ postId, data }: any) => {
@@ -51,7 +50,6 @@ const UserBlock = ({ postId, data }: any) => {
                             <span>Копировать ссылку</span>
                         </span>
                         <Link href={`tg://msg_url?text=${data.stared.filter((item : any) => item.type == 'h1')[0]?.value}&url=https://gamecust.online/post/${postId}`} className={styles.dropItem}>
-                            <Tg />
                             <span>Telegram</span>
                         </Link>
                     </div>

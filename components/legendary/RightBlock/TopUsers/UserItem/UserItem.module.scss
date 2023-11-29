@@ -52,9 +52,18 @@
         align-items: center;
         margin-left: 8px;
         font-size: 16px;
-        max-width: 130px;
         text-overflow: ellipsis;
         color: $d_main_text_color;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        
+        span {
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          max-width: 115px;
+        }
 
         &:hover {
           color: $d_main_hover;

@@ -13,6 +13,8 @@ import IconHandler from "../IconHandler";
 import { useMotionValueEvent, useScroll } from "framer-motion";
 import UserBlock from "./UserBlock";
 import { Context } from "../../../../../../app/(pages)/layout";
+import Follow from "../../../../../../public/img/svg/follow";
+import FollowButton from "./followButton";
 
 function Preloader() {
   return (
@@ -83,22 +85,7 @@ const HeaderPost = ({ data, fixed }: any) => {
         </Link>
       </div>
       <div className={styles.rightBlock}>
-        {isRoleHandler(mobxStore.user.id, data.userId) ? (
-          <EditBlock postId={data.postId} />
-        ) : mobxStore?.user?.subscriptions?.filter((e) => e === data.userId)
-            .length ? (
-          <>
-            <Button clb={() => changeSub()} type={"primary"} size={"small"}>
-              Отписаться
-            </Button>
-          </>
-        ) : (
-          <>
-            <Button clb={() => changeSub()} type={"primary"} size={"small"}>
-              Подписаться
-            </Button>
-          </>
-        )}
+        <FollowButton changeSub={changeSub} data={data} />
       </div>
     </header>
   );

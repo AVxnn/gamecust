@@ -53,6 +53,7 @@ const Item = ({ comments, data, dataPost, getNewComments }: any) => {
                       comments={comments}
                       key={index}
                       data={item}
+                      getNewComments={getNewComments}
                       dataPost={dataPost}
                     />
                   ) : (

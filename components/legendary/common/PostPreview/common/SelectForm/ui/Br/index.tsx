@@ -1,8 +1,8 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import styles from "./Br.module.scss"
 import DropDownEdit from "../../../Dropdowns/DropDownEdit";
-import { Context } from "../../../../../../../../pages/_app";
 import InformationBlock from "../../../../../../MiddleBlock/editorBlock/InformationBlock";
+import { Context } from "../../../../../../../../app/(pages)/layout";
 
 const Br = ({item, dragControls} : any) => {
 

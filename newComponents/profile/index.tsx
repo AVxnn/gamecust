@@ -14,6 +14,7 @@ import isRoleHandler from "../../features/isRoleHandler";
 import { observer } from "mobx-react-lite";
 import { Context } from "../../app/(pages)/layout";
 import BgProfilePopup from "../../components/legendary/common/bgProfilePopup";
+import LvlPopup from "../lvlPopup";
 
 const Profile = () => {
   const [active, setActive] = useState(0);
@@ -92,6 +93,7 @@ const Profile = () => {
         <div className={styles.header}>
           <div className={styles.left}>
             <AvatarPopup src={data.avatarPath} />
+            <LvlPopup data={data}/>
           </div>
         </div>
         <div className={styles.info}>
@@ -110,7 +112,6 @@ const Profile = () => {
               )}
             </div>
             <div className={styles.headers}>
-              <span className={styles.lvl}>Ур. {data.level}</span>
               <span className={styles.subs}>
                 {data?.subscribers ? data.subscribers.length : 0} подписчиков
               </span>

@@ -1,13 +1,13 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import styles from "./MediaUpload.module.scss"
 import { observer } from "mobx-react";
-import { Context } from "../../../../../../../../pages/_app";
 import ImageAdd from "../../../../../../../../public/img/svg/ImageAdd";
 import DropDownForm from "../../../Dropdowns/DropDownForm";
 import Image from "next/image"
 import DropDownEdit from "../../../Dropdowns/DropDownEdit";
 import InformationBlock from "../../../../../../MiddleBlock/editorBlock/InformationBlock";
 import { AnimatePresence } from "framer-motion";
+import { Context } from "../../../../../../../../app/(pages)/layout";
 
 const MediaUpload = observer(({item, dragControls} : any) => {
 

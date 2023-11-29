@@ -3,10 +3,10 @@ import styles from "./SelectedBlockEditor.module.scss"
 import LinkIcon from '../../../../../../public/img/svg/LinkIcon'
 import Bold from '../../../../../../public/img/svg/Bold'
 import Italic from '../../../../../../public/img/svg/Italic'
-import { Context } from '../../../../../../pages/_app'
 import { observer } from 'mobx-react-lite'
 import Arrow from '../../../../../../public/img/svg/Arrow'
 import { motion } from 'framer-motion'
+import { Context } from '../../../../../../app/(pages)/layout'
 
 const SelectedBlockEditor = ({ posLeft, selectedText, item} : any) => {
 

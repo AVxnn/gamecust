@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import styles from "./InformationBlock.module.scss"
 import Star from '../../../../../public/img/svg/Star';
-import { Context } from '../../../../../pages/_app';
+import { Context } from '../../../../../app/(pages)/layout';
 
 const InformationBlock = ({item} : any) => {
 

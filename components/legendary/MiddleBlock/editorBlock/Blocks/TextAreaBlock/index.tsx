@@ -2,12 +2,12 @@ import { useContext, useEffect, useRef, useState } from "react";
 import styles from "./TextAreaBlock.module.scss"
 import DropDownForm from "../../../../common/PostPreview/common/Dropdowns/DropDownForm";
 import DropDownEdit from "../../../../common/PostPreview/common/Dropdowns/DropDownEdit";
-import { Context } from "../../../../../../pages/_app";
 import { observer } from "mobx-react";
 import InformationBlock from "../../InformationBlock";
 import SelectedBlockEditor from "../SelectedBlockEditor/SelectedBlockEditor";
 import DOMPurify from 'dompurify';
 import ContentEditable from "react-contenteditable";
+import { Context } from "../../../../../../app/(pages)/layout";
 
 const TextAreaBlock = ({item, dragControls} : any) => {
 

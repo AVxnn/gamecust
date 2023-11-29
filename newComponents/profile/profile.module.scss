@@ -35,6 +35,10 @@
     }
 
     .left {
+      position: relative;
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-end;
 
       .avatar {
         position: relative;
@@ -46,7 +50,7 @@
           height: 120px;
           overflow: hidden;
           background-color: $d_main_bg_color;
-          border-radius: 8px;
+          border-radius: 16px;
 
           @media (max-width: 768px) {
             width: 100px;
@@ -135,15 +139,7 @@
         align-items: center;
         margin-bottom: 4px;
 
-        .lvl {
-          display: flex;
-          align-items: center;
-          font-size: 10px;
-          color: $const_main_text_color;
-          padding: 4px 8px;
-          border-radius: 8px;
-          background-color: #4A7EE1;
-        }
+        
         .subs {
           color: $d_main_subtext_color;
         }

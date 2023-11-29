@@ -11,15 +11,20 @@ const PageEditor = () => {
 
   const [post, setPost] = useState([]);
   const {mobxStore, postCreateStore, notificationStore} = useContext(Context);
-  const postId = useParams()
+  const { postId } = useParams() as any
   const router = useRouter()
-  
+
   const getFirstPosts = async (page = 0) => {
-    setPost(await getPost(postId));
+    const data = await getPost(decodeURIComponent(postId[1]))
+    console.log(data)
+    setPost(data.data);
   };
-  
+
   useEffect(() => {
     getFirstPosts()
+  }, [])
+  
+  useEffect(() => {
     if (post?.length > 0) {
       postCreateStore.updateArray(post)
     } else {
@@ -33,11 +38,12 @@ const PageEditor = () => {
         },
       ])
     }
+    console.log(postCreateStore.postId, postCreateStore.data)
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [post])
   
   useEffect(() => {
-    postCreateStore.setPostId(postId ? postId[1] : '')
+    postCreateStore.setPostId(postId ? decodeURIComponent(postId[1]) : '')
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [postId])
 

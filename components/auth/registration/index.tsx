@@ -12,7 +12,7 @@ import { useSession } from "next-auth/react";
 
 const Registration = ({ setAuth } : any) => {
   const { status, data: session } = useSession();
-  console.log(session)
+  
   return (
     <div className={styles.registration}>
       <div className={styles.leftBlock}>

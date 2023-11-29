@@ -3,17 +3,20 @@ import styles from './editorBlock.module.scss'
 import ToolBar from './ToolBar';
 import ChangeAccount from './ChangeAccount';
 import ConstructorBlocks from './ConstructorBlocks';
-import { Context } from '../../../../pages/_app';
 import { observer } from "mobx-react"
 import { Reorder, useDragControls } from 'framer-motion';
 import useDebounce from '../../../../features/Hooks/useDebounce';
 import uuid from 'react-uuid';
+import { Context } from '../../../../app/(pages)/layout';
+import { useParams } from 'next/navigation';
 
 const EditorBlock = () => {
 
   const {mobxStore, postCreateStore, notificationStore} = useContext(Context);
 
   const [items, setItems] = useState(postCreateStore.data);
+
+  const { postId } = useParams() as any
 
   const editor = useRef<HTMLDivElement>() as any
 

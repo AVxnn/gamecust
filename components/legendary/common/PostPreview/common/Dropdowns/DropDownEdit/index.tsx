@@ -7,9 +7,9 @@ import Trash from "../../../../../../../public/img/svg/Trash";
 import { useContext, useEffect, useRef } from "react";
 import NewForm from "../../../../../../../public/img/svg/NewForm";
 import cn from "classnames";
-import { Context } from "../../../../../../../pages/_app";
 import { observer } from "mobx-react";
 import { AnimatePresence, motion } from "framer-motion";
+import { Context } from "../../../../../../../app/(pages)/layout";
 
 const DropDownEdit = observer(({item, setIsClicked, isClicked, dragControls} : any) => {
 
