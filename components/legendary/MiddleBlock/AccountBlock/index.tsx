@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import React, { useContext, useEffect, useState } from "react";
@@ -16,9 +18,7 @@ import changeTheme from "../../../../features/ChangeTheme";
 import { AnimatePresence, motion } from "framer-motion";
 
 const AccountBlock = () => {
-  const [theme, setTheme] = useState(
-    localStorage.getItem("Theme") || "dark"
-  ) as any;
+  const [theme, setTheme] = useState() as any;
 
   const { mobxStore, popupHandlers } = useContext(Context);
 
