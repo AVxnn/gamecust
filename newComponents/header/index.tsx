@@ -7,6 +7,7 @@ import UnAuthProfile from "../../components/legendary/UnAuthProfile";
 import { observer } from "mobx-react-lite";
 import { Context } from "../../app/(pages)/layout";
 import CreateButton from "../createButton";
+import NotificationIcon from "../../components/legendary/MiddleBlock/notificationIcon";
 
 const Header = () => {
   const { mobxStore } = useContext(Context);
@@ -31,7 +32,10 @@ const Header = () => {
           </div>
           <div className={styles.rightColumn}>
             {mobxStore.user.email ? (
-              <UserSection />
+              <div className={styles.gap}>
+                <NotificationIcon />
+                <UserSection />
+              </div>
             ) : (
               <>{!mobxStore.isLoading && <UnAuthProfile />}</>
             )}
