@@ -41,6 +41,7 @@ const NotificationIcon = () => {
 
   useEffect(() => {
     getNewNotificationList()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useEffect(() => {
@@ -78,7 +79,7 @@ const NotificationIcon = () => {
             <div className={styles.header}>
               <h4 className={styles.title}>Уведомления</h4>
 
-              <Link className={styles.showMore} href={"/notification"}>
+              <Link className={styles.showMore} href={"/nv/notifications"}>
                 Посмотреть еще
               </Link>
             </div>

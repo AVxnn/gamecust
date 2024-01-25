@@ -12,14 +12,14 @@ import Link from "next/link";
 
 const UserItem = ({ data, index, get, set }: any) => {
   const [anim, setAnim] = useState(false);
-  
+  console.log(data);
   return (
     <div
       onMouseEnter={() => {
         set(index);
       }}
       className={`${styles.item} ${
-        get === index && data.images && styles.activeItem
+        get === index && styles.activeItem
       }`}
     >
       <header className={styles.header}>
@@ -54,20 +54,16 @@ const UserItem = ({ data, index, get, set }: any) => {
           </span>
         )}
       </header>
-      {data.images && (
+      {data.bgPath && (
         <div className={styles.images}>
-          {data.images.map((item: any, index: number) => {
-            return (
-              <div key={index} className={styles.contImg}>
-                <Image
-                  layout={"fill"}
-                  className={styles.img}
-                  src={item}
-                  alt=""
-                />
-              </div>
-            );
-          })}
+          <div key={index} className={styles.contImg}>
+            <Image
+              layout={"fill"}
+              className={styles.img}
+              src={data.bgPath}
+              alt=""
+            />
+          </div>
         </div>
       )}
     </div>

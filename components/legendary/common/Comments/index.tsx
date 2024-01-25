@@ -11,6 +11,7 @@ import { observer } from "mobx-react";
 import { Context } from "../../../../app/(pages)/layout";
 import CommentInput from "./commentInput";
 import { addImageComment } from "../../../../features/new/addImageComment/addImageComment";
+import getCommentsId from "../../../../features/new/getCommentsId/getCommentsId";
 
 const list = [
   {
@@ -28,13 +29,13 @@ const Comments = ({ dataS, comments, getNewComments }: any) => {
   const [dataComments, setDataComments] = useState(comments);
   const [dataPost, setDataPost] = useState(dataS);
 
-  const { mobxStore, postCreateStore, commentsCreateStore } =
+  const { mobxStore, postCreateStore, commentsCreateStore, notificationStore } =
     useContext(Context);
 
   const changePage = (index: number) => {
     setActive(index);
   };
-
+  console.log(comments);
   const getComments = async () => {
     const comments = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/api/comment/getComments/${dataPost.postId}`
@@ -48,16 +49,22 @@ const Comments = ({ dataS, comments, getNewComments }: any) => {
 
   const createComment = async (event: any) => {
     event.preventDefault();
-    if (value) {
-      let commentId = uuid();
+    console.log(mobxStore.user);
+    let commentsNow = await getCommentsId(mobxStore.user.id);
+    if (
+      commentsNow.length <= 3 ||
+      mobxStore.user.roles.filter((role) => role === "admin")
+    ) {
+      let link;
       if (dataPost.data.length && mobxStore.user.id) {
-        const link = await addImageComment(image) as any;
+        if (image) {
+          link = await addImageComment(image);
+        }
         await commentsCreateStore.createComment(
           mobxStore.user,
           {
             text: value,
-            image: link ? link : '',
-            commentId: commentId,
+            image: link ? link : "",
             createdAt: new Date(),
             postId: dataPost.postId,
           },
@@ -67,6 +74,12 @@ const Comments = ({ dataS, comments, getNewComments }: any) => {
       await setValue("");
       await setImage({});
       await getComments();
+    } else {
+      notificationStore.addItem({
+        title: "Ваш лимит комментариев на сегодня закончился ;(",
+        status: "error",
+        timeLife: 2500,
+      });
     }
   };
 

@@ -4,7 +4,13 @@ import ImageAdd from "../../../../../public/img/svg/ImageAdd";
 import styles from "./commentInput.module.scss";
 import Zoom from "react-medium-image-zoom";
 
-const CommentInput = ({ callback, setValue, value, setIsOpen, setImage }: any) => {
+const CommentInput = ({
+  callback,
+  setValue,
+  value,
+  setIsOpen,
+  setImage,
+}: any) => {
   const [focus, setFocus] = useState(false);
 
   const [imageURL, setImageURL] = useState("") as any;
@@ -19,7 +25,7 @@ const CommentInput = ({ callback, setValue, value, setIsOpen, setImage }: any) =
 
       if (item.type.indexOf("image") !== -1) {
         const blob = item.getAsFile();
-        setImage(blob)
+        setImage(blob);
         const reader = new FileReader();
 
         reader.onload = () => {
@@ -35,7 +41,7 @@ const CommentInput = ({ callback, setValue, value, setIsOpen, setImage }: any) =
 
   return (
     <div className={`${styles.comments} ${focus && styles.active}`}>
-      <form id={'form'} onSubmit={callback}>
+      <form id={"form"} onSubmit={callback}>
         <input
           onFocus={() => setFocus(true)}
           onBlur={() => setFocus(false)}

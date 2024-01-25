@@ -41,11 +41,6 @@
           color: #FFFFFF;
           border-radius: 99px;
         }
-
-        img {
-
-        }
-
       }
       .name {
         display: flex;
@@ -123,7 +118,7 @@
 
     .contImg {
       position: relative;
-      width: 77px;
+      width: 100%;
       overflow: hidden;
       border-radius: 8px;
       height: 70px;

@@ -78,4 +78,14 @@
   .info {
     background-color: #1D63CD;
   }
+  .close {
+    svg {
+      width: 16px;
+      height: 16px;
+      path {
+        fill: #FFFFFF
+      }
+    }
+    background-color: #F05353;
+  }
 }

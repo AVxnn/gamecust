@@ -36,8 +36,8 @@ const PostView = () => {
   const getData = async () => {
     const post = await getPost(uid);
     const comments = await getComments(uid);
-    setPostData(await post);
-    setCommentsData(await comments);
+    setPostData(post);
+    setCommentsData(comments);
   };
 
   const getNewComments = async () => {
@@ -87,39 +87,41 @@ const PostView = () => {
 
   return (
     <Suspense fallback={<Loading />}>
-    <div className={`${styles.postContainer} ${isfixed ? styles.fixed : null}`}>
-      <HeaderPost data={postData} fixed={isfixed} scrollY={scrollY} />
-      <section className={styles.mainInfo}>
-        {postData?.data?.map((item: any, index: number) => {
-          if (item.type === "h1") {
-            return <Title key={index} text={item.value} />;
-          } else if (item.type === "h2") {
-            return <SubTitle key={index} text={item.value} />;
-          } else if (item.type === "text") {
-            return <Description key={index} text={item.value} />;
-          } else if (item.type === "link") {
-            if (item.typeMedia === "image") {
+      <div
+        className={`${styles.postContainer} ${isfixed ? styles.fixed : null}`}
+      >
+        <HeaderPost data={postData} fixed={isfixed} scrollY={scrollY} />
+        <section className={styles.mainInfo}>
+          {postData?.data?.map((item: any, index: number) => {
+            if (item.type === "h1") {
+              return <Title key={index} text={item.value} />;
+            } else if (item.type === "h2") {
+              return <SubTitle key={index} text={item.value} />;
+            } else if (item.type === "text") {
+              return <Description key={index} text={item.value} />;
+            } else if (item.type === "link") {
+              if (item.typeMedia === "image") {
+                return <ImgPopup key={index} src={item?.href} />;
+              } else if (item.typeMedia === "video") {
+                return <Video key={index} href={item.href} />;
+              }
+            } else if (item.type === "media") {
               return <ImgPopup key={index} src={item?.href} />;
-            } else if (item.typeMedia === "video") {
-              return <Video key={index} href={item.href} />;
+            } else if (item.type === "br") {
+              return <Br key={index} />;
             }
-          } else if (item.type === "media") {
-            return <ImgPopup key={index} src={item?.href} />;
-          } else if (item.type === "br") {
-            return <Br key={index} />;
-          }
-        })}
-      </section>
-      <div id="comments"></div>
-      <Toolbar data={postData} />
-      {commentsData && (
-        <Comments
-          getNewComments={() => getNewComments()}
-          dataS={postData}
-          comments={commentsData}
-        />
-      )}
-    </div>
+          })}
+        </section>
+        <div id="comments"></div>
+        <Toolbar data={postData} />
+        {commentsData && (
+          <Comments
+            getNewComments={() => getNewComments()}
+            dataS={postData}
+            comments={commentsData}
+          />
+        )}
+      </div>
     </Suspense>
   );
 };

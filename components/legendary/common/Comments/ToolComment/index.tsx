@@ -9,7 +9,7 @@ import uuid from "react-uuid";
 import { observer } from "mobx-react-lite";
 import { Context } from "../../../../../app/(pages)/layout";
 import CommentInput from "../commentInput";
-import { addImageComment } from "../../../../../features/new/addImageComment/addImageComment"
+import { addImageComment } from "../../../../../features/new/addImageComment/addImageComment";
 import getCommentsId from "../../../../../features/new/getCommentsId/getCommentsId";
 
 const ToolComment = ({ data, dataPost, getNewComments }: any) => {
@@ -24,12 +24,13 @@ const ToolComment = ({ data, dataPost, getNewComments }: any) => {
   const replyComment = async (event: any) => {
     event.preventDefault();
     if (value) {
-      let commentId = uuid();
       let commentsNow = await getCommentsId(mobxStore.user.id);
-      if (commentsNow.length <= 3 || mobxStore.user.premium) {
-
+      if (
+        commentsNow.length <= 3 ||
+        mobxStore.user.roles.filter((role) => role === "admin")
+      ) {
         if (dataPost.data.length && mobxStore.user.id) {
-          let link
+          let link;
           if (image) {
             link = await addImageComment(image);
           }
@@ -37,17 +38,16 @@ const ToolComment = ({ data, dataPost, getNewComments }: any) => {
             mobxStore.user,
             {
               text: value,
-              image: link ? link : '',
-              commentId: commentId,
+              image: link ? link : "",
               createdAt: new Date(),
               postId: dataPost.postId,
-              repliesId: data.commentId,
+              receiver: data._id,
             },
             dataPost
           );
         }
       } else {
-        console.log('w')
+        console.log("w");
         notificationStore.addItem({
           title: "Ваш лимит комментариев на сегодня закончился ;(",
           status: "error",
@@ -56,6 +56,7 @@ const ToolComment = ({ data, dataPost, getNewComments }: any) => {
       }
       setValue("");
       getNewComments();
+      setIsOpen(false);
     }
   };
 
@@ -68,7 +69,7 @@ const ToolComment = ({ data, dataPost, getNewComments }: any) => {
               Ответить
             </span>
           </div>
-          <div onClick={() => console.log(data)} className={styles.mark}>
+          <div className={styles.mark}>
             <Dots />
           </div>
         </div>
@@ -76,7 +77,13 @@ const ToolComment = ({ data, dataPost, getNewComments }: any) => {
       </div> */}
       </section>
       {isOpen ? (
-        <CommentInput value={value} setValue={setValue} callback={replyComment} setIsOpen={setIsOpen} setImage={setImage}/>
+        <CommentInput
+          value={value}
+          setValue={setValue}
+          callback={replyComment}
+          setIsOpen={setIsOpen}
+          setImage={setImage}
+        />
       ) : (
         ""
       )}

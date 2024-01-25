@@ -14,14 +14,18 @@ const Item = ({ comments, data, dataPost, getNewComments }: any) => {
       <div className={styles.comment}>
         <div className={styles.topBlock}>
           <div className={styles.avatar}>
-            <Link href={`/profile/${data.userId}`}>
-              <Image layout={"fill"} src={`${data.AvatarPath}`} alt="ads" />
+            <Link href={`/nv/profile/${data.user._id}`}>
+              <Image
+                layout={"fill"}
+                src={`${data.user.avatarPath}`}
+                alt="ads"
+              />
             </Link>
           </div>
           <div className={styles.rightInfo}>
-            <Link href={`/profile/${data.userId}`}>
+            <Link href={`/nv/profile/${data.user._id}`}>
               <span className={styles.name}>
-                {data.author} <IconHandler user={data} />
+                {data.user.username} <IconHandler user={data.user} />
               </span>
               <span className={styles.date}>
                 {formatDistance(+data.createdAt, Date.now(), {
@@ -33,11 +37,12 @@ const Item = ({ comments, data, dataPost, getNewComments }: any) => {
             </Link>
             <div className={styles.content}>
               <p className={styles.text}>{data.text}</p>
-              {data.image && data.image !== 'Произошла непредвиденная ошибка' && (
-                <div className={styles.img}>
-                  <ImgPopup src={data.image} />
-                </div>
-              )}
+              {data.image &&
+                data.image !== "Произошла непредвиденная ошибка" && (
+                  <div className={styles.img}>
+                    <ImgPopup src={data.image} />
+                  </div>
+                )}
             </div>
             <ToolComment
               getNewComments={getNewComments}
@@ -46,9 +51,9 @@ const Item = ({ comments, data, dataPost, getNewComments }: any) => {
             />
             <div className={styles.replyComments}>
               {comments
-                .filter((item: any) => item.repliesId === data.commentId)
+                .filter((item: any) => item.receiver === data._id)
                 .map((item: any, index: number) => {
-                  return item.repliesId ? (
+                  return item.receiver ? (
                     <Item
                       comments={comments}
                       key={index}

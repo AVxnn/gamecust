@@ -15,13 +15,15 @@ import UserBlock from "./UserBlock";
 import { Context } from "../../../../../../app/(pages)/layout";
 import Follow from "../../../../../../public/img/svg/follow";
 import FollowButton from "./followButton";
+import { addExpUser } from "../../../../../../features/new/expInterface/expInterface";
+import { createNotification } from "../../../../../../features/new/getNotifications/getNotifications";
 
 function Preloader() {
   return (
     <ContentLoader
       height={42}
       width={42}
-      style={{borderRadius: '99px'}}
+      style={{ borderRadius: "99px" }}
       speed={2}
       backgroundColor={"#333"}
       foregroundColor={"#999"}
@@ -46,13 +48,30 @@ const HeaderPost = ({ data, fixed }: any) => {
       });
       return popupHandlers.authPopupOpen();
     }
+    if (mobxStore.user.subscriptions.filter((e) => e == data.userId).length) {
+      createNotification(
+        data.userId,
+        "",
+        "Отписался от вас",
+        "follow",
+        mobxStore.user
+      );
+    } else {
+      createNotification(
+        data.userId,
+        "",
+        "Подписался на вас",
+        "follow",
+        mobxStore.user
+      );
+    }
     let res = await mobxStore.updateAuth(data.userId, mobxStore.user.id);
     setSubscribe(!subscribe);
   };
 
   useEffect(() => {
     mobxStore?.user?.subscriptions?.map((item) => {
-      if (item == data.id) {
+      if (item == data.userId) {
         setSubscribe(true);
       } else {
         setSubscribe(false);

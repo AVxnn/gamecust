@@ -17,10 +17,16 @@ const Counter = ({ data }: any) => {
 
   const openPost = () => {
     let result = isLikes.filter((item: any) => item.id == mobxStore.user.id);
-    console.log(!result.length, isRoleHandler(data.userId, mobxStore.user.id));
+
     if (!isRoleHandler(data.userId, mobxStore.user.id) && !result.length) {
       addExpUser(data.userId, 25);
-      createNotification(data.userId, '', 'Поставил(а) лайк на ваш пост', 'like',  mobxStore.user)
+      createNotification(
+        data.userId,
+        "",
+        "Поставил(а) лайк на ваш пост",
+        "like",
+        mobxStore.user
+      );
     } else if (!isRoleHandler(data.userId, mobxStore.user.id)) {
       removeExpUser(data.userId, 25);
     }
