@@ -4,12 +4,12 @@ import React, { useContext, useEffect, useState } from "react";
 import styles from "./Drafts.module.scss";
 import DraftItem from "./DraftItem";
 import Empty from "../../../common/Empty";
-import { Context } from "../../../../../pages/_app";
 import { useRouter } from "next/router";
 import { observer } from "mobx-react-lite";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Loading from "../../../../../newComponents/post/postList/loading";
 import isRoleHandler from "../../../../../features/isRoleHandler";
+import { Context } from "../../../../../app/(pages)/layout";
 
 const Drafts = ({ fetchPosts }: any) => {
   const [hasMore, setHasMore] = useState(true);
@@ -37,6 +37,7 @@ const Drafts = ({ fetchPosts }: any) => {
 
   useEffect(() => {
     getFirstPosts();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

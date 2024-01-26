@@ -114,7 +114,7 @@ const DropDownForm = observer(
       <>
         <div ref={labelRef} className={styles.toolbar}>
           <button
-            onPointerDown={(event) => dragControls.start(event)}
+            onPointerDown={(event) => dragControls?.start(event)}
             tabIndex={0}
             onClick={() => setIsClicked(!isClicked)}
             className={cn(styles.newForm, isClicked && styles.active)}
