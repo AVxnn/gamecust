@@ -3,11 +3,11 @@ import styles from "./DraftItem.module.scss"
 import Image from "next/image"
 import Trash from '../../../../../../public/img/svg/Trash'
 import Link from 'next/link'
-import { Context } from '../../../../../../pages/_app'
 import { useRouter } from 'next/navigation'
 import { observer } from 'mobx-react-lite'
-import { formatDistance } from 'date-fns'
+import { formatDistanceStrict } from 'date-fns'
 import { ru } from 'date-fns/locale';
+import { Context } from '../../../../../../app/(pages)/layout'
 
 const DraftItem = ({data} : any) => {
     
@@ -20,11 +20,11 @@ const DraftItem = ({data} : any) => {
     const deleteHandler = (e: any) => {
         e.preventDefault();
         postCreateStore.deletePost(data.postId);
-        router.push('/profile/' + mobxStore.user.id + '/drafts')
+        router.push('/nv/profile/' + mobxStore.user.id + '/drafts')
     }
     
     return (
-        <Link href={`/editor/${mobxStore.user.id}/${data.postId}`}>
+        <Link href={`/nv/editor/${mobxStore.user.id}/${data.postId}`}>
             <div className={styles.draft}>
                 <div className={styles.image}>
                     {
@@ -39,7 +39,7 @@ const DraftItem = ({data} : any) => {
                 <div className={styles.mainInfo}>
                     <h2 className={styles.title} dangerouslySetInnerHTML={{ __html: data?.data?.filter((e: any) => e.type == 'h1')[0]?.value}}></h2>
                     <div className={styles.bottomInfo}>
-                    <span className={styles.date}>Изменение было {formatDistance(+data.publishedDate, Date.now(), { addSuffix: false, locale: ru })} назад</span>
+                    <span className={styles.date}>{formatDistanceStrict(+data.publishedDate, Date.now(), { addSuffix: false, locale: ru })} назад</span>
                         <div onClick={(e) => deleteHandler(e)} className={styles.delete}>
                             <Trash />
                             <p>Удалить черновик</p>

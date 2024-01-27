@@ -65,7 +65,7 @@ const Profile = () => {
         },
       ]);
     }
-  }, [mobxStore, uid]);
+  }, [mobxStore.user, uid]);
 
   useEffect(() => {
     switch (pathname.split("/")[4]) {

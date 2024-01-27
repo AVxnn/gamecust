@@ -15,7 +15,7 @@ const ToolBar = ({pressKey} : any) => {
       mobxStore.checkAuth()
     }
     notificationStore.addItem({title: 'Пост опубликован', status: 'success', timeLife: 2500})
-    router.push('/')
+    router.push('/nv')
     postCreateStore.createPost(mobxStore.user, postCreateStore.getPost(), `${postCreateStore.postId}`);
   }
 
