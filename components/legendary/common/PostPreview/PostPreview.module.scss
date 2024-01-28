@@ -43,6 +43,11 @@
         white-space: pre-wrap;
       }
 
+      .mediaBlock {
+        border-radius: 8px;
+        overflow: hidden;
+      }
+
       .subtitle {
         font-size: 16px;
         color: $d_main_text_color;
@@ -62,20 +67,20 @@
         position: relative;
         padding: 16px 0;
         justify-content: center;
-  
+
         .br {
           display: flex;
           gap: 12px;
           position: relative;
           margin: 0 auto;
-    
+
           .oval:nth-child(1) {
             width: 16px;
             height: 16px;
             border-radius: 99px;
             background-color: $d_main_text_color;
             transition: all 0.05s ease-in-out;
-  
+
             &:hover {
               transform: rotate(-15deg) scale(1.1);
             }
@@ -107,27 +112,7 @@
     }
   }
 
-  .hashList {
-    display: flex;
-    gap: 8px;
-    margin: 0 24px 8px 24px;
-
-    .hashtag {
-      font-size: 12px;
-      margin: 12px 0;
-      font-weight: 600;
-      color: $d_main_color;
-      border-bottom: 1px dashed $d_main_white_color;
-      cursor: pointer;
-
-      &:hover {
-        border-bottom: 1px dashed $d_main_color;
-      }
-    }
-  }
-
   .toolBarContainer {
     margin: 0 24px 0 24px;
   }
-
 }

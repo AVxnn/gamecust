@@ -8,7 +8,6 @@ import { getNotification } from "../../../../features/new/getNotifications/getNo
 import { Context } from "../../../../app/(pages)/layout";
 
 const NotificationIcon = () => {
-
   const { mobxStore } = useContext(Context);
 
   const popupRef = useRef<HTMLDivElement>(null);
@@ -35,14 +34,14 @@ const NotificationIcon = () => {
   };
 
   const getNewNotificationList = async () => {
-    const result = await getNotification(mobxStore.user.id)
-    setData(result)
-  }
+    const result = await getNotification(mobxStore.user.id);
+    setData(result);
+  };
 
   useEffect(() => {
-    getNewNotificationList()
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+    getNewNotificationList();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     if (typeof document !== "undefined" && dropMenu) {
@@ -63,9 +62,7 @@ const NotificationIcon = () => {
         className={styles.icon}
       >
         <Bell />
-        {
-          data.length >= 1 && <div className={styles.value}>{data.length}</div>
-        }
+        {data.length >= 1 && <div className={styles.value}>{data.length}</div>}
       </div>
       <AnimatePresence initial={false} mode="wait">
         {dropMenu && (
@@ -84,16 +81,13 @@ const NotificationIcon = () => {
               </Link>
             </div>
             <div className={styles.list}>
-              {
-                data.length >= 1 ? data.map((item: any, index: number) => {
-                  return <NotificationItem key={index} item={item} />
-                  
-                }) : (
-                  <>
-                    Похоже у вас нет уведомлений
-                  </>
-                )
-              }
+              {data.length >= 1 ? (
+                data.map((item: any, index: number) => {
+                  return <NotificationItem key={index} item={item} />;
+                })
+              ) : (
+                <>Похоже у вас нет уведомлений</>
+              )}
             </div>
           </motion.div>
         )}

@@ -12,6 +12,7 @@ import Link from "next/link";
 import Tag from "../../../components/legendary/common/Tag";
 
 const PostItem = ({ data }: any) => {
+  console.log(data);
   return (
     <div className={styles.postItem}>
       <div className={styles.headerContainer}>

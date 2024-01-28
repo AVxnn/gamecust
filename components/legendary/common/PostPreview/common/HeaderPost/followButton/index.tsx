@@ -6,6 +6,7 @@ import Follow from "../../../../../../../public/img/svg/follow";
 import styles from "./followButton.module.scss";
 import Check from "../../../../../../../public/img/svg/Check";
 import Unfollow from "../../../../../../../public/img/svg/unfollow";
+import { observer } from "mobx-react-lite";
 
 const FollowButton = ({ data, changeSub }: any) => {
   const { mobxStore } = useContext(Context);
@@ -14,28 +15,28 @@ const FollowButton = ({ data, changeSub }: any) => {
 
   return (
     <>
-      {isRoleHandler(mobxStore.user.id, data.userId) ? (
+      {isRoleHandler(mobxStore.user.id, data.user._id) ? (
         <EditBlock postId={data.postId} />
-      ) : mobxStore?.user?.subscriptions?.filter((e) => e === data.userId)
+      ) : mobxStore?.user?.subscriptions?.filter((e) => e === data.user._id)
           .length ? (
         <>
-          <span 
+          <span
             onMouseEnter={() => setHover(true)}
             onMouseLeave={() => setHover(false)}
-            onClick={() => changeSub()} className={styles.followBtn}>
-            {
-              hover ? (
-                <>
-                  <Unfollow />
-                  Отписаться
-                </>
-              ) : (
-                <>
-                  <Check />
-                  Подписан
-                </>
-              )
-            }
+            onClick={() => changeSub()}
+            className={styles.followBtn}
+          >
+            {hover ? (
+              <>
+                <Unfollow />
+                Отписаться
+              </>
+            ) : (
+              <>
+                <Check />
+                Подписан
+              </>
+            )}
           </span>
         </>
       ) : (
@@ -50,4 +51,4 @@ const FollowButton = ({ data, changeSub }: any) => {
   );
 };
 
-export default FollowButton;
+export default observer(FollowButton);

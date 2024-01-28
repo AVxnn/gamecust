@@ -107,7 +107,7 @@ const Comments = ({ dataS, comments, getNewComments }: any) => {
       </ul>
       <div className={styles.listComments}>
         {dataComments
-          .filter((item: any) => !item.repliesId)
+          .filter((item: any) => !item.receiver)
           ?.map((item: any, index: number) => {
             return (
               <Item

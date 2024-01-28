@@ -1,50 +1,50 @@
 @import "/styles/variables.scss";
 
 .authPopup {
-    position: fixed;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.4);
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+
+  .container {
+    position: relative;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 100;
+    border-radius: 8px;
+    background-color: $d_main_bg_color;
+    overflow: hidden;
 
-    .container {
-        position: relative;
-        display: flex;
-        border-radius: 8px;
-        background-color: $d_main_bg_color;
-        overflow: hidden;
-
-        @media (max-width: 768px) {
-            width: 100%;
-            align-items: center;
-            height: 100%;
-            flex-direction: column;
-        }
-
-        .close {
-            display: none;
-            position: absolute;
-            top: 32px;
-            right: 32px;
-            height: 18px;
-            cursor: pointer;
-            padding: 8px;
-
-            @media (max-width: 768px) {
-                display: block;
-            }
-
-            svg {
-                width: 18px;
-                height: 18px;
-            }
-
-            path {
-                fill: $d_main_gray_color
-            }
-        }
+    @media (max-width: 768px) {
+      width: 100%;
+      align-items: center;
+      height: 100%;
+      flex-direction: column;
     }
+
+    .close {
+      display: none;
+      position: absolute;
+      top: 32px;
+      right: 32px;
+      height: 18px;
+      cursor: pointer;
+      padding: 8px;
+
+      @media (max-width: 768px) {
+        display: block;
+      }
+
+      svg {
+        width: 18px;
+        height: 18px;
+      }
+
+      path {
+        fill: $d_main_gray_color;
+      }
+    }
+  }
 }

@@ -48,7 +48,7 @@ const PageEditor = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [postId]);
 
-  return <EditorBlock />;
+  return <EditorBlock post={post} />;
 };
 
 export default PageEditor;

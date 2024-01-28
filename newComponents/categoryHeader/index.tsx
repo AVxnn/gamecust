@@ -15,6 +15,7 @@ import { observer } from "mobx-react-lite";
 import { Context } from "../../app/(pages)/layout";
 import BgProfilePopup from "../../components/legendary/common/bgProfilePopup";
 import LvlPopup from "../lvlPopup";
+import getCategoriesId from "../../features/new/getCategoryId/getCategories";
 
 const CategoryHeader = () => {
   const [active, setActive] = useState(0);
@@ -42,7 +43,7 @@ const CategoryHeader = () => {
   };
 
   const getFirstUser = async () => {
-    const res = await getUserId(uid);
+    const res = await getCategoriesId(uid);
     const newPosts = await res;
     setData(newPosts);
   };
@@ -82,7 +83,7 @@ const CategoryHeader = () => {
 
   useEffect(() => {
     getFirstUser();
-  }, [pathname]);
+  }, []);
   console.log(data);
   return (
     <>
@@ -92,7 +93,7 @@ const CategoryHeader = () => {
         </div>
         <div className={styles.header}>
           <div className={styles.left}>
-            <AvatarPopup src={data.avatarPath} />
+            <AvatarPopup src={data.imagePath} />
             <LvlPopup data={data} />
           </div>
         </div>
@@ -102,7 +103,7 @@ const CategoryHeader = () => {
               {data && (
                 <>
                   <span className={styles.name}>
-                    {data?.username}
+                    {data?.title}
                     <IconHandler user={data} />
                   </span>
                   <span className={styles.description}>

@@ -12,15 +12,12 @@ import Link from "next/link";
 
 const UserItem = ({ data, index, get, set }: any) => {
   const [anim, setAnim] = useState(false);
-  console.log(data);
   return (
     <div
       onMouseEnter={() => {
         set(index);
       }}
-      className={`${styles.item} ${
-        get === index && styles.activeItem
-      }`}
+      className={`${styles.item} ${get === index && styles.activeItem}`}
     >
       <header className={styles.header}>
         <Link href={`/nv/profile/${data._id}`}>

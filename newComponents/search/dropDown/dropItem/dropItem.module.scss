@@ -1,0 +1,83 @@
+@import "/styles/variables.scss";
+
+.item {
+  display: flex;
+  padding: 8px;
+  gap: 12px;
+  min-height: 32px;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.1s ease-in-out;
+
+  &:hover {
+    background-color: $d_main_subbg_color;
+    border-radius: 8px;
+  }
+
+  .avatar {
+    border-radius: 99px;
+    border: 2px solid $d_main_color;
+    box-sizing: border-box;
+  }
+
+  .text {
+    margin: 0;
+    padding: 0;
+    max-width: 500px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    color: $d_main_text_color;
+  }
+
+  .views {
+    display: flex;
+    position: absolute;
+    right: 8px;
+    align-items: center;
+
+    svg {
+      width: 20px;
+      height: 20px;
+
+      path {
+        fill: $d_main_text_color;
+      }
+    }
+    .title {
+      margin-left: 6px;
+      width: 20px;
+      font-size: 15px;
+      font-weight: 500;
+      color: $d_main_text_color;
+      cursor: default;
+    }
+  }
+
+  .iconBlock {
+    padding: 4px;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.5);
+
+    svg {
+      width: 20px;
+      height: 20px;
+      path {
+        fill: #ffffff;
+      }
+    }
+  }
+
+  .pen {
+    background-color: $d_main_color;
+  }
+}

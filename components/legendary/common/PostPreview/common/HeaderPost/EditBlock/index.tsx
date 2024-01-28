@@ -4,8 +4,9 @@ import Dots from "../../../../../../../public/img/svg/Dots";
 import Edit from "../../../../../../../public/img/svg/Edit";
 import Trash from "../../../../../../../public/img/svg/Trash";
 import Link from "next/link";
-import { Context } from "../../../../../../../pages/_app";
 import { AnimatePresence, motion } from "framer-motion";
+import { observer } from "mobx-react-lite";
+import { Context } from "../../../../../../../app/(pages)/layout";
 
 const EditBlock = ({ postId }: any) => {
   const [isDropOpen, setIsDropOpen] = useState<boolean>(false);
@@ -48,7 +49,7 @@ const EditBlock = ({ postId }: any) => {
       });
     }
   });
-
+  console.log(mobxStore.user);
   return (
     <div
       ref={Button}
@@ -71,7 +72,7 @@ const EditBlock = ({ postId }: any) => {
             className={styles.dropMenu}
           >
             <Link
-              href={`/editor/${mobxStore.user.id}/${postId}`}
+              href={`/nv/editor/${mobxStore.user.id}/${postId}`}
               className={styles.dropItem}
             >
               <Edit />
@@ -88,4 +89,4 @@ const EditBlock = ({ postId }: any) => {
   );
 };
 
-export default EditBlock;
+export default observer(EditBlock);

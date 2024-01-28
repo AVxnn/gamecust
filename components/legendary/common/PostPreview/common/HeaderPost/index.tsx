@@ -50,7 +50,7 @@ const HeaderPost = ({ data, fixed }: any) => {
     }
     if (mobxStore.user.subscriptions.filter((e) => e == data.userId).length) {
       createNotification(
-        data.userId,
+        data.user._id,
         "",
         "Отписался от вас",
         "follow",
@@ -58,20 +58,20 @@ const HeaderPost = ({ data, fixed }: any) => {
       );
     } else {
       createNotification(
-        data.userId,
+        data.user._id,
         "",
         "Подписался на вас",
         "follow",
         mobxStore.user
       );
     }
-    let res = await mobxStore.updateAuth(data.userId, mobxStore.user.id);
+    let res = await mobxStore.updateAuth(data.user._id, mobxStore.user.id);
     setSubscribe(!subscribe);
   };
 
   useEffect(() => {
     mobxStore?.user?.subscriptions?.map((item) => {
-      if (item == data.userId) {
+      if (item == data.user._id) {
         setSubscribe(true);
       } else {
         setSubscribe(false);
@@ -83,24 +83,51 @@ const HeaderPost = ({ data, fixed }: any) => {
   return (
     <header className={`${styles.header} ${fixed ? styles.fixed : null}`}>
       <div className={styles.leftBlock}>
-        <Link href={`/nv/profile/${data.userId}`}>
-          <ImageLoader
-            className={styles.avatar}
-            src={`${data?.userAvatar}`}
-            wrapper={React.createFactory("div")}
-            preloader={Preloader}
-          ></ImageLoader>
-          <div className={styles.info}>
-            <span className={styles.name}>
-              {data?.username} <IconHandler user={data} />
-            </span>
-            <span className={styles.date}>
-              {formatDistance(+data.publishedDate, Date.now(), {
-                addSuffix: true,
-                locale: ru,
-              })}
-            </span>
-          </div>
+        <Link href={`/nv/profile/${data?.user._id}`}>
+          {data.category ? (
+            <>
+              <ImageLoader
+                className={styles.avatar}
+                src={`${data.category.imagePath}`}
+                wrapper={React.createFactory("div")}
+                preloader={Preloader}
+              ></ImageLoader>
+              <div className={styles.info}>
+                <span className={styles.name}>
+                  <span className={styles.title}>{data.category.title}</span>
+                  <span className={styles.username}>
+                    {data?.user.username} <IconHandler user={data.user} />
+                  </span>
+                </span>
+                <span className={styles.date}>
+                  {formatDistance(+data?.publishedDate, Date.now(), {
+                    addSuffix: true,
+                    locale: ru,
+                  })}
+                </span>
+              </div>
+            </>
+          ) : (
+            <>
+              <ImageLoader
+                className={styles.avatar}
+                src={`${data?.user.avatarPath}`}
+                wrapper={React.createFactory("div")}
+                preloader={Preloader}
+              ></ImageLoader>
+              <div className={styles.info}>
+                <span className={styles.name}>
+                  {data?.user.username} <IconHandler user={data.user} />
+                </span>
+                <span className={styles.date}>
+                  {formatDistance(+data?.publishedDate, Date.now(), {
+                    addSuffix: true,
+                    locale: ru,
+                  })}
+                </span>
+              </div>
+            </>
+          )}
         </Link>
       </div>
       <div className={styles.rightBlock}>

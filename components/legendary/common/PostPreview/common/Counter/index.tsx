@@ -15,46 +15,25 @@ const Counter = ({ data }: any) => {
 
   const { mobxStore, postCreateStore } = useContext(Context);
 
-  const openPost = () => {
-    let result = isLikes.filter((item: any) => item.id == mobxStore.user.id);
-
-    if (!isRoleHandler(data.userId, mobxStore.user.id) && !result.length) {
+  const openPost = async () => {
+    if (!isRoleHandler(data.user._id, mobxStore.user.id)) {
       addExpUser(data.userId, 25);
       createNotification(
-        data.userId,
+        data.user._id,
         "",
         "Поставил(а) лайк на ваш пост",
         "like",
         mobxStore.user
       );
-    } else if (!isRoleHandler(data.userId, mobxStore.user.id)) {
-      removeExpUser(data.userId, 25);
+    } else if (!isRoleHandler(data.user._id, mobxStore.user.id)) {
+      removeExpUser(data.user._id, 25);
     }
-    if (!result.length) {
-      postCreateStore.updatePost({
-        ...data,
-        likes: [
-          ...isLikes,
-          {
-            id: mobxStore.user.id,
-            username: mobxStore.user.username,
-            avatarPath: mobxStore.user.avatarPath,
-          },
-        ],
-      });
-      setIsLikes([
-        ...isLikes,
-        {
-          id: mobxStore.user.id,
-          username: mobxStore.user.username,
-          avatarPath: mobxStore.user.avatarPath,
-        },
-      ]);
-    } else {
-      let array = isLikes.filter((user: any) => user.id != mobxStore.user.id);
-      postCreateStore.updatePost({ ...data, likes: array });
-      setIsLikes(array);
-    }
+    const result = (await postCreateStore.likePost(
+      mobxStore.user.id,
+      data.postId
+    )) as any;
+    console.log(result.data.likes);
+    setIsLikes(result.data.likes);
   };
 
   return (
@@ -62,7 +41,8 @@ const Counter = ({ data }: any) => {
       <div className={styles.like}>
         <Like
           type={
-            !isLikes.filter((user: any) => user.id == mobxStore.user.id).length
+            !isLikes.filter((user: any) => user.user === mobxStore.user.id)
+              .length
           }
         />
       </div>

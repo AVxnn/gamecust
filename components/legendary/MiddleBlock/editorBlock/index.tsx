@@ -17,7 +17,7 @@ import { Context } from "../../../../app/(pages)/layout";
 import { useParams } from "next/navigation";
 import TextAreaBlock from "./Blocks/TextAreaBlock";
 
-const EditorBlock = () => {
+const EditorBlock = ({ post }: any) => {
   const { mobxStore, postCreateStore, notificationStore } = useContext(Context);
 
   const [items, setItems] = useState(postCreateStore.data);
@@ -100,10 +100,10 @@ const EditorBlock = () => {
   useEffect(() => {
     setItems(postCreateStore.data);
   }, [postCreateStore.data]);
-  console.log(items[0]);
+
   return (
     <div className={styles.editor}>
-      <ChangeAccount />
+      <ChangeAccount post={post} />
       <div ref={editor} className={styles.editor_list}>
         <TextAreaBlock item={items[0]} />
         <Reorder.Group axis="y" values={items} onReorder={handleReorder}>

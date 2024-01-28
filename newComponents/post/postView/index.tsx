@@ -23,7 +23,6 @@ import Loading from "./loading";
 
 const PostView = () => {
   const { uid } = useParams() as any;
-
   const { scrollY } = useScroll();
 
   const { mobxStore } = useContext(Context);
@@ -82,8 +81,8 @@ const PostView = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [postData]);
-
-  if (!postData?.username) return <Loading />;
+  console.log(postData);
+  if (!postData?.user.username) return <Loading />;
 
   return (
     <Suspense fallback={<Loading />}>
