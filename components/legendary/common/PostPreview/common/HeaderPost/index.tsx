@@ -54,7 +54,7 @@ const HeaderPost = ({ data, fixed }: any) => {
         "",
         "Отписался от вас",
         "follow",
-        mobxStore.user
+        mobxStore.user.id
       );
     } else {
       createNotification(
@@ -62,7 +62,7 @@ const HeaderPost = ({ data, fixed }: any) => {
         "",
         "Подписался на вас",
         "follow",
-        mobxStore.user
+        mobxStore.user.id
       );
     }
     let res = await mobxStore.updateAuth(data.user._id, mobxStore.user.id);

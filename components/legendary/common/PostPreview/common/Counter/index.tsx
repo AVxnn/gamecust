@@ -18,19 +18,12 @@ const Counter = ({ data }: any) => {
   const openPost = async () => {
     if (!isRoleHandler(data.user._id, mobxStore.user.id)) {
       addExpUser(data.userId, 25);
-      createNotification(
-        data.user._id,
-        "",
-        "Поставил(а) лайк на ваш пост",
-        "like",
-        mobxStore.user
-      );
     } else if (!isRoleHandler(data.user._id, mobxStore.user.id)) {
       removeExpUser(data.user._id, 25);
     }
     const result = (await postCreateStore.likePost(
       mobxStore.user.id,
-      data.postId
+      data
     )) as any;
     console.log(result.data.likes);
     setIsLikes(result.data.likes);

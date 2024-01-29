@@ -4,8 +4,7 @@ import React, { createContext, useContext, useEffect } from "react";
 import styles from "./layout.module.scss";
 import Header from "../../../newComponents/header";
 import AuthPopup from "../../../components/auth/authPopup";
-import MobileMenu from '../../../components/legendary/common/MobileMenu';
-import NotificationList from "../../../components/legendary/common/NotificationList";
+import MobileMenu from "../../../components/legendary/common/MobileMenu";
 import { useSession } from "next-auth/react";
 import { Context } from "../layout";
 import { observer } from "mobx-react-lite";
@@ -14,7 +13,7 @@ const LayoutPages = ({ children }: { children: React.ReactNode }) => {
   const { status, data: session } = useSession() as any;
 
   const { mobxStore } = useContext(Context);
-  
+
   const getAuth = async () => {
     if (session && !mobxStore.user.email) {
       const ses = session.session;
@@ -37,7 +36,7 @@ const LayoutPages = ({ children }: { children: React.ReactNode }) => {
 
   useEffect(() => {
     if (session && !mobxStore.user.email) {
-      console.log('work')
+      console.log("work");
       getAuth();
     }
   }, [session]);
@@ -45,7 +44,6 @@ const LayoutPages = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
       <AuthPopup />
-      <NotificationList />
       <Header />
       <div className={styles.layout}>
         <div className={styles.container}>{children}</div>

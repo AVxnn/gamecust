@@ -20,12 +20,12 @@
   .mainBlock {
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap: 12px;
 
     .avatar {
       position: relative;
-      width: 32px;
-      height: 32px;
+      width: 40px;
+      height: 40px;
       border-radius: 99px;
       overflow: hidden;
     }
@@ -35,7 +35,7 @@
 
       .name {
         margin: 0;
-        font-size: 14px;
+        font-size: 16px;
         font-weight: 600;
         color: $d_main_text_color;
         transition: all 0.1s ease-in-out;
@@ -55,37 +55,37 @@
     box-sizing: border-box;
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.50);
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.5);
 
     svg {
       width: 16px;
       height: 16px;
       path {
-        fill: #FFFFFF
+        fill: #ffffff;
       }
     }
   }
 
   .like {
-    background-color: #F05353;
+    background-color: #f05353;
   }
   .comment {
     background-color: $d_main_color;
   }
   .mark {
-    background-color: #60CD1D;
+    background-color: #60cd1d;
   }
   .info {
-    background-color: #1D63CD;
+    background-color: #1d63cd;
   }
   .close {
     svg {
       width: 16px;
       height: 16px;
       path {
-        fill: #FFFFFF
+        fill: #ffffff;
       }
     }
-    background-color: #F05353;
+    background-color: #f05353;
   }
 }

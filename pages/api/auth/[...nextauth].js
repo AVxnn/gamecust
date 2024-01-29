@@ -31,7 +31,6 @@ export const nextAuthOptions = {
       return baseUrl
     },
     async signIn(user, account, profile) {
-      console.log(user)
       try {
         return Promise.resolve(user);
       } catch (error) {

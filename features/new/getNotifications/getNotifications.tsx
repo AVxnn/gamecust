@@ -7,7 +7,7 @@ export const createNotification = async (
   title: any,
   description: any,
   status: any,
-  currentUser: any
+  currentUserId: any
 ) => {
   try {
     let config = {
@@ -15,8 +15,8 @@ export const createNotification = async (
       maxBodyLength: Infinity,
       url: `${process.env.NEXT_PUBLIC_API_URL}/api/notification/create/${id}`,
       data: {
-        receiver: currentUser.id,
-        user: id,
+        receiver: id,
+        user: currentUserId,
         publishedDate: `${Date.now()}`,
         title: title,
         description: description || "",

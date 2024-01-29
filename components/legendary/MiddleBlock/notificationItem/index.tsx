@@ -68,16 +68,7 @@ const NotificationItem = ({ item }: any) => {
           <span className={styles.subtitle}>{item.description}</span>
         </div>
       </div>
-      {hover ? (
-        <div
-          onClick={() => deleteNtf()}
-          className={`${styles.iconBlock} ${styles.close}`}
-        >
-          <Close />
-        </div>
-      ) : (
-        <CheckIcon status={item.status} />
-      )}
+      <CheckIcon status={item.status} />
     </div>
   );
 };

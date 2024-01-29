@@ -94,7 +94,6 @@ const CategoryHeader = () => {
         <div className={styles.header}>
           <div className={styles.left}>
             <AvatarPopup src={data.imagePath} />
-            <LvlPopup data={data} />
           </div>
         </div>
         <div className={styles.info}>
