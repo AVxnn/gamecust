@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import styles from "./subscriptions.module.scss";
+import styles from "./Subscriptions.module.scss";
 import ItemSub from "./ItemSub";
 import { observer } from "mobx-react";
 import { useParams } from "next/navigation";
