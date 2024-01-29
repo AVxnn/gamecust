@@ -11,7 +11,6 @@ import { ru } from "date-fns/locale";
 import { observer } from "mobx-react";
 import IconHandler from "../IconHandler";
 import { useMotionValueEvent, useScroll } from "framer-motion";
-import UserBlock from "./UserBlock";
 import { Context } from "../../../../../../app/(pages)/layout";
 import Follow from "../../../../../../public/img/svg/follow";
 import FollowButton from "./followButton";
