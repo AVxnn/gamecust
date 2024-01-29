@@ -1,52 +1,127 @@
-import React, {useState} from 'react';
-import styles from './AvatarPopup.module.scss'
+import React, { useContext, useEffect, useState } from "react";
+import styles from "./AvatarPopup.module.scss";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
+import ImageAdd from "../../../../public/img/svg/ImageAdd";
+import { Context } from "../../../../app/(pages)/layout";
+import { observer } from "mobx-react-lite";
+import { useParams } from "next/navigation";
+import isRoleHandler from "../../../../features/isRoleHandler";
 
-const AvatarPopup = ({src} : any) => {
+const AvatarPopup = ({ src }: any) => {
+  const [isHover, setIsHover] = useState(false) as any;
 
-  const [active, setActive] = useState(null) as any;
+  const [avatar, setAvatar] = useState("") as any;
+  const { postCreateStore, mobxStore } = useContext(Context);
+  const path = useParams() as any;
+
+  const sendData = async (file: any, type: any) => {
+    let files = file.currentTarget.files[0];
+    console.log("w" + mobxStore.user.avatarPath);
+    if (mobxStore.user.avatarPath) {
+      const regex = /\/(?:[^/]*\/){3}(.+)/;
+      const link = mobxStore.user.avatarPath as any;
+      const match = link.match(regex)[1];
+      var formdataDelete = new FormData();
+      formdataDelete.append("pathUrl", match);
+      fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/file/deleteAvatar`, {
+        method: "POST",
+        body: formdataDelete,
+        redirect: "follow",
+      })
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((error) => console.log("error", error));
+    }
+    if (type === "drag") {
+      files = file.dataTransfer.files[0];
+    }
+    var formdata = new FormData();
+    formdata.append("image", files);
+    formdata.append("id", "12312312312");
+    console.log(files);
+    setAvatar(files);
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/file/uploadAvatar`, {
+      method: "POST",
+      body: formdata,
+      redirect: "follow",
+    })
+      .then((response) => response.text())
+      .then((result) => {
+        console.log(JSON.parse(result));
+        resave(JSON.parse(result));
+      })
+      .catch((error) => console.log("error", error));
+    mobxStore.deleteAvatar({ pathUrl: mobxStore.user.avatarPath });
+  };
+
+  const resave = (result: any) => {
+    mobxStore.reSaveUser({
+      id: mobxStore.user.id,
+      avatarPath: result,
+    });
+  };
 
   return (
     <>
       <div className={styles.container}>
-        <motion.img
-          className={styles.imageCont}
-          src={src}
-          onClick={() => setActive(true)}
-          layoutId={"image" + src} />
-      </div>
-      <div className={styles.imgPopup}>
-        <AnimatePresence>
-          {active && (
-            <div
-              style={{
-                position: "fixed",
-                inset: 0,
-                zIndex: 222,
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center"
-              }}
-            >
-              <motion.div
-                onClick={() => setActive(null)}
-                style={{
-                  position: "absolute",
-                  zIndex: -1,
-                  inset: 0,
-                  background: "black"
-                }}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 0.5 }}
-                exit={{ opacity: 0 }}
+        <div
+          onMouseEnter={() => setIsHover(true)}
+          onMouseLeave={() => setIsHover(false)}
+          className={styles.containerAvatar}
+        >
+          {!src && avatar ? (
+            <div className={styles.avatar}>
+              <Image
+                className={styles.imageCont}
+                layout={"fill"}
+                src={URL.createObjectURL(avatar)}
+                alt={""}
               />
-              <motion.img initial={{ borderRadius: '999px' }} animate={{ borderRadius: '8' }} exit={{ borderRadius: '999px' }} src={src} layoutId={"image" + src} onClick={() => setActive(null)} />
+            </div>
+          ) : (
+            <div className={styles.avatar}>
+              <Image
+                className={styles.imageCont}
+                layout={"fill"}
+                src={src}
+                alt={""}
+              />
             </div>
           )}
-        </AnimatePresence>
+        </div>
+        {isRoleHandler(path.uid, mobxStore.user.id) && (
+          <AnimatePresence initial={false} mode="wait">
+            {isHover && (
+              <label htmlFor={"img"} className={styles.info}>
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.1 }}
+                  onMouseLeave={() => setIsHover(false)}
+                  onMouseEnter={() => setIsHover(true)}
+                  className={styles.camera}
+                >
+                  <ImageAdd />
+                </motion.div>
+                <input
+                  multiple={true}
+                  onChange={(e) => sendData(e, "input")}
+                  className={styles.file}
+                  type="file"
+                  id="img"
+                  name="img"
+                  accept="image/*"
+                />
+              </label>
+            )}
+          </AnimatePresence>
+        )}
       </div>
     </>
   );
 };
 
-export default AvatarPopup
+export default observer(AvatarPopup);

@@ -6,9 +6,9 @@ import HashTag from "./common/hashtag";
 import Toolbar from "./common/toolbar";
 import HeaderPost from "./common/HeaderPost";
 import ReactPlayer from "react-player";
-import { Context } from "../../../../pages/_app";
 import ImgPopup from "../ImgPopup";
 import ImageAndSlider from "../ImageAndSlider";
+import { Context } from "../../../../app/(pages)/layout";
 
 const PostPreview = ({ data }: any) => {
   const { mobxStore, postCreateStore } = useContext(Context);
@@ -17,11 +17,15 @@ const PostPreview = ({ data }: any) => {
     let result = data.views.filter((user: string) => user == mobxStore.user.id);
 
     if (!result.length && mobxStore.user.id)
-      postCreateStore.updatePost({
-        ...data,
-        views: [...data.views, mobxStore.user.id],
-        viewsCount: data.viewsCount + 1,
-      });
+      postCreateStore.reSavePost(
+        mobxStore.user,
+        {
+          ...data,
+          views: [...data.views, mobxStore.user.id],
+          viewsCount: data.viewsCount + 1,
+        },
+        data.postId
+      );
   };
 
   return (
@@ -78,10 +82,16 @@ const PostPreview = ({ data }: any) => {
                 return <ImageAndSlider key={index} data={item} />;
               } else if (item.typeMedia === "video") {
                 return (
-                  <div key={index} className={styles.mediaBlock}>
+                  <div
+                    onClick={(event: any) => event.preventDefault()}
+                    key={index}
+                    className={styles.mediaBlock}
+                  >
                     <ReactPlayer
                       pip
+                      onClick={(event: any) => event.preventDefault()}
                       width="100%"
+                      style={{ overflow: "hidden", borderRadius: "8px" }}
                       className={styles.player}
                       controls={true}
                       url={item?.href}
@@ -103,13 +113,6 @@ const PostPreview = ({ data }: any) => {
           })}
         </section>
       </Link>
-      {data?.hashTags?.length ? (
-        <section className={styles.hashList}>
-          {data?.hashTags?.map((item: any, index: number) => {
-            return <HashTag key={index} data={item} />;
-          })}
-        </section>
-      ) : null}
       <div className={styles.toolBarContainer}>
         <Toolbar data={data} />
       </div>

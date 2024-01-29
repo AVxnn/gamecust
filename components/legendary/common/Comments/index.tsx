@@ -1,93 +1,125 @@
-import React, {useContext, useEffect, useState} from 'react';
-import styles from './Comments.module.scss'
-import Smile from '../../../../public/img/svg/Smile'
-import ImageAdd from '../../../../public/img/svg/ImageAdd'
+import React, { useContext, useEffect, useState } from "react";
+import styles from "./Comments.module.scss";
+import Smile from "../../../../public/img/svg/Smile";
+import ImageAdd from "../../../../public/img/svg/ImageAdd";
 import Button from "../Button";
 import Tabs from "../Tabs";
-import TextareaAutosize from 'react-textarea-autosize';
+import TextareaAutosize from "react-textarea-autosize";
 import Item from "./Item";
-import { Context } from '../../../../pages/_app';
-import uuid from 'react-uuid';
-import { observer } from 'mobx-react';
+import uuid from "react-uuid";
+import { observer } from "mobx-react";
+import { Context } from "../../../../app/(pages)/layout";
+import CommentInput from "./commentInput";
+import { addImageComment } from "../../../../features/new/addImageComment/addImageComment";
+import getCommentsId from "../../../../features/new/getCommentsId/getCommentsId";
 
 const list = [
   {
-    title: 'Все комментарии',
+    title: "Все комментарии",
   },
   {
-    title: 'Только авторские',
-  }
-]
+    title: "Только авторские",
+  },
+];
 
-const Comments = ({dataS, comments} : any) => {
+const Comments = ({ dataS, comments, getNewComments }: any) => {
+  const [active, setActive] = useState(0);
+  const [value, setValue] = useState("");
+  const [image, setImage] = useState() as any;
+  const [dataComments, setDataComments] = useState(comments);
+  const [dataPost, setDataPost] = useState(dataS);
 
-  const [active, setActive] = useState(0)
-  const [value, setValue] = useState('')
-  const [dataComments, setDataComments] = useState(comments)
-  const [dataPost, setDataPost] = useState(dataS)
+  const { mobxStore, postCreateStore, commentsCreateStore, notificationStore } =
+    useContext(Context);
 
-  const {mobxStore, postCreateStore, commentsCreateStore} = useContext(Context);
-
-  const changePage = (index : number) => {
-    setActive(index)
-  }
-  
-  const createComment = async () => {
-    if (value) {
-      setValue('')
-      let commentId = uuid()
-      console.log(commentId);
-      
-      if (dataPost.data.length && mobxStore.user.id) {
-        await postCreateStore.updatePost({...dataPost, comments: [...dataPost.comments, commentId], commentsCount: dataPost.commentsCount + 1,});
-        await commentsCreateStore.createComment(mobxStore.user, {text: value, commentId: commentId, createdAt: new Date(), postId: dataPost.postId}, dataPost)
-      }
-      await getComments()
-    }
-  }
-
+  const changePage = (index: number) => {
+    setActive(index);
+  };
+  console.log(comments);
   const getComments = async () => {
-    const comments = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/comment/getComments/${dataPost.postId}`);
-    setDataComments(await comments?.json())
-    const post = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/post/getPost/${dataPost.postId}`);
-    setDataPost(await post?.json())
-    await setValue('')
-  }
+    const comments = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/comment/getComments/${dataPost.postId}`
+    );
+    const post = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/post/getPost/${dataPost.postId}`
+    );
+    setDataComments(await comments?.json());
+    setDataPost(await post?.json());
+  };
+
+  const createComment = async (event: any) => {
+    event.preventDefault();
+    console.log(mobxStore.user);
+    let commentsNow = await getCommentsId(mobxStore.user.id);
+    if (
+      commentsNow.length <= 3 ||
+      mobxStore.user.roles.filter((role) => role === "admin")
+    ) {
+      let link;
+      if (dataPost.data.length && mobxStore.user.id) {
+        if (image) {
+          link = await addImageComment(image);
+        }
+        await commentsCreateStore.createComment(
+          mobxStore.user,
+          {
+            text: value,
+            image: link ? link : "",
+            createdAt: new Date(),
+            postId: dataPost.postId,
+          },
+          dataPost
+        );
+      }
+      await setValue("");
+      await setImage({});
+      await getComments();
+    } else {
+      notificationStore.addItem({
+        title: "Ваш лимит комментариев на сегодня закончился ;(",
+        status: "error",
+        timeLife: 2500,
+      });
+    }
+  };
 
   return (
     <>
-      <div className={styles.comments}>
-        <TextareaAutosize value={value} onChange={(e) => setValue(e.currentTarget.value)} placeholder={'Оставьте свой комментарий!'}/>
-        <div className={styles.footer}>
-          <div className={styles.left}>
-            <div className={styles.icon}>
-              <ImageAdd />
-            </div>
-          </div>
-          <div>
-            {
-              value && <Button clb={createComment} type={'primary'} size={'small'}>Отправить</Button>
-            }
-          </div>
-        </div>
-      </div>
+      <CommentInput
+        callback={createComment}
+        value={value}
+        unicId={dataPost.postId}
+        setValue={setValue}
+        setIsOpen={() => {}}
+        setImage={setImage}
+      />
       <ul className={styles.navigation}>
-        {
-          list.map((item : any, index : number) => {
-            return (
-              <Tabs key={index} onClick={() => changePage(index)} current={active == index}>{item.title}</Tabs>
-            )
-          })
-        }
+        {list.map((item: any, index: number) => {
+          return (
+            <Tabs
+              key={index}
+              onClick={() => changePage(index)}
+              current={active == index}
+            >
+              {item.title}
+            </Tabs>
+          );
+        })}
       </ul>
       <div className={styles.listComments}>
-        {
-          dataComments.filter((item : any) => !item.repliesId)?.map((item : any, index : number) => {
+        {dataComments
+          .filter((item: any) => !item.receiver)
+          ?.map((item: any, index: number) => {
             return (
-              <Item comments={comments} key={index} data={item} dataPost={dataPost}/>
-            )
-          })
-        }
+              <Item
+                getNewComments={getNewComments}
+                comments={comments}
+                key={index}
+                data={item}
+                dataPost={dataPost}
+              />
+            );
+          })}
       </div>
     </>
   );

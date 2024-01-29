@@ -1,49 +1,52 @@
 @import "/styles/variables.scss";
 
 .profile {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    position: relative;
-    margin: 0 64px;
-    margin-bottom: 12px;
-    cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+  margin: 0 52px;
+  margin-bottom: 12px;
+  cursor: pointer;
 
-    @media (max-width: 768px) {
-      margin: 0 32px 12px 32px;
-    }
-
-    .avatar {
-      position: relative;
-      height: 32px;
-      width: 32px;
-      border-radius: 99px;
-
-      img {
-        border-radius: 99px;
-      }
-    }
-    .name {
-      color: $d_main_text_color;
-    }
-
-    svg {
-      transition: all 0.1s ease-in-out;
-    }
-
-    path {
-      fill: $d_main_text_color;
-    }
-
-    .toolbar {
-      position: absolute;
-      bottom: 32px;
-      z-index: 10;
-    }
+  @media (max-width: 768px) {
+    margin: 0 32px 12px 32px;
   }
 
-.active {
+  .avatar {
+    position: relative;
+    height: 32px;
+    width: 32px;
+    border-radius: 99px;
 
+    img {
+      border-radius: 99px;
+    }
+  }
+  .name {
+    color: $d_main_text_color;
+  }
+  .username {
+    color: $d_main_subtext_color;
+    font-weight: 500;
+  }
+
+  svg {
+    transition: all 0.1s ease-in-out;
+  }
+
+  path {
+    fill: $d_main_text_color;
+  }
+
+  .toolbar {
+    position: absolute;
+    bottom: 32px;
+    z-index: 10;
+  }
+}
+
+.active {
   svg {
     transform: rotate(180deg);
   }

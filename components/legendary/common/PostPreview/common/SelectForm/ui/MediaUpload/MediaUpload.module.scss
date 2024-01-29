@@ -1,100 +1,125 @@
 @import "/styles/variables.scss";
 .container {
+  position: relative;
+
+  padding: 0 52px;
+  margin-bottom: 8px;
+  margin-top: 8px;
+
+  @media (max-width: 768px) {
+    padding: 0 32px 0 32px;
+  }
+
+  .uploadImage {
+    padding: 24px 0;
+    height: auto;
+    min-height: 300px;
+    user-select: none;
     position: relative;
-    
-    padding: 0 64px;
-    margin-bottom: 8px;
-    margin-top: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $d_main_text_color;
+    border-radius: 8px;
+    transition: all 0.1s ease-in-out;
 
-    @media (max-width: 768px) {
-        padding: 0 32px 0 32px;
+    &:hover > .trash {
+      display: flex;
     }
 
-    .uploadImage {
-        padding: 24px 0;
-        height: auto;
-        min-height: 300px;
-        user-select: none;
-        position: relative;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: $d_main_text_color;
-        border-radius: 8px;
-        transition: all 0.1s ease-in-out;
-        
-        img {
-            object-fit: contain;
-            pointer-events: none;
-        }
+    img {
+      object-fit: contain;
+      pointer-events: none;
     }
 
-    .fileBlockDrag {
-        padding: 24px 0;
-        user-select: none;
-        position: relative;
-        display: flex;
-        height: 44px;
-        width: calc(100% - 4px);
-        justify-content: center;
-        align-items: center;
-        background-color: $d_main_subbg_color;
-        border-radius: 8px;
-        border: 2px dashed $d_main_color;
-        transition: all 0.1s ease-in-out;
-        user-select: none;
+    .trash {
+      height: 24px;
+      width: 24px;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: 18px;
+      right: 17px;
+      padding: 3px;
+      border-radius: 8px;
+      background-color: $d_main_subbg_color;
+      z-index: 22;
+      cursor: pointer;
 
-        .text {
-            color: $d_main_text_color;
-            user-select: none;
-            font-weight: 700;
-            font-size: 16px;
-            pointer-events: none;
-        }
+      svg {
+        width: 18px;
+        height: 18px;
+      }
+    }
+  }
 
-        &:hover {
-            background-color: $d_main_text_hover_color;
-        }
+  .fileBlockDrag {
+    padding: 24px 0;
+    user-select: none;
+    position: relative;
+    display: flex;
+    height: 44px;
+    width: calc(100% - 4px);
+    justify-content: center;
+    align-items: center;
+    background-color: $d_main_subbg_color;
+    border-radius: 8px;
+    border: 2px dashed $d_main_color;
+    transition: all 0.1s ease-in-out;
+    user-select: none;
+
+    .text {
+      color: $d_main_text_color;
+      user-select: none;
+      font-weight: 700;
+      font-size: 16px;
+      pointer-events: none;
     }
 
-    .fileBlock {
-        padding: 24px 0;
-        user-select: none;
-        position: relative;
-        display: flex;
-        height: 48px;
-        gap: 8px;
-        justify-content: center;
-        align-items: center;
-        background-color: $d_main_text_color;
-        border-radius: 8px;
-        transition: all 0.1s ease-in-out;
-    
-        &:hover {
-            background-color: $d_main_text_hover_color;
-        }
-            
-        .text {
-            margin-top: 2px;
-            color: $d_main_bg_color;
-            font-size: 16px;
-        }
-
-        svg {
-            width: 31px;
-            height: 31px;
-        }
-
-        @media (max-width: 430px) {
-            flex-direction: column;
-
-            span {
-                text-align: center;
-            }
-        }
-    
-        .file {
-            display: none;
-        }
+    &:hover {
+      background-color: $d_main_text_hover_color;
     }
+  }
+
+  .fileBlock {
+    padding: 24px 0;
+    user-select: none;
+    position: relative;
+    display: flex;
+    height: 48px;
+    gap: 8px;
+    justify-content: center;
+    align-items: center;
+    background-color: $d_main_text_color;
+    border-radius: 8px;
+    transition: all 0.1s ease-in-out;
+
+    &:hover {
+      background-color: $d_main_text_hover_color;
+    }
+
+    .text {
+      margin-top: 2px;
+      color: $d_main_bg_color;
+      font-size: 16px;
+    }
+
+    svg {
+      width: 31px;
+      height: 31px;
+    }
+
+    @media (max-width: 430px) {
+      flex-direction: column;
+
+      span {
+        text-align: center;
+      }
+    }
+
+    .file {
+      display: none;
+    }
+  }
 }

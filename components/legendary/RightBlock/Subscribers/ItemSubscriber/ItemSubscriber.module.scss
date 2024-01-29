@@ -1,0 +1,36 @@
+@import "/styles/variables.scss";
+
+.item {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+
+  &:hover {
+    .username {
+      color: $d_main_hover;
+    }
+  }
+  &:active {
+    .username {
+      color: $d_main_active;
+    }
+  }
+
+  .noImage {
+    width: 40px;
+    height: 40px;
+    background-color: red;
+    border-radius: 99px;
+  }
+  .image {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 99px;
+    overflow: hidden;
+  }
+  .username {
+    color: $d_main_text_color;
+  }
+}

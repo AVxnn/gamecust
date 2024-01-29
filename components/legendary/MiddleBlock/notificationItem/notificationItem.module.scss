@@ -1,0 +1,91 @@
+@import "/styles/variables.scss";
+
+.notification {
+  padding: 6px 10px;
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  justify-content: space-between;
+  transition: all 0.1s ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $d_main_bg_color;
+
+    .mainBlock .infoText .name {
+      color: $d_main_color;
+    }
+  }
+
+  .mainBlock {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    .avatar {
+      position: relative;
+      width: 40px;
+      height: 40px;
+      border-radius: 99px;
+      overflow: hidden;
+    }
+    .infoText {
+      display: flex;
+      flex-direction: column;
+
+      .name {
+        margin: 0;
+        font-size: 16px;
+        font-weight: 600;
+        color: $d_main_text_color;
+        transition: all 0.1s ease-in-out;
+      }
+      .subtitle {
+        margin: 0;
+        font-size: 12px;
+        color: $d_main_subtext_color;
+      }
+    }
+  }
+
+  .iconBlock {
+    padding: 4px;
+    width: 24px;
+    height: 24px;
+    box-sizing: border-box;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.5);
+
+    svg {
+      width: 16px;
+      height: 16px;
+      path {
+        fill: #ffffff;
+      }
+    }
+  }
+
+  .like {
+    background-color: #f05353;
+  }
+  .comment {
+    background-color: $d_main_color;
+  }
+  .mark {
+    background-color: #60cd1d;
+  }
+  .info {
+    background-color: #1d63cd;
+  }
+  .close {
+    svg {
+      width: 16px;
+      height: 16px;
+      path {
+        fill: #ffffff;
+      }
+    }
+    background-color: #f05353;
+  }
+}

@@ -1,0 +1,61 @@
+@import "/styles/variables.scss";
+
+.container {
+  position: relative;
+  width: 100%;
+
+  .search {
+  }
+
+  .dropdown {
+    position: absolute;
+    width: 100%;
+    background-color: $d_main_bg_color;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.5);
+    top: 64px;
+    box-sizing: border-box;
+    z-index: -1;
+    border-radius: 8px;
+    padding: 10px 6px;
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 4px;
+      padding: 6px 10px;
+
+      .title {
+        margin: 0;
+        font-size: 16px;
+        font-weight: 600;
+        color: $d_main_text_color;
+      }
+      .showMore {
+        margin: 0;
+        font-size: 12px;
+        font-weight: 500;
+        color: $d_main_subtext_color;
+        transition: all 0.1s ease-in-out;
+
+        &:hover {
+          color: $d_main_hover;
+        }
+        &:hover {
+          color: $d_main_active;
+        }
+      }
+    }
+
+    .list {
+      display: flex;
+      overflow-y: scroll;
+      max-height: 420px;
+      flex-direction: column;
+      gap: 6px;
+    }
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+  }
+}

@@ -1,0 +1,48 @@
+@import "/styles/variables.scss";
+
+.logotype{
+  margin-left: 16px;
+  height: 34px;
+  cursor: pointer;
+  width: 127px;
+
+  @media (max-width: 1280px) {
+    display: none;
+  }
+
+  @media (max-width: 1024px) {
+    display: block;
+    margin-left: 0;
+  }
+
+  a {
+    height: 34px !important;
+  }
+
+  path {
+    fill: $d_main_text_color;
+  }
+
+  svg:active {
+
+    path {
+      transition: all 80ms ease-in-out;
+      fill: $d_main_text_color;
+    }
+  }
+}
+
+.smallLogotype {
+  display: none;
+
+  path {
+    fill: $d_main_text_color;
+  }
+
+  @media (max-width: 1280px) {
+    display: block;
+  } 
+  @media (max-width: 1024px) {
+    display: none;
+  }
+}

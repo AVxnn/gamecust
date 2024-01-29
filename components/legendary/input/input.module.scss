@@ -2,6 +2,7 @@
 
 
 .containerInput {
+  position: relative;
   display: flex;
   flex-direction: column;
 
@@ -12,27 +13,53 @@
     margin-bottom: 6px;
   }
 
-  .search,
-  .active {
+  .search {
     padding: 11px 16px;
-    border: 1px solid $d_main_bg_color;
     border-radius: 8px;
     font-size: 16px;
-    background-color: $d_main_bg_color;
+    background-color: $d_main_subbg_color;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.50);
     color: $d_main_text_color;
     transition: all 0.1s ease-in-out;
   
     &:hover {
-      background-color: $d_main_subbg_color;
-      border: 1px solid $d_main_color;
+      background-color: $d_main_bg_color;
       box-shadow: 0 0 2px 3px rgba($d_main_color, 0.4);
     }
   }
 
   .active {
-    background-color: $d_main_subbg_color;
-    border: 1px solid $d_main_color;
+    background-color: $d_main_bg_color;
     box-shadow: 0 0 2px 3px rgba($d_main_color, 0.4);
+  }
+
+  .icon {
+    position: absolute;
+    top: 8px;
+    left: 16px;
+
+    svg {
+      width: 22px;
+      height: 22px;
+
+      path {
+        fill: $d_main_gray_color
+      }
+    }
+  }
+
+  .active + .icon {
+    .icon {
+      svg {
+        path {
+          fill: $d_main_text_color;
+        }
+      }
+    }
+  }
+
+  .icon + .search {
+    padding: 11px 16px 11px 48px;
   }
 }
 

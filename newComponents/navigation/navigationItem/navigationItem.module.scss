@@ -1,0 +1,92 @@
+@import "/styles/variables.scss";
+
+.tab {
+  padding: 14px 16px;
+  border-radius: 8px;
+  display: flex;
+  width: 100%;
+  gap: 6px;
+  font-size: 16px;
+  color: $d_main_text_color;
+  background-color: rgba(0, 0, 0, 0);
+  border: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  cursor: pointer;
+
+  @media screen and (max-width: 1280px) {
+    max-width: 40px;
+    max-height: 40px;
+    height: 40px;
+    padding: 10px;
+    justify-content: сenter;
+    align-items: center;
+
+    svg {
+      margin: 0 auto;
+    }
+
+    span {
+      display: none;
+    }
+  }
+
+  @media screen and (max-width: 1024px) {
+    display: none;
+  }
+
+  &:hover {
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.5);
+  }
+
+  svg {
+    margin-top: -2px;
+    width: 28px;
+    height: 28px;
+  }
+  circle {
+    stroke: $d_main_text_color;
+  }
+}
+
+.active {
+  background-color: $d_main_subbg_color;
+}
+
+.path {
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  svg {
+    path {
+      fill: $d_main_text_color;
+      stroke: $d_main_text_color;
+    }
+    circle {
+      fill: $d_main_text_color;
+    }
+  }
+}
+.rect {
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  svg {
+    rect {
+      fill: $d_main_text_color;
+    }
+    circle {
+      fill: $d_main_text_color;
+    }
+  }
+}
+.path {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 28px;
+  stroke: $d_main_text_color;
+}

@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react'
 import styles from "./ChangeProfileBlock.module.scss"
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 import Drafts from './Drafts'
 import Comments from './Comments'
 import PostList from '../PostList'
@@ -12,7 +12,7 @@ const ChangeProfileBlock = ({data, user} : any) => {
     const {mobxStore} = useContext(Context);
 
     const fetchData = async (page : any) => {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/post/getPosts/filter/${data[0].userId}/${page}`);
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/post/getPosts/filter/${data[0]._id}/${page}`);
         
         return await res?.json()
     }
@@ -26,15 +26,9 @@ const ChangeProfileBlock = ({data, user} : any) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [data])
 
-    switch (router.query.id[1]) {
+    switch ('entries') {
         case 'entries':
             return <PostList PostData={posts} fetchData={fetchData} textEmpty={'Создайте свой первый пост'}/>
-        case 'comments':
-            return <Comments />
-        case 'drafts':
-            return <Drafts data={drafts} user={user}/>
-        default:
-            return <PostList PostData={posts} fetchData={fetchData} textEmpty={'Создайте свой первый пост'}/>;
     }
 }
 

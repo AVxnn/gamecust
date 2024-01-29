@@ -1,64 +1,56 @@
-import styles from "./AccountDrop.module.scss"
-import { useContext} from "react";
-import { Context } from "../../../../../../pages/_app";
+import styles from "./AccountDrop.module.scss";
+import { useContext } from "react";
 import Avatar from "../../../../../../public/img/svg/Avatar";
+import Image from "next/image";
 import { motion } from "framer-motion";
+import { Context } from "../../../../../../app/(pages)/layout";
+import { observer } from "mobx-react-lite";
 
-const AccountDrop = () => {
+const AccountDrop = ({ data }: any) => {
+  const { postCreateStore, mobxStore } = useContext(Context);
 
-    const {postCreateStore} = useContext(Context);
-
-    const changeProfile = (id: any) => {
-        console.log(id);
-    }
-
-    
-  const variants = {
-    open: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        y: { stiffness: 1000, velocity: -100 }
-      }
-    },
-    closed: {
-      y: 50,
-      opacity: 0,
-      transition: {
-        y: { stiffness: 1000 }
-      }
-    }
+  const changeProfile = (id: any) => {
+    console.log(id);
+    postCreateStore.changeCategory(id);
   };
 
-    return ( 
-        <>
-            <motion.div
-              initial={{ y: 10, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: -10, opacity: 0 }}
-              transition={{ duration: 0.2 }} 
-              className={styles.dropDownForm}>
-                <p className={styles.title}>Мои сообщества</p>
-                <div onClick={() => changeProfile('text')} className={styles.item}>
-                    <Avatar />
-                    <p className={styles.text}>MetaVxnn</p>
-                </div>
-                <p className={styles.title}>Сообщества</p>
-                <div onClick={() => changeProfile('h1')} className={styles.item}>
-                    <Avatar />
-                    <p className={styles.text}>Genshin Impact</p>
-                </div>
-                <div onClick={() => changeProfile('h1')} className={styles.item}>
-                    <Avatar />
-                    <p className={styles.text}>Технологии</p>
-                </div>
-                <div onClick={() => changeProfile('h1')} className={styles.item}>
-                    <Avatar />
-                    <p className={styles.text}>Dota 2</p>
-                </div>
-            </motion.div>
-        </>
-    );
-}
- 
-export default AccountDrop;
+  return (
+    <>
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        className={styles.dropDownForm}
+      >
+        <p className={styles.title}>Мои сообщества</p>
+        <div onClick={() => changeProfile("")} className={styles.item}>
+          <div className={styles.avatar}>
+            <Image layout={"fill"} src={mobxStore.user.avatarPath} alt={""} />
+          </div>
+          <p className={styles.text}>{mobxStore.user.username}</p>
+        </div>
+        <p className={styles.title}>Сообщества</p>
+        {data.map((item: any) => {
+          return (
+            <div
+              key={item._id}
+              onClick={() => changeProfile(item._id)}
+              className={styles.item}
+            >
+              <Image
+                className={styles.image}
+                src={item.imagePath}
+                width={32}
+                height={32}
+                alt={"avatar"}
+              />
+              <p className={styles.text}>{item.title}</p>
+            </div>
+          );
+        })}
+      </motion.div>
+    </>
+  );
+};
+
+export default observer(AccountDrop);

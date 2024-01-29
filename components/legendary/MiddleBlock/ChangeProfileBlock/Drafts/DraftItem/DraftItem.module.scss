@@ -7,6 +7,7 @@
     display: flex;
     gap: 24px;
     border-bottom: 1px solid $d_main_color;
+    background-color: $d_main_subbg_color;
     transition: all 0.1s ease-in-out;
     border-radius: 8px;
     cursor: pointer;
@@ -92,8 +93,6 @@
                 cursor: pointer;
 
                 @media screen and (max-width: 768px) {
-                    width: 18px;
-                    min-width: 18px;
                     height: 18px;
                 }
 

@@ -1,0 +1,62 @@
+@import "/styles/variables.scss";
+
+.container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  .containerAvatar {
+    display: flex;
+    top: 0;
+    position: absolute;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 -24px 16px 0px;
+    height: 100%;
+    width: 100%;
+    gap: 8; 
+    overflow: hidden;
+  }
+
+  .camera {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    border-radius: 99px;
+    top: 4px;
+    cursor: pointer;
+
+    svg {
+      width: 32px;
+      height: 32px;
+      path {
+        fill: $d_main_text_color;
+      }
+    }
+  }
+
+  .file {
+    display: none;
+  }
+}
+
+.info {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .camera {
+    background-color: none;
+
+    svg {
+      padding: 16px;
+      border-radius: 8px;
+      background-color: $d_main_subtext_color;
+    }
+  }
+}

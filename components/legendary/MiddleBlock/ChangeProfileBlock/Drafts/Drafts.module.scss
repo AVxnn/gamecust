@@ -3,11 +3,14 @@
 .drafts {
     display: flex;
     flex-direction: column;
-    background-color: $d_main_subbg_color;
     border-radius: 8px;
-    margin-top: 16px;
-    padding: 10px;
     gap: 8px;
+
+    .list {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
 
     a {
         text-decoration: none;

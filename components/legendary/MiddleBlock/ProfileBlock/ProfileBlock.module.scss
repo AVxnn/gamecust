@@ -1,57 +1,56 @@
 @import "/styles/variables.scss";
 
 .container {
-    width: 100%;
-    padding: 24px;
-    box-sizing: border-box;
-    background-color: $d_main_subbg_color;
-    border-radius: 8px;
-    margin-top: 8px;
+  width: 100%;
+  padding: 24px;
+  box-sizing: border-box;
+  background-color: $d_main_subbg_color;
+  border-radius: 8px;
 
-    .topBar {
-        display: none;
-        margin-bottom: 24px;
+  .topBar {
+    display: none;
+    margin-bottom: 24px;
 
-        @media screen and (max-width: 720px) {
-            display: block;
-        }
-
-        svg {
-            transform: rotate(90deg);
-            path {
-                fill: $d_main_text_color;
-            }
-        }
+    @media screen and (max-width: 720px) {
+      display: block;
     }
 
-    .mainBlocks {
-        display: flex;
-        flex-direction: column;
-        gap: 24px;
-
-        .buttonCustom {
-            width: 120px;
-            height: 36px;
-            margin-top: 64px;
-            padding: 8px 18px 8px 18px;
-            font-weight: 600;
-            border-radius: 8px;
-            background-color: $d_main_color;
-            border: 1px solid $d_main_color;
-            color: $const_main_text_color;
-            white-space: nowrap;
-            font-size: 14px;
-            transition: all 0.1s ease-in-out;
-            cursor: pointer;
-
-            &:hover {
-                background-color: $d_main_hover;
-                border: 1px solid $d_main_hover;
-            }
-            &:active {
-                background-color: $d_main_active;
-                border: 1px solid $d_main_active;
-            }
-        }
+    svg {
+      transform: rotate(90deg);
+      path {
+        fill: $d_main_text_color;
+      }
     }
+  }
+
+  .mainBlocks {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    .buttonCustom {
+      width: 120px;
+      height: 36px;
+      margin-top: 64px;
+      padding: 8px 18px 8px 18px;
+      font-weight: 600;
+      border-radius: 8px;
+      background-color: $d_main_color;
+      border: 1px solid $d_main_color;
+      color: $const_main_text_color;
+      white-space: nowrap;
+      font-size: 14px;
+      transition: all 0.1s ease-in-out;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $d_main_hover;
+        border: 1px solid $d_main_hover;
+      }
+      &:active {
+        background-color: $d_main_active;
+        border: 1px solid $d_main_active;
+      }
+    }
+  }
 }

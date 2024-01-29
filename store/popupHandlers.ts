@@ -1,26 +1,31 @@
 import { makeAutoObservable } from "mobx";
 
 export default class NotificationStore {
-    authPopup = false as boolean;
+  authPopup = false as boolean;
 
-    constructor() {
-        makeAutoObservable(this)
-    }
-  
-    authPopupOpen() {
-        this.authPopup = true
-        const body = document.body;
-        body.classList.add('body-overflow-hidden');
-    }
+  constructor() {
+    makeAutoObservable(this);
+  }
 
-    authPopupClose() {
-        this.authPopup = false
-        const body = document.body;
-        body.classList.remove('body-overflow-hidden');
-    }
+  authPopupOpen() {
+    this.authPopup = true;
+    const body = document.body;
+    body.classList.add("body-overflow-hidden");
+  }
 
+  authPopupClose() {
+    this.authPopup = false;
+    const body = document.body;
+    body.classList.remove("body-overflow-hidden");
+  }
+
+  noWorkScroll() {
+    const body = document.body;
+    body.classList.add("body-overflow-hidden");
+  }
+
+  workScroll() {
+    const body = document.body;
+    body.classList.remove("body-overflow-hidden");
+  }
 }
-
-
-
-

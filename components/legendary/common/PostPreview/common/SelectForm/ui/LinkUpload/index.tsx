@@ -1,12 +1,12 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import styles from "./LinkUpload.module.scss"
 import { observer } from "mobx-react";
-import { Context } from "../../../../../../../../pages/_app";
 import DropDownForm from "../../../Dropdowns/DropDownForm";
 import DropDownEdit from "../../../Dropdowns/DropDownEdit";
 import InformationBlock from "../../../../../../MiddleBlock/editorBlock/InformationBlock";
 import ReactPlayer from 'react-player'
 import Image from 'next/image'
+import { Context } from "../../../../../../../../app/(pages)/layout";
 
 const LinkUpload = observer(({item, dragControls} : any) => {
 

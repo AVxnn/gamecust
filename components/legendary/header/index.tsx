@@ -6,7 +6,6 @@ import Logotype from "../common/Logotype";
 import UnAuthProfile from "../UnAuthProfile";
 import { observer } from 'mobx-react';
 import { Context } from '../../../pages/_app';
-import PenCreate from './ui/PenCreate';
 
 const Header = () => {
 
@@ -20,9 +19,6 @@ const Header = () => {
         </div>
         <div className={styles.middleColumn}>
           <Input placeholder={'Поиск'} width={300}/>
-          <a className={styles.penCreate}>
-            <PenCreate />
-          </a>
         </div>
         <div className={styles.rightColumn}>
           <div className={styles.profile}>

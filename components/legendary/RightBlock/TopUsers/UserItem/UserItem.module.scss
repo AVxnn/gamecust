@@ -32,25 +32,33 @@
 
         .number {
           position: absolute;
-          font-size: 8px;
-          bottom: 1px;
-          right: 1px;
+          font-size: 9px;
+          bottom: 0px;
+          right: 0px;
           background-color: #F2C94C;
           padding: 2px 4px;
+          font-weight: 700;
+          color: #FFFFFF;
           border-radius: 99px;
         }
-
-        img {
-
-        }
-
       }
       .name {
         display: flex;
         align-items: center;
         margin-left: 8px;
         font-size: 16px;
+        text-overflow: ellipsis;
         color: $d_main_text_color;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        
+        span {
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          max-width: 115px;
+        }
 
         &:hover {
           color: $d_main_hover;
@@ -110,7 +118,7 @@
 
     .contImg {
       position: relative;
-      width: 77px;
+      width: 100%;
       overflow: hidden;
       border-radius: 8px;
       height: 70px;

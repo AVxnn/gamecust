@@ -1,0 +1,90 @@
+@import "/styles/variables.scss";
+
+.list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.post {
+  width: 100%;
+  background-color: $d_main_subbg_color;
+  padding: 12px 24px;
+  box-sizing: border-box;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+
+    .avatar {
+      display: flex;
+      width: 30%;
+      height: 40px;
+      gap: 12px;
+      justify-content: flex-start;
+
+      .ava {
+        width: 40px;
+        height: 40px;
+        background-color: $d_main_bg_color;
+        border-radius: 99px;
+      }
+      .info {
+        width: 80px;
+        height: 40px;
+        background-color: $d_main_bg_color;
+        border-radius: 8px;
+      }
+    }
+    .sub {
+      width: 20%;
+      height: 40px;
+      background-color: $d_main_bg_color;
+      border-radius: 8px;
+    }
+  }
+
+  .info {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+
+    .text {
+      width: 80%;
+      height: 40px;
+      background-color: $d_main_bg_color;
+      border-radius: 8px;
+    }
+    .image {
+      width: 100%;
+      height: 280px;
+      background-color: $d_main_bg_color;
+      border-radius: 8px;
+    }
+  }
+
+  .toolbar {
+    display: flex;
+    justify-content: space-between;
+    .left {
+      width: 30%;
+      height: 40px;
+      background-color: $d_main_bg_color;
+      border-radius: 8px;
+    }
+    .right {
+      width: 30%;
+      height: 40px;
+      background-color: $d_main_bg_color;
+      border-radius: 8px;
+    }
+  }
+  
+  
+}

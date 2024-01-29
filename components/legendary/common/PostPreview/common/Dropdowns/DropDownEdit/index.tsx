@@ -7,9 +7,9 @@ import Trash from "../../../../../../../public/img/svg/Trash";
 import { useContext, useEffect, useRef } from "react";
 import NewForm from "../../../../../../../public/img/svg/NewForm";
 import cn from "classnames";
-import { Context } from "../../../../../../../pages/_app";
 import { observer } from "mobx-react";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
+import { Context } from "../../../../../../../app/(pages)/layout";
 
 const DropDownEdit = observer(({item, setIsClicked, isClicked, dragControls} : any) => {
 
@@ -71,13 +71,14 @@ const DropDownEdit = observer(({item, setIsClicked, isClicked, dragControls} : a
                     className={cn(styles.newForm, isClicked && styles.active)}>
                         <NewForm />
                     </button>
+                <AnimatePresence initial={false} mode="wait">
+
                 {
                     isClicked && (
                         <motion.div 
-                            initial={{ y: 10, opacity: 0 }}
-                            animate={{ y: 0, opacity: 1 }}
-                            exit={{ y: -10, opacity: 0 }}
-                            transition={{ duration: 0.2 }}  
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
                             ref={popupRef} 
                             className={styles.dropDownForm}
                             >
@@ -118,6 +119,7 @@ const DropDownEdit = observer(({item, setIsClicked, isClicked, dragControls} : a
                         </motion.div>
                     )
                 }
+                </AnimatePresence>
             </div>
         </>
     );

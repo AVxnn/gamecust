@@ -1,7 +1,7 @@
 import React, {useContext, useEffect, useRef, useState} from 'react';
 import styles from './UnAuthProfile.module.scss'
 import Avatar from '../../../public/img/svg/Avatar'
-import { Context } from '../../../pages/_app';
+import { Context } from '../../../app/(pages)/layout';
 
 const UnAuthProfile = () => {
 
