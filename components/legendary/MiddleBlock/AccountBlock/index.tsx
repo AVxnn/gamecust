@@ -43,7 +43,7 @@ const AccountBlock = () => {
           {mobxStore?.user?.email ? (
             <>
               <Link
-                href={`/nv/profile/${mobxStore.user.id}`}
+                href={`/profile/${mobxStore.user.id}`}
                 className={`${styles.block} ${styles.mrBottom}`}
               >
                 <div className={styles.userMenu}>
@@ -90,7 +90,7 @@ const AccountBlock = () => {
                   </div>
                 </div>
               </Link>
-              <Link href={`/nv/profile/${mobxStore.user.id}/drafts`}>
+              <Link href={`/profile/${mobxStore.user.id}/drafts`}>
                 <div className={styles.userMenu}>
                   <div className={`${styles.bgAvatar} ${styles.orange}`}>
                     <Pen type={true} />

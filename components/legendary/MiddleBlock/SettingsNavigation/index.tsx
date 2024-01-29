@@ -16,16 +16,16 @@ const SettingsNavigation = () => {
   console.log(pathname);
   useEffect(() => {
     switch (pathname) {
-      case "/nv/settings/profile":
+      case "/settings/profile":
         setActive(0);
         break;
-      case "/nv/settings/main":
+      case "/settings/main":
         setActive(1);
         break;
-      case "/nv/settings/notification":
+      case "/settings/notification":
         setActive(2);
         break;
-      case "/nv/settings/subscription":
+      case "/settings/subscription":
         setActive(3);
         break;
       default:
@@ -42,7 +42,7 @@ const SettingsNavigation = () => {
           <Link
             onClick={() => setActive(0)}
             className={`${styles.item} ${active == 0 ? styles.active : ""}`}
-            href={`/nv/settings/profile`}
+            href={`/settings/profile`}
           >
             <div className={styles.userMenu}>
               <div className={`${styles.bgAvatar} ${styles.purple}`}>
@@ -57,43 +57,13 @@ const SettingsNavigation = () => {
           <Link
             onClick={() => setActive(1)}
             className={`${styles.item} ${active == 1 ? styles.active : ""}`}
-            href={`/nv/settings/main`}
+            href={`/settings/main`}
           >
             <div className={styles.userMenu}>
               <div className={`${styles.bgAvatar} ${styles.green}`}>
                 <Pacman />
               </div>
               <p className={styles.userName}>Основные</p>
-              <div className={styles.arrow}>
-                <Arrow />
-              </div>
-            </div>
-          </Link>
-          <Link
-            onClick={() => setActive(2)}
-            className={`${styles.item} ${active == 2 ? styles.active : ""}`}
-            href={`/nv/settings/notification`}
-          >
-            <div className={styles.userMenu}>
-              <div className={`${styles.bgAvatar} ${styles.gray}`}>
-                <Notification type={false} />
-              </div>
-              <p className={styles.userName}>Уведомления</p>
-              <div className={styles.arrow}>
-                <Arrow />
-              </div>
-            </div>
-          </Link>
-          <Link
-            onClick={() => setActive(3)}
-            className={`${styles.item} ${active == 3 ? styles.active : ""}`}
-            href={`/nv/settings/subscription`}
-          >
-            <div className={styles.userMenu}>
-              <div className={`${styles.bgAvatar} ${styles.orange}`}>
-                <Gift />
-              </div>
-              <p className={styles.userName}>Подписка</p>
               <div className={styles.arrow}>
                 <Arrow />
               </div>

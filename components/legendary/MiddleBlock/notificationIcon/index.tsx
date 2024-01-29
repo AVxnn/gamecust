@@ -76,7 +76,7 @@ const NotificationIcon = () => {
             <div className={styles.header}>
               <h4 className={styles.title}>Уведомления</h4>
 
-              <Link className={styles.showMore} href={"/nv/notifications"}>
+              <Link className={styles.showMore} href={"/notifications"}>
                 Посмотреть еще
               </Link>
             </div>

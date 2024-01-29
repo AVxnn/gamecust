@@ -9,7 +9,7 @@ import People from "../../../../public/img/svg/People";
 const DropItem = ({ item, type, handlerLink }: any) => {
   return type === "users" ? (
     <div
-      onClick={() => handlerLink(`/nv/profile/${item._id}`)}
+      onClick={() => handlerLink(`/profile/${item._id}`)}
       className={styles.item}
     >
       <Image
@@ -27,7 +27,7 @@ const DropItem = ({ item, type, handlerLink }: any) => {
     </div>
   ) : (
     <div
-      onClick={() => handlerLink(`/nv/post/${item.postId}`)}
+      onClick={() => handlerLink(`/post/${item.postId}`)}
       className={styles.item}
     >
       <div className={`${styles.iconBlock} ${styles.pen}`}>

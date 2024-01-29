@@ -31,14 +31,27 @@ const Counter = ({ data }: any) => {
 
   return (
     <div onClick={() => openPost()} className={styles.counter}>
-      <div className={styles.like}>
-        <Like
-          type={
-            !isLikes.filter((user: any) => user.user === mobxStore.user.id)
-              .length
-          }
-        />
-      </div>
+      {!isLikes.filter((user: any) => user.user === mobxStore.user.id)
+        .length ? (
+        <div className={styles.like}>
+          <Like
+            type={
+              !isLikes.filter((user: any) => user.user === mobxStore.user.id)
+                .length
+            }
+          />
+        </div>
+      ) : (
+        <div className={styles.liked}>
+          <Like
+            type={
+              !isLikes.filter((user: any) => user.user === mobxStore.user.id)
+                .length
+            }
+          />
+        </div>
+      )}
+
       <span className={styles.title}>{isLikes.length}</span>
     </div>
   );

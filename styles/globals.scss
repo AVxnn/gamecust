@@ -1,242 +1,239 @@
 @import "/styles/variables.scss";
 
 body {
-    margin: 0;
-    padding: 0;
-    font-family: "Roboto", sans-serif;
-    background-color: $d_main_white20_color;
-    box-sizing: border-box;
-    transition: all 0.2s ease-in-out;
-    display: flex;
-    justify-content: center;
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+  background-color: $d_main_white20_color;
+  box-sizing: border-box;
+  transition: all 0.2s ease-in-out;
+  display: flex;
+  justify-content: center;
 
-    
-    --border-radius-: #D5B5FF;
-    --d_main_active: #A762FF;
+  --border-radius-: #d5b5ff;
+  --d_main_active: #a762ff;
 }
 
 body {
-    transition: background 0.1s ease-in-out;
-    background-color: #F0F0F0;
-    --d_main_color: #6339DC;
-    --d_main_hover: #4b2bac;
-    --d_main_active: #3a1e90;
+  transition: background 0.1s ease-in-out;
+  background-color: #f0f0f0;
+  --d_main_color: #6339dc;
+  --d_main_hover: #4b2bac;
+  --d_main_active: #3a1e90;
 
-    --d_main_red: #F05353;
+  --d_main_red: #f05353;
 
-    --d_main_bg_color: #F0F0F0;
+  --d_main_bg_color: #f0f0f0;
 
-    --d_main_subbg_color: #FFFFFF;
+  --d_main_subbg_color: #ffffff;
 
-    --d_main_subbg_glass_color: rgba(255, 255, 255, 0.5);
+  --d_main_subbg_glass_color: rgba(255, 255, 255, 0.5);
 
-    --d_main_text_color: #24292E;
-    --d_main_text_hover_color: #2f3237;
-    --d_main_text_active_color: #1e2125;
+  --d_main_text_color: #24292e;
+  --d_main_text_hover_color: #2f3237;
+  --d_main_text_active_color: #1e2125;
 
-    --d_main_subtext_color: #888888;
-    --d_main_subtext_hover_color: #777777;
-    --d_main_subtext_active_color: #999999;
+  --d_main_subtext_color: #888888;
+  --d_main_subtext_hover_color: #777777;
+  --d_main_subtext_active_color: #999999;
 
-    --d_main_gray_color: #888888;
-    --d_main_black_color: #24292E;
-    --d_main_white_color: #FFFFFF;
-    --d_main_white20_color: #F0F0F0;
-    --d_main-Bg-color-hover: #ececec;
+  --d_main_gray_color: #888888;
+  --d_main_black_color: #24292e;
+  --d_main_white_color: #ffffff;
+  --d_main_white20_color: #f0f0f0;
+  --d_main-Bg-color-hover: #ececec;
 }
 
 body[dark] {
-    transition: background 0.1s ease-in-out;
-    background-color: #161617;
-    --d_main_color: #6339DC;
-    --d_main_hover: #4b2bac;
-    --d_main_active: #3a1e90;
+  transition: background 0.1s ease-in-out;
+  background-color: #161617;
+  --d_main_color: #6339dc;
+  --d_main_hover: #4b2bac;
+  --d_main_active: #3a1e90;
 
-    --d_main_red: #F05353;
+  --d_main_red: #f05353;
 
-    --d_main_bg_color: #161617;
+  --d_main_bg_color: #161617;
 
-    --d_main_subbg_color: #232324;
+  --d_main_subbg_color: #232324;
 
-    --d_main_subbg_glass_color: rgba(136, 136, 136, 0.1);
+  --d_main_subbg_glass_color: rgba(136, 136, 136, 0.1);
 
-    --d_main_text_color: #e4e4e4;
-    --d_main_text_hover_color: #d1d1d1;
-    --d_main_text_active_color: #b3b3b3;
+  --d_main_text_color: #e4e4e4;
+  --d_main_text_hover_color: #d1d1d1;
+  --d_main_text_active_color: #b3b3b3;
 
-    --d_main_subtext_color: #999999;
-    --d_main_subtext_hover_color: #7c7c7c;
-    --d_main_subtext_active_color: #787878;
+  --d_main_subtext_color: #999999;
+  --d_main_subtext_hover_color: #7c7c7c;
+  --d_main_subtext_active_color: #787878;
 
-    --d_main_gray_color: #888888;
-    --d_main_black_color: #24292E;
-    --d_main_white_color: #161617;
-    --d_main_white20_color: #232324;
-    --d_main-Bg-color-hover: #232324;
+  --d_main_gray_color: #888888;
+  --d_main_black_color: #24292e;
+  --d_main_white_color: #161617;
+  --d_main_white20_color: #232324;
+  --d_main-Bg-color-hover: #232324;
 }
 
 body[red] {
-    --d_main_color: #f05b5b;
-    --d_main_hover: #ffb5b5;
-    --d_main_active: #ff6262;
+  --d_main_color: #f05b5b;
+  --d_main_hover: #ffb5b5;
+  --d_main_active: #ff6262;
 }
 
 body[pink] {
-    --d_main_color: #f05b94;
-    --d_main_hover: #ffb5de;
-    --d_main_active: #ff62b8;
+  --d_main_color: #f05b94;
+  --d_main_hover: #ffb5de;
+  --d_main_active: #ff62b8;
 }
 
 body[green] {
-    --d_main_color: #60f05b;
-    --d_main_hover: #beffb5;
-    --d_main_active: #62ff6a;
+  --d_main_color: #60f05b;
+  --d_main_hover: #beffb5;
+  --d_main_active: #62ff6a;
 }
 
 body[blue] {
-    --d_main_color: #5d5bf0;
-    --d_main_hover: #b5bcff;
-    --d_main_active: #626cff;
+  --d_main_color: #5d5bf0;
+  --d_main_hover: #b5bcff;
+  --d_main_active: #626cff;
 }
 
 ::-webkit-scrollbar {
-    width: 14px;
+  width: 14px;
 }
 
 ::-webkit-scrollbar-track {
-    background-color: $d_main_bg_color;
+  background-color: $d_main_bg_color;
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: $d_main_subbg_color;
-    border-radius: 4px;
+  background-color: $d_main_subbg_color;
+  border-radius: 4px;
 }
 
 .body-overflow-hidden {
-    overflow: hidden !important;
+  overflow: hidden !important;
+  padding-right: 14px;
 }
 
 input {
-    outline: none;
-    border: none;
+  outline: none;
+  border: none;
 }
 
 #__next {
-    display: flex;
-    width: 100%;
-    flex-direction: column;
-    align-items: center;
-    background-color: $d_main_bg_color;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  background-color: $d_main_bg_color;
 }
 
 .infinite-scroll-component__outerdiv {
-    width: 100%;
-    overflow: hidden !important;
+  width: 100%;
+  overflow: hidden !important;
 }
 
-
 .slick-slide {
-    width: 274px;
-    height: 111px;
-    position: relative;
-    float: left;
-    box-sizing: border-box;
-    cursor: pointer;
-    outline: none;
+  width: 274px;
+  height: 111px;
+  position: relative;
+  float: left;
+  box-sizing: border-box;
+  cursor: pointer;
+  outline: none;
 }
 
 .slick-list {
-
-    &:hover > .slick-dots  .slick-active div {
-        animation: progressBar 6.1s ease-in-out forwards;
-    }
+  &:hover > .slick-dots .slick-active div {
+    animation: progressBar 6.1s ease-in-out forwards;
+  }
 }
 
 .slick-track {
-    border-radius: 8px;
+  border-radius: 8px;
 }
 
 .slick-dots {
-    bottom: -14px;
+  bottom: -14px;
 
-    ul {
-        padding: 0;
+  ul {
+    padding: 0;
+  }
+
+  li {
+    height: 6px;
+    width: 6px;
+    background-color: $d_main_color;
+    border-radius: 99px;
+    margin: 0 4px;
+  }
+
+  .slick-active {
+    width: 30px;
+    overflow: hidden;
+    height: 6px;
+    border-radius: 99px;
+    background-color: $d_main_hover;
+
+    div {
+      background-color: $d_main_color !important;
+      border-radius: 99px;
+      height: 6px;
+      animation: progressBar 6.1s linear infinite;
     }
-
-    li {
-        height: 6px;
-        width: 6px;
-        background-color: $d_main_color;
-        border-radius: 99px;
-        margin: 0 4px;
-    }
-
-    .slick-active {
-        width: 30px;
-        overflow: hidden;
-        height: 6px;
-        border-radius: 99px;
-        background-color: $d_main_hover;
-
-        div {
-            background-color: $d_main_color !important;
-            border-radius: 99px;
-            height: 6px;
-            animation: progressBar 6.1s linear infinite;
-        }
-    }
+  }
 }
 
 #newsSlider {
-    .slick-list {
-        height: 80px;
-    }
+  .slick-list {
+    height: 80px;
+  }
 }
 #postImageSlider {
-    .slick-slider {
-
-        @media (max-width: 1280px) {
-            max-width: 670px;
-        }
-        @media (max-width: 1024px) {
-            max-width: 1920px;
-        }
-
-        .slick-list {
-            max-height: 500px;
-
-            .slick-slide {
-                height: 100%;
-            }
-        }
+  .slick-slider {
+    @media (max-width: 1280px) {
+      max-width: 670px;
     }
+    @media (max-width: 1024px) {
+      max-width: 1920px;
+    }
+
+    .slick-list {
+      max-height: 500px;
+
+      .slick-slide {
+        height: 100%;
+      }
+    }
+  }
 }
 
 [data-rmiz-modal-overlay="hidden"] {
-    background-color: rgba(0, 0, 0, 0);
+  background-color: rgba(0, 0, 0, 0);
 }
 [data-rmiz-modal-overlay="visible"] {
-    background-color: rgba(0, 0, 0, 0.6) !important;
+  background-color: rgba(0, 0, 0, 0.6) !important;
 }
 
 a {
-    color: $d_main_color;
-    text-decoration: none;
+  color: $d_main_color;
+  text-decoration: none;
 }
 
 a:hover {
-    color: $d_main_hover;
+  color: $d_main_hover;
 }
 
 a:active {
-    color: $d_main_active;
+  color: $d_main_active;
 }
 
 @keyframes progressBar {
-    0% {
-        width: 0;
-    }
-    100% {
-        width: 100%;
-    }
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
 }

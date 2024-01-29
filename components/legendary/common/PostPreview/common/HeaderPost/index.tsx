@@ -48,7 +48,7 @@ const HeaderPost = ({ data, fixed }: any) => {
       });
       return popupHandlers.authPopupOpen();
     }
-    if (mobxStore.user.subscriptions.filter((e) => e == data.userId).length) {
+    if (mobxStore.user.subscriptions.filter((e) => e == data._id).length) {
       createNotification(
         data.user._id,
         "",
@@ -83,55 +83,75 @@ const HeaderPost = ({ data, fixed }: any) => {
   return (
     <header className={`${styles.header} ${fixed ? styles.fixed : null}`}>
       <div className={styles.leftBlock}>
-        <Link href={`/nv/profile/${data?.user._id}`}>
+        <Link href={`/profile/${data?.user._id}`}>
           {data.category ? (
             <>
-              <ImageLoader
-                className={styles.avatar}
-                src={`${data.category.imagePath}`}
-                wrapper={React.createFactory("div")}
-                preloader={Preloader}
-              ></ImageLoader>
-              <div className={styles.info}>
-                <span className={styles.name}>
-                  <span className={styles.title}>{data.category.title}</span>
-                  <span className={styles.username}>
-                    {data?.user.username} <IconHandler user={data.user} />
-                  </span>
-                </span>
-                <span className={styles.date}>
-                  {formatDistance(+data?.publishedDate, Date.now(), {
-                    addSuffix: true,
-                    locale: ru,
-                  })}
-                </span>
+              <div className={styles.containerAvatar}>
+                <ImageLoader
+                  className={styles.avatar}
+                  src={`${data?.user.avatarPath}`}
+                  wrapper={React.createFactory("div")}
+                  preloader={Preloader}
+                ></ImageLoader>
+                <Link href={`/category/${data.category._id}`}>
+                  <ImageLoader
+                    className={styles.categoryAvatar}
+                    src={`${data.category.imagePath}`}
+                    wrapper={React.createFactory("div")}
+                    preloader={Preloader}
+                  ></ImageLoader>
+                </Link>
               </div>
-            </>
-          ) : (
-            <>
-              <ImageLoader
-                className={styles.avatar}
-                src={`${data?.user.avatarPath}`}
-                wrapper={React.createFactory("div")}
-                preloader={Preloader}
-              ></ImageLoader>
               <div className={styles.info}>
                 <span className={styles.name}>
                   {data?.user.username} <IconHandler user={data.user} />
                 </span>
-                <span className={styles.date}>
-                  {formatDistance(+data?.publishedDate, Date.now(), {
-                    addSuffix: true,
-                    locale: ru,
-                  })}
+                <div className={styles.downinfo}>
+                  <Link href={`/category/${data.category._id}`}>
+                    <span className={styles.title}>{data.category.title}</span>
+                  </Link>
+                  <span className={styles.date}>
+                    {formatDistance(+data?.publishedDate, Date.now(), {
+                      addSuffix: true,
+                      locale: ru,
+                    })}
+                  </span>
+                </div>
+              </div>
+            </>
+          ) : (
+            <>
+              <div className={styles.containerAvatar}>
+                <ImageLoader
+                  className={styles.avatar}
+                  src={`${data?.user.avatarPath}`}
+                  wrapper={React.createFactory("div")}
+                  preloader={Preloader}
+                ></ImageLoader>
+              </div>
+              <div className={styles.info}>
+                <span className={styles.name}>
+                  {data?.user.username} <IconHandler user={data.user} />
                 </span>
+                <div className={styles.downinfo}>
+                  <span className={styles.date}>
+                    {formatDistance(+data?.publishedDate, Date.now(), {
+                      addSuffix: true,
+                      locale: ru,
+                    })}
+                  </span>
+                </div>
               </div>
             </>
           )}
         </Link>
       </div>
       <div className={styles.rightBlock}>
-        <FollowButton changeSub={changeSub} data={data} />
+        {isRoleHandler(mobxStore.user.id, data.user._id) ? (
+          <EditBlock postId={data.postId} />
+        ) : (
+          <FollowButton changeSub={changeSub} data={data} />
+        )}
       </div>
     </header>
   );

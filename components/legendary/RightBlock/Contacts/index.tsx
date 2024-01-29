@@ -16,10 +16,10 @@ const Contacts = () => {
         </div>
       </div>
       <div className={styles.politics}>
-        <Link href={"/nv/gamecustplus"}>Поддержать проект</Link>
-        <Link href={"/nv/copyright"}>Правообладателям</Link>
-        <Link href={"/nv/agreement"}>Пользовательское соглашение</Link>
-        <Link href={"/nv/privacy"}>Политика конфиденциальности</Link>
+        <Link href={"/gamecustplus"}>Поддержать проект</Link>
+        <Link href={"/copyright"}>Правообладателям</Link>
+        <Link href={"/agreement"}>Пользовательское соглашение</Link>
+        <Link href={"/privacy"}>Политика конфиденциальности</Link>
       </div>
     </>
   );

@@ -21,7 +21,7 @@ const DraftsPage = () => {
         console.log("есть доступ");
         setLoading(true);
       } else {
-        router.push(`/nv/profile/${uid}`);
+        router.push(`/profile/${uid}`);
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

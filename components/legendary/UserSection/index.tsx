@@ -16,7 +16,7 @@ import { Context } from "../../../app/(pages)/layout";
 import { AnimatePresence, motion } from "framer-motion";
 
 const UserSection = () => {
-  const [theme, setTheme] = useState(localStorage.getItem("Theme") || 'dark');
+  const [theme, setTheme] = useState(localStorage.getItem("Theme") || "dark");
 
   const router = useRouter();
 
@@ -106,7 +106,7 @@ const UserSection = () => {
               className={styles.menu}
             >
               <h4 className={styles.title}>Мой профиль</h4>
-              <Link href={`/nv/profile/${mobxStore.user.id}`}>
+              <Link href={`/profile/${mobxStore.user.id}`}>
                 <div onClick={() => closePopup()} className={styles.userMenu}>
                   <div className={styles.avatar}>
                     <Image
@@ -121,7 +121,7 @@ const UserSection = () => {
                   </div>
                 </div>
               </Link>
-              <Link href={`/nv/profile/${mobxStore.user.id}/drafts`}>
+              <Link href={`/profile/${mobxStore.user.id}/drafts`}>
                 <div onClick={() => closePopup()} className={styles.userMenu}>
                   <div className={styles.bgAvatar}>
                     <Edit />
@@ -129,7 +129,7 @@ const UserSection = () => {
                   <p className={styles.text}>Черновики</p>
                 </div>
               </Link>
-              <Link href={"/nv/settings"}>
+              <Link href={"/settings"}>
                 <div onClick={() => closePopup()} className={styles.userMenu}>
                   <div className={styles.bgAvatar}>
                     <Cog />

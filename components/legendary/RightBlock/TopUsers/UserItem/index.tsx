@@ -20,7 +20,7 @@ const UserItem = ({ data, index, get, set }: any) => {
       className={`${styles.item} ${get === index && styles.activeItem}`}
     >
       <header className={styles.header}>
-        <Link href={`/nv/profile/${data._id}`}>
+        <Link href={`/profile/${data._id}`}>
           <div className={styles.left}>
             <div className={styles.avatar}>
               <div

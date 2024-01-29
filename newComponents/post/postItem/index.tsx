@@ -29,7 +29,7 @@ const PostItem = ({ data }: any) => {
           })}
         </section>
       ) : null}
-      <Link href={`/nv/post/${data.postId}`}>
+      <Link href={`/post/${data.postId}`}>
         <section className={styles.mainInfo}>
           {data?.stared.map((item: any, index: number) => {
             if (item.type === "h1") {

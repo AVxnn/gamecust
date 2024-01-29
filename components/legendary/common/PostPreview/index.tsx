@@ -6,9 +6,9 @@ import HashTag from "./common/hashtag";
 import Toolbar from "./common/toolbar";
 import HeaderPost from "./common/HeaderPost";
 import ReactPlayer from "react-player";
-import { Context } from "../../../../pages/_app";
 import ImgPopup from "../ImgPopup";
 import ImageAndSlider from "../ImageAndSlider";
+import { Context } from "../../../../app/(pages)/layout";
 
 const PostPreview = ({ data }: any) => {
   const { mobxStore, postCreateStore } = useContext(Context);
@@ -82,9 +82,14 @@ const PostPreview = ({ data }: any) => {
                 return <ImageAndSlider key={index} data={item} />;
               } else if (item.typeMedia === "video") {
                 return (
-                  <div key={index} className={styles.mediaBlock}>
+                  <div
+                    onClick={(event: any) => event.preventDefault()}
+                    key={index}
+                    className={styles.mediaBlock}
+                  >
                     <ReactPlayer
                       pip
+                      onClick={(event: any) => event.preventDefault()}
                       width="100%"
                       style={{ overflow: "hidden", borderRadius: "8px" }}
                       className={styles.player}

@@ -72,7 +72,7 @@ const EditBlock = ({ postId }: any) => {
             className={styles.dropMenu}
           >
             <Link
-              href={`/nv/editor/${mobxStore.user.id}/${postId}`}
+              href={`/editor/${mobxStore.user.id}/${postId}`}
               className={styles.dropItem}
             >
               <Edit />

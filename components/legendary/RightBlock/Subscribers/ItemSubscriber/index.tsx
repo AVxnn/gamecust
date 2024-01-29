@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import styles from "./ItemSub.module.scss";
+import styles from "./ItemSubscriber.module.scss";
 import Image from "next/image";
 import Link from "next/link";
 import ImageLoader from "react-imageloader";
@@ -13,7 +13,7 @@ function preloader() {
   );
 }
 
-const ItemSub = ({ user }: any) => {
+const ItemSubscriber = ({ user }: any) => {
   const [userData, setUserData] = useState<any>({});
 
   useEffect(() => {
@@ -38,10 +38,9 @@ const ItemSub = ({ user }: any) => {
           ></ImageLoader>
           <Image layout={"fill"} src={`${userData.avatarPath}`} alt="ads" />
         </div>
-        <span className={styles.username}>{userData.username}</span>
       </div>
     </Link>
   );
 };
 
-export default ItemSub;
+export default ItemSubscriber;

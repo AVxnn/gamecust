@@ -3,10 +3,12 @@ import Button from "../../Button";
 import ImageAdd from "../../../../../public/img/svg/ImageAdd";
 import styles from "./commentInput.module.scss";
 import Zoom from "react-medium-image-zoom";
+import Trash from "../../../../../public/img/svg/Trash";
 
 const CommentInput = ({
   callback,
   setValue,
+  unicId,
   value,
   setIsOpen,
   setImage,
@@ -14,15 +16,15 @@ const CommentInput = ({
   const [focus, setFocus] = useState(false);
 
   const [imageURL, setImageURL] = useState("") as any;
-  const [imageData, setImageData] = useState() as any;
+  const [dragActive, setDragActive] = useState(false);
 
   const handlePaste = (event: any) => {
     const items = (event.clipboardData || event.originalEvent.clipboardData)
       .items;
-
     for (let i = 0; i < items.length; i++) {
       const item = items[i];
 
+      console.log(1, item);
       if (item.type.indexOf("image") !== -1) {
         const blob = item.getAsFile();
         setImage(blob);
@@ -37,6 +39,49 @@ const CommentInput = ({
         break; // Останавливаемся после первого изображения
       }
     }
+  };
+
+  const sendData = (file: any, type: any) => {
+    let files;
+    if (type === "input") {
+      files = file.currentTarget.files[0];
+    }
+    if (type === "drag") {
+      files = file.dataTransfer.files[0];
+    }
+    if (type === "paste") {
+      files = file;
+    }
+    setImage(files);
+    const reader = new FileReader();
+
+    reader.onload = () => {
+      const url = reader.result;
+      setImageURL(url);
+    };
+    console.log(imageURL, files);
+    reader.readAsDataURL(files);
+  };
+
+  const handleDrag = function (e: any) {
+    e.preventDefault();
+    e.stopPropagation();
+    console.log("rere");
+
+    if (e.type === "dragenter" || e.type === "dragover") {
+      setDragActive(true);
+    } else if (e.type === "dragleave") {
+      setDragActive(false);
+    }
+  };
+
+  const handleSend = () => {
+    setImageURL("");
+    callback();
+  };
+
+  const deleteImage = () => {
+    setImageURL("");
   };
 
   return (
@@ -57,23 +102,36 @@ const CommentInput = ({
                 <Zoom>
                   <img src={imageURL} alt="img" />
                 </Zoom>
+                <div className={styles.trash} onClick={() => deleteImage()}>
+                  <Trash />
+                </div>
               </div>
             ) : (
-              <div className={styles.icon}>
-                <ImageAdd />
-              </div>
+              <label htmlFor={unicId} className={styles.info}>
+                <form
+                  onSubmit={(e) => e.preventDefault()}
+                  onDragEnter={handleDrag}
+                  className={styles.fileBlock}
+                >
+                  <div className={styles.icon}>
+                    <ImageAdd />
+                  </div>
+                  <input
+                    multiple={true}
+                    onChange={(e) => sendData(e, "input")}
+                    className={styles.file}
+                    type="file"
+                    id={unicId}
+                    name={unicId}
+                    accept="image/*"
+                  />
+                </form>
+              </label>
             )}
           </div>
           <div className={styles.buttonlist}>
-            <Button
-              clb={() => setIsOpen(false)}
-              type={"secondary"}
-              size={"small"}
-            >
-              Отмена
-            </Button>
             {value && (
-              <Button clb={callback} type={"primary"} size={"small"}>
+              <Button clb={handleSend} type={"primary"} size={"small"}>
                 Отправить
               </Button>
             )}

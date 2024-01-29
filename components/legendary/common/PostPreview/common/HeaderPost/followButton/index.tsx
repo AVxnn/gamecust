@@ -12,13 +12,10 @@ const FollowButton = ({ data, changeSub }: any) => {
   const { mobxStore } = useContext(Context);
 
   const [hover, setHover] = useState(false);
-
-  return (
+  console.log(data);
+  return data._id !== mobxStore.user.id ? (
     <>
-      {isRoleHandler(mobxStore.user.id, data.user._id) ? (
-        <EditBlock postId={data.postId} />
-      ) : mobxStore?.user?.subscriptions?.filter((e) => e === data.user._id)
-          .length ? (
+      {mobxStore?.user?.subscriptions?.filter((e) => e === data._id).length ? (
         <>
           <span
             onMouseEnter={() => setHover(true)}
@@ -48,6 +45,8 @@ const FollowButton = ({ data, changeSub }: any) => {
         </>
       )}
     </>
+  ) : (
+    <></>
   );
 };
 

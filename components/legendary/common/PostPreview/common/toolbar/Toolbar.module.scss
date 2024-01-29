@@ -13,13 +13,17 @@
     .views {
       display: flex;
       align-items: center;
-      
+
       svg {
         width: 22px;
         height: 22px;
 
+        circle {
+          stroke: $d_main_text_color;
+        }
+
         path {
-          fill: $d_main_text_color
+          stroke: $d_main_text_color;
         }
       }
       .title {
@@ -38,7 +42,6 @@
       cursor: pointer;
 
       svg {
-        
         padding: 4px;
         border-radius: 16px;
         background-color: $d_main_subbg_color;
@@ -46,12 +49,11 @@
         height: 22px;
 
         path {
-          stroke: $d_main_text_color
+          stroke: $d_main_text_color;
         }
       }
 
       &:hover {
-        
         svg {
           background-color: $d_main_bg_color;
         }
@@ -83,7 +85,7 @@
         border-radius: 16px;
         background-color: $d_main_subbg_color;
         path {
-          fill: $d_main_text_color
+          stroke: $d_main_text_color;
         }
       }
 
@@ -95,7 +97,7 @@
           background-color: $d_main_bg_color;
         }
         path {
-          fill: $d_main_color;
+          stroke: $d_main_color;
         }
       }
 
@@ -107,5 +109,4 @@
       }
     }
   }
-
 }

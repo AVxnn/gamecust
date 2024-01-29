@@ -2,7 +2,7 @@ import NextAuth from "next-auth";
 import DiscordProvider from "next-auth/providers/discord";
 import GoogleProvider from "next-auth/providers/google";
 
-const scopes = ['identify', 'email'].join(' ')
+const scopes = ["identify", "email"].join(" ");
 
 export const nextAuthOptions = {
   debugger: true,
@@ -25,20 +25,20 @@ export const nextAuthOptions = {
     },
     async redirect({ url, baseUrl }) {
       // Allows relative callback URLs
-      if (url.startsWith("/")) return `${baseUrl}${url}/?authpopup=true`
+      if (url.startsWith("/")) return `${baseUrl}${url}/?authpopup=true`;
       // Allows callback URLs on the same origin
-      else if (new URL(url).origin === baseUrl) return url
-      return baseUrl
+      else if (new URL(url).origin === baseUrl) return url;
+      return baseUrl;
     },
     async signIn(user, account, profile) {
       try {
         return Promise.resolve(user);
       } catch (error) {
-        console.error('Error saving user data:', error);
+        console.error("Error saving user data:", error);
       }
       return Promise.resolve(true);
     },
-  }
-}
+  },
+};
 
 export default NextAuth(nextAuthOptions);

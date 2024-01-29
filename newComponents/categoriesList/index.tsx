@@ -49,7 +49,7 @@ const CategoriesList = () => {
       >
         {categories.map((item: any) => {
           return (
-            <Link key={item.title} href={`/nv/category/${item._id}`}>
+            <Link key={item.title} href={`/category/${item._id}`}>
               <div className={styles.item}>
                 <div className={styles.image}>
                   <Image src={item.imagePath} alt={"img"} layout={"fill"} />

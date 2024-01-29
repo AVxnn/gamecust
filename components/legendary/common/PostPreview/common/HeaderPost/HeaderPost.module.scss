@@ -21,7 +21,7 @@
 
     a {
       display: flex;
-      gap: 8px;
+      gap: 2px;
       text-decoration: none;
     }
 
@@ -31,25 +31,50 @@
       border-radius: 99px;
       background-color: $d_main_bg_color;
     }
+    .containerAvatar {
+      width: 42px;
+      height: 42px;
+      position: relative;
+      .avatar {
+        max-height: 42px;
 
-    .avatar {
-      max-height: 42px;
+        img {
+          position: relative;
+          width: 42px;
+          height: 42px;
+          object-fit: cover;
+          border-radius: 99px;
+          cursor: pointer;
+          transition: all 0.1s ease-in-out;
+        }
 
-      img {
-        position: relative;
-        width: 42px;
-        height: 42px;
-        object-fit: cover;
-        border-radius: 99px;
-        cursor: pointer;
-        transition: all 0.1s ease-in-out;
+        &:hover {
+          opacity: 0.8;
+        }
       }
 
-      &:hover {
-        opacity: 0.8;
+      .categoryAvatar {
+        max-height: 20px;
+        position: absolute;
+        bottom: 0;
+        right: -4px;
+
+        img {
+          position: relative;
+          width: 20px;
+          border: 2px solid $d_main_subbg_color;
+          height: 20px;
+          object-fit: cover;
+          border-radius: 99px;
+          cursor: pointer;
+          transition: all 0.1s ease-in-out;
+        }
+
+        &:hover {
+          opacity: 0.8;
+        }
       }
     }
-
     .info {
       display: flex;
       flex-direction: column;
@@ -101,11 +126,35 @@
           height: 16px;
         }
       }
-      .date {
-        color: $d_main_subtext_color;
-        font-size: 12px;
-        margin-left: 8px;
-        cursor: pointer;
+      .downinfo {
+        display: flex;
+        gap: 8px;
+
+        .title {
+          display: flex;
+          align-items: center;
+          font-size: 16px;
+          margin-left: 16px;
+          color: $d_main_subtext_color;
+          font-weight: 500;
+          cursor: pointer;
+        }
+        .date {
+          color: $d_main_subtext_color;
+          font-size: 12px;
+          margin-left: 8px;
+          cursor: pointer;
+        }
+        .title {
+          color: $d_main_text_color;
+          font-size: 12px;
+          margin-left: 8px;
+          cursor: pointer;
+
+          &:hover {
+            color: $d_main_color;
+          }
+        }
       }
     }
   }

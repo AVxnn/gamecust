@@ -2,14 +2,21 @@ import React from "react";
 import styles from "./navigationItem.module.scss";
 import Link from "next/link";
 
-const NavigationItem = ({ icon, title, link, current, ...props }: any) => {
+const NavigationItem = ({
+  icon,
+  title,
+  link,
+  type,
+  current,
+  ...props
+}: any) => {
   return (
     <Link href={link}>
       <button
         className={`${styles.tab} ${current && styles.active}`}
         {...props}
       >
-        {icon}
+        <div className={styles[type]}>{icon}</div>
         <span>{title}</span>
       </button>
     </Link>

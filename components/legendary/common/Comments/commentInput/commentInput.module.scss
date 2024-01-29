@@ -14,7 +14,7 @@
   &:hover {
     background-color: $d_main_subbg_color;
     border: 1px solid $d_main_color;
-    box-shadow: 0 0 2px 3px rgba(#9E5BF0, 0.2);
+    box-shadow: 0 0 2px 3px rgba(#9e5bf0, 0.2);
   }
 
   input {
@@ -22,7 +22,7 @@
     overflow-y: hidden;
     margin-bottom: 16px;
     width: 100%;
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
     color: $d_main_text_color;
     background-color: rgba(0, 0, 0, 0);
     font-weight: 500;
@@ -58,11 +58,36 @@
           height: 64px;
         }
 
+        &:hover > .trash {
+          display: flex;
+        }
+
         img {
           position: absolute;
           width: 100%;
           object-fit: cover;
           height: 100%;
+        }
+
+        .trash {
+          height: 24px;
+          width: 24px;
+          display: none;
+          align-items: center;
+          justify-content: center;
+          position: absolute;
+          top: 18px;
+          right: 17px;
+          padding: 3px;
+          border-radius: 8px;
+          background-color: $d_main_subbg_color;
+          z-index: 22;
+          cursor: pointer;
+
+          svg {
+            width: 18px;
+            height: 18px;
+          }
         }
       }
 
@@ -79,7 +104,7 @@
           background-color: $d_main_bg_color;
         }
       }
-      
+
       svg {
         cursor: pointer;
 
@@ -88,6 +113,9 @@
           fill: $d_main_text_color;
         }
       }
+    }
+    .file {
+      display: none;
     }
 
     .buttonlist {
@@ -100,5 +128,5 @@
 .active {
   background-color: $d_main_subbg_color;
   border: 1px solid $d_main_color;
-  box-shadow: 0 0 2px 3px rgba(#9E5BF0, 0.2);
+  box-shadow: 0 0 2px 3px rgba(#9e5bf0, 0.2);
 }

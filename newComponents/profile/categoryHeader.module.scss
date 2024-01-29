@@ -28,7 +28,7 @@
     margin-top: -80px;
     width: 120px;
     left: 24px;
-    
+
     @media (max-width: 768px) {
       margin-top: -70px;
       width: 120px;
@@ -71,11 +71,18 @@
     box-sizing: border-box;
     justify-content: space-between;
     height: 100%;
+    position: relative;
     display: flex;
 
     @media (max-width: 768px) {
       height: auto;
       padding: 8px 24px 0 24px;
+    }
+
+    .followBtn {
+      position: absolute;
+      top: -28px;
+      right: 24px;
     }
 
     .left {
@@ -139,7 +146,6 @@
         align-items: center;
         margin-bottom: 4px;
 
-        
         .subs {
           color: $d_main_subtext_color;
         }

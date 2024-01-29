@@ -88,6 +88,7 @@ const Comments = ({ dataS, comments, getNewComments }: any) => {
       <CommentInput
         callback={createComment}
         value={value}
+        unicId={dataPost.postId}
         setValue={setValue}
         setIsOpen={() => {}}
         setImage={setImage}

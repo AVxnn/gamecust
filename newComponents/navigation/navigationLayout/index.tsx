@@ -18,38 +18,42 @@ const NavigationLayout = () => {
   let data = [
     {
       title: "Рекомендовано",
-      link: "/nv",
+      link: "/",
       icon: <Fire solid={true} />,
+      type: "path",
     },
     {
       title: "Свежее",
-      link: "/nv/new",
+      link: "/new",
       icon: <Time />,
+      type: "path",
     },
     {
       title: "Подписки",
-      link: `/nv/subs`,
+      link: `/subs`,
       icon: <Chees />,
+      type: "path",
     },
     {
       title: "Категории",
-      link: `/nv/categories`,
+      link: `/categories`,
       icon: <Categories />,
+      type: "rect",
     },
   ];
 
   useEffect(() => {
     switch (pathname) {
-      case "/nv":
+      case "/":
         setActive(0);
         break;
-      case "/nv/new":
+      case "/new":
         setActive(1);
         break;
-      case `/nv/subs`:
+      case `/subs`:
         setActive(2);
         break;
-      case `/nv/categories`:
+      case `/categories`:
         setActive(3);
         break;
       default:
@@ -65,6 +69,7 @@ const NavigationLayout = () => {
           <NavigationItem
             key={index}
             link={item.link}
+            type={item.type}
             onClick={() => changePage(index)}
             current={active == index}
             icon={item.icon}

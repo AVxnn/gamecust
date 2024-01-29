@@ -15,10 +15,11 @@ import { observer } from "mobx-react-lite";
 import { Context } from "../../app/(pages)/layout";
 import BgProfilePopup from "../../components/legendary/common/bgProfilePopup";
 import LvlPopup from "../lvlPopup";
+import FollowButton from "../../components/legendary/common/PostPreview/common/HeaderPost/followButton";
+import { createNotification } from "../../features/new/getNotifications/getNotifications";
 
-const CategoryHeader = () => {
+const CategoryHeader = ({ data }: any) => {
   const [active, setActive] = useState(0);
-  const [data, setData] = useState([]) as any;
   const [dataTagAccount, setDataTagAccount] = useState([
     {
       title: "Статьи",
@@ -30,7 +31,7 @@ const CategoryHeader = () => {
     },
   ]) as any;
   const menuRef = useRef<HTMLUListElement>(null);
-  const { mobxStore } = useContext(Context);
+  const { mobxStore, notificationStore, popupHandlers } = useContext(Context);
 
   const router = useRouter() as any;
 
@@ -41,15 +42,9 @@ const CategoryHeader = () => {
     setActive(index);
   };
 
-  const getFirstUser = async () => {
-    const res = await getUserId(uid);
-    const newPosts = await res;
-    setData(newPosts);
-  };
   console.log(isRoleHandler(mobxStore.user.id, uid), mobxStore.user.id, uid);
   useEffect(() => {
     if (isRoleHandler(mobxStore.user.id, uid)) {
-      console.log("есть доступ");
       setDataTagAccount([
         {
           title: "Статьи",
@@ -67,8 +62,51 @@ const CategoryHeader = () => {
     }
   }, [mobxStore.user, uid]);
 
+  const [subscribe, setSubscribe] = useState(false);
+
+  const changeSub = async () => {
+    if (!mobxStore.user.email) {
+      notificationStore.addItem({
+        title: "Нужно выполнить авторизацию",
+        status: "error",
+        timeLife: 2500,
+      });
+      return popupHandlers.authPopupOpen();
+    }
+    if (mobxStore.user.subscriptions.filter((e) => e == data._id).length) {
+      createNotification(
+        data._id,
+        "",
+        "Отписался от вас",
+        "follow",
+        mobxStore.user.id
+      );
+    } else {
+      createNotification(
+        data._id,
+        "",
+        "Подписался на вас",
+        "follow",
+        mobxStore.user.id
+      );
+    }
+    let res = await mobxStore.updateAuth(data._id, mobxStore.user.id);
+    setSubscribe(!subscribe);
+  };
+
   useEffect(() => {
-    switch (pathname.split("/")[4]) {
+    mobxStore?.user?.subscriptions?.map((item) => {
+      if (item == data._id) {
+        setSubscribe(true);
+      } else {
+        setSubscribe(false);
+      }
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [mobxStore?.user?.subscriptions]);
+
+  useEffect(() => {
+    switch (pathname.split("/")[3]) {
       case "entries":
         return setActive(0);
       case "comments":
@@ -80,10 +118,6 @@ const CategoryHeader = () => {
     }
   }, [pathname]);
 
-  useEffect(() => {
-    getFirstUser();
-  }, [pathname]);
-  console.log(data);
   return (
     <>
       <div className={styles.profileBlock}>
@@ -97,6 +131,9 @@ const CategoryHeader = () => {
           </div>
         </div>
         <div className={styles.info}>
+          <div className={styles.followBtn}>
+            <FollowButton changeSub={changeSub} data={data} />
+          </div>
           <div className={styles.left}>
             <div className={styles.rightMobile}>
               {data && (
@@ -118,18 +155,11 @@ const CategoryHeader = () => {
             </div>
             <div className={styles.date}>На проекте с 12 фев 2021</div>
             <ul ref={menuRef} className={styles.navigation}>
-              {/* {
-                mobxStore.user.id === data._id ? dataTag.map((item : any, index : number) => {
-                  return (
-                    <Tabs link={`/nv/profile/${data._id}/${item.link}`} key={index} onClick={() => changePage(index)} current={active == index}>{item.title}</Tabs>
-                  )
-                }) : ''
-              } */}
               {dataTagAccount &&
                 dataTagAccount.map((item: any, index: number) => {
                   return (
                     <Tabs
-                      link={`/nv/profile/${data._id}/${item.link}`}
+                      link={`/profile/${data._id}/${item.link}`}
                       key={index}
                       onClick={() => changePage(index)}
                       current={active == index}

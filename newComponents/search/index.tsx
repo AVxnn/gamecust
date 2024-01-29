@@ -105,55 +105,49 @@ const SearchComponent = () => {
         />
       </div>
       <div>
-        {isFocus ? (
-          <div ref={popupRef}>
-            <AnimatePresence initial={false} mode="wait">
-              {isOpen && (
-                <motion.div
-                  exit={{ opacity: 0 }}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  className={styles.dropdown}
-                >
-                  <div className={styles.header}>
-                    <h4 className={styles.title}>Результат поиска</h4>
+        <AnimatePresence initial={false} mode="wait">
+          {isFocus && isOpen ? (
+            <motion.div
+              exit={{ opacity: 0 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              ref={popupRef}
+              className={styles.dropdown}
+            >
+              <div className={styles.header}>
+                <h4 className={styles.title}>Результат поиска</h4>
 
-                    <Link
-                      className={styles.showMore}
-                      href={"/nv/notifications"}
-                    >
-                      Посмотреть еще
-                    </Link>
-                  </div>
-                  <div className={styles.list}>
-                    {data.users.map((item: any) => {
-                      return (
-                        <DropItem
-                          key={item._id}
-                          handlerLink={handlerLink}
-                          item={item}
-                          type={"users"}
-                        />
-                      );
-                    })}
-                    {data.posts.map((item: any) => {
-                      return (
-                        <DropItem
-                          key={item._id}
-                          handlerLink={handlerLink}
-                          item={item}
-                          type={"posts"}
-                        />
-                      );
-                    })}
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
-        ) : (
-          ""
-        )}
+                <Link className={styles.showMore} href={"/notifications"}>
+                  Посмотреть еще
+                </Link>
+              </div>
+              <div className={styles.list}>
+                {data.users.map((item: any) => {
+                  return (
+                    <DropItem
+                      key={item._id}
+                      handlerLink={handlerLink}
+                      item={item}
+                      type={"users"}
+                    />
+                  );
+                })}
+                {data.posts.map((item: any) => {
+                  return (
+                    <DropItem
+                      key={item._id}
+                      handlerLink={handlerLink}
+                      item={item}
+                      type={"posts"}
+                    />
+                  );
+                })}
+              </div>
+            </motion.div>
+          ) : (
+            ""
+          )}
+        </AnimatePresence>
       </div>
     </div>
   );
