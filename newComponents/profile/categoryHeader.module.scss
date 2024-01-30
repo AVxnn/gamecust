@@ -18,6 +18,14 @@
     img {
       object-fit: cover;
     }
+    @media screen and (max-width: 1024px) {
+      height: 186px;
+      top: -182px;
+      border-radius: 0 0 8px 0px;
+    }
+    @media screen and (max-width: 980px) {
+      border-radius: 0;
+    }
   }
 
   .header {

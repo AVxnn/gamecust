@@ -1,18 +1,19 @@
 @import "/styles/variables.scss";
 
 .drafts {
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+  width: 100%;
+  gap: 8px;
+
+  .list {
     display: flex;
     flex-direction: column;
-    border-radius: 8px;
-    gap: 8px;
-
-    .list {
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-    }
-
-    a {
-        text-decoration: none;
-    }
+    gap: 16px;
   }
+
+  a {
+    text-decoration: none;
+  }
+}

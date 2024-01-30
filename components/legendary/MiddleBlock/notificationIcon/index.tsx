@@ -83,7 +83,11 @@ const NotificationIcon = () => {
             <div className={styles.list}>
               {data.length >= 1 ? (
                 data.map((item: any, index: number) => {
-                  return <NotificationItem key={index} item={item} />;
+                  if (index <= 10) {
+                    return <NotificationItem key={index} item={item} />;
+                  } else {
+                    return null;
+                  }
                 })
               ) : (
                 <>Похоже у вас нет уведомлений</>

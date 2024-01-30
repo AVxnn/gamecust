@@ -10,17 +10,11 @@ import getCategories from "../../../../../features/new/getCategories/getCategori
 
 const ChangeAccount = ({ post }: any) => {
   const { mobxStore, postCreateStore } = useContext(Context);
-
   const popupRef = useRef<HTMLDivElement>(null);
   const labelRef = useRef<HTMLDivElement>(null);
 
   const [data, setData] = useState([]);
-  const [currentCategory, setCurrentCategory] = useState(
-    post.category || {
-      imagePath: "",
-      title: "",
-    }
-  );
+  const [currentCategory, setCurrentCategory] = useState(post.category);
 
   const [clicked, setClicked] = useState<boolean>(false);
 
@@ -47,7 +41,7 @@ const ChangeAccount = ({ post }: any) => {
       });
     }
   });
-  console.log(currentCategory, post);
+
   const getCategoriesData = async () => {
     const data = await getCategories(0);
     setData(data);
@@ -61,7 +55,7 @@ const ChangeAccount = ({ post }: any) => {
     setCurrentCategory(
       data.filter((item: any) => item._id === postCreateStore.category)[0]
     );
-  }, [postCreateStore.category]);
+  }, [postCreateStore.category, post, data]);
 
   return (
     <div
@@ -69,7 +63,7 @@ const ChangeAccount = ({ post }: any) => {
       onClick={() => setClicked(!clicked)}
       className={`${styles.profile} ${clicked ? styles.active : ""}`}
     >
-      {postCreateStore.category ? (
+      {currentCategory ? (
         <>
           <div className={styles.avatar}>
             <Image

@@ -43,11 +43,6 @@
         white-space: pre-wrap;
       }
 
-      .mediaBlock {
-        border-radius: 8px;
-        overflow: hidden;
-      }
-
       .subtitle {
         font-size: 16px;
         color: $d_main_text_color;
@@ -114,5 +109,10 @@
 
   .toolBarContainer {
     margin: 0 24px 0 24px;
+  }
+
+  .mediaBlock {
+    overflow: hidden;
+    border-radius: 8px;
   }
 }

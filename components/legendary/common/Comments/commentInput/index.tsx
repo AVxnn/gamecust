@@ -85,60 +85,63 @@ const CommentInput = ({
   };
 
   return (
-    <div className={`${styles.comments} ${focus && styles.active}`}>
-      <form id={"form"} onSubmit={callback}>
-        <input
-          onFocus={() => setFocus(true)}
-          onBlur={() => setFocus(false)}
-          onPaste={handlePaste}
-          value={value}
-          onChange={(e) => setValue(e.currentTarget.value)}
-          placeholder={"Оставьте свой комментарий!"}
-        />
-        <div className={styles.footer}>
-          <div className={styles.left}>
-            {imageURL ? (
-              <div className={styles.photo}>
-                <Zoom>
-                  <img src={imageURL} alt="img" />
-                </Zoom>
-                <div className={styles.trash} onClick={() => deleteImage()}>
-                  <Trash />
-                </div>
-              </div>
-            ) : (
-              <label htmlFor={unicId} className={styles.info}>
-                <form
-                  onSubmit={(e) => e.preventDefault()}
-                  onDragEnter={handleDrag}
-                  className={styles.fileBlock}
-                >
-                  <div className={styles.icon}>
-                    <ImageAdd />
+    <label htmlFor={unicId}>
+      <div className={`${styles.comments} ${focus && styles.active}`}>
+        <form id={"form"} onSubmit={callback}>
+          <input
+            onFocus={() => setFocus(true)}
+            onBlur={() => setFocus(false)}
+            onPaste={handlePaste}
+            value={value}
+            id={unicId}
+            onChange={(e) => setValue(e.currentTarget.value)}
+            placeholder={"Оставьте свой комментарий!"}
+          />
+          <div className={styles.footer}>
+            <div className={styles.left}>
+              {imageURL ? (
+                <div className={styles.photo}>
+                  <Zoom>
+                    <img src={imageURL} alt="img" />
+                  </Zoom>
+                  <div className={styles.trash} onClick={() => deleteImage()}>
+                    <Trash />
                   </div>
-                  <input
-                    multiple={true}
-                    onChange={(e) => sendData(e, "input")}
-                    className={styles.file}
-                    type="file"
-                    id={unicId}
-                    name={unicId}
-                    accept="image/*"
-                  />
-                </form>
-              </label>
-            )}
+                </div>
+              ) : (
+                <label htmlFor={unicId + "1"} className={styles.info}>
+                  <form
+                    onSubmit={(e) => e.preventDefault()}
+                    onDragEnter={handleDrag}
+                    className={styles.fileBlock}
+                  >
+                    <div className={styles.icon}>
+                      <ImageAdd />
+                    </div>
+                    <input
+                      multiple={true}
+                      onChange={(e) => sendData(e, "input")}
+                      className={styles.file}
+                      type="file"
+                      id={unicId + "1"}
+                      name={unicId + "1"}
+                      accept="image/*"
+                    />
+                  </form>
+                </label>
+              )}
+            </div>
+            <div className={styles.buttonlist}>
+              {value && (
+                <Button clb={handleSend} type={"primary"} size={"small"}>
+                  Отправить
+                </Button>
+              )}
+            </div>
           </div>
-          <div className={styles.buttonlist}>
-            {value && (
-              <Button clb={handleSend} type={"primary"} size={"small"}>
-                Отправить
-              </Button>
-            )}
-          </div>
-        </div>
-      </form>
-    </div>
+        </form>
+      </div>
+    </label>
   );
 };
 

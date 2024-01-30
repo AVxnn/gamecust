@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react";
 import styles from "./navigationLayout.module.scss";
 import { usePathname } from "next/navigation";
 import NavigationItem from "../navigationItem";
-import Fire from "../../../public/img/svg/Fire";
-import Time from "../../../public/img/svg/Time";
-import Chees from "../../../public/img/svg/Chees";
-import Categories from "../../../public/img/svg/Categories";
+import Fire from "../../../public/img/svg/Fire.js";
+import Time from "../../../public/img/svg/Time.js";
+import Chees from "../../../public/img/svg/Chees.js";
+import Categories from "../../../public/img/svg/Categories.js";
+import "boxicons";
 
 const NavigationLayout = () => {
   const [active, setActive] = useState(0);
@@ -20,25 +21,21 @@ const NavigationLayout = () => {
       title: "Рекомендовано",
       link: "/",
       icon: <Fire solid={true} />,
-      type: "path",
     },
     {
       title: "Свежее",
       link: "/new",
       icon: <Time />,
-      type: "path",
     },
     {
       title: "Подписки",
       link: `/subs`,
       icon: <Chees />,
-      type: "path",
     },
     {
       title: "Категории",
       link: `/categories`,
       icon: <Categories />,
-      type: "rect",
     },
   ];
 
@@ -69,7 +66,6 @@ const NavigationLayout = () => {
           <NavigationItem
             key={index}
             link={item.link}
-            type={item.type}
             onClick={() => changePage(index)}
             current={active == index}
             icon={item.icon}

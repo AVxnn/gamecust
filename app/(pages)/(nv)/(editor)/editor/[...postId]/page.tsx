@@ -8,7 +8,7 @@ import { getPost } from "../../../../../../features/new/getPost/getPost";
 import EditorBlock from "../../../../../../components/legendary/MiddleBlock/editorBlock";
 
 const PageEditor = () => {
-  const [post, setPost] = useState([]);
+  const [post, setPost] = useState([]) as any;
   const { mobxStore, postCreateStore, notificationStore } = useContext(Context);
   const { postId } = useParams() as any;
   const router = useRouter();
@@ -17,7 +17,7 @@ const PageEditor = () => {
     const data = await getPost(decodeURIComponent(postId[1]));
     console.log(data);
     if (data) {
-      setPost(data.data);
+      setPost(data);
     }
   };
 
@@ -26,8 +26,11 @@ const PageEditor = () => {
   }, []);
 
   useEffect(() => {
-    if (post?.length > 0) {
-      postCreateStore.updateArray(post);
+    if (post?.category) {
+      postCreateStore.changeCategory(post.category._id);
+    }
+    if (post.data?.length > 0) {
+      postCreateStore.updateArray(post.data);
     } else {
       postCreateStore.updateArray([
         {

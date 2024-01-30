@@ -1,4 +1,3 @@
-
 .layout {
   position: relative;
   max-width: 1256px;
@@ -8,12 +7,13 @@
   justify-content: center;
   align-items: flex-start;
   display: flex;
-  
+
   @media screen and (max-width: 1280px) {
     max-width: 1056px;
   }
   @media screen and (max-width: 1024px) {
     max-width: 976px;
+    margin-top: 182px;
   }
   @media screen and (max-width: 980px) {
     max-width: 640px;

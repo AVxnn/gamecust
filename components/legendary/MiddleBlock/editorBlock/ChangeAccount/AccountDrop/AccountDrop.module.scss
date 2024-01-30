@@ -117,4 +117,12 @@
       }
     }
   }
+  .list {
+    overflow-y: scroll;
+    max-height: 240px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
 }

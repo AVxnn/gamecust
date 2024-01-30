@@ -15,6 +15,10 @@ export default class CreatePostService {
     return $api.post<any>(`/api/post/update`, { data });
   }
 
+  static async updateData(data: any): Promise<AxiosResponse<any>> {
+    return $api.post<any>(`/api/post/updatedata`, { data });
+  }
+
   static async addLike(data: any): Promise<AxiosResponse<any>> {
     return $api.post<any>(`/api/post/like`, data);
   }

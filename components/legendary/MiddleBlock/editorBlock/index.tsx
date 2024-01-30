@@ -28,25 +28,26 @@ const EditorBlock = ({ post }: any) => {
 
   const [pressKey, setPressKey] = useState(false);
 
-  const saveHandler = () => {
+  const saveHandler = useCallback(() => {
     if (postCreateStore.data.length > 1 && mobxStore.user.id) {
-      postCreateStore.reSavePost(
+      postCreateStore.updateData(
         mobxStore.user,
         postCreateStore.data,
-        postCreateStore.postId
+        postCreateStore.postId,
+        postCreateStore.category
       );
     }
     setPressKey(false);
-  };
+  }, [mobxStore.user, postCreateStore]);
 
-  const debouncedSave = useDebounce(saveHandler, 200);
+  const debouncedSave = useDebounce(saveHandler, 500);
 
   const keyPress = useCallback(() => {
     setPressKey(true);
     debouncedSave();
   }, []);
 
-  const createNewPost = () => {
+  const createNewPost = useCallback(() => {
     console.log(postCreateStore.data.length);
     if (postCreateStore.data.length >= 1) {
       if (
@@ -72,15 +73,16 @@ const EditorBlock = ({ post }: any) => {
       };
       postCreateStore.addItem(res);
     }
-  };
+  }, [postCreateStore]);
 
   const handleReorder = useCallback(
     (newList: any) => {
       let result = postCreateStore.sortArray(newList);
       const reorderedItems = [...result];
       setItems(reorderedItems);
+      saveHandler();
     },
-    [items]
+    [mobxStore.user, postCreateStore]
   );
 
   useEffect(() => {
@@ -100,7 +102,7 @@ const EditorBlock = ({ post }: any) => {
   useEffect(() => {
     setItems(postCreateStore.data);
   }, [postCreateStore.data]);
-
+  console.log("render");
   return (
     <div className={styles.editor}>
       <ChangeAccount post={post} />
@@ -108,9 +110,7 @@ const EditorBlock = ({ post }: any) => {
         <TextAreaBlock item={items[0]} />
         <Reorder.Group axis="y" values={items} onReorder={handleReorder}>
           {items.map((item: any, index: number) => {
-            if (index !== 0) {
-              return <ConstructorBlocks data={item} key={item.unicalId} />;
-            }
+            return <ConstructorBlocks data={item} key={item.unicalId} />;
           })}
         </Reorder.Group>
         <div

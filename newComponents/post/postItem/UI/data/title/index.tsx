@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./title.module.scss"
+import styles from "./title.module.scss";
 
 const Title = ({ text }: any) => {
   return (

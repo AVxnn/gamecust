@@ -1,130 +1,136 @@
 @import "/styles/variables.scss";
 
-
-
 .draft {
-    padding: 14px;
-    display: flex;
-    gap: 24px;
-    border-bottom: 1px solid $d_main_color;
-    background-color: $d_main_subbg_color;
-    transition: all 0.1s ease-in-out;
-    border-radius: 8px;
-    cursor: pointer;
+  padding: 14px;
+  display: flex;
+  gap: 24px;
+  border-bottom: 1px solid $d_main_color;
+  background-color: $d_main_subbg_color;
+  transition: all 0.1s ease-in-out;
+  border-radius: 8px;
+  cursor: pointer;
+
+  @media screen and (max-width: 540px) {
+    flex-direction: column;
+  }
+
+  &:hover {
+    background-color: $d_main_bg_color;
+  }
+
+  &:last-child {
+    border-bottom: 0;
+  }
+
+  .image {
+    position: relative;
+    min-width: 200px;
+    height: 120px;
+
+    @media screen and (max-width: 768px) {
+      min-width: 140px;
+      height: 80px;
+    }
 
     @media screen and (max-width: 540px) {
-        flex-direction: column;
+      min-width: 0;
+      width: 100%;
+      height: 200px;
+      overflow: visible;
     }
 
-    &:hover {
-        background-color: $d_main_bg_color;
+    img {
+      object-fit: cover;
+      border-radius: 8px;
     }
 
-    &:last-child {
-        border-bottom: 0
+    .noImage {
+      background-size: 100%;
+      background-position: 100% 50%;
+      background-repeat: no-repeat;
+      border-radius: 8px;
+      width: 100%;
+      background-color: #9e5bf0;
+      height: 100%;
+      background-image: url("../../../../../../public/img/noImageDrafts.png");
+    }
+  }
+
+  .mainInfo {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    @media screen and (max-width: 540px) {
+      gap: 24px;
     }
 
-    .image {
-        position: relative;
-        min-width: 200px;
-        height: 120px;
+    .title {
+      margin: 0;
+      padding: 0;
+      font-size: 24px;
+      width: 100%;
+      overflow: hidden;
+      color: $d_main_text_color;
+
+      @media screen and (max-width: 768px) {
+        font-size: 18px;
+      }
+    }
+    .bottomInfo {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+
+      .date {
+        color: $d_main_text_active_color;
+      }
+      .delete {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: $d_main_text_color;
+        cursor: pointer;
+
+        &:hover {
+          svg {
+            background-color: $d_main_subbg_color;
+            path {
+              fill: $d_main_color;
+            }
+          }
+          p {
+            color: $d_main_color;
+          }
+        }
+
+        svg {
+          padding: 4px;
+          border-radius: $br-14;
+          margin-top: -1px;
+
+          @media screen and (max-width: 768px) {
+            width: 18px;
+            min-width: 18px;
+            height: 18px;
+          }
+          path {
+            fill: $d_main_text_color;
+          }
+        }
+
+        p {
+          margin: 0;
+          padding: 0;
+          white-space: nowrap;
+          color: $d_main_text_color;
+        }
 
         @media screen and (max-width: 768px) {
-            min-width: 140px;
-            height: 80px;
+          height: 18px;
         }
-
-        @media screen and (max-width: 540px) {
-            min-width: 0;
-            width: 100%;
-            height: 200px;
-            overflow: visible;
-        }
-
-        img {
-            object-fit: cover;
-            border-radius: 8px;
-        }
-
-        .noImage {
-            background-size: 100%;
-            background-position: 100% 50%;
-            background-repeat: no-repeat;
-            border-radius: 8px;
-            width: 100%;
-            background-color: #9E5BF0;
-            height: 100%;
-            background-image: url("../../../../../../public/img/noImageDrafts.png");
-        }
+      }
     }
-
-    .mainInfo {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-
-        @media screen and (max-width: 540px) {
-            gap: 24px;
-        }
-
-        .title {
-            margin: 0;
-            padding: 0;
-            font-size: 24px;
-            color: $d_main_text_color;
-
-            @media screen and (max-width: 768px) {
-                font-size: 18px;
-            }
-        }
-        .bottomInfo {
-            display: flex;
-            align-items: flex-end;
-            justify-content: space-between;
-
-            .date {
-                color: $d_main_text_active_color;
-            }
-            .delete {
-                display: flex;
-                align-items: center;
-                gap: 8px;
-                cursor: pointer;
-
-                @media screen and (max-width: 768px) {
-                    height: 18px;
-                }
-
-                &:hover {
-                    path {
-                        fill: $d_main_text_hover_color;
-                    }
-                    p { 
-                        color: $d_main_text_hover_color;
-                    }
-                }
-
-                svg {
-                    margin-top: -1px;
-
-                    @media screen and (max-width: 768px) {
-                        width: 18px;
-                        min-width: 18px;
-                        height: 18px;
-                    }
-                    path {
-                        fill: $d_main_text_color;
-                    }
-                }
-                
-                p {
-                    margin: 0;
-                    padding: 0;
-                    white-space: nowrap;
-                    color: $d_main_text_color;
-                }
-            }
-        }
-    }
+  }
 }

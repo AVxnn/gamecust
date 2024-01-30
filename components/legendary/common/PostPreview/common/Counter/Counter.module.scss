@@ -10,20 +10,12 @@
   transition: all 0.1s ease-in-out;
 
   &:hover {
-    .like {
-      background-color: $d_main_bg_color;
-      svg {
-        path {
-          stroke: #f05353;
-        }
-      }
-    }
+    .like,
     .liked {
       background-color: $d_main_bg_color;
       svg {
         path {
           fill: #f05353;
-          stroke: #f05353;
         }
       }
     }
@@ -45,7 +37,7 @@
       width: 22px;
       height: 22px;
       path {
-        stroke: $d_main_text_color;
+        fill: $d_main_text_color;
       }
     }
   }
@@ -63,8 +55,7 @@
       width: 22px;
       height: 22px;
       path {
-        fill: $d_main_text_color;
-        stroke: $d_main_text_color;
+        fill: #f05353;
       }
     }
   }

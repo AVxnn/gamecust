@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import React, { useContext, useEffect, useState } from "react";
 import styles from "./Drafts.module.scss";
@@ -16,8 +16,8 @@ const Drafts = ({ fetchPosts }: any) => {
 
   const [posts, setPosts] = useState([]) as any;
   const [page, setPage] = useState(1) as any;
-  
-  const {mobxStore} = useContext(Context);
+
+  const { mobxStore } = useContext(Context);
 
   const getMorePost = async () => {
     const res = await fetchPosts(page);
@@ -37,7 +37,7 @@ const Drafts = ({ fetchPosts }: any) => {
 
   useEffect(() => {
     getFirstPosts();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -52,7 +52,7 @@ const Drafts = ({ fetchPosts }: any) => {
           endMessage={<Empty text={"Лента закончилась"} />}
         >
           {posts.map((data: any, index: any) => (
-            <DraftItem key={index} data={data} />
+            <DraftItem getMorePost={getMorePost} key={index} data={data} />
           ))}
         </InfiniteScroll>
         {/* <DraftItem key={index} data={item} /> */}

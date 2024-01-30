@@ -3,14 +3,15 @@
 .button,
 .smallButton {
   background-color: $d_main_color;
-  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.50);
-  border-radius: 8px;
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.5);
+  border-radius: $br-14;
   width: 100%;
   padding: 12px 16px;
   outline: none;
+  font-weight: 500;
   border: 0;
   font-size: 16px;
-  color: #FFFFFF;
+  color: #ffffff;
   cursor: pointer;
 
   @media screen and (max-width: 1280px) {
@@ -20,7 +21,7 @@
   &:hover {
     background-color: $d_main_hover;
   }
-  
+
   &:active {
     background-color: $d_main_active;
   }
@@ -31,6 +32,17 @@
   height: 40px;
   width: 40px;
   padding: 10px;
+
+  svg {
+    width: 18px;
+    height: 18px;
+    path {
+      fill: #ffffff;
+    }
+    rect {
+      fill: #ffffff;
+    }
+  }
 
   @media screen and (max-width: 1280px) {
     display: block;

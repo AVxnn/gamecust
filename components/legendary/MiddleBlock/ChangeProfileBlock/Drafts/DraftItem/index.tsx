@@ -9,7 +9,7 @@ import { formatDistanceStrict } from "date-fns";
 import { ru } from "date-fns/locale";
 import { Context } from "../../../../../../app/(pages)/layout";
 
-const DraftItem = ({ data }: any) => {
+const DraftItem = ({ data, getMorePost }: any) => {
   const { mobxStore, postCreateStore } = useContext(Context);
 
   let image = data?.data?.filter((e: any) => e.type == "media")[0]?.href;
@@ -19,7 +19,7 @@ const DraftItem = ({ data }: any) => {
   const deleteHandler = (e: any) => {
     e.preventDefault();
     postCreateStore.deletePost(data.postId);
-    router.push("/profile/" + mobxStore.user.id + "/drafts");
+    getMorePost();
   };
 
   return (

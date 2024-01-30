@@ -1,6 +1,5 @@
 import styles from "./AccountDrop.module.scss";
 import { useContext } from "react";
-import Avatar from "../../../../../../public/img/svg/Avatar";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Context } from "../../../../../../app/(pages)/layout";
@@ -30,24 +29,26 @@ const AccountDrop = ({ data }: any) => {
           <p className={styles.text}>{mobxStore.user.username}</p>
         </div>
         <p className={styles.title}>Сообщества</p>
-        {data.map((item: any) => {
-          return (
-            <div
-              key={item._id}
-              onClick={() => changeProfile(item._id)}
-              className={styles.item}
-            >
-              <Image
-                className={styles.image}
-                src={item.imagePath}
-                width={32}
-                height={32}
-                alt={"avatar"}
-              />
-              <p className={styles.text}>{item.title}</p>
-            </div>
-          );
-        })}
+        <div className={styles.list}>
+          {data.map((item: any) => {
+            return (
+              <div
+                key={item._id}
+                onClick={() => changeProfile(item._id)}
+                className={styles.item}
+              >
+                <Image
+                  className={styles.image}
+                  src={item.imagePath}
+                  width={32}
+                  height={32}
+                  alt={"avatar"}
+                />
+                <p className={styles.text}>{item.title}</p>
+              </div>
+            );
+          })}
+        </div>
       </motion.div>
     </>
   );

@@ -1,0 +1,17 @@
+.desktop {
+  width: 100%;
+  display: block;
+
+  @media screen and (max-width: 1000px) {
+    display: none;
+  }
+}
+
+.mobile {
+  width: 100%;
+  display: none;
+
+  @media screen and (max-width: 1000px) {
+    display: block;
+  }
+}

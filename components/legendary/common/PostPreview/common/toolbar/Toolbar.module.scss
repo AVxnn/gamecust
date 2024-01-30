@@ -49,7 +49,7 @@
         height: 22px;
 
         path {
-          stroke: $d_main_text_color;
+          fill: $d_main_text_color;
         }
       }
 
@@ -58,7 +58,7 @@
           background-color: $d_main_bg_color;
         }
         path {
-          stroke: $d_main_color;
+          fill: $d_main_color;
         }
       }
     }
@@ -79,25 +79,29 @@
       cursor: pointer;
 
       svg {
-        width: 22px;
-        height: 22px;
         padding: 4px;
         border-radius: 16px;
         background-color: $d_main_subbg_color;
+        width: 22px;
+        height: 22px;
+
         path {
-          stroke: $d_main_text_color;
+          fill: $d_main_text_color;
+        }
+        circle {
+          fill: $d_main_text_color;
         }
       }
 
       &:hover {
-        .title {
-          color: $d_main_color;
-        }
         svg {
           background-color: $d_main_bg_color;
         }
         path {
-          stroke: $d_main_color;
+          fill: $d_main_color;
+        }
+        circle {
+          fill: $d_main_color;
         }
       }
 

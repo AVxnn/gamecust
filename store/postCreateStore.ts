@@ -47,7 +47,9 @@ export default class PostCreateStore {
   }
 
   sortArray(data: any) {
+    console.log(data);
     const result = sortIds(data);
+    console.log(result);
     this.data = result;
     return result;
   }
@@ -150,6 +152,22 @@ export default class PostCreateStore {
       };
       const response = await CreatePostService.reSavePost(post);
       await console.log(response);
+    } catch (error: any) {
+      console.log(error);
+    }
+  }
+
+  async updateData(user: any, data: any, postId: any, category: any) {
+    console.log(data);
+    try {
+      const post = {
+        user: user.id,
+        postId: postId,
+        category: category,
+        data: data,
+      };
+      const response = await CreatePostService.updateData(post);
+      console.log(response);
     } catch (error: any) {
       console.log(error);
     }

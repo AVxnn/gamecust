@@ -81,7 +81,9 @@ const BgProfilePopup = ({ src }: any) => {
               />
             </div>
           ) : (
-            <Image layout={"fill"} src={src || bgimage} alt={"bg"} />
+            <div className={styles.avatar}>
+              <Image layout={"fill"} src={src || bgimage} alt={"bg"} />
+            </div>
           )}
         </div>
         {isRoleHandler(path.uid, mobxStore.user.id) && (
