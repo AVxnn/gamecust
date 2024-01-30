@@ -3,4 +3,9 @@
 .mediaBlock {
   border-radius: $br-14;
   overflow: hidden;
+
+  div {
+    line-height: 0 !important;
+    height: auto !important;
+  }
 }

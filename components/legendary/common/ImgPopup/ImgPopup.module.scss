@@ -12,6 +12,9 @@
   border-radius: $br-14;
   background-color: $d_main_bg_color;
   gap: 8;
+  div {
+    line-height: 0;
+  }
 }
 
 .imageCont {
