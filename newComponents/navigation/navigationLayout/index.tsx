@@ -6,7 +6,6 @@ import Fire from "../../../public/img/svg/Fire.js";
 import Time from "../../../public/img/svg/Time.js";
 import Chees from "../../../public/img/svg/Chees.js";
 import Categories from "../../../public/img/svg/Categories.js";
-import "boxicons";
 
 const NavigationLayout = () => {
   const [active, setActive] = useState(0);
