@@ -101,7 +101,6 @@ const MainSettingsBlock = () => {
             value={mainColor}
             setValue={changeColor}
           />
-          <CommunitiesBlock />
           <PremiumBlock />
           <button onClick={() => saveHandler()} className={styles.buttonCustom}>
             Сохранить

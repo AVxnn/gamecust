@@ -63,12 +63,12 @@ const NotificationItem = ({ item }: any) => {
         <div className={styles.avatar}>
           <Image layout={"fill"} src={item.user.avatarPath} alt={"avatar"} />
         </div>
+        <CheckIcon status={item.status} />
         <div className={styles.infoText}>
           <p className={styles.name}>{item.user.username}</p>
           <span className={styles.subtitle}>{item.description}</span>
         </div>
       </div>
-      <CheckIcon status={item.status} />
     </div>
   );
 };

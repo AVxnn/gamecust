@@ -149,7 +149,7 @@ const HeaderPost = ({ data, fixed }: any) => {
         {isRoleHandler(mobxStore.user.id, data.user._id) ? (
           <EditBlock postId={data.postId} />
         ) : (
-          <FollowButton changeSub={changeSub} data={data} />
+          <FollowButton changeSub={changeSub} data={data.user} />
         )}
       </div>
     </header>

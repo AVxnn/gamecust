@@ -1,90 +1,73 @@
 @import "/styles/variables.scss";
 
 .toolBar {
-    width: calc(100% - 104px);
+  width: calc(100% - 104px);
+  display: flex;
+  margin-top: 24px !important;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+  margin: 0 52px;
+
+  @media (max-width: 768px) {
+    width: calc(100% - 64px);
+    flex-wrap: wrap-reverse;
+    gap: 16px;
+    margin: 12px 32px 0 32px !important;
+  }
+
+  .left {
     display: flex;
-    margin-top: 24px !important;
-    justify-content: space-between;
+    right: 24px;
+    align-items: center;
     flex-direction: row-reverse;
-    margin: 0 52px;
+    align-self: flex-start;
+    gap: 32px;
+    top: 24px;
 
-    @media (max-width: 768px) {
-      width: calc(100% - 64px);
-      flex-wrap: wrap-reverse;
-      gap: 16px;
-      margin: 12px 32px 0 32px !important;
+    svg {
+      width: 32px;
+      height: 32px;
+      cursor: pointer;
+    }
+  }
+
+  .right {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+
+    .save {
+      color: $d_main_text_color;
     }
 
-    .left {
-      display: flex;
-      right: 24px;
-      align-items: center;
-      flex-direction: row-reverse;
-      align-self: flex-start;
-      gap: 32px;
-      top: 24px;
+    path {
+      fill: $d_main_text_color;
+    }
 
-      button {
-        padding: 8px 8px;
+    .loader {
+      width: 8px;
+      height: 8px;
+      margin-left: 16px;
+      border-radius: 50%;
+      background-color: $d_main_text_color;
+      box-shadow: 8px 0 $d_main_text_color, -8px 0 $d_main_text_color;
+      position: relative;
+      animation: flash 0.5s ease-out infinite alternate;
+    }
 
+    @keyframes flash {
+      0% {
+        background-color: $d_main_bg_color;
+        box-shadow: 12px 0 $d_main_bg_color, -12px 0 $d_main_text_color;
       }
-
-      svg {
-        width: 32px;
-        height: 32px;
-        cursor: pointer;
-
-        path {
-          transition: all 0.1s ease-in-out;
-          fill: $d_main_subtext_color;
-        }
-
-        &:hover {
-          path {
-            fill: $d_main_text_color;
-          }
-        }
+      50% {
+        background-color: $d_main_text_color;
+        box-shadow: 12px 0 $d_main_bg_color, -12px 0 $d_main_bg_color;
+      }
+      100% {
+        background-color: $d_main_bg_color;
+        box-shadow: 12px 0 $d_main_text_color, -12px 0 $d_main_bg_color;
       }
     }
-
-    .right {
-        display: flex;
-        align-items: center;
-        gap: 4px;
-
-        .save {
-            color: $d_main_text_color;
-        }
-
-        path {
-            fill: $d_main_text_color;
-        }
-
-        .loader {
-          width: 8px;
-          height: 8px;
-          margin-left: 16px;
-          border-radius: 50%;
-          background-color: $d_main_text_color;
-          box-shadow: 8px 0 $d_main_text_color, -8px 0 $d_main_text_color;
-          position: relative;
-          animation: flash 0.5s ease-out infinite alternate;
-        }
-        
-        @keyframes flash {
-          0% {
-            background-color: $d_main_bg_color;
-            box-shadow: 12px 0 $d_main_bg_color, -12px 0 $d_main_text_color;
-          }
-          50% {
-            background-color: $d_main_text_color;
-            box-shadow: 12px 0 $d_main_bg_color, -12px 0 $d_main_bg_color;
-          }
-          100% {
-            background-color: $d_main_bg_color;
-            box-shadow: 12px 0 $d_main_text_color, -12px 0 $d_main_bg_color;
-          }
-        }
-              
-    }
+  }
 }

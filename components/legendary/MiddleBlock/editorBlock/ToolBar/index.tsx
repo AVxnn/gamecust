@@ -5,6 +5,7 @@ import Dots from "../../../../../public/img/svg/Dots";
 import Check from "../../../../../public/img/svg/Check";
 import { useRouter } from "next/navigation";
 import { Context } from "../../../../../app/(pages)/layout";
+import DotsPreview from "./ui/DotsPreview";
 
 const ToolBar = ({ pressKey }: any) => {
   const { mobxStore, postCreateStore, notificationStore } = useContext(Context);
@@ -40,7 +41,7 @@ const ToolBar = ({ pressKey }: any) => {
         <Button clb={submitHandler} type={"primary"} size={"big"}>
           Опубликовать
         </Button>
-        <Dots />
+        {postCreateStore?.data[0].value ? <DotsPreview /> : null}
       </div>
       <div className={styles.right}>
         {!pressKey ? (

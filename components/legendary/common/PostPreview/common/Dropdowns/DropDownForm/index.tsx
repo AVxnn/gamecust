@@ -11,6 +11,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { observer } from "mobx-react";
 import uuid from "react-uuid";
 import { Context } from "../../../../../../../app/(pages)/layout";
+import ListIcon from "../../../../../../../public/img/svg/listIcon";
 
 const DropDownForm = observer(
   ({
@@ -79,6 +80,16 @@ const DropDownForm = observer(
           unicalId: uuid(),
           id: postCreateStore.data.length - 1,
         };
+      } else if (type == "list") {
+        result = {
+          type: "list",
+          value: "<li>",
+          typeList: "li",
+          stared: false,
+          unicalId: uuid(),
+          id: postCreateStore.data.length - 1,
+        };
+        document.execCommand("insertUnorderedList", false); // Send the command to the browser
       } else if (type == "br") {
         result = {
           type: "br",
@@ -161,6 +172,14 @@ const DropDownForm = observer(
                 >
                   <LinkIcon />
                   <p className={styles.text}>Вставить</p>
+                </li>
+                <li
+                  tabIndex={0}
+                  onClick={() => createNewFormChange("list")}
+                  className={styles.item}
+                >
+                  <ListIcon />
+                  <p className={styles.text}>Список</p>
                 </li>
                 <li
                   onBlur={() => onBlurHandler()}

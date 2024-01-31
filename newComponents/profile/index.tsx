@@ -42,7 +42,6 @@ const CategoryHeader = ({ data }: any) => {
     setActive(index);
   };
 
-  console.log(isRoleHandler(mobxStore.user.id, uid), mobxStore.user.id, uid);
   useEffect(() => {
     if (isRoleHandler(mobxStore.user.id, uid)) {
       setDataTagAccount([
@@ -127,7 +126,6 @@ const CategoryHeader = ({ data }: any) => {
         <div className={styles.header}>
           <div className={styles.left}>
             <AvatarPopup src={data.avatarPath} />
-            <LvlPopup data={data} />
           </div>
         </div>
         <div className={styles.info}>

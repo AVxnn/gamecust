@@ -88,7 +88,7 @@ const PostPreview = ({ data }: any) => {
                     className={styles.mediaBlock}
                   >
                     <ReactPlayer
-                      pip
+                      pip={false}
                       onClick={(event: any) => event.preventDefault()}
                       width="100%"
                       style={{ overflow: "hidden", borderRadius: "8px" }}

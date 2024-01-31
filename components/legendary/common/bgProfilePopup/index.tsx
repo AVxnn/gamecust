@@ -100,6 +100,7 @@ const BgProfilePopup = ({ src }: any) => {
                   className={styles.camera}
                 >
                   <ImageAdd />
+                  Сменить обложку
                 </motion.div>
                 <input
                   multiple={true}

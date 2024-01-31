@@ -45,7 +45,7 @@ const PostView = () => {
   };
 
   useMotionValueEvent(scrollY, "change", (latest: any) => {
-    if (latest > 16) {
+    if (latest > 29) {
       setIsFixed(true);
     } else {
       setIsFixed(false);
@@ -58,26 +58,28 @@ const PostView = () => {
   }, []);
 
   useEffect(() => {
-    const addView = async () => {
-      if (postData.postId) {
-        if (!mobxStore.user.id && !localStorage.getItem("localToken")) {
-          const localToken = uuid();
-          localStorage.setItem("localToken", localToken);
-          await addViewPost(localToken, postData.postId);
-          return true;
-        } else if (!mobxStore.user.id && localStorage.getItem("localToken")) {
-          await addViewPost(
-            localStorage.getItem("localToken"),
-            postData.postId
-          );
-          return true;
-        } else {
-          await addViewPost(mobxStore.user.id, postData.postId);
+    if (postData?.published) {
+      const addView = async () => {
+        if (postData.postId) {
+          if (!mobxStore.user.id && !localStorage.getItem("localToken")) {
+            const localToken = uuid();
+            localStorage.setItem("localToken", localToken);
+            await addViewPost(localToken, postData.postId);
+            return true;
+          } else if (!mobxStore.user.id && localStorage.getItem("localToken")) {
+            await addViewPost(
+              localStorage.getItem("localToken"),
+              postData.postId
+            );
+            return true;
+          } else {
+            await addViewPost(mobxStore.user.id, postData.postId);
+          }
         }
+      };
+      if (postData?.postId) {
+        addView();
       }
-    };
-    if (postData?.postId) {
-      addView();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [postData]);
@@ -112,8 +114,8 @@ const PostView = () => {
           })}
         </section>
         <div id="comments"></div>
-        <Toolbar data={postData} />
-        {commentsData && (
+        {postData.published ? <Toolbar data={postData} /> : null}
+        {commentsData && postData.published && (
           <Comments
             getNewComments={() => getNewComments()}
             dataS={postData}

@@ -1,6 +1,6 @@
 @import "/styles/variables.scss";
 
-.logotype{
+.logotype {
   margin-left: 16px;
   height: 34px;
   cursor: pointer;
@@ -15,6 +15,12 @@
     margin-left: 0;
   }
 
+  &:hover {
+    path {
+      fill: $d_main_color;
+    }
+  }
+
   a {
     height: 34px !important;
   }
@@ -24,7 +30,6 @@
   }
 
   svg:active {
-
     path {
       transition: all 80ms ease-in-out;
       fill: $d_main_text_color;
@@ -35,13 +40,19 @@
 .smallLogotype {
   display: none;
 
+  &:hover {
+    path {
+      fill: $d_main_color;
+    }
+  }
+
   path {
     fill: $d_main_text_color;
   }
 
   @media (max-width: 1280px) {
     display: block;
-  } 
+  }
   @media (max-width: 1024px) {
     display: none;
   }

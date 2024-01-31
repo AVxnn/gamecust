@@ -5,6 +5,7 @@ import TextAreaBlock from "../Blocks/TextAreaBlock";
 import Br from "../../../common/PostPreview/common/SelectForm/ui/Br";
 import { Reorder, useDragControls } from "framer-motion";
 import { observer } from "mobx-react-lite";
+import ListBlock from "../Blocks/ListBlock";
 
 const ConstructorBlocks = ({ data }: any) => {
   const dragControls = useDragControls();
@@ -28,6 +29,16 @@ const ConstructorBlocks = ({ data }: any) => {
           value={data}
         >
           <LinkUpload item={data} dragControls={dragControls} />
+        </Reorder.Item>
+      );
+    case "list":
+      return (
+        <Reorder.Item
+          dragListener={false}
+          dragControls={dragControls}
+          value={data}
+        >
+          <ListBlock item={data} dragControls={dragControls} />
         </Reorder.Item>
       );
     case "br":

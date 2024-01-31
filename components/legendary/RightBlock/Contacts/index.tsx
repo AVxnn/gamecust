@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./Contacts.module.scss";
 import Link from "next/link";
 import Discord from "../../../../public/img/auth/discord";
+import Telegram from "../../../../public/img/svg/telegram";
 
 const Contacts = () => {
   return (
@@ -9,6 +10,7 @@ const Contacts = () => {
       <div className={styles.contacts}>
         <h3 className={styles.title}>Контакты</h3>
         <div className={styles.item}>
+          <Telegram />
           <a href="https://t.me/+YUehvP6Vwhs0NmVi">GameCust Dev</a>
         </div>
         <div className={styles.item}>

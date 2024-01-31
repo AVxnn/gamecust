@@ -8,13 +8,7 @@ const LayoutPages = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
       <div className={styles.layout}>
-        <div className={styles.leftColumn}>
-        </div>
-        <div className={styles.middleColumn}>
-          {children}
-        </div>
-        <div className={styles.rightColumn}>
-        </div>
+        <div className={styles.middleColumn}>{children}</div>
       </div>
     </>
   );

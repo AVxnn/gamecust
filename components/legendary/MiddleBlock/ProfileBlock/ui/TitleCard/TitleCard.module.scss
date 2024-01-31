@@ -1,9 +1,51 @@
 @import "/styles/variables.scss";
 
 .titleCard {
-  margin: 0 0 24px 0;
-  padding-bottom: 12px;
+  margin: 0;
   color: $d_main_text_color;
-  font-size: 24px;
+  font-size: 18px;
+  font-weight: 500;
   border-radius: 2px;
+  margin-top: -1px;
+}
+
+.topBar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+
+  @media screen and (max-width: 720px) {
+    display: block;
+  }
+
+  .icon {
+    height: 32px;
+    padding: 1px;
+    border-radius: 99px;
+    width: 32px;
+    margin-left: -4px;
+    cursor: pointer;
+    svg {
+      width: 32px;
+      height: 32px;
+      path {
+        fill: $d_main_text_color;
+      }
+    }
+
+    &:hover {
+      background-color: $d_main_bg_color;
+    }
+  }
+}
+
+.bar {
+  border: none;
+  width: calc(100% + 48px);
+  margin-left: -24px;
+  background-color: $d_main_bg_color;
+  color: $d_main_color;
+  height: 1px; /* Толщина линии */
 }

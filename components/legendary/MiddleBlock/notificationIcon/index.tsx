@@ -83,7 +83,7 @@ const NotificationIcon = () => {
             <div className={styles.list}>
               {data.length >= 1 ? (
                 data.map((item: any, index: number) => {
-                  if (index <= 10) {
+                  if (index <= 5) {
                     return <NotificationItem key={index} item={item} />;
                   } else {
                     return null;

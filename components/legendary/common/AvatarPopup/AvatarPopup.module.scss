@@ -13,7 +13,7 @@
     height: 128px;
     justify-content: center;
     margin: 0 -24px 16px 0px;
-    gap: 8; 
+    gap: 8;
     border-radius: 16px;
     overflow: hidden;
     border: 4px solid $d_main_subbg_color;
@@ -21,22 +21,22 @@
 
   .camera {
     position: absolute;
-    left: 36px;
+    left: 4px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgba($color: #5a5a5a, $alpha: 0.8);
-    width: 50%;
-    height: 50%;
-    border-radius: 8px;
-    top: 36px;
+    background-color: rgba($color: #000000, $alpha: 0.4);
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    top: 4px;
     cursor: pointer;
 
     svg {
       width: 32px;
       height: 32px;
       path {
-        fill: $d_main_text_color;
+        fill: #ffffff;
       }
     }
   }

@@ -163,7 +163,7 @@ export default class PostCreateStore {
       const post = {
         user: user.id,
         postId: postId,
-        category: category,
+        category: category ? category : null,
         data: data,
       };
       const response = await CreatePostService.updateData(post);

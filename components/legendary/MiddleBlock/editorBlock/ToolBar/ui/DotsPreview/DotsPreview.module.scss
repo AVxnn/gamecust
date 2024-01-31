@@ -1,19 +1,16 @@
 @import "/styles/variables.scss";
 
 .container {
-  position: absolute;
-  right: 0;
-  top: 6px;
-
+  position: relative;
   .button {
     display: flex;
     align-items: center;
     gap: 4px;
     border: 0;
     outline: none;
-    background-color: $d_main_subbg_color;
+    padding: 2px;
     border-radius: 99px;
-    padding: 4px 4px;
+    background-color: $d_main_subbg_color;
     color: $const_main_text_color;
     cursor: pointer;
     transition: all 0.15s ease-in-out;
@@ -30,10 +27,6 @@
       position: relative;
       top: 1px;
     }
-
-    path {
-      fill: $d_main_text_color;
-    }
   }
 
   .dropMenu {
@@ -41,11 +34,12 @@
     width: 180px;
     margin-top: 8px;
     display: flex;
+    bottom: 50px;
     gap: 4px;
     flex-direction: column;
     align-content: flex-start;
     background-color: $d_main_subbg_color;
-    padding: 4px;
+    padding: 6px;
     box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.5);
     border-radius: 8px;
     z-index: 2;
@@ -70,30 +64,26 @@
       cursor: pointer;
       transition: all 0.1s ease-in-out;
 
-      svg {
-        width: 18px;
-        height: 18px;
-        min-width: 18px;
-        min-height: 18px;
-        margin-top: 0px;
-      }
-
-      path {
-        fill: $d_main_text_color;
-      }
-
       &:hover {
         background-color: $d_main_bg_color;
+      }
+
+      svg {
+        width: 22px;
+        height: 22px;
       }
     }
   }
 }
 
 .active {
-  padding-left: 95px;
-  padding-bottom: 8px;
-
   .button {
     background-color: $d_main_bg_color;
+
+    svg {
+      path {
+        fill: $d_main_text_color !important;
+      }
+    }
   }
 }

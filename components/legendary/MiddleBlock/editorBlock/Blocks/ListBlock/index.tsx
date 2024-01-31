@@ -1,5 +1,5 @@
 import { useContext, useEffect, useRef, useState } from "react";
-import styles from "./TextAreaBlock.module.scss";
+import styles from "./ListBlock.module.scss";
 import DropDownForm from "../../../../common/PostPreview/common/Dropdowns/DropDownForm";
 import DropDownEdit from "../../../../common/PostPreview/common/Dropdowns/DropDownEdit";
 import { observer } from "mobx-react";
@@ -9,7 +9,7 @@ import DOMPurify from "dompurify";
 import ContentEditable from "react-contenteditable";
 import { Context } from "../../../../../../app/(pages)/layout";
 
-const TextAreaBlock = ({ item, dragControls = null }: any) => {
+const ListBlock = ({ item, dragControls = null }: any) => {
   const popupRef = useRef<HTMLDivElement>(null);
   const labelRef = useRef<HTMLElement>(null) as any;
   const inputText = useRef<HTMLElement>(null) as any;
@@ -69,6 +69,14 @@ const TextAreaBlock = ({ item, dragControls = null }: any) => {
         setIsClicked(true);
       }
     }
+    if (focus) {
+      if (e.keyCode === 13) {
+        e.preventDefault();
+        console.log("execCommand");
+        document.execCommand("insertHTML", false, "<br><li></li>");
+        return false;
+      }
+    }
   };
 
   // Функция отлавливающая вставленный текст
@@ -116,6 +124,10 @@ const TextAreaBlock = ({ item, dragControls = null }: any) => {
 
   useEffect(() => {
     inputText.current.focus();
+  }, []);
+
+  useEffect(() => {
+    inputText.current.focus();
   }, [postCreateStore.data]);
 
   return (
@@ -129,14 +141,14 @@ const TextAreaBlock = ({ item, dragControls = null }: any) => {
         <ContentEditable
           contentEditable={true}
           innerRef={inputText}
-          className={`${styles.inputMain} ${styles[item.type]}`}
+          className={`${styles.inputList}`}
           onChange={(e) => updateHandler(e.target.value)}
           onMouseUp={handleTextSelection}
           onPaste={handlePaste}
           onClick={() => setFocus(true)}
           onFocus={() => setFocus(true)}
           html={item.value}
-          tagName="article"
+          tagName="ul"
           suppressContentEditableWarning={true}
         />
         {!item.value && (
@@ -180,4 +192,4 @@ const TextAreaBlock = ({ item, dragControls = null }: any) => {
   );
 };
 
-export default observer(TextAreaBlock);
+export default observer(ListBlock);

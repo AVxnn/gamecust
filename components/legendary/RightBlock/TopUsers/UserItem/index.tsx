@@ -9,6 +9,7 @@ import {
   checkLevel,
 } from "../../../../../newComponents/componentColors/checkColor";
 import Link from "next/link";
+import bgimage from "../../../../../public/img/bgimage.png";
 
 const UserItem = ({ data, index, get, set }: any) => {
   const [anim, setAnim] = useState(false);
@@ -51,18 +52,17 @@ const UserItem = ({ data, index, get, set }: any) => {
           </span>
         )}
       </header>
-      {data.bgPath && (
-        <div className={styles.images}>
-          <div key={index} className={styles.contImg}>
-            <Image
-              layout={"fill"}
-              className={styles.img}
-              src={data.bgPath}
-              alt=""
-            />
-          </div>
+
+      <div className={styles.images}>
+        <div key={index} className={styles.contImg}>
+          <Image
+            layout={"fill"}
+            className={styles.img}
+            src={data.bgPath || bgimage}
+            alt=""
+          />
         </div>
-      )}
+      </div>
     </div>
   );
 };

@@ -53,6 +53,12 @@
       max-height: 420px;
       flex-direction: column;
       gap: 6px;
+
+      .empty {
+        color: $d_main_text_color;
+        margin: 0;
+        margin: 8px 0 12px 10px;
+      }
     }
     ::-webkit-scrollbar {
       width: 6px;

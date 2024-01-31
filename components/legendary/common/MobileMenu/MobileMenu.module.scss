@@ -1,107 +1,105 @@
 @import "/styles/variables.scss";
 
 .mobileMenu {
-    display: none;
-    position: fixed;
-    bottom: 0;
+  display: none;
+  position: fixed;
+  bottom: 0;
+  align-items: center;
+  justify-content: space-around;
+  height: 50px;
+  background: $d_main_subbg_glass_color;
+  backdrop-filter: blur(8px);
+  width: 100%;
+  z-index: 30;
+  box-shadow: 0px -1px 24px 0px rgba(0, 0, 0, 0.25);
+
+  .link {
+    display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
     height: 50px;
-    background: $d_main_subbg_glass_color;
-    backdrop-filter: blur(8px);
-    width: 100%;
-    z-index: 30;
-    box-shadow: 0px -1px 24px 0px rgba(0, 0, 0, 0.25);
+    width: 50px;
 
-    .link {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 50px;
-      width: 50px;
+    svg {
+      width: 28px;
+      height: 28px;
+    }
 
-      svg {
-        width: 28px;
-        height: 28px;
-      }
-
+    path {
+      fill: $d_main_text_color;
+    }
+    rect {
+      stroke: $d_main_text_color;
+    }
+    &:hover {
       path {
-        fill: $d_main_text_color
+        fill: $d_main_text_hover_color;
       }
       rect {
         stroke: $d_main_text_color;
       }
-      &:hover {
-        path {
-          fill: $d_main_text_hover_color;
-        }
-        rect {
-          stroke: $d_main_text_color;
-        }
-      }
+    }
 
-      .avatar {
-        position: relative;
-        height: 28px;
-        width: 28px;
+    .avatar {
+      position: relative;
+      height: 28px;
+      width: 28px;
+      border-radius: 99px;
+
+      svg {
         border-radius: 99px;
-
-        svg {
-          border-radius: 99px;
-        }
-
-        img {
-          object-fit: cover;
-          border-radius: 99px;
-        }
-      }
-    }
-
-    .active {
-
-      path {
-        fill: $d_main_color
-      }
-      rect {
-        stroke: $d_main_color;
-      }
-      &:hover {
-        path {
-          fill: $d_main_hover;
-        }
-        rect {
-          stroke: $d_main_hover;
-        }
       }
 
-      .avatar {
-        z-index: 2;
-        &:before {
-          content: '';
-          position: absolute;
-          width: 32px;
-          height: 32px;
-          left: -2px;
-          top: -2px;
-          background-color: $d_main_bg_color;
-          border-radius: 99px;
-        }
-        &:after {
-          content: '';
-          position: absolute;
-          left: -4px;
-          top: -4px;
-          width: 36px;
-          height: 36px;
-          background-color: $d_main_color;
-          border-radius: 99px;
-          z-index: -1;
-        }
+      img {
+        object-fit: cover;
+        border-radius: 99px;
       }
-      
-    }
-
-    @media (max-width: 720px) {
-      display: flex;
     }
   }
+
+  .active {
+    path {
+      fill: $d_main_color;
+    }
+    rect {
+      stroke: $d_main_color;
+    }
+    &:hover {
+      path {
+        fill: $d_main_hover;
+      }
+      rect {
+        stroke: $d_main_hover;
+      }
+    }
+
+    .avatar {
+      z-index: 2;
+      &:before {
+        content: "";
+        position: absolute;
+        width: 32px;
+        height: 32px;
+        left: -2px;
+        top: -2px;
+        background-color: $d_main_bg_color;
+        border-radius: 99px;
+      }
+      &:after {
+        content: "";
+        position: absolute;
+        left: -4px;
+        top: -4px;
+        width: 36px;
+        height: 36px;
+        background-color: $d_main_color;
+        border-radius: 99px;
+        z-index: -1;
+      }
+    }
+  }
+
+  @media (max-width: 1024px) {
+    display: flex;
+  }
+}

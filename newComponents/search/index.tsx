@@ -33,7 +33,7 @@ const SearchComponent = () => {
     if (mobxStore.user.id) {
       const resData = await getSearch(value);
       setData(resData);
-      if (value && (resData.posts.length > 0 || resData.users.length > 0)) {
+      if (value) {
         setIsOpen(true);
         popupHandlers.noWorkScroll();
       } else {
@@ -142,6 +142,11 @@ const SearchComponent = () => {
                     />
                   );
                 })}
+                {data.posts.length <= 0 && data.users.length <= 0 ? (
+                  <>
+                    <h4 className={styles.empty}>Ничего не найдено</h4>
+                  </>
+                ) : null}
               </div>
             </motion.div>
           ) : (

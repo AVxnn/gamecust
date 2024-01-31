@@ -1,90 +1,91 @@
 @import "/styles/variables.scss";
 
 .newDropMenu {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  .title {
+    color: $d_main_text_color;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 0;
+    margin: 0;
+  }
+
+  .dropContent {
+    position: relative;
     display: flex;
     flex-direction: column;
-    gap: 12px;
 
-    .title {
-        color: $d_main_text_color;
+    .container {
+      position: relative;
+      display: flex;
+      width: 100%;
+
+      .input {
+        padding: 11px 15px;
+        border: 1px solid $d_main_bg_color;
+        width: 100%;
         font-size: 16px;
-        font-weight: 500;
-        padding: 0;
-        margin: 0;
+        border-radius: 8px;
+        color: $d_main_text_color;
+        background-color: $d_main_bg_color;
+        cursor: pointer;
+        transition: 0.1s ease-in-out all;
+
+        &:hover {
+          background-color: $d_main_subbg_color;
+          border: 1px solid $d_main_color;
+          box-shadow: 0 0 2px 3px rgba(#9e5bf0, 0.2);
+        }
+      }
+
+      svg {
+        position: absolute;
+        right: 16px;
+        top: 9px;
+        transition: all 0.2s ease-in-out;
+
+        path {
+          fill: $d_main_subtext_color;
+        }
+      }
     }
 
-    .dropContent {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        
-        .container {
-            position: relative;
-            display: flex;
-            width: 100%;
-    
-            .input {
-                padding: 11px 15px;
-                border: 1px solid $d_main_bg_color;
-                width: 100%;
-                font-size: 16px;
-                border-radius: 8px;
-                color: $d_main_text_color;
-                box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
-                background-color: $d_main_bg_color;
-                cursor: pointer;
-                transition: 0.1s ease-in-out all;
-    
-                &:hover {
-                    background-color: $d_main-Bg-color-hover;
-                }
-            }
-        
-            svg {
-                position: absolute;
-                right: 16px;
-                top: 9px;
-                transition: all 0.2s ease-in-out;
-                
-                path {
-                    fill: $d_main_subtext_color;
-                }
-            }
-        }
-    
-        .active {
+    .active {
+      .input {
+        background-color: $d_main_subbg_color;
+        border: 1px solid $d_main_color;
+        box-shadow: 0 0 2px 3px rgba(#9e5bf0, 0.2);
+      }
 
-            .input {
-                border: 1px solid $d_main_text_color;
-                background-color: $d_main-Bg-color-hover;
-            }
-
-            svg {
-                transform: rotate(180deg);
-            }
-        }
-    
-        .dropMenu {
-            position: absolute;
-            top: 50px;
-            width: calc(100%);
-            box-sizing: border-box;
-            font-size: 16px;
-            border-radius: 8px;
-            overflow: hidden;
-            color: $d_main_text_color;
-            box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
-            background-color: $d_main_bg_color;
-            cursor: pointer;
-            z-index: 2;
-
-            .item {
-                padding: 12px 16px;
-
-                &:hover {
-                    background-color: $d_main_subbg_color;
-                }
-            }
-        }
+      svg {
+        transform: rotate(180deg);
+      }
     }
+
+    .dropMenu {
+      position: absolute;
+      top: 50px;
+      width: calc(100%);
+      box-sizing: border-box;
+      font-size: 16px;
+      border-radius: 8px;
+      overflow: hidden;
+      color: $d_main_text_color;
+      box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+      background-color: $d_main_bg_color;
+      cursor: pointer;
+      z-index: 2;
+
+      .item {
+        padding: 12px 16px;
+
+        &:hover {
+          background-color: $d_main_subbg_color;
+        }
+      }
+    }
+  }
 }

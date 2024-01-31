@@ -55,7 +55,6 @@
   }
 
   .mainInfo {
-
     .title {
       font-size: 20px;
       margin: 0 0 12px 0;
@@ -87,10 +86,10 @@
       }
 
       .player {
-          width: 100% !important;
-          height: auto !important;
-          max-height: 500px;
-          aspect-ratio: 16/9;
+        width: 100% !important;
+        height: auto !important;
+        max-height: 500px;
+        aspect-ratio: 16/9;
       }
     }
 
@@ -108,9 +107,9 @@
       background-color: $d_main_text_color;
       border-radius: 8px;
       transition: all 0.1s ease-in-out;
-      
+
       img {
-          object-fit: contain;
+        object-fit: contain;
       }
     }
 
@@ -125,7 +124,7 @@
         gap: 12px;
         position: relative;
         margin: 0 auto;
-  
+
         .oval:nth-child(1) {
           width: 16px;
           height: 16px;
@@ -170,5 +169,5 @@
 }
 
 .fixed {
-  padding-top: 54px;
+  padding-top: 58px;
 }
