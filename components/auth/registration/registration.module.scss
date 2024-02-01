@@ -25,6 +25,7 @@
     width: 410px;
     background-color: $d_main_subbg_color;
     padding: 48px;
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -67,6 +68,27 @@
         font-weight: 700;
         margin: 0 0 32px 0;
         color: $d_main_text_color;
+      }
+
+      .back {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        position: absolute;
+        top: 32px;
+        left: 22px;
+        color: $d_main_gray_color;
+        cursor: pointer;
+
+        svg {
+          transform: rotate(90deg);
+          width: 18px;
+          height: 18px;
+          margin-top: -2px;
+          path {
+            fill: $d_main_gray_color;
+          }
+        }
       }
 
       .buttonList {

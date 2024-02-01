@@ -20,6 +20,8 @@ import Title from "../postItem/UI/data/title";
 import SubTitle from "../postItem/UI/data/subtitle";
 import Description from "../postItem/UI/data/description";
 import Loading from "./loading";
+import ListBlock from "../postItem/UI/data/listBlock";
+import QuoteBlock from "../postItem/UI/data/QuoteBlock";
 
 const PostView = () => {
   const { uid } = useParams() as any;
@@ -100,6 +102,10 @@ const PostView = () => {
               return <SubTitle key={index} text={item.value} />;
             } else if (item.type === "text") {
               return <Description key={index} text={item.value} />;
+            } else if (item.type === "list") {
+              return <ListBlock key={index} item={item} />;
+            } else if (item.type === "quote") {
+              return <QuoteBlock key={index} item={item} />;
             } else if (item.type === "link") {
               if (item.typeMedia === "image") {
                 return <ImgPopup key={index} src={item?.href} />;

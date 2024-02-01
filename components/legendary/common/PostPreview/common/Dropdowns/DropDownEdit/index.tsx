@@ -7,9 +7,10 @@ import Trash from "../../../../../../../public/img/svg/Trash";
 import { useContext, useEffect, useRef } from "react";
 import NewForm from "../../../../../../../public/img/svg/NewForm";
 import cn from "classnames";
-import { observer } from "mobx-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Context } from "../../../../../../../app/(pages)/layout";
+import Options from "../Options";
+import { observer } from "mobx-react-lite";
 
 const DropDownEdit = observer(
   ({ item, setIsClicked, isClicked, dragControls }: any) => {
@@ -90,7 +91,7 @@ const DropDownEdit = observer(
                 ref={popupRef}
                 className={styles.dropDownForm}
               >
-                <p className={styles.title}>Настройки</p>
+                <Options item={item} />
                 {item.stared ? (
                   <div
                     onClick={() => staredHandler(false)}

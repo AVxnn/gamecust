@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import styles from "./registration.module.scss";
 import bg from "../../../public/img/auth/bg.png";
@@ -9,9 +9,17 @@ import Mail from "../../../public/img/auth/mail";
 import Gamecust from "../../../public/img/main/gamecust";
 import { signIn } from "next-auth/react";
 import { useSession } from "next-auth/react";
+import { motion } from "framer-motion";
+import RegistrationForm from "../registrationForm";
+import Arrow from "../../../public/img/svg/Arrow";
 
 const Registration = ({ setAuth }: any) => {
   const { status, data: session } = useSession();
+  const [isEmail, setIsEmail] = useState(false);
+
+  const openEmailPassword = () => {
+    setIsEmail(!isEmail);
+  };
 
   return (
     <div className={styles.registration}>
@@ -24,32 +32,48 @@ const Registration = ({ setAuth }: any) => {
             <Gamecust />
           </div>
           <h6 className={styles.title}>Регистрация аккаунта</h6>
-          <div className={styles.buttonList}>
-            <button
-              onClick={() => signIn("discord")}
-              className={`${styles.buttonAuth} ${styles.discord}`}
+          {!isEmail && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className={styles.buttonList}
             >
-              <div className={`${styles.div}`}>
-                <Discord />
-                <span>Discord</span>
-              </div>
-            </button>
-            <button className={styles.buttonAuth}>
-              <div className={`${styles.div} ${styles.mail}`}>
-                <Mail />
-                <span>Почта</span>
-              </div>
-            </button>
-            <button
-              onClick={() => signIn("google")}
-              className={styles.buttonAuth}
+              <button className={`${styles.buttonAuth} ${styles.discord}`}>
+                <div className={styles.div}>
+                  <Discord />
+                  <span>Discord</span>
+                </div>
+              </button>
+              <button
+                onClick={() => openEmailPassword()}
+                className={styles.buttonAuth}
+              >
+                <div className={`${styles.div} ${styles.mail}`}>
+                  <Mail />
+                  <span>Почта</span>
+                </div>
+              </button>
+              <button className={styles.buttonAuth}>
+                <div className={styles.div}>
+                  <Google />
+                  <span>Google</span>
+                </div>
+              </button>
+            </motion.div>
+          )}
+          {isEmail && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
             >
-              <div className={styles.div}>
-                <Google />
-                <span>Google</span>
+              <div onClick={() => openEmailPassword()} className={styles.back}>
+                <Arrow /> Назад
               </div>
-            </button>
-          </div>
+              <RegistrationForm />
+            </motion.div>
+          )}
           <span className={styles.text}>
             Есть аккаунт?{" "}
             <span onClick={() => setAuth(true)} className={styles.link}>

@@ -11,7 +11,7 @@ const ToolBar = ({ pressKey }: any) => {
   const { mobxStore, postCreateStore, notificationStore } = useContext(Context);
   const router = useRouter();
   const submitHandler = () => {
-    if (postCreateStore.data[0].value.length > 6) {
+    if (postCreateStore.data[0].value.length > 2) {
       if (localStorage.getItem("token")) {
         mobxStore.checkAuth();
       }

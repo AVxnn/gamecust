@@ -1,0 +1,16 @@
+@import "/styles/variables.scss";
+
+.listBlock {
+  font-size: 18px;
+  margin: 12px 0;
+  line-height: 27px;
+  padding-left: 20px;
+  color: $d_main_text_color;
+  font-weight: 500;
+  word-break: break-word;
+  white-space: pre-wrap;
+
+  li {
+    margin-bottom: 8px;
+  }
+}

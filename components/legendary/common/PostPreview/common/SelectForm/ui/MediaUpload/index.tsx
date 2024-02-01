@@ -177,9 +177,6 @@ const MediaUpload = observer(({ item, dragControls }: any) => {
               className={styles.fileBlock}
             >
               <ImageAdd />
-              <span className={styles.text}>
-                Загрузите или перетащите изображение
-              </span>
               <input
                 multiple={true}
                 onChange={(e) => sendData(e, "input")}

@@ -2,7 +2,7 @@
 
 .toolbar {
   position: absolute;
-  top: 6px;
+  top: 4px;
   left: 18px;
 
   @media (max-width: 768px) {
@@ -13,8 +13,8 @@
   }
 
   .newForm {
-    width: 24px;
-    height: 24px;
+    width: 28px;
+    height: 28px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -43,6 +43,8 @@
     }
 
     svg {
+      width: 32px;
+      height: 32px;
       transition: all 0.2s ease-in-out;
     }
   }
@@ -56,14 +58,14 @@
     position: absolute;
     display: flex;
     flex-direction: column;
-    width: 170px;
+    width: 200px;
     padding: 4px;
     box-sizing: border-box;
 
     background-color: $d_main_subbg_color;
     box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.5);
     border-radius: 8px;
-    top: 30px;
+    top: 36px;
     z-index: 12;
 
     @media (max-width: 768px) {
@@ -79,7 +81,7 @@
     .title {
       padding: 8px 8px 4px 8px;
       margin: 0;
-      font-size: 14px;
+      font-size: 16px;
       color: $d_main_text_color;
       font-weight: 600;
 
@@ -101,6 +103,8 @@
       }
 
       svg {
+        width: 22px;
+        height: 22px;
         @media (max-width: 768px) {
           width: 25px;
           height: 25px;
@@ -118,9 +122,9 @@
 
       .text {
         margin: 0;
-        font-size: 13px;
         color: $d_main_text_color;
-        font-weight: 600;
+        font-size: 16px;
+        font-weight: 400;
 
         @media (max-width: 768px) {
           font-size: 16px;

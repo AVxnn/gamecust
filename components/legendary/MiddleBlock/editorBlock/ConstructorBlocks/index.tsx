@@ -6,6 +6,7 @@ import Br from "../../../common/PostPreview/common/SelectForm/ui/Br";
 import { Reorder, useDragControls } from "framer-motion";
 import { observer } from "mobx-react-lite";
 import ListBlock from "../Blocks/ListBlock";
+import QuoteBlock from "../Blocks/QuoteBlock";
 
 const ConstructorBlocks = ({ data }: any) => {
   const dragControls = useDragControls();
@@ -39,6 +40,16 @@ const ConstructorBlocks = ({ data }: any) => {
           value={data}
         >
           <ListBlock item={data} dragControls={dragControls} />
+        </Reorder.Item>
+      );
+    case "quote":
+      return (
+        <Reorder.Item
+          dragListener={false}
+          dragControls={dragControls}
+          value={data}
+        >
+          <QuoteBlock item={data} dragControls={dragControls} />
         </Reorder.Item>
       );
     case "br":

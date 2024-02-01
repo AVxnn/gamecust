@@ -91,12 +91,13 @@
     gap: 8px;
     justify-content: center;
     align-items: center;
-    background-color: $d_main_text_color;
+    background-color: $d_main_hover;
     border-radius: 8px;
     transition: all 0.1s ease-in-out;
+    cursor: pointer;
 
     &:hover {
-      background-color: $d_main_text_hover_color;
+      background-color: $d_main_active;
     }
 
     .text {
@@ -106,8 +107,12 @@
     }
 
     svg {
-      width: 31px;
-      height: 31px;
+      width: 42px;
+      height: 42px;
+
+      path {
+        fill: #ffffff;
+      }
     }
 
     @media (max-width: 430px) {

@@ -4,6 +4,7 @@ import { IUser } from "../models/IUser";
 import { AuthResponse } from "../models/response/AuthResponse";
 import AuthService from "../utils/auth/AuthService";
 import { API_URL } from "../utils/http";
+import { signOut } from "next-auth/react";
 
 export default class MobxStore {
   user = {} as IUser;
@@ -35,7 +36,7 @@ export default class MobxStore {
         localStorage.setItem("token", response.data.accessToken);
         this.setAuth(true);
         this.setUser(response.data.user);
-        return await response.data;
+        return response.data;
       }
     } catch (error: any) {
       console.log(error.response?.data?.message);
@@ -88,6 +89,7 @@ export default class MobxStore {
       console.log(response);
 
       localStorage.removeItem("token");
+      signOut();
       this.setAuth(false);
       this.setUser({} as IUser);
     } catch (error: any) {

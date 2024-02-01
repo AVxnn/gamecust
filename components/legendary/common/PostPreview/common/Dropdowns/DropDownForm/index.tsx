@@ -12,6 +12,7 @@ import { observer } from "mobx-react";
 import uuid from "react-uuid";
 import { Context } from "../../../../../../../app/(pages)/layout";
 import ListIcon from "../../../../../../../public/img/svg/listIcon";
+import QuoteIcon from "../../../../../../../public/img/svg/quoteIcon";
 
 const DropDownForm = observer(
   ({
@@ -80,11 +81,20 @@ const DropDownForm = observer(
           unicalId: uuid(),
           id: postCreateStore.data.length - 1,
         };
+      } else if (type == "quote") {
+        result = {
+          type: "quote",
+          value: "",
+          author: "",
+          stared: false,
+          unicalId: uuid(),
+          id: postCreateStore.data.length - 1,
+        };
       } else if (type == "list") {
         result = {
           type: "list",
           value: "<li>",
-          typeList: "li",
+          typeList: "ul",
           stared: false,
           unicalId: uuid(),
           id: postCreateStore.data.length - 1,
@@ -189,6 +199,15 @@ const DropDownForm = observer(
                 >
                   <DotsIcon />
                   <p className={styles.text}>Разделитель</p>
+                </li>
+                <li
+                  onBlur={() => onBlurHandler()}
+                  tabIndex={0}
+                  onClick={() => createNewFormChange("quote")}
+                  className={styles.item}
+                >
+                  <QuoteIcon />
+                  <p className={styles.text}>Цитата</p>
                 </li>
               </motion.div>
             ) : null}

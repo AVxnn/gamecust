@@ -9,6 +9,7 @@ import ReactPlayer from "react-player";
 import ImgPopup from "../ImgPopup";
 import ImageAndSlider from "../ImageAndSlider";
 import { Context } from "../../../../app/(pages)/layout";
+import ListBlock from "../../../../newComponents/post/postItem/UI/data/listBlock";
 
 const PostPreview = ({ data }: any) => {
   const { mobxStore, postCreateStore } = useContext(Context);
@@ -75,6 +76,8 @@ const PostPreview = ({ data }: any) => {
                   dangerouslySetInnerHTML={{ __html: item.value }}
                 ></p>
               );
+            } else if (item.type === "list") {
+              return <ListBlock key={index} text={item.value} />;
             } else if (item.type === "media") {
               return <ImageAndSlider key={index} data={item} />;
             } else if (item.type === "link") {
@@ -94,6 +97,9 @@ const PostPreview = ({ data }: any) => {
                       style={{ overflow: "hidden", borderRadius: "8px" }}
                       className={styles.player}
                       controls={true}
+                      playsinline={true}
+                      playing={true}
+                      muted={true}
                       url={item?.href}
                     />
                   </div>

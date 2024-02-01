@@ -1,5 +1,5 @@
 import { useContext, useEffect, useRef, useState } from "react";
-import styles from "./ListBlock.module.scss";
+import styles from "./QuoteBlock.module.scss";
 import DropDownForm from "../../../../common/PostPreview/common/Dropdowns/DropDownForm";
 import DropDownEdit from "../../../../common/PostPreview/common/Dropdowns/DropDownEdit";
 import { observer } from "mobx-react";
@@ -9,10 +9,11 @@ import DOMPurify from "dompurify";
 import ContentEditable from "react-contenteditable";
 import { Context } from "../../../../../../app/(pages)/layout";
 
-const ListBlock = ({ item, dragControls = null }: any) => {
+const QuoteBlock = ({ item, dragControls = null }: any) => {
   const popupRef = useRef<HTMLDivElement>(null);
   const labelRef = useRef<HTMLElement>(null) as any;
   const inputText = useRef<HTMLElement>(null) as any;
+  const inputAuthor = useRef<HTMLElement>(null) as any;
 
   const [hover, setHover] = useState<boolean>(false);
   const [selectedText, setSelectedText] = useState<string>("");
@@ -27,11 +28,16 @@ const ListBlock = ({ item, dragControls = null }: any) => {
 
   const { postCreateStore } = useContext(Context);
 
-  const updateHandler = (value: any) => {
+  const updateHandler = (value: any, type: any) => {
     console.log(value);
     setFocus(true);
-    const sanitizedHtml = DOMPurify.sanitize(value);
-    postCreateStore.updateItem({ ...item, value: sanitizedHtml });
+    if (type === "author") {
+      const sanitizedHtml = DOMPurify.sanitize(value);
+      postCreateStore.updateItem({ ...item, author: sanitizedHtml });
+    } else {
+      const sanitizedHtml = DOMPurify.sanitize(value);
+      postCreateStore.updateItem({ ...item, value: sanitizedHtml });
+    }
   };
 
   const hoverChange = (type: any) => {
@@ -69,18 +75,10 @@ const ListBlock = ({ item, dragControls = null }: any) => {
         setIsClicked(true);
       }
     }
-    if (focus) {
-      if (e.keyCode === 13) {
-        e.preventDefault();
-        console.log("execCommand");
-        document.execCommand("insertHTML", false, "<br><li></li>");
-        return false;
-      }
-    }
   };
 
   const getSelectedWordCoordinates = () => {
-    if (inputText.current) {
+    if (inputText.current || inputAuthor.current) {
       const selection = window.getSelection() as any; // Получаем текущее выделение
       if (selection.rangeCount > 0) {
         const range = selection.getRangeAt(0); // Получаем первый Range в выделении
@@ -117,10 +115,7 @@ const ListBlock = ({ item, dragControls = null }: any) => {
 
   useEffect(() => {
     inputText.current.focus();
-  }, []);
-
-  useEffect(() => {
-    inputText.current.focus();
+    inputAuthor.current.focus();
   }, [postCreateStore.data]);
 
   return (
@@ -131,37 +126,37 @@ const ListBlock = ({ item, dragControls = null }: any) => {
         onMouseLeave={() => hoverChange("off")}
         className={styles.container}
       >
+        <div className={styles.slash}></div>
         <ContentEditable
           contentEditable={true}
           innerRef={inputText}
-          className={`${styles.inputList}`}
-          onChange={(e) => updateHandler(e.target.value)}
+          className={`${styles.inputText}`}
+          onChange={(e) => updateHandler(e.target.value, "value")}
           onMouseUp={handleTextSelection}
           onClick={() => setFocus(true)}
           onFocus={() => setFocus(true)}
           html={item.value}
-          tagName={item.typeList}
+          tagName={"article"}
           suppressContentEditableWarning={true}
         />
-        {!item.value && (
+        <ContentEditable
+          contentEditable={true}
+          innerRef={inputAuthor}
+          className={`${styles.inputAuthor}`}
+          onChange={(e) => updateHandler(e.target.value, "author")}
+          onMouseUp={handleTextSelection}
+          onClick={() => setFocus(true)}
+          onFocus={() => setFocus(true)}
+          html={item.author}
+          tagName={"article"}
+          suppressContentEditableWarning={true}
+        />
+        {!item.author && (
           <span className={`${styles.placeholder} ${styles[item.type]}`}>
             Введи текст или нажми Tab
           </span>
         )}
-
-        {hover && !item.value && item.type !== "h1" ? (
-          <DropDownForm
-            dragControls={dragControls}
-            hoverChange={hoverChange}
-            id={item.id}
-            focus={focus}
-            setFocus={setFocus}
-            ref={popupRef}
-            setIsClicked={setIsClicked}
-            isClicked={isClicked}
-          />
-        ) : null}
-        {hover && item.value && item.type !== "h1" ? (
+        {hover && item.type !== "h1" ? (
           <DropDownEdit
             dragControls={dragControls}
             ref={popupRef}
@@ -184,4 +179,4 @@ const ListBlock = ({ item, dragControls = null }: any) => {
   );
 };
 
-export default observer(ListBlock);
+export default observer(QuoteBlock);

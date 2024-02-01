@@ -28,7 +28,8 @@
     ".next/types/**/*.ts",
     "public/img/svg/Time.js",
     "public/img/svg/Chees.js",
-    "public/img/svg/Categories.js"
+    "public/img/svg/Categories.js",
+    "app/(pages)/(nv)/(editor)/neweditor/page.tsx"
   ],
   "exclude": ["node_modules"]
 }

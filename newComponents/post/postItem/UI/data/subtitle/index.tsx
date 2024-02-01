@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./subtitle.module.scss"
+import styles from "./subtitle.module.scss";
 
 const SubTitle = ({ text }: any) => {
   return (

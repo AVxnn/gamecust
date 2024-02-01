@@ -9,7 +9,7 @@ import "react-medium-image-zoom/dist/styles.css";
 const ImgPopup = ({ src }: any) => {
   const [active, setActive] = useState(null) as any;
 
-  return (
+  return src ? (
     <>
       <div className={styles.container}>
         <Zoom classDialog={styles.dialog}>
@@ -22,7 +22,7 @@ const ImgPopup = ({ src }: any) => {
         </Zoom>
       </div>
     </>
-  );
+  ) : null;
 };
 
 export default ImgPopup;

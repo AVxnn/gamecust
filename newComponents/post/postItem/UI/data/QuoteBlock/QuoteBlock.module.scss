@@ -1,0 +1,49 @@
+@import "/styles/variables.scss";
+
+.container {
+  position: relative;
+  height: 100%;
+  margin: 16px 0;
+  user-select: none;
+}
+
+.slash {
+  width: 4px;
+  border-radius: $br-14;
+  position: absolute;
+  height: 100%;
+  background-color: $d_main_color;
+}
+
+.inputText {
+  background-color: rgba(0, 0, 0, 0);
+  width: 100%;
+  border: none;
+  outline: none;
+  resize: none;
+  margin: 0 0 0 20px;
+  font-weight: 500;
+  color: $d_main_text_color;
+  padding: 4px 0 12px 0;
+  font-size: 24px;
+
+  li {
+    margin-bottom: 12px;
+  }
+}
+.inputAuthor {
+  background-color: rgba(0, 0, 0, 0);
+  width: 100%;
+  border: none;
+  outline: none;
+  resize: none;
+  margin-left: 20px;
+  font-weight: 500;
+  color: $d_main_text_color;
+  padding: 4px 0 4px 0;
+  font-size: 16px;
+
+  li {
+    margin-bottom: 12px;
+  }
+}

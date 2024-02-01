@@ -1,13 +1,18 @@
 import React, { useContext } from "react";
-import styles from "./loginForm.module.scss";
+import styles from "./registrationForm.module.scss";
 import InputCustom from "../../legendary/common/PostPreview/common/InputCustom";
 import * as yup from "yup";
 import { useFormik } from "formik";
 import { Context } from "../../../app/(pages)/layout";
 
-const LoginForm = () => {
+const RegistrationForm = () => {
   const { mobxStore, popupHandlers } = useContext(Context);
+
   const validationSchema = yup.object({
+    name: yup
+      .string()
+      .min(3, "Минимум 3 символа.")
+      .required("Требуется имя или название"),
     email: yup
       .string()
       .email("Введите действительный адрес электронной почты")
@@ -20,13 +25,14 @@ const LoginForm = () => {
 
   const formik = useFormik({
     initialValues: {
+      name: "",
       email: "",
       password: "",
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
       console.log(values);
-      mobxStore.login(values.email, values.password);
+      mobxStore.registration(values.name, values.email, values.password);
       popupHandlers.authPopupClose();
     },
   });
@@ -34,6 +40,15 @@ const LoginForm = () => {
   return (
     <>
       <form onSubmit={formik.handleSubmit}>
+        <InputCustom
+          id="name"
+          name="name"
+          value={formik.values.name}
+          error={formik.touched.name && Boolean(formik.errors.name)}
+          onChange={formik.handleChange}
+          type={"text"}
+          placeholder={"Имя или название"}
+        />
         <InputCustom
           id="email"
           name="email"
@@ -52,10 +67,10 @@ const LoginForm = () => {
           type={"password"}
           placeholder={"Password"}
         />
-        <button className={styles.button}>Войти</button>
+        <button className={styles.button}>Зарегистрироваться</button>
       </form>
     </>
   );
 };
 
-export default LoginForm;
+export default RegistrationForm;
