@@ -10,13 +10,16 @@
   .dropdown {
     position: absolute;
     width: 100%;
-    background-color: $d_main_bg_color;
-    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.5);
     top: 64px;
     box-sizing: border-box;
     z-index: -1;
     border-radius: 8px;
     padding: 10px 6px;
+    background-color: $d_main_subbg_color;
+    border: 1px solid $d_main_subbg_color;
+    transition: all 0.1s ease-in-out;
+    border: 1px solid $d_main_color;
+    box-shadow: 0 0 2px 3px rgba(#9e5bf0, 0.2);
 
     .header {
       display: flex;

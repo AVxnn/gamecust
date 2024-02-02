@@ -2,13 +2,19 @@ import React from "react";
 
 const Time = () => {
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-    >
-      <path d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm3.293 14.707L11 12.414V6h2v5.586l3.707 3.707-1.414 1.414z"></path>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <g data-name="Layer 2">
+        <g data-name="clock">
+          <rect
+            width="24"
+            height="24"
+            transform="rotate(180 12 12)"
+            opacity="0"
+          />
+          <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z" />
+          <path d="M16 11h-3V8a1 1 0 0 0-2 0v4a1 1 0 0 0 1 1h4a1 1 0 0 0 0-2z" />
+        </g>
+      </g>
     </svg>
   );
 };

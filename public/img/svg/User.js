@@ -1,9 +1,25 @@
-import React from 'react';
+import React from "react";
 
-const User = () => {
-  return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-      <path d="M7.5 6.5C7.5 8.981 9.519 11 12 11C14.481 11 16.5 8.981 16.5 6.5C16.5 4.019 14.481 2 12 2C9.519 2 7.5 4.019 7.5 6.5ZM20 21H21V20C21 16.141 17.859 13 14 13H10C6.14 13 3 16.141 3 20V21H20Z" fill="black"/>
+const User = ({ type = 0 }) => {
+  return type ? (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <g data-name="Layer 2">
+        <g data-name="person">
+          <rect width="24" height="24" opacity="0" />
+          <path d="M12 11a4 4 0 1 0-4-4 4 4 0 0 0 4 4zm0-6a2 2 0 1 1-2 2 2 2 0 0 1 2-2z" />
+          <path d="M12 13a7 7 0 0 0-7 7 1 1 0 0 0 2 0 5 5 0 0 1 10 0 1 1 0 0 0 2 0 7 7 0 0 0-7-7z" />
+        </g>
+      </g>
+    </svg>
+  ) : (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <g data-name="Layer 2">
+        <g data-name="person">
+          <rect width="24" height="24" opacity="0" />
+          <path d="M12 11a4 4 0 1 0-4-4 4 4 0 0 0 4 4z" />
+          <path d="M18 21a1 1 0 0 0 1-1 7 7 0 0 0-14 0 1 1 0 0 0 1 1z" />
+        </g>
+      </g>
     </svg>
   );
 };

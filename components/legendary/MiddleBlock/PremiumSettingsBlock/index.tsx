@@ -9,6 +9,7 @@ import Beta from "../../../../public/img/svg/Beta";
 import Heart from "../../../../public/img/svg/Heart";
 import Link from "next/link";
 import { Context } from "../../../../app/(pages)/layout";
+import Popup from "reactjs-popup";
 
 const PremiumSettingsBlock = () => {
   const router = useRouter();
@@ -60,7 +61,7 @@ const PremiumSettingsBlock = () => {
               </div>
             </li>
             <li className={styles.item}>
-              <div className={styles.icon}>
+              <div className={styles.iconP}>
                 <Premium />
               </div>
               <div className={styles.content}>

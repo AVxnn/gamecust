@@ -65,12 +65,12 @@
     transition: all 0.1s ease-in-out;
 
     path {
-      fill: $d_main_text_color
+      fill: $d_main_text_color;
     }
 
     &:hover {
       path {
-        fill: $d_main_text_color
+        fill: $d_main_text_color;
       }
     }
   }
@@ -88,12 +88,13 @@
   padding: 8px 8px;
   top: 50px;
   z-index: 5;
-  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.50);
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
 
   .title {
     font-size: 16px;
     padding: 8px;
     margin: 0;
+    font-weight: 500;
     color: $d_main_text_color;
   }
 
@@ -128,6 +129,16 @@
       }
     }
 
+    .bgPremium {
+      width: 24px;
+      height: 24px;
+      border-radius: 99px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
     .arrow {
       width: 18px;
       height: 18px;
@@ -144,9 +155,9 @@
 
     .avatar {
       position: relative;
-      width: 40px;
+      width: 44px;
       top: -1px;
-      height: 40px;
+      height: 44px;
       border-radius: 99px;
 
       &:hover {
@@ -173,20 +184,28 @@
 
       .userName {
         margin: 0;
-        font-weight: 600;
-        font-size: 16px;
+        font-weight: 500;
+        font-size: 18px;
         color: $d_main_text_color;
       }
       .description {
         margin: 0;
-        font-weight: 500;
-        font-size: 12px;
-        color: $d_main_text_color;
+        font-weight: 400;
+        font-size: 14px;
+        color: $d_main_subtext_color;
       }
     }
   }
 
   .exit {
+  }
 
+  .marks {
+    margin: 12px 0 0 0;
+  }
+  .pen {
+    margin: 0 0 12px 0;
+  }
+  .premium {
   }
 }

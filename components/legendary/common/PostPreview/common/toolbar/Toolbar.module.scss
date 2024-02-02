@@ -15,15 +15,11 @@
       align-items: center;
 
       svg {
-        width: 22px;
-        height: 22px;
-
-        circle {
-          stroke: $d_main_text_color;
-        }
+        width: 24px;
+        height: 24px;
 
         path {
-          stroke: $d_main_text_color;
+          fill: $d_main_text_color;
         }
       }
       .title {
@@ -45,8 +41,8 @@
         padding: 4px;
         border-radius: 16px;
         background-color: $d_main_subbg_color;
-        width: 22px;
-        height: 22px;
+        width: 24px;
+        height: 24px;
 
         path {
           fill: $d_main_text_color;
@@ -78,30 +74,33 @@
       align-items: center;
       cursor: pointer;
 
-      svg {
-        padding: 4px;
-        border-radius: 16px;
+      .icon {
         background-color: $d_main_subbg_color;
-        width: 22px;
-        height: 22px;
+        border-radius: 16px;
+        height: 32px;
+        svg {
+          padding: 4px;
+          width: 24px;
+          height: 24px;
 
-        path {
-          fill: $d_main_text_color;
-        }
-        circle {
-          fill: $d_main_text_color;
+          path {
+            fill: $d_main_text_color;
+          }
+          circle {
+            fill: $d_main_text_color;
+          }
         }
       }
 
       &:hover {
-        svg {
+        .icon {
           background-color: $d_main_bg_color;
-        }
-        path {
-          fill: $d_main_color;
-        }
-        circle {
-          fill: $d_main_color;
+          path {
+            fill: $d_main_color;
+          }
+          circle {
+            fill: $d_main_color;
+          }
         }
       }
 

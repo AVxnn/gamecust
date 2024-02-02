@@ -1,12 +1,17 @@
 const ImageIcon = () => {
-    return ( 
-        <>
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M15.8333 2.5H4.16667C3.2475 2.5 2.5 3.2475 2.5 4.16667V15.8333C2.5 16.7525 3.2475 17.5 4.16667 17.5H15.8333C16.7525 17.5 17.5 16.7525 17.5 15.8333V4.16667C17.5 3.2475 16.7525 2.5 15.8333 2.5ZM4.16667 15.8333V4.16667H15.8333L15.835 15.8333H4.16667Z" fill="white"/>
-                <path d="M8.33333 11.6663L7.5 10.833L5 14.1663H15L10.8333 8.33301L8.33333 11.6663Z" fill="white"/>
-            </svg>
-        </>
-    );
-}
- 
+  return (
+    <>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <g data-name="Layer 2">
+          <g data-name="image">
+            <rect width="24" height="24" opacity="0" />
+            <path d="M18 3H6a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3V6a3 3 0 0 0-3-3zM6 5h12a1 1 0 0 1 1 1v8.36l-3.2-2.73a2.77 2.77 0 0 0-3.52 0L5 17.7V6a1 1 0 0 1 1-1zm12 14H6.56l7-5.84a.78.78 0 0 1 .93 0L19 17v1a1 1 0 0 1-1 1z" />
+            <circle cx="8" cy="8.5" r="1.5" />
+          </g>
+        </g>
+      </svg>
+    </>
+  );
+};
+
 export default ImageIcon;

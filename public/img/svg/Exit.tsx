@@ -1,9 +1,20 @@
-import React from 'react';
+import React from "react";
 
 const Exit = () => {
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-      <path d="M4.16813 17.5H15.8348C16.754 17.5 17.5015 16.7525 17.5015 15.8333V4.16667C17.5015 3.2475 16.754 2.5 15.8348 2.5H4.16813C3.24896 2.5 2.50146 3.2475 2.50146 4.16667V9.1675H8.33313V5.83333L13.3331 10L8.33313 14.1667V10.8342H2.50146V15.8333C2.50146 16.7525 3.24896 17.5 4.16813 17.5Z" fill="white"/>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <g data-name="Layer 2">
+        <g data-name="log-out">
+          <rect
+            width="24"
+            height="24"
+            transform="rotate(90 12 12)"
+            opacity="0"
+          />
+          <path d="M7 6a1 1 0 0 0 0-2H5a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h2a1 1 0 0 0 0-2H6V6z" />
+          <path d="M20.82 11.42l-2.82-4a1 1 0 0 0-1.39-.24 1 1 0 0 0-.24 1.4L18.09 11H10a1 1 0 0 0 0 2h8l-1.8 2.4a1 1 0 0 0 .2 1.4 1 1 0 0 0 .6.2 1 1 0 0 0 .8-.4l3-4a1 1 0 0 0 .02-1.18z" />
+        </g>
+      </g>
     </svg>
   );
 };

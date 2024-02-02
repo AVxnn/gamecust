@@ -1,0 +1,48 @@
+@import "/styles/variables.scss";
+
+.block {
+  padding: 8px 16px;
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  border-radius: 8px;
+  gap: 12px;
+
+  &:hover {
+    background-color: $d_main_bg_color;
+  }
+
+  .button {
+    position: absolute;
+    right: 16px;
+    top: 18px;
+  }
+
+  .avatar {
+    position: relative;
+    width: 42px;
+    height: 42px;
+    object-fit: cover;
+    overflow: hidden;
+    border-radius: 99px;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    .name {
+      font-size: 16px;
+      color: $d_main_text_color;
+    }
+    .description {
+      font-size: 14px;
+      color: $d_main_subtext_color;
+    }
+  }
+}

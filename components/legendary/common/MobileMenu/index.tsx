@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import Home from "../../../../public/img/svg/Home";
 import PlusMenu from "../../../../public/img/svg/PlusMenu";
-import Notification from "../../../../public/img/svg/Notification";
 import Search from "../../../../public/img/svg/Search";
 import styles from "./MobileMenu.module.scss";
 import Link from "next/link";
@@ -13,6 +12,7 @@ import { open } from "../../../../features/Popup/PopupAuthSlice";
 import uuid from "react-uuid";
 import { observer } from "mobx-react";
 import { Context } from "../../../../app/(pages)/layout";
+import Bell from "../../../../public/img/svg/bell";
 
 const MobileMenu = () => {
   const dispatch = useDispatch();
@@ -74,7 +74,7 @@ const MobileMenu = () => {
         <Link
           onClick={() => setActive(1)}
           className={`${styles.link} ${active == 1 ? styles.active : ""}`}
-          href={"/"}
+          href={"/search"}
         >
           <Search />
         </Link>
@@ -92,7 +92,7 @@ const MobileMenu = () => {
           className={`${styles.link} ${active == 3 ? styles.active : ""}`}
           href={"/"}
         >
-          <Notification type="true" />
+          <Bell />
         </Link>
         {mobxStore?.user?.email ? (
           <Link

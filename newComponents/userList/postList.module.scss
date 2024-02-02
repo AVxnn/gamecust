@@ -1,0 +1,18 @@
+@import "/styles/variables.scss";
+
+.list {
+  width: 100%;
+  overflow: hidden !important;
+  display: flex;
+  min-height: 400px;
+  flex-direction: column;
+  border-radius: 8px;
+  box-sizing: border-box;
+  padding: 16px 8px;
+  background-color: $d_main_subbg_color;
+  gap: 8px;
+}
+
+.infinite-scroll-component {
+  width: 100%;
+}

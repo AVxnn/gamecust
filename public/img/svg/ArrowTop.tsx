@@ -1,11 +1,21 @@
 const ArrowTop = () => {
-    return ( 
-        <>
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M8.93502 6.93419V17.1431H11.065V6.93419L15.637 11.5062L17.1429 10.0003L10 2.85742L2.85715 10.0003L4.36304 11.5062L8.93502 6.93419Z" fill="white"/>
-            </svg>
-        </>
-    );
-}
- 
+  return (
+    <>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <g data-name="Layer 2">
+          <g data-name="arrow-upward">
+            <rect
+              width="24"
+              height="24"
+              transform="rotate(180 12 12)"
+              opacity="0"
+            />
+            <path d="M5.23 10.64a1 1 0 0 0 1.41.13L11 7.14V19a1 1 0 0 0 2 0V7.14l4.36 3.63a1 1 0 1 0 1.28-1.54l-6-5-.15-.09-.13-.07a1 1 0 0 0-.72 0l-.13.07-.15.09-6 5a1 1 0 0 0-.13 1.41z" />
+          </g>
+        </g>
+      </svg>
+    </>
+  );
+};
+
 export default ArrowTop;

@@ -39,7 +39,10 @@ const Registration = ({ setAuth }: any) => {
               exit={{ opacity: 0 }}
               className={styles.buttonList}
             >
-              <button className={`${styles.buttonAuth} ${styles.discord}`}>
+              <button
+                onClick={() => signIn("discord")}
+                className={`${styles.buttonAuth} ${styles.discord}`}
+              >
                 <div className={styles.div}>
                   <Discord />
                   <span>Discord</span>
@@ -54,7 +57,10 @@ const Registration = ({ setAuth }: any) => {
                   <span>Почта</span>
                 </div>
               </button>
-              <button className={styles.buttonAuth}>
+              <button
+                onClick={() => signIn("google")}
+                className={styles.buttonAuth}
+              >
                 <div className={styles.div}>
                   <Google />
                   <span>Google</span>

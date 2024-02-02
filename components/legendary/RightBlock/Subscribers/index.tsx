@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import styles from "./Subscribers.module.scss";
 import { observer } from "mobx-react";
-import { useParams } from "next/navigation";
 import ItemSubscriber from "./ItemSubscriber";
+import "reactjs-popup/dist/index.css";
 
 const Subscribers = ({ data }: any) => {
   return (

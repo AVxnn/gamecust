@@ -6,6 +6,7 @@ import Fire from "../../../public/img/svg/Fire.js";
 import Time from "../../../public/img/svg/Time.js";
 import Chees from "../../../public/img/svg/Chees.js";
 import Categories from "../../../public/img/svg/Categories.js";
+import Star from "../../../public/img/svg/Star";
 
 const NavigationLayout = () => {
   const [active, setActive] = useState(0);
@@ -17,9 +18,9 @@ const NavigationLayout = () => {
 
   let data = [
     {
-      title: "Рекомендовано",
+      title: "Популярное",
       link: "/",
-      icon: <Fire solid={true} />,
+      icon: <Star type={0} />,
     },
     {
       title: "Свежее",

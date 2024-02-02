@@ -4,12 +4,18 @@
   width: 100%;
   overflow: hidden !important;
   display: flex;
+  justify-content: space-between;
   flex-wrap: wrap;
   min-height: 400px;
   gap: 16px;
 
+  @media screen and (max-width: 768px) {
+    margin: 0 12px;
+  }
+
   .item {
-    width: 145px;
+    width: 100%;
+    min-width: 25%;
     cursor: pointer;
 
     &:hover .image img {
@@ -20,7 +26,7 @@
     .image {
       position: relative;
       width: 100%;
-      height: 172px;
+      aspect-ratio: 1/1;
       border-radius: 8px;
       overflow: hidden;
 
@@ -47,7 +53,12 @@
 }
 
 .list {
-  display: flex;
-  flex-wrap: wrap;
+  width: 100%;
   gap: 16px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+
+  @media screen and (max-width: 768px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }

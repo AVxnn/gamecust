@@ -14,11 +14,18 @@ import { observer } from "mobx-react-lite";
 import { useRouter } from "next/navigation";
 import { Context } from "../../../app/(pages)/layout";
 import { AnimatePresence, motion } from "framer-motion";
+import Pen from "../../../public/img/svg/Pen";
+import Mark from "../../../public/img/svg/Mark";
+import Premium from "../../../public/img/svgIcons/Premium";
+import Popup from "reactjs-popup";
+import PremiumSettingsBlock from "../MiddleBlock/PremiumSettingsBlock";
 
 const UserSection = () => {
   const [theme, setTheme] = useState(localStorage.getItem("Theme") || "dark");
 
   const router = useRouter();
+
+  const [isOpen, setIsOpen] = useState(false);
 
   const { mobxStore } = useContext(Context);
 
@@ -121,10 +128,43 @@ const UserSection = () => {
                   </div>
                 </div>
               </Link>
-              <Link href={`/profile/${mobxStore.user.id}/drafts`}>
-                <div onClick={() => closePopup()} className={styles.userMenu}>
+              <Link href={`/`}>
+                <div
+                  onClick={() => setIsOpen(true)}
+                  className={`${styles.userMenu} ${styles.premium}`}
+                >
+                  <div className={styles.bgPremium}>
+                    <Premium />
+                  </div>
+                  <p className={styles.text}>Подписка Plus</p>
+                </div>
+                <Popup
+                  nested
+                  open={isOpen}
+                  onClose={() => setIsOpen(false)}
+                  modal
+                >
+                  <PremiumSettingsBlock />
+                </Popup>
+              </Link>
+              <Link href={`/`}>
+                <div
+                  onClick={() => closePopup()}
+                  className={`${styles.userMenu} ${styles.marks}`}
+                >
                   <div className={styles.bgAvatar}>
-                    <Edit />
+                    <Mark type={0} />
+                  </div>
+                  <p className={styles.text}>Заметки (скоро)</p>
+                </div>
+              </Link>
+              <Link href={`/profile/${mobxStore.user.id}/drafts`}>
+                <div
+                  onClick={() => closePopup()}
+                  className={`${styles.userMenu} ${styles.pen}`}
+                >
+                  <div className={styles.bgAvatar}>
+                    <Pen type={0} />
                   </div>
                   <p className={styles.text}>Черновики</p>
                 </div>

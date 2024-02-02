@@ -22,7 +22,9 @@ const Toolbar = ({ data }: any) => {
       <div className={styles.rightBlock}>
         <Link href={`/post/${data.postId}/#comments`}>
           <div className={styles.comments}>
-            <Chat />
+            <div className={styles.icon}>
+              <Chat />
+            </div>
             <span className={styles.title}>{data?.commentsCount}</span>
           </div>
         </Link>

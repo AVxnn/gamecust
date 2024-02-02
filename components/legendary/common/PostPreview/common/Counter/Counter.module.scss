@@ -4,7 +4,7 @@
   display: flex;
   position: relative;
   align-items: center;
-  height: 22px;
+  height: 24px;
   gap: 6px;
   cursor: pointer;
   transition: all 0.1s ease-in-out;
@@ -25,8 +25,8 @@
   }
 
   .like {
-    width: 22px;
-    height: 22px;
+    width: 24px;
+    height: 24px;
     cursor: pointer;
     padding: 4px;
     border-radius: 16px;
@@ -34,8 +34,8 @@
     transition: all 0.1s ease-in-out;
 
     svg {
-      width: 22px;
-      height: 22px;
+      width: 24px;
+      height: 24px;
       path {
         fill: $d_main_text_color;
       }

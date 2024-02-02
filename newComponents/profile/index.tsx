@@ -3,18 +3,13 @@
 import { useParams, usePathname, useRouter } from "next/navigation";
 import React, { useContext, useEffect, useRef, useState } from "react";
 import styles from "./categoryHeader.module.scss";
-import Image from "next/image";
-import { getUserId } from "../../features/new/getUserId/getUserId";
-import { getPostsId } from "../../features/new/getPostsId/getPostsId";
 import AvatarPopup from "../../components/legendary/common/AvatarPopup";
 import IconHandler from "../../components/legendary/common/PostPreview/common/IconHandler";
 import Tabs from "../../components/legendary/common/Tabs";
-import ButtonChanger from "../../components/legendary/MiddleBlock/Profile/ui/ButtonChanger";
 import isRoleHandler from "../../features/isRoleHandler";
 import { observer } from "mobx-react-lite";
 import { Context } from "../../app/(pages)/layout";
 import BgProfilePopup from "../../components/legendary/common/bgProfilePopup";
-import LvlPopup from "../lvlPopup";
 import FollowButton from "../../components/legendary/common/PostPreview/common/HeaderPost/followButton";
 import { createNotification } from "../../features/new/getNotifications/getNotifications";
 

@@ -1,10 +1,15 @@
-import React from 'react';
+import React from "react";
 
 const ImageAdd = () => {
   return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M19 3H5C3.897 3 3 3.897 3 5V19C3 20.103 3.897 21 5 21H19C20.103 21 21 20.103 21 19V5C21 3.897 20.103 3 19 3ZM5 19V5H19L19.002 19H5Z" fill="#888888"/>
-      <path d="M10 14L9 13L6 17H18L13 10L10 14Z" fill="#888888"/>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <g data-name="Layer 2">
+        <g data-name="image">
+          <rect width="24" height="24" opacity="0" />
+          <path d="M18 3H6a3 3 0 0 0-3 3v12a3 3 0 0 0 3 3h12a3 3 0 0 0 3-3V6a3 3 0 0 0-3-3zM6 5h12a1 1 0 0 1 1 1v8.36l-3.2-2.73a2.77 2.77 0 0 0-3.52 0L5 17.7V6a1 1 0 0 1 1-1zm12 14H6.56l7-5.84a.78.78 0 0 1 .93 0L19 17v1a1 1 0 0 1-1 1z" />
+          <circle cx="8" cy="8.5" r="1.5" />
+        </g>
+      </g>
     </svg>
   );
 };

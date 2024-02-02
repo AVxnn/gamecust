@@ -1,11 +1,16 @@
 const ArrowBottom = () => {
-    return ( 
-        <>
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M11.065 13.0658L11.065 2.85686L8.93501 2.85686L8.93501 13.0658L4.36303 8.49383L2.85714 9.99972L10 17.1426L17.1429 9.99972L15.637 8.49383L11.065 13.0658Z" fill="white"/>
-            </svg>
-        </>
-    );
-}
- 
+  return (
+    <>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <g data-name="Layer 2">
+          <g data-name="arrow-downward">
+            <rect width="24" height="24" opacity="0" />
+            <path d="M18.77 13.36a1 1 0 0 0-1.41-.13L13 16.86V5a1 1 0 0 0-2 0v11.86l-4.36-3.63a1 1 0 1 0-1.28 1.54l6 5 .15.09.13.07a1 1 0 0 0 .72 0l.13-.07.15-.09 6-5a1 1 0 0 0 .13-1.41z" />
+          </g>
+        </g>
+      </svg>
+    </>
+  );
+};
+
 export default ArrowBottom;

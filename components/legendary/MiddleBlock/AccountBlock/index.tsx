@@ -93,7 +93,7 @@ const AccountBlock = () => {
               <Link href={`/profile/${mobxStore.user.id}/drafts`}>
                 <div className={styles.userMenu}>
                   <div className={`${styles.bgAvatar} ${styles.orange}`}>
-                    <Pen type={true} />
+                    <Pen type={1} />
                   </div>
                   <p className={styles.userName}>Черновики</p>
                   <div className={styles.arrow}>

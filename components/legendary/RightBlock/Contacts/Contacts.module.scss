@@ -17,7 +17,8 @@
   .item {
     display: flex;
     align-items: center;
-    a {
+    a,
+    p {
       text-decoration: none;
       color: $d_main_text_color;
       font-size: 14px;
@@ -36,7 +37,8 @@
       }
     }
     &:hover {
-      a {
+      a,
+      p {
         color: $d_main_color;
       }
       path {
@@ -53,7 +55,10 @@
   font-size: 12px;
   padding: 0 24px;
 
-  a {
+  a,
+  p {
+    margin: 0;
+    cursor: pointer;
     color: $d_main_subtext_color;
 
     &:hover {

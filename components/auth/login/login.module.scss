@@ -74,9 +74,9 @@
           width: 110px;
           height: 32px;
         }
-        
+
         path {
-          fill: $d_main_text_color
+          fill: $d_main_text_color;
         }
 
         @media (max-width: 768px) {
@@ -90,14 +90,14 @@
         margin: 0 0 32px 0;
         color: $d_main_text_color;
       }
-  
+
       .buttonList {
         display: flex;
         flex-direction: column;
         gap: 18px;
         margin-bottom: 32px;
         width: 100%;
-  
+
         .buttonAuth {
           position: relative;
           padding: 14px 16px;
@@ -106,7 +106,7 @@
           outline: none;
           border-radius: 8px;
           background-color: $d_main_subbg_color;
-          box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.50);
+          box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.5);
           cursor: pointer;
           transition: all 0.1s ease-in-out;
 
@@ -120,7 +120,7 @@
               position: absolute;
               left: 16px;
             }
-    
+
             span {
               color: $d_main_text_color;
               font-size: 16px;
@@ -133,39 +133,43 @@
               fill: $d_main_text_color;
             }
           }
-  
+
           &:hover {
             box-shadow: none;
             background-color: $d_main_bg_color;
           }
-  
+
           &:active {
             transform: translateY(1px);
           }
         }
-  
+
         .discord {
-          background-color: #5865F2;
-          
+          background-color: #5865f2;
+
           .div {
+            svg {
+              path {
+                fill: #ffffff;
+              }
+            }
 
             span {
-              color: #FFFFFF;
+              color: #ffffff;
             }
           }
-          
-          
+
           &:hover {
             box-shadow: none;
             background-color: #434db6;
           }
         }
       }
-  
+
       .text {
         color: $d_main_text_color;
         font-size: 16px;
-  
+
         .link {
           color: $d_main_color;
           font-size: 16px;

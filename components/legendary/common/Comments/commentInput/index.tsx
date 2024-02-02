@@ -7,6 +7,7 @@ import Trash from "../../../../../public/img/svg/Trash";
 
 const CommentInput = ({
   callback,
+  type,
   setValue,
   unicId,
   value,
@@ -23,8 +24,6 @@ const CommentInput = ({
       .items;
     for (let i = 0; i < items.length; i++) {
       const item = items[i];
-
-      console.log(1, item);
       if (item.type.indexOf("image") !== -1) {
         const blob = item.getAsFile();
         setImage(blob);
@@ -132,6 +131,15 @@ const CommentInput = ({
               )}
             </div>
             <div className={styles.buttonlist}>
+              {type === "reply" && (
+                <Button
+                  clb={() => setIsOpen(false)}
+                  type={"secondary"}
+                  size={"small"}
+                >
+                  Отмена
+                </Button>
+              )}
               {value && (
                 <Button clb={handleSend} type={"primary"} size={"small"}>
                   Отправить

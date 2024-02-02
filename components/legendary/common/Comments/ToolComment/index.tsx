@@ -78,6 +78,7 @@ const ToolComment = ({ data, dataPost, getNewComments }: any) => {
       </section>
       {isOpen ? (
         <CommentInput
+          type={"reply"}
           value={value}
           setValue={setValue}
           callback={replyComment}

@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Contacts.module.scss";
 import Link from "next/link";
 import Discord from "../../../../public/img/auth/discord";
 import Telegram from "../../../../public/img/svg/telegram";
+import Popup from "reactjs-popup";
+import PremiumSettingsBlock from "../../MiddleBlock/PremiumSettingsBlock";
 
 const Contacts = () => {
+  const [isOpen, setIsOpen] = useState(false);
   return (
     <>
       <div className={styles.contacts}>
@@ -18,7 +21,11 @@ const Contacts = () => {
         </div>
       </div>
       <div className={styles.politics}>
-        <Link href={"/gamecustplus"}>Поддержать проект</Link>
+        <p onClick={() => setIsOpen(true)}>Поддержать проект</p>
+
+        <Popup nested open={isOpen} onClose={() => setIsOpen(false)} modal>
+          <PremiumSettingsBlock />
+        </Popup>
         <Link href={"/copyright"}>Правообладателям</Link>
         <Link href={"/agreement"}>Пользовательское соглашение</Link>
         <Link href={"/privacy"}>Политика конфиденциальности</Link>

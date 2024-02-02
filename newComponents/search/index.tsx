@@ -30,7 +30,7 @@ const SearchComponent = () => {
   const router = useRouter();
 
   const saveHandler = async () => {
-    if (mobxStore.user.id) {
+    if (value) {
       const resData = await getSearch(value);
       setData(resData);
       if (value) {
@@ -77,6 +77,13 @@ const SearchComponent = () => {
     }
   };
 
+  const linkEnter = (key: any) => {
+    console.log(key);
+    router.push(`/search/result?query=${value}`);
+    setIsOpen(false);
+    setIsFocus(false);
+  };
+
   useEffect(() => {
     if (typeof document !== "undefined" && isOpen) {
       document.addEventListener("click", (e: any) => {
@@ -86,6 +93,19 @@ const SearchComponent = () => {
         handleClickOutside(e);
       });
     }
+  });
+
+  useEffect(() => {
+    document.addEventListener("keydown", (e: any) => {
+      if (e.keyCode === 13) {
+        linkEnter(e);
+      }
+    });
+    return document.removeEventListener("keydown", (e: any) => {
+      if (e.keyCode === 13) {
+        linkEnter(e);
+      }
+    });
   });
 
   useEffect(() => {
@@ -117,7 +137,11 @@ const SearchComponent = () => {
               <div className={styles.header}>
                 <h4 className={styles.title}>Результат поиска</h4>
 
-                <Link className={styles.showMore} href={"/notifications"}>
+                <Link
+                  className={styles.showMore}
+                  onClick={() => setIsOpen(false)}
+                  href={`/search/result?query=${value}`}
+                >
                   Посмотреть еще
                 </Link>
               </div>

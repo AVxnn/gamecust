@@ -1,100 +1,106 @@
 @import "/styles/variables.scss";
 
 .navigation {
-    width: 100%;
-    padding: 24px 10px;
-    box-sizing: border-box;
+  width: 100%;
+  padding: 24px 10px;
+  box-sizing: border-box;
+  background-color: $d_main_subbg_color;
+  border-radius: 8px;
+
+  a {
+    text-decoration: none;
+  }
+
+  .title {
+    font-size: 16px;
+    margin: 0 0 16px 16px;
+    color: $d_main_text_color;
+  }
+  .list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .item {
     background-color: $d_main_subbg_color;
+    padding: 10px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
     border-radius: 8px;
 
-    a {
-        text-decoration: none;
-    }
+    .userMenu {
+      position: relative;
+      display: flex;
+      width: 100%;
+      align-items: center;
+      gap: 16px;
+      border-radius: 99px;
+      transition: all 0.1s ease-in-out;
 
-    .title {
-        font-size: 16px;
-        margin: 0 0 16px 16px;
-        color: $d_main_text_color;
-    }
-    .list {
-        display: flex;
-        flex-direction: column;
-        gap: 4px;
-    }
-    .item {
-        background-color: $d_main_subbg_color;
-        padding: 10px 16px;
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
+      .bgAvatar {
+        width: 28px;
+        height: 28px;
         border-radius: 8px;
-    
-        .userMenu {
-            position: relative;
-            display: flex;
-            width: 100%;
-            align-items: center;
-            gap: 16px;
-            border-radius: 99px;
-            transition: all 0.1s ease-in-out;
-        
-        
-            .bgAvatar {
-                width: 28px;
-                height: 28px;
-                border-radius: 8px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-        
-                path {
-                    fill: $const_main_text_color;
-                }
-            }
-        
-            .arrow {
-                width: 18px;
-                height: 18px;
-                position: absolute;
-                margin-top: 5px;
-                transform: rotate(-90deg);
-                right: 0;
-          
-                svg {
-                    path {
-                        fill: $d_main_subtext_color;
-                    }
-                }
-            }
-        
-            .userName {
-                margin: 0;
-                color: $d_main_text_color;
-                font-size: 16px;
-                font-style: normal;
-                font-weight: 400;
-            }
-            
-        }
-    }
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
-    .active {
-        background-color: $d_main_bg_color;
+        svg {
+          width: 24px;
+          height: 24px;
+        }
+
+        circle {
+          fill: $const_main_text_color;
+        }
+        path {
+          fill: $const_main_text_color;
+        }
+      }
+
+      .arrow {
+        width: 18px;
+        height: 18px;
+        position: absolute;
+        margin-top: 5px;
+        transform: rotate(-90deg);
+        right: 0;
+
+        svg {
+          path {
+            fill: $d_main_subtext_color;
+          }
+        }
+      }
+
+      .userName {
+        margin: 0;
+        color: $d_main_text_color;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+      }
     }
+  }
+
+  .active {
+    background-color: $d_main_bg_color;
+  }
 }
 
 .orange {
-    background: linear-gradient(56deg, #FFC635 0%, #FF8A00 100%);
+  background: linear-gradient(56deg, #ffc635 0%, #ff8a00 100%);
 }
 
 .purple {
-    background: linear-gradient(56deg, #950ED4 0%, #B300C2 100%);
+  background: linear-gradient(56deg, #950ed4 0%, #b300c2 100%);
 }
 
 .green {
-    background: linear-gradient(56deg, #4EBF09 0%, #00C294 100%);
+  background: linear-gradient(56deg, #4ebf09 0%, #00c294 100%);
 }
 
 .gray {
-    background: linear-gradient(56deg, #858585 0%, #D2D2D2 100%);
+  background: linear-gradient(56deg, #858585 0%, #d2d2d2 100%);
 }

@@ -37,7 +37,11 @@ const AuthPopup = () => {
                 <Close />
               </div>
               <AnimatePresence>
-                {auth ? <Login setAuth={setAuth} /> : <Registration setAuth={setAuth} />}
+                {auth ? (
+                  <Registration setAuth={setAuth} />
+                ) : (
+                  <Login setAuth={setAuth} />
+                )}
               </AnimatePresence>
             </div>
           </motion.div>
