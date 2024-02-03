@@ -55,7 +55,6 @@ const CategoriesList = () => {
                   <Image src={item.imagePath} alt={"img"} layout={"fill"} />
                 </div>
                 <p className={styles.title}>{item.title}</p>
-                <span className={styles.posts}>{item.posts} постов</span>
               </div>
             </Link>
           );

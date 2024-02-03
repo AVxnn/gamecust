@@ -80,7 +80,7 @@ const Login = ({ setAuth }: any) => {
           )}
           <span className={styles.text}>
             Нет аккаунта?{" "}
-            <span onClick={() => setAuth(false)} className={styles.link}>
+            <span onClick={() => setAuth(true)} className={styles.link}>
               Регистрация
             </span>
           </span>

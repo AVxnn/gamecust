@@ -82,7 +82,7 @@ const Registration = ({ setAuth }: any) => {
           )}
           <span className={styles.text}>
             Есть аккаунт?{" "}
-            <span onClick={() => setAuth(true)} className={styles.link}>
+            <span onClick={() => setAuth(false)} className={styles.link}>
               Войти
             </span>
           </span>

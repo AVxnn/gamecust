@@ -56,44 +56,30 @@ const SearchComponent = () => {
 
   const handlerClick = () => {
     setIsFocus(true);
-    if (value) {
-      popupHandlers.noWorkScroll();
-    }
   };
 
   const debouncedSave = useDebounce(saveHandler, 500);
 
   const handleClickOutside = (e: any) => {
-    if (isFocus) {
-      if (
-        labelRef.current &&
-        !labelRef.current.contains(e.target) &&
-        popupRef.current &&
-        !popupRef.current.contains(e.target)
-      ) {
-        setIsFocus(false);
-        popupHandlers.workScroll();
-      }
+    console.log("work");
+    if (
+      labelRef.current &&
+      !labelRef.current.contains(e.target) &&
+      popupRef.current &&
+      !popupRef.current.contains(e.target)
+    ) {
+      setIsFocus(false);
+      popupHandlers.workScroll();
     }
   };
 
   const linkEnter = (key: any) => {
-    console.log(key);
+    console.log(value);
     router.push(`/search/result?query=${value}`);
     setIsOpen(false);
     setIsFocus(false);
+    popupHandlers.workScroll();
   };
-
-  useEffect(() => {
-    if (typeof document !== "undefined" && isOpen) {
-      document.addEventListener("click", (e: any) => {
-        handleClickOutside(e);
-      });
-      return document.removeEventListener("click", (e: any) => {
-        handleClickOutside(e);
-      });
-    }
-  });
 
   useEffect(() => {
     document.addEventListener("keydown", (e: any) => {
@@ -106,7 +92,17 @@ const SearchComponent = () => {
         linkEnter(e);
       }
     });
-  });
+  }, [value]);
+
+  useEffect(() => {
+    document.addEventListener("click", (e: any) => {
+      handleClickOutside(e);
+    });
+    return document.removeEventListener("click", (e: any) => {
+      handleClickOutside(e);
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     debouncedSave();

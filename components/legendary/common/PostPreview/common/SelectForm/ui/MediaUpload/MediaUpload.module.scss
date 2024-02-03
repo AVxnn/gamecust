@@ -48,6 +48,10 @@
       cursor: pointer;
 
       svg {
+        path {
+          fill: $d_main_text_color;
+        }
+
         width: 18px;
         height: 18px;
       }
@@ -111,6 +115,10 @@
       height: 42px;
 
       path {
+        fill: #ffffff;
+      }
+
+      circle {
         fill: #ffffff;
       }
     }
