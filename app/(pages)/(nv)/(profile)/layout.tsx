@@ -14,6 +14,34 @@ import { useParams, usePathname } from "next/navigation";
 import Subscribers from "../../../../components/legendary/RightBlock/Subscribers";
 import { Context } from "../../layout";
 
+// export async function generateMetadata(
+//   { params }: any
+// ) {
+//   // read route params
+//   const id = params.uid;
+
+//   // fetch data
+//   const user = await getUserId(id);
+
+//   return {
+//     title: `Профиль ${user.username} | GameCust новости из мира игр`,
+//     description: user.description,
+//     openGraph: {
+//       title: `Профиль ${user.username} | GameCust новости из мира игр`,
+//       description: user.description,
+//       url: `https://gamecust.ru/profile/${user._id}`,
+//       siteName: "GameCust",
+//       images: [
+//         {
+//           url: "/mstile-150x150.png",
+//           width: 150,
+//           height: 150
+//         }
+//       ]
+//     }
+//   };
+// }
+
 const LayoutPages = ({ children }: { children: React.ReactNode }) => {
   const { uid } = useParams() as any;
   const pathname = usePathname() as any;

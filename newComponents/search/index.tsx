@@ -74,11 +74,13 @@ const SearchComponent = () => {
   };
 
   const linkEnter = (key: any) => {
-    console.log(value);
-    router.push(`/search/result?query=${value}`);
-    setIsOpen(false);
-    setIsFocus(false);
-    popupHandlers.workScroll();
+    if (isFocus) {
+      console.log(value);
+      router.push(`/search/result?query=${value}`);
+      setIsOpen(false);
+      setIsFocus(false);
+      popupHandlers.workScroll();
+    }
   };
 
   useEffect(() => {

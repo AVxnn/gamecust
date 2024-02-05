@@ -1,5 +1,14 @@
 User-Agent: *
 Allow: /
-Disallow: /api/
+Allow: /new
+Allow: /categories
+Disallow: /copyright
+Disallow: /agreement
+Disallow: /privacy
+Disallow: /account
+Disallow: /settings/profile
+Disallow: /settings/main
+Disallow: /subs
+Disallow: /settings
 
 Sitemap: https://gamecust.ru/sitemap.xml

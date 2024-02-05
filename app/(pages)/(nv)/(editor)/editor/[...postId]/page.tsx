@@ -6,6 +6,25 @@ import { Context } from "../../../../layout";
 import uuid from "react-uuid";
 import { getPost } from "../../../../../../features/new/getPost/getPost";
 import EditorBlock from "../../../../../../components/legendary/MiddleBlock/editorBlock";
+// import { Metadata } from "next";
+
+// export const metadata: Metadata = {
+//   title: "Редактор | GameCust Новости из мира игр",
+//   description: "Приветствуем вас на GameCraft - вашем креативном уголке в виртуальной реальности! Здесь вы можете воплощать свою страсть к играм в увлекательные статьи, раскрывая тайны виртуальных миров, делясь советами, историями и впечатлениями.",
+//   openGraph: {
+//     title: "GameCust | Редактор",
+//     description: "Редактор | GameCust",
+//     url: "https://gamecust.ru/categories",
+//     siteName: "GameCust",
+//     images: [
+//       {
+//         url: "/mstile-150x150.png",
+//         width: 150,
+//         height: 150
+//       }
+//     ]
+//   }
+// }
 
 const PageEditor = () => {
   const [post, setPost] = useState([]) as any;

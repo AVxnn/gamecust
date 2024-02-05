@@ -1,17 +1,17 @@
-"use client";
 
-import React from "react";
-import styles from "../page.module.scss";
-import NotificationListMain from "../../../../../components/legendary/MiddleBlock/NotificationListMain";
-import { getNotificationList } from "../../../../../features/new/getNotifications/getNotifications";
 
-const PageRes = (props: any) => {
+// import React from "react";
+// import styles from "../page.module.scss";
+// import NotificationListMain from "../../../../../components/legendary/MiddleBlock/NotificationListMain";
+// import { getNotificationList } from "../../../../../features/new/getNotifications/getNotifications";
 
-  return (
-    <div className={styles.main}>
-      <NotificationListMain fetchPosts={getNotificationList} />
-    </div>
-  );
-};
+// const PageRes = (props: any) => {
 
-export default PageRes;
+//   return (
+//     <div className={styles.main}>
+//       <NotificationListMain fetchPosts={getNotificationList} />
+//     </div>
+//   );
+// };
+
+// export default PageRes;
