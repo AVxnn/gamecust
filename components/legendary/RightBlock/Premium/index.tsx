@@ -3,7 +3,6 @@ import styles from "./Premium.module.scss";
 import Button from "../../common/Button";
 import glassesson from "../../../../public/img/glassesson.png";
 import Image from "next/image";
-import GameCustPlus from "../../../../app/(pages)/(nv)/(editor)/gamecustplus/page";
 import Popup from "reactjs-popup";
 import PremiumSettingsBlock from "../../MiddleBlock/PremiumSettingsBlock";
 

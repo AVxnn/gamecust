@@ -11,6 +11,7 @@ import { store } from "../../store/store";
 import NextAuthProvider from "../../features/provider/nextAuthProvider";
 import { observer } from "mobx-react-lite";
 import Head from "next/head";
+import { getPostListAll } from "../../features/new/getPostList/getPostList";
 
 interface State {
   mobxStore: MobxStore;
@@ -55,6 +56,16 @@ const LayoutPages = ({ children }: { children: React.ReactNode }) => {
       document.body.setAttribute("gamecust", "");
     }
   });
+
+  const ge = async () => {
+    const response = await getPostListAll();
+
+    const postsEntries = response.map(({ postId }: any) => ({
+      url: `https://gamecust.ru/post/${postId}`,
+    }));
+    console.log(postsEntries);
+  };
+  ge();
 
   useEffect(() => {
     const checkHandler = async () => {

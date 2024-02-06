@@ -25,3 +25,16 @@ export const getSubsPostList = async (id: any, page: any) => {
     console.error("Error fetching data:", error);
   }
 };
+
+export const getPostListAll = async () => {
+  try {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/post/getPosts/all`
+    );
+    const data = await response.json();
+
+    return data;
+  } catch (error) {
+    console.error("Error fetching data:", error);
+  }
+};
