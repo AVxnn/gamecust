@@ -2,8 +2,8 @@
 
 import React, { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
-import PostList from "../../../../../../newComponents/post/postList";
-import getDonePosts from "../../../../../../features/new/getDonePosts/getDonePosts";
+import PostList from "../../../../../../../newComponents/post/postList";
+import getDonePosts from "../../../../../../../features/new/getDonePosts/getDonePosts";
 
 const Profile = () => {
   const { uid } = useParams() as any;

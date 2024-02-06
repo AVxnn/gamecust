@@ -2,9 +2,7 @@ import React from "react";
 import PostView from "../../../../../../newComponents/post/postView";
 import { getPost } from "../../../../../../features/new/getPost/getPost";
 
-export async function generateMetadata(
-  { params }: any
-) {
+export async function generateMetadata({ params }: any) {
   // read route params
   const id = params.uid;
 
@@ -21,12 +19,10 @@ export async function generateMetadata(
       siteName: "GameCust",
       images: [
         {
-          url: "/mstile-150x150.png",
-          width: 150,
-          height: 150
-        }
-      ]
-    }
+          url: product.data.filter((e: any) => e.type == "media")[0]?.href,
+        },
+      ],
+    },
   };
 }
 

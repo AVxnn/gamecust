@@ -129,7 +129,7 @@ const CategoryHeader = () => {
                 dataTagAccount.map((item: any, index: number) => {
                   return (
                     <Tabs
-                      link={`/profile/${data._id}/${item.link}`}
+                      link={`/category/${data._id}/${item.link}`}
                       key={index}
                       onClick={() => changePage(index)}
                       current={active == index}

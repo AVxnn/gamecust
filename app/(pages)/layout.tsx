@@ -1,8 +1,6 @@
 "use client";
 
 import React, { createContext, useEffect } from "react";
-import styles from "./layout.module.scss";
-import { useSession } from "next-auth/react";
 import MobxStore from "../../store/mobxStore";
 import PostCreateStore from "../../store/postCreateStore";
 import NotificationStore from "../../store/notificationStore";

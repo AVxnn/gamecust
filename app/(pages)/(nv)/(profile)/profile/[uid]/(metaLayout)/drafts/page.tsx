@@ -1,11 +1,11 @@
 "use client";
 
 import React, { useContext, useEffect, useState } from "react";
-import Drafts from "../../../../../../../components/legendary/MiddleBlock/ChangeProfileBlock/Drafts";
-import { getPostsId } from "../../../../../../../features/new/getPostsId/getPostsId";
+import Drafts from "../../../../../../../../components/legendary/MiddleBlock/ChangeProfileBlock/Drafts";
+import { getPostsId } from "../../../../../../../../features/new/getPostsId/getPostsId";
 import { useParams, useRouter } from "next/navigation";
-import isRoleHandler from "../../../../../../../features/isRoleHandler";
-import { Context } from "../../../../../layout";
+import isRoleHandler from "../../../../../../../../features/isRoleHandler";
+import { Context } from "../../../../../../layout";
 import { observer } from "mobx-react-lite";
 
 const DraftsPage = () => {

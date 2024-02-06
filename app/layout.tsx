@@ -5,9 +5,15 @@ import "../styles/globals.scss";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "GameCust | Новости из мира игр",
+  title: {
+    default: "GameCust | игры, разработка, кино, сообщества, общение",
+    template: "%s | GameCust игры, разработка, кино, сообщества, общение",
+  },
   description:
     "Приветствуем вас на GameCraft - вашем креативном уголке в виртуальной реальности! Здесь вы можете воплощать свою страсть к играм в увлекательные статьи, раскрывая тайны виртуальных миров, делясь советами, историями и впечатлениями.",
+  twitter: {
+    title: "GameCust | игры, разработка, кино, сообщества, общение",
+  },
   openGraph: {
     title: "GameCust | Новости из мира игр",
     description: "Главная страница | Рекомендации",
@@ -15,9 +21,7 @@ export const metadata: Metadata = {
     siteName: "GameCust",
     images: [
       {
-        url: "../public/mstile-150x150.png",
-        width: 150,
-        height: 150,
+        url: "/public/mstile-150x150.png",
       },
     ],
   },
