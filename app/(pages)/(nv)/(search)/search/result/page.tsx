@@ -1,10 +1,8 @@
 "use client";
 
-import { useParams, useRouter, useSearchParams } from "next/navigation";
-import React, { useContext, useEffect, useMemo, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import React, { useEffect, useState } from "react";
 import styles from "./PageSearchResult.module.scss";
-import SearchHeader from "../../../../../../newComponents/searchHeader";
-import { Context } from "../../../../layout";
 import { getSearchPosts } from "../../../../../../features/new/getSearch/getSearch";
 import PostList from "../../../../../../newComponents/post/postList";
 
@@ -34,7 +32,9 @@ const PageSearchResult = () => {
     <div className={styles.search}>
       <PostList fetchPosts={saveHandler} />
     </div>
-  ) : null;
+  ) : (
+    <></>
+  );
 };
 
 export default PageSearchResult;

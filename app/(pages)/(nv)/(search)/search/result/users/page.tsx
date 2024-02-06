@@ -27,7 +27,7 @@ const Users = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [params, router, params.get("query")]);
 
-  return loading ? <UserList fetchPosts={saveHandler} /> : null;
+  return loading ? <UserList fetchPosts={saveHandler} /> : <></>;
 };
 
 export default Users;
