@@ -21,9 +21,11 @@ const LayoutPages = ({ children }: { children: React.ReactNode }) => {
   const { mobxStore } = useContext(Context);
 
   const getFirstUser = async () => {
-    const res = await getUserId(uid);
-    const newPosts = await res;
-    setData(newPosts);
+    if (uid) {
+      const res = await getUserId(uid);
+      const newPosts = await res;
+      setData(newPosts);
+    }
   };
 
   useEffect(() => {

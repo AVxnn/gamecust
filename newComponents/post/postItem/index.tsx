@@ -14,7 +14,6 @@ import ListBlock from "./UI/data/listBlock";
 import QuoteBlock from "./UI/data/QuoteBlock";
 
 const PostItem = ({ data }: any) => {
-  console.log(data);
   return (
     <div className={styles.postItem}>
       <div className={styles.headerContainer}>

@@ -13,8 +13,6 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
     const par = params.get("query");
 
     if (par) {
-      console.log("2", par);
-
       const resData = await getSearch(par);
       setData(resData);
     }
