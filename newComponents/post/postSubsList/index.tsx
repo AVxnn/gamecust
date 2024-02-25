@@ -55,9 +55,11 @@ const PostSubsList = ({ fetchPosts }: any) => {
       loader={<Loading />}
       endMessage={<Empty text={"Лента закончилась"} />}
     >
-      {posts.map((data: any, index: any) => (
-        <PostItem key={index} data={data} />
-      ))}
+      {posts.map((data: any, index: any) => {
+        if (data.published) {
+          return <PostItem key={index} data={data} />
+        } 
+      })}
     </InfiniteScroll>
   ) : (
     <></>

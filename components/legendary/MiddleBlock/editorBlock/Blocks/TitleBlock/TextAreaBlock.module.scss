@@ -1,0 +1,75 @@
+@import "/styles/variables.scss";
+
+.container {
+  width: calc(100% - 102px);
+  position: relative;
+  padding: 0 52px;
+  user-select: none;
+
+  @media (max-width: 768px) {
+    padding: 0 32px 0 32px;
+    width: calc(100% - 64px);
+  }
+
+  .inputMain {
+    background-color: rgba(0, 0, 0, 0);
+    width: 100%;
+    border: none;
+    outline: none;
+    resize: none;
+    font-weight: 500;
+    color: $d_main_text_color;
+    padding: 8px 0;
+    font-size: 26px;
+  }
+
+  .placeholder {
+    user-select: none;
+    pointer-events: none;
+    top: 0;
+    padding: 8px 0;
+    font-size: 26px;
+    color: $d_main_subtext_color;
+    position: absolute;
+    cursor: text;
+  }
+
+  .h1 {
+    padding: 8px 0;
+    font-weight: 500;
+    line-height: 30px;
+    font-size: 22px;
+  }
+
+  .h2 {
+    padding: 8px 0;
+    font-weight: 500;
+    font-size: 20px;
+  }
+
+  .text {
+    padding: 8px 0;
+    font-weight: 400;
+    font-size: 16px;
+  }
+
+  @media (max-width: 768px) {
+    .h1 {
+      padding: 8px 0;
+      font-weight: 500;
+      font-size: 24px;
+    }
+
+    .h2 {
+      padding: 8px 0;
+      font-weight: 500;
+      font-size: 20px;
+    }
+
+    .text {
+      padding: 8px 0;
+      font-weight: 500;
+      font-size: 16px;
+    }
+  }
+}

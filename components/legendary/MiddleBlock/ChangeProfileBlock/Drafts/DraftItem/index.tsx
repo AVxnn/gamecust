@@ -36,7 +36,7 @@ const DraftItem = ({ data, getMorePost }: any) => {
           <h2
             className={styles.title}
             dangerouslySetInnerHTML={{
-              __html: data?.data?.filter((e: any) => e.type == "h1")[0]?.value,
+              __html: data.title,
             }}
           ></h2>
           <div className={styles.bottomInfo}>

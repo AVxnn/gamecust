@@ -80,7 +80,7 @@ const LayoutPages = ({ children }: { children: React.ReactNode }) => {
           {children}
         </div>
         <div className={styles.rightColumn}>
-          <Premium />
+          {/* <Premium /> */}
           <TopUsers />
           <Contacts />
         </div>

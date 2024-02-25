@@ -10,6 +10,8 @@ import ImagePost from "./UI/data/imagePost";
 import Video from "./UI/data/video";
 import Link from "next/link";
 import Tag from "../../../components/legendary/common/Tag";
+import ListBlock from "./UI/data/listBlock";
+import QuoteBlock from "./UI/data/QuoteBlock";
 
 const PostItem = ({ data }: any) => {
   console.log(data);
@@ -31,13 +33,16 @@ const PostItem = ({ data }: any) => {
       ) : null}
       <Link href={`/post/${data.postId}`}>
         <section className={styles.mainInfo}>
+        <Title text={data?.title} />
           {data?.stared.map((item: any, index: number) => {
-            if (item.type === "h1") {
-              return <Title key={index} text={item.value} />;
-            } else if (item.type === "h2") {
+            if (item.type === "h2") {
               return <SubTitle key={index} text={item.value} />;
             } else if (item.type === "text") {
               return <Description key={index} text={item.value} />;
+            } else if (item.type === "list") {
+              return <ListBlock key={index} item={item} />;
+            } else if (item.type === "quote") {
+              return <QuoteBlock key={index} item={item} />;
             } else if (item.type === "media") {
               return <ImagePost key={index} href={item?.href} />;
             } else if (item.type === "link") {

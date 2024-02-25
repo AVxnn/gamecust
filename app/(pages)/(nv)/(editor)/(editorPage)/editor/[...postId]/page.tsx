@@ -29,18 +29,14 @@ const PageEditor = () => {
     if (post?.category) {
       postCreateStore.changeCategory(post.category._id);
     }
+    if (post?.title) {
+      postCreateStore.updateTitle(post.title);
+    }
     if (post.data?.length > 0) {
       postCreateStore.updateArray(post.data);
     } else {
-      postCreateStore.updateArray([
-        {
-          type: "h1",
-          value: "",
-          stared: true,
-          unicalId: uuid(),
-          id: 0,
-        },
-      ]);
+      postCreateStore.updateArray([]);
+      postCreateStore.updateTitle("");
     }
     console.log(postCreateStore.postId, postCreateStore.data);
     // eslint-disable-next-line react-hooks/exhaustive-deps

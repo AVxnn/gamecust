@@ -11,7 +11,7 @@ const ToolBar = ({ pressKey }: any) => {
   const { mobxStore, postCreateStore, notificationStore } = useContext(Context);
   const router = useRouter();
   const submitHandler = () => {
-    if (postCreateStore.data[0].value.length > 2) {
+    if (postCreateStore.title) {
       if (localStorage.getItem("token")) {
         mobxStore.checkAuth();
       }
@@ -24,7 +24,8 @@ const ToolBar = ({ pressKey }: any) => {
       postCreateStore.createPost(
         mobxStore.user,
         postCreateStore.getPost(),
-        `${postCreateStore.postId}`
+        `${postCreateStore.postId}`,
+        postCreateStore.title
       );
     } else {
       notificationStore.addItem({
@@ -41,7 +42,7 @@ const ToolBar = ({ pressKey }: any) => {
         <Button clb={submitHandler} type={"primary"} size={"big"}>
           Опубликовать
         </Button>
-        {postCreateStore?.data[0].value ? <DotsPreview /> : null}
+        {postCreateStore?.title ? <DotsPreview /> : null}
       </div>
       <div className={styles.right}>
         {!pressKey ? (

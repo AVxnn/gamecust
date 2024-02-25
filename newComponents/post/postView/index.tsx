@@ -95,10 +95,9 @@ const PostView = () => {
       >
         <HeaderPost data={postData} fixed={isfixed} scrollY={scrollY} />
         <section className={styles.mainInfo}>
+          <Title text={postData?.title} />
           {postData?.data?.map((item: any, index: number) => {
-            if (item.type === "h1") {
-              return <Title key={index} text={item.value} />;
-            } else if (item.type === "h2") {
+            if (item.type === "h2") {
               return <SubTitle key={index} text={item.value} />;
             } else if (item.type === "text") {
               return <Description key={index} text={item.value} />;

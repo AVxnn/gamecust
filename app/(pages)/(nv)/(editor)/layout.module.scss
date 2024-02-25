@@ -25,4 +25,37 @@
     gap: 16px;
     justify-content: center;
   }
+
+  .leftColumn {
+    max-width: 220px;
+    width: 100%;
+    display: flex;
+    top: 76px;
+    position: sticky;
+    flex-direction: column;
+    gap: 32px;
+    align-items: center;
+
+    @media screen and (max-width: 1280px) {
+      max-width: 40px;
+    }
+
+    @media screen and (max-width: 1024px) {
+      display: none;
+    }
+  }
+  .rightColumn {
+    max-width: 296px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    top: -500px;
+    position: sticky;
+    gap: 16px;
+    justify-content: flex-end;
+
+    @media screen and (max-width: 980px) {
+      display: none;
+    }
+  }
 }

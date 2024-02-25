@@ -16,6 +16,7 @@ import uuid from "react-uuid";
 import { Context } from "../../../../app/(pages)/layout";
 import { useParams } from "next/navigation";
 import TextAreaBlock from "./Blocks/TextAreaBlock";
+import TitleBlock from "./Blocks/TitleBlock";
 
 const EditorBlock = ({ post }: any) => {
   const { mobxStore, postCreateStore, notificationStore } = useContext(Context);
@@ -34,13 +35,14 @@ const EditorBlock = ({ post }: any) => {
         mobxStore.user,
         postCreateStore.data,
         postCreateStore.postId,
-        postCreateStore.category
+        postCreateStore.category,
+        postCreateStore.title
       );
     }
     setPressKey(false);
   }, [mobxStore.user, postCreateStore]);
 
-  const debouncedSave = useDebounce(saveHandler, 500);
+  const debouncedSave = useDebounce(saveHandler, 1000);
 
   const keyPress = useCallback(() => {
     setPressKey(true);
@@ -48,7 +50,6 @@ const EditorBlock = ({ post }: any) => {
   }, []);
 
   const createNewPost = useCallback(() => {
-    console.log(postCreateStore.data.length);
     if (postCreateStore.data.length >= 1) {
       if (
         !postCreateStore.data[postCreateStore?.data?.length - 1].value &&
@@ -102,12 +103,12 @@ const EditorBlock = ({ post }: any) => {
   useEffect(() => {
     setItems(postCreateStore.data);
   }, [postCreateStore.data]);
-  console.log("render");
+  
   return (
     <div className={styles.editor}>
       <ChangeAccount post={post} />
       <div ref={editor} className={styles.editor_list}>
-        <TextAreaBlock item={items[0]} />
+        <TitleBlock item={post.title} />
         <Reorder.Group axis="y" values={items} onReorder={handleReorder}>
           {items.map((item: any, index: number) => {
             return <ConstructorBlocks data={item} key={item.unicalId} />;

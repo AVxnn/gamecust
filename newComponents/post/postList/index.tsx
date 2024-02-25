@@ -8,6 +8,7 @@ import PostItem from "../postItem";
 import Empty from "../../../components/legendary/common/Empty";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Loading from "./loading";
+import Loader from "../../loader";
 
 const PostList = ({ fetchPosts }: any) => {
   const [hasMore, setHasMore] = useState(true);
@@ -47,8 +48,8 @@ const PostList = ({ fetchPosts }: any) => {
       next={getMorePost}
       className={styles.list}
       hasMore={hasMore}
-      loader={<Loading />}
-      endMessage={<Empty text={'Лента закончилась'} />}
+      loader={<Loader />}
+      endMessage={<Empty text={'Похоже тут пусто'} />}
     >
       {posts.map((data: any, index: any) => (
         <PostItem key={index} data={data} />

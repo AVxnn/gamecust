@@ -7,7 +7,6 @@
   box-sizing: border-box;
   background: linear-gradient(96.19deg, #dfe8ff 8.76%, #e9d8ff 95.43%);
   border-radius: 8px;
-  margin-bottom: 58px;
   margin-top: 8px;
 
   .topBar {
@@ -47,14 +46,14 @@
         margin: 0;
         font-size: 32px;
         font-weight: 500;
-        color: $d_main_text_color;
+        color: #000000;
       }
 
       .subtitle {
         margin: 0;
         font-size: 18px;
         text-align: center;
-        color: $d_main_subtext_color;
+        color: #888888;
       }
     }
 
@@ -150,7 +149,7 @@
         text-align: center;
         display: block;
         width: 220px;
-        color: $d_main_text_color;
+        color: #888888;
         font-size: 12px;
 
         a {

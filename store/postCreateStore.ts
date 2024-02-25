@@ -6,6 +6,7 @@ export default class PostCreateStore {
   postId = "";
   category = "";
   save = false;
+  title = "";
   data = [
     {
       type: "h1",
@@ -64,6 +65,10 @@ export default class PostCreateStore {
     this.data[foundIndex] = data;
   }
 
+  updateTitle(data: string) {
+    this.title = data;
+  }
+
   MoveItem(data: any, move: any) {
     let res = this.data;
     let firstIndex = res.findIndex((item: any) => item.id === data.id) as any;
@@ -94,7 +99,7 @@ export default class PostCreateStore {
     return this.data;
   }
 
-  async createPost(user: any, data: any, postId: string) {
+  async createPost(user: any, data: any, postId: string, title: string) {
     try {
       const post = {
         user: user.id,
@@ -102,6 +107,7 @@ export default class PostCreateStore {
         published: true,
         publishedDate: `${Date.now()}`,
         postId: postId,
+        title: title,
         data: data,
         stared: data.filter((item: any) => item.stared === true),
         tags: [],
@@ -141,6 +147,7 @@ export default class PostCreateStore {
         published: data.published || false,
         publishedDate: data.publishedDate,
         postId: postId,
+        title: data,
         data: data,
         stared: data.filter((item: any) => item.stared === true),
         tags: [],
@@ -157,7 +164,7 @@ export default class PostCreateStore {
     }
   }
 
-  async updateData(user: any, data: any, postId: any, category: any) {
+  async updateData(user: any, data: any, postId: any, category: any, title: string) {
     console.log(data);
     try {
       const post = {
@@ -165,6 +172,7 @@ export default class PostCreateStore {
         postId: postId,
         category: category ? category : null,
         data: data,
+        title: title
       };
       const response = await CreatePostService.updateData(post);
       console.log(response);

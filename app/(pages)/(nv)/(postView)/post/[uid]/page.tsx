@@ -10,11 +10,11 @@ export async function generateMetadata({ params }: any) {
   const product = await getPost(id);
 
   return {
-    title: `${product.stared[0].value} | GameCust новости из мира игр`,
-    description: product.stared[1]?.value,
+    title: `${product?.title} | GameCust новости из мира игр`,
+    description: product?.stared[0]?.value,
     openGraph: {
-      title: `${product.stared[0].value} | GameCust новости из мира игр`,
-      description: product.stared[1]?.value,
+      title: `${product?.title} | GameCust новости из мира игр`,
+      description: product?.stared[0]?.value,
       url: `https://gamecust.ru/post/${product.postId}`,
       siteName: "GameCust",
       images: [
