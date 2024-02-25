@@ -18,15 +18,18 @@ import changeTheme from "../../../../features/ChangeTheme";
 import { AnimatePresence, motion } from "framer-motion";
 
 const AccountBlock = () => {
-  const [theme, setTheme] = useState(localStorage?.getItem("Theme") || "dark") as any;
+  const [theme, setTheme] = useState() as any;
 
   const { mobxStore, popupHandlers } = useContext(Context);
 
+  useEffect(() => {
+    setTheme(localStorage.getItem("Theme") !== "dark");
+  }, []);
+
   const changeThemeHandler = () => {
     changeTheme();
-    setTheme(localStorage.getItem("Theme") === "dark");
+    setTheme(localStorage.getItem("Theme") === ("dark" as any));
   };
-  
   return (
     <AnimatePresence initial={false} mode="wait">
       <motion.div
