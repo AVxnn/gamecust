@@ -21,7 +21,7 @@ import Popup from "reactjs-popup";
 import PremiumSettingsBlock from "../MiddleBlock/PremiumSettingsBlock";
 
 const UserSection = () => {
-  const [theme, setTheme] = useState(localStorage.getItem("Theme") || "dark");
+  const [theme, setTheme] = useState(localStorage.getItem("Theme"));
 
   const router = useRouter();
 

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useContext, useEffect, useState } from "react";
+import React, { Suspense, useContext, useEffect, useState } from "react";
 import styles from "./layout.module.scss";
 import { observer } from "mobx-react-lite";
 import NavigationLayout from "../../../../../newComponents/navigation/navigationLayout";
@@ -10,20 +10,25 @@ import Contacts from "../../../../../components/legendary/RightBlock/Contacts";
 import Profile from "../../../../../newComponents/profile";
 import Subscriptions from "../../../../../components/legendary/RightBlock/Subscriptions";
 import { getUserId } from "../../../../../features/new/getUserId/getUserId";
-import { useParams, usePathname } from "next/navigation";
+import { useParams, usePathname, useRouter } from "next/navigation";
 import Subscribers from "../../../../../components/legendary/RightBlock/Subscribers";
 import { Context } from "../../../layout";
+import Loader from "../../../../../newComponents/loader";
 
 const LayoutPages = ({ children }: { children: React.ReactNode }) => {
   const { uid } = useParams() as any;
   const pathname = usePathname() as any;
   const [data, setData] = useState([]) as any;
+  const router = useRouter();
   const { mobxStore } = useContext(Context);
 
   const getFirstUser = async () => {
     if (uid) {
       const res = await getUserId(uid);
       const newPosts = await res;
+      if (!newPosts._id) {
+        router.push("/")
+      }
       setData(newPosts);
     }
   };
@@ -41,8 +46,10 @@ const LayoutPages = ({ children }: { children: React.ReactNode }) => {
           <CreateButton />
         </div>
         <div className={styles.middleColumn}>
-          <Profile data={data} />
-          {children}
+          <Suspense fallback={<Loader />}>
+            <Profile data={data} />
+            {children}
+          </Suspense>
         </div>
         <div className={styles.rightColumn}>
           <Subscribers data={data} />

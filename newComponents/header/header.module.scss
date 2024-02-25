@@ -33,6 +33,9 @@
     @media screen and (max-width: 980px) {
       max-width: 640px;
     }
+    @media screen and (max-width: 767px) {
+      margin: 0 16px;
+    }
 
     .leftColumn {
       max-width: 220px;

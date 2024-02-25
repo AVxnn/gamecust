@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "./postList.module.scss";
 import { getPostList } from "../../../features/new/getPostList/getPostList";
-import PostPreview from "../../../components/legendary/common/PostPreview";
 import PostItem from "../postItem";
 import Empty from "../../../components/legendary/common/Empty";
 import InfiniteScroll from "react-infinite-scroll-component";
@@ -48,7 +47,7 @@ const PostList = ({ fetchPosts }: any) => {
       next={getMorePost}
       className={styles.list}
       hasMore={hasMore}
-      loader={<Loader />}
+      loader={<Loading />}
       endMessage={<Empty text={'Похоже тут пусто'} />}
     >
       {posts.map((data: any, index: any) => (

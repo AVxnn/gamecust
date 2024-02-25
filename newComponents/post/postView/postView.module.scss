@@ -9,6 +9,11 @@
   border-radius: 8px;
   margin-bottom: 64px;
   padding: 16px 24px;
+  
+  @media (max-width: 768px) {
+    height: auto;
+    padding: 16px;
+  }
 
   .header {
     display: flex;

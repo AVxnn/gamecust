@@ -39,6 +39,7 @@
 
     @media (max-width: 768px) {
       margin-top: -70px;
+      left: 12px;
       width: 120px;
     }
 
@@ -84,7 +85,7 @@
 
     @media (max-width: 768px) {
       height: auto;
-      padding: 8px 24px 0 24px;
+      padding: 0 16px 0 16px;
     }
 
     .followBtn {

@@ -112,6 +112,12 @@ const CategoryHeader = ({ data }: any) => {
     }
   }, [pathname]);
 
+  const originalDate = new Date(data?.createdAt);
+
+  const options = { day: 'numeric', month: 'long', year: 'numeric' } as any;
+
+  const formattedDate = originalDate.toLocaleDateString('ru-RU', options);
+
   return (
     <>
       <div className={styles.profileBlock}>
@@ -146,7 +152,7 @@ const CategoryHeader = ({ data }: any) => {
                 {data?.subscribers ? data.subscribers.length : 0} подписчиков
               </span>
             </div>
-            <div className={styles.date}>На проекте с 12 фев 2021</div>
+            <div className={styles.date}>На проекте с {formattedDate}</div>
             <ul ref={menuRef} className={styles.navigation}>
               {dataTagAccount &&
                 dataTagAccount.map((item: any, index: number) => {

@@ -60,6 +60,10 @@
       @media screen and (max-width: 1024px) {
         display: block;
       }
+      
+      @media screen and (max-width: 767px) {
+        padding: 0 8px;
+      }
 
       .navigation {
         display: flex;
