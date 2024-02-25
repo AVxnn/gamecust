@@ -2,12 +2,12 @@ import { MetadataRoute } from "next";
 import { getPostListAll } from "../features/new/getPostList/getPostList";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  // const response = await getPostListAll();
+  const response = await getPostListAll();
 
-  // const postsEntries = response.map(({ postId }: any) => ({
-  //   url: `https://gamecust.ru/post/${postId}`,
-  //   lastModified: new Date(),
-  // }));
+  const postsEntries = response.map(({ postId }: any) => ({
+    url: `https://gamecust.ru/post/${postId}`,
+    lastModified: new Date(),
+  }));
 
   return [
     {
@@ -50,6 +50,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       lastModified: new Date(),
       priority: 0.5,
     },
-    // ...postsEntries,
+    ...postsEntries,
   ];
 }
