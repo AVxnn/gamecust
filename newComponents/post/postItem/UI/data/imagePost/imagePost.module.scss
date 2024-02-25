@@ -1,11 +1,20 @@
+@import "/styles/variables.scss";
 
 .imgCont {
-  width: 100%;
-  height: 100%;
-  margin: 16px 0 0 0;
+  display: flex;
   position: relative;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: center;
+  margin: 16px 0 16px 0;
+  max-height: 500px;
   overflow: hidden;
-  border-radius: 8px;
+  border-radius: $br-14;
+  background-color: $d_main_bg_color;
+  gap: 8;
+  div {
+    line-height: 0;
+  }
 }
 
 .img {
@@ -14,7 +23,7 @@
   max-height: 500px;
   position: relative !important;
   border-radius: 8px;
-  object-fit: cover; // Optional
+  object-fit: contain; // Optional
 }
 
 .images {

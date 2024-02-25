@@ -63,7 +63,7 @@ const MobileMenu = () => {
 
   return (
     <>
-      <div className={styles.mobileMenu}>
+      <div className={`${styles.mobileMenu} ${styles.pwa}`}>
         <Link
           onClick={() => setActive(0)}
           className={`${styles.link} ${active == 0 ? styles.active : ""}`}

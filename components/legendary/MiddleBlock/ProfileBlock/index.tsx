@@ -8,6 +8,7 @@ import AvatarChanger from "./ui/AvatarChanger";
 import TitleCard from "./ui/TitleCard";
 import { Context } from "../../../../app/(pages)/layout";
 import { observer } from "mobx-react-lite";
+import TextArea from "./ui/TextArea";
 
 const ProfileBlock = () => {
   const { mobxStore } = useContext(Context);
@@ -56,7 +57,7 @@ const ProfileBlock = () => {
           setValue={setUsername}
           maxValue={24}
         />
-        <NewInput
+        <TextArea
           title={"Описание к блогу"}
           value={description}
           setValue={setDescription}

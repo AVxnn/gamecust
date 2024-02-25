@@ -1,7 +1,7 @@
 import React from "react";
-import styles from "./NewInput.module.scss";
+import styles from "./TextArea.module.scss";
 
-const NewInput = ({
+const TextArea = ({
   title,
   value,
   setValue,
@@ -21,12 +21,10 @@ const NewInput = ({
       <div className={styles.newInput}>
         <p className={styles.title}>{title}</p>
         <div className={styles.container}>
-          <input
+          <textarea
             className={styles.input}
-            type="text"
-            value={value}
             onChange={(e) => changeHandler(e.currentTarget.value)}
-          />
+          >{value}</textarea>
           {maxValue !== 128 ? (
             <span className={styles.maxValue}>{maxValue - value?.length}</span>
           ) : (
@@ -38,4 +36,4 @@ const NewInput = ({
   );
 };
 
-export default NewInput;
+export default TextArea;

@@ -12,6 +12,7 @@ import { Context } from "../../app/(pages)/layout";
 import BgProfilePopup from "../../components/legendary/common/bgProfilePopup";
 import FollowButton from "../../components/legendary/common/PostPreview/common/HeaderPost/followButton";
 import { createNotification } from "../../features/new/getNotifications/getNotifications";
+import Linkify from 'linkify-react';
 
 const CategoryHeader = ({ data }: any) => {
   const [active, setActive] = useState(0);
@@ -142,7 +143,7 @@ const CategoryHeader = ({ data }: any) => {
                     <IconHandler user={data} />
                   </span>
                   <span className={styles.description}>
-                    {data?.description}
+                    <Linkify options={{target: "_blank"}}>{data?.description}</Linkify>
                   </span>
                 </>
               )}

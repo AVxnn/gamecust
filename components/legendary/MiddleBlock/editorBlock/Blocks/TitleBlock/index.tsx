@@ -55,7 +55,7 @@ const TitleBlock = ({ item }: any) => {
       }
     }
   };
-  console.log(postCreateStore.title)
+  
   useEffect(() => {
     getSelectedWordCoordinates();
   }, [selectedText]);
