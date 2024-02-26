@@ -7,6 +7,7 @@ import { Reorder, useDragControls } from "framer-motion";
 import { observer } from "mobx-react-lite";
 import ListBlock from "../Blocks/ListBlock";
 import QuoteBlock from "../Blocks/QuoteBlock";
+import CodeBlock from "../Blocks/CodeBlock";
 
 const ConstructorBlocks = ({ data }: any) => {
   const dragControls = useDragControls();
@@ -85,6 +86,17 @@ const ConstructorBlocks = ({ data }: any) => {
           value={data}
         >
           <TextAreaBlock item={data} dragControls={dragControls} />
+        </Reorder.Item>
+      );
+    case "code":
+      return (
+        <Reorder.Item
+          dragListener={false}
+          key={data.unicalId}
+          dragControls={dragControls}
+          value={data}
+        >
+          <CodeBlock item={data} dragControls={dragControls} />
         </Reorder.Item>
       );
     default:

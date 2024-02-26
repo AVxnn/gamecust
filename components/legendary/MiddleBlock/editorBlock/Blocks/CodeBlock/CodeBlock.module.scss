@@ -12,60 +12,38 @@
   }
 
   .inputMain {
-    background-color: rgba(0, 0, 0, 0);
+    background-color: $d_main_bg_color;
     width: 100%;
+    border-radius: $br-14;
     border: none;
+    margin: 8px 0;
     outline: none;
     resize: none;
-    font-weight: 500;
+    font-weight: 400;
     color: $d_main_text_color;
-    padding: 8px 0;
-    font-size: 26px;
+    padding: 8px 8px 8px 16px;
+    font-size: 16px;
   }
 
   .placeholder {
     user-select: none;
     pointer-events: none;
     top: 0;
-    font-size: 26px;
+    font-size: 16px;
+    padding: 8px 8px 8px 16px;
     color: $d_main_subtext_color;
     position: absolute;
     cursor: text;
   }
 
-  .h1 {
-    padding: 8px 0;
-    font-weight: 500;
-    line-height: 30px;
-    font-size: 22px;
-  }
-
-  .h2 {
-    padding: 8px 0;
-    font-weight: 500;
-    font-size: 20px;
-  }
-
-  .text {
+  .code {
     padding: 8px 0;
     font-weight: 400;
     font-size: 16px;
   }
 
   @media (max-width: 768px) {
-    .h1 {
-      padding: 8px 0;
-      font-weight: 500;
-      font-size: 22px;
-    }
-
-    .h2 {
-      padding: 8px 0;
-      font-weight: 500;
-      font-size: 20px;
-    }
-
-    .text {
+    .code {
       padding: 8px 0;
       font-weight: 400;
       font-size: 16px;

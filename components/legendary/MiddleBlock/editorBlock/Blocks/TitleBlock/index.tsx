@@ -55,6 +55,13 @@ const TitleBlock = ({ item }: any) => {
       }
     }
   };
+
+  // Функция отлавливающая вставленный текст
+  const handlePaste = (e: any) => {
+    e.preventDefault();
+    const pastedText = e.clipboardData.getData("text/plain"); // Получаем вставленный текст
+    document.execCommand('insertText', false, pastedText);
+  };
   
   useEffect(() => {
     getSelectedWordCoordinates();
@@ -73,7 +80,7 @@ const TitleBlock = ({ item }: any) => {
 
   useEffect(() => {
     inputText.current.focus();
-  }, [postCreateStore.data]);
+  }, [postCreateStore]);
 
   return (
     <>
@@ -87,6 +94,7 @@ const TitleBlock = ({ item }: any) => {
           className={`${styles.inputMain}`}
           onChange={(e) => updateHandler(e.target.value)}
           onMouseUp={handleTextSelection}
+          onPaste={handlePaste}
           onClick={() => setFocus(true)}
           onFocus={() => setFocus(true)}
           html={postCreateStore.title}

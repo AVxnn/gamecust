@@ -13,6 +13,7 @@ import uuid from "react-uuid";
 import { Context } from "../../../../../../../app/(pages)/layout";
 import ListIcon from "../../../../../../../public/img/svg/listIcon";
 import QuoteIcon from "../../../../../../../public/img/svg/quoteIcon";
+import CodeIcon from "../../../../../../../public/img/svg/CodeIcon";
 
 const DropDownForm = observer(
   ({
@@ -100,7 +101,16 @@ const DropDownForm = observer(
           id: postCreateStore.data.length - 1,
         };
         document.execCommand("insertUnorderedList", false); // Send the command to the browser
-      } else if (type == "br") {
+      }  
+      // else if (type == "code") {
+      //   result = {
+      //     type: "code",
+      //     value: "",
+      //     stared: false,
+      //     unicalId: uuid(),
+      //     id: postCreateStore.data.length - 1,
+      //   };
+       else if (type == "br") {
         result = {
           type: "br",
           stared: false,
@@ -209,6 +219,15 @@ const DropDownForm = observer(
                   <QuoteIcon />
                   <p className={styles.text}>Цитата</p>
                 </li>
+                {/* <li
+                  onBlur={() => onBlurHandler()}
+                  tabIndex={0}
+                  onClick={() => createNewFormChange("code")}
+                  className={styles.item}
+                >
+                  <CodeIcon />
+                  <p className={styles.text}>Код</p>
+                </li> */}
               </motion.div>
             ) : null}
           </AnimatePresence>

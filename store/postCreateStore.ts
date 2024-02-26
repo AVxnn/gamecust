@@ -9,7 +9,7 @@ export default class PostCreateStore {
   title = "";
   data = [
     {
-      type: "h1",
+      type: "text",
       value: "",
       stared: false,
       id: 0,
@@ -39,7 +39,7 @@ export default class PostCreateStore {
   }
 
   addItem(data: any, id = this.data.length) {
-    if (this.data.length === id + 1) {
+    if (this.data.length === id) {
       this.data.splice(id, 1, data);
     } else {
       this.data.splice(id + 1, 0, data);

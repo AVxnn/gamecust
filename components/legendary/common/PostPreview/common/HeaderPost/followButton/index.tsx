@@ -1,6 +1,4 @@
 import React, { useContext, useState } from "react";
-import EditBlock from "../EditBlock";
-import isRoleHandler from "../../../../../../../features/isRoleHandler";
 import { Context } from "../../../../../../../app/(pages)/layout";
 import Follow from "../../../../../../../public/img/svg/follow";
 import styles from "./followButton.module.scss";

@@ -110,7 +110,7 @@ const EditorBlock = ({ post }: any) => {
       <div ref={editor} className={styles.editor_list}>
         <TitleBlock item={post.title} />
         <Reorder.Group axis="y" values={items} onReorder={handleReorder}>
-          {items.map((item: any, index: number) => {
+          {items.map((item: any) => {
             return <ConstructorBlocks data={item} key={item.unicalId} />;
           })}
         </Reorder.Group>

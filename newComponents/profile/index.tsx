@@ -13,6 +13,7 @@ import BgProfilePopup from "../../components/legendary/common/bgProfilePopup";
 import FollowButton from "../../components/legendary/common/PostPreview/common/HeaderPost/followButton";
 import { createNotification } from "../../features/new/getNotifications/getNotifications";
 import Linkify from 'linkify-react';
+import { declOfNum } from "../../utils/declOfNum";
 
 const CategoryHeader = ({ data }: any) => {
   const [active, setActive] = useState(0);
@@ -150,7 +151,7 @@ const CategoryHeader = ({ data }: any) => {
             </div>
             <div className={styles.headers}>
               <span className={styles.subs}>
-                {data?.subscribers ? data.subscribers.length : 0} подписчиков
+                {data?.subscribers ? data.subscribers.length : 0} {declOfNum(data?.subscribers ? data.subscribers.length : 0, ['подписчик', 'подписчика', 'подписчиков'])}
               </span>
             </div>
             <div className={styles.date}>На проекте с {formattedDate}</div>

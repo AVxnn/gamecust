@@ -1,5 +1,5 @@
 import { useContext, useEffect, useRef, useState } from "react";
-import styles from "./ListBlock.module.scss";
+import styles from "./CodeBlock.module.scss";
 import DropDownForm from "../../../../common/PostPreview/common/Dropdowns/DropDownForm";
 import DropDownEdit from "../../../../common/PostPreview/common/Dropdowns/DropDownEdit";
 import { observer } from "mobx-react";
@@ -8,8 +8,9 @@ import SelectedBlockEditor from "../SelectedBlockEditor/SelectedBlockEditor";
 import DOMPurify from "dompurify";
 import ContentEditable from "react-contenteditable";
 import { Context } from "../../../../../../app/(pages)/layout";
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 
-const ListBlock = ({ item, dragControls = null }: any) => {
+const CodeBlock = ({ item, dragControls = null }: any) => {
   const popupRef = useRef<HTMLDivElement>(null);
   const labelRef = useRef<HTMLElement>(null) as any;
   const inputText = useRef<HTMLElement>(null) as any;
@@ -69,16 +70,8 @@ const ListBlock = ({ item, dragControls = null }: any) => {
         setIsClicked(true);
       }
     }
-    if (focus) {
-      if (e.keyCode === 13 && focus) {
-        e.preventDefault();
-        console.log("execCommand");
-        document.execCommand("insertHTML", false, "<br><li></li>");
-        return false;
-      }
-    }
   };
-  
+
   // Функция отлавливающая вставленный текст
   const handlePaste = (e: any) => {
     e.preventDefault();
@@ -124,10 +117,6 @@ const ListBlock = ({ item, dragControls = null }: any) => {
 
   useEffect(() => {
     inputText.current.focus();
-  }, []);
-
-  useEffect(() => {
-    inputText.current.focus();
   }, [postCreateStore.data]);
 
   return (
@@ -141,18 +130,19 @@ const ListBlock = ({ item, dragControls = null }: any) => {
         <ContentEditable
           contentEditable={true}
           innerRef={inputText}
-          className={`${styles.inputList}`}
+          className={`${styles.inputMain}`}
           onChange={(e) => updateHandler(e.target.value)}
           onMouseUp={handleTextSelection}
+          onMouseDown={handleTextSelection}
           onPaste={handlePaste}
           onClick={() => setFocus(true)}
           onFocus={() => setFocus(true)}
-          html={item.value}
-          tagName={item.typeList}
+          html={`${<SyntaxHighlighter language="javascript">{item.value}</SyntaxHighlighter>}`}
+          tagName="article"
           suppressContentEditableWarning={true}
         />
         {!item.value && (
-          <span className={`${styles.placeholder} ${styles[item.type]}`}>
+          <span className={`${styles.placeholder}`}>
             Введи текст или нажми Tab
           </span>
         )}
@@ -192,4 +182,4 @@ const ListBlock = ({ item, dragControls = null }: any) => {
   );
 };
 
-export default observer(ListBlock);
+export default observer(CodeBlock);

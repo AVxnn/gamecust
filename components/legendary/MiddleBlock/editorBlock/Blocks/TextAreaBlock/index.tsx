@@ -8,6 +8,7 @@ import SelectedBlockEditor from "../SelectedBlockEditor/SelectedBlockEditor";
 import DOMPurify from "dompurify";
 import ContentEditable from "react-contenteditable";
 import { Context } from "../../../../../../app/(pages)/layout";
+import uuid from "react-uuid";
 
 const TextAreaBlock = ({ item, dragControls = null }: any) => {
   const popupRef = useRef<HTMLDivElement>(null);
@@ -28,8 +29,6 @@ const TextAreaBlock = ({ item, dragControls = null }: any) => {
   const { postCreateStore } = useContext(Context);
 
   const updateHandler = (value: any) => {
-    console.log(value);
-    setFocus(true);
     const sanitizedHtml = DOMPurify.sanitize(value);
     postCreateStore.updateItem({ ...item, value: sanitizedHtml });
   };
@@ -44,6 +43,7 @@ const TextAreaBlock = ({ item, dragControls = null }: any) => {
 
   const handleClickOutside = (e: any) => {
     if (labelRef.current && !labelRef.current.contains(e.target)) {
+      console.log("wwwwwwww")
       hoverChange("off");
       setIsClicked(false);
       setFocus(false);
@@ -59,14 +59,34 @@ const TextAreaBlock = ({ item, dragControls = null }: any) => {
 
   const keyPress = (e: any) => {
     if (focus && item.value == "") {
-      console.log(e.keyCode);
       if (e.keyCode === 8 && item.type !== "h1") {
-        console.log("deleted", item);
         postCreateStore.removeItem(item);
         setIsClicked(false);
+        const topElement = document.querySelector(`#id-${item.id - 1}`) as any;
+        if (topElement) {
+          topElement.tabIndex = -2;
+          topElement.focus();
+        }
+        inputText.current.focus();
       }
       if (e.keyCode === 9) {
         setIsClicked(true);
+      }
+    }
+    if (focus) {
+      console.log(focus)
+      if (e.keyCode === 13) {
+        setFocus(false);
+        const result = {
+          type: "text",
+          value: "",
+          stared: false,
+          unicalId: uuid(),
+          id: postCreateStore.data.length,
+        };
+        postCreateStore.addItem(result, item.id);
+        e.preventDefault();
+        return false;
       }
     }
   };
@@ -75,7 +95,7 @@ const TextAreaBlock = ({ item, dragControls = null }: any) => {
   const handlePaste = (e: any) => {
     e.preventDefault();
     const pastedText = e.clipboardData.getData("text/plain"); // Получаем вставленный текст
-    updateHandler(pastedText);
+    document.execCommand('insertText', false, pastedText);
   };
 
   const getSelectedWordCoordinates = () => {
@@ -104,7 +124,7 @@ const TextAreaBlock = ({ item, dragControls = null }: any) => {
   });
 
   useEffect(() => {
-    if ((typeof document !== "undefined" && isClicked) || hover) {
+    if (typeof document !== "undefined" && isClicked) {
       document.addEventListener("click", (e: any) => {
         handleClickOutside(e);
       });
@@ -130,13 +150,16 @@ const TextAreaBlock = ({ item, dragControls = null }: any) => {
           contentEditable={true}
           innerRef={inputText}
           className={`${styles.inputMain} ${styles[item.type]}`}
+          id={`id-${item.id}`}
           onChange={(e) => updateHandler(e.target.value)}
           onMouseUp={handleTextSelection}
+          onMouseDown={handleTextSelection}
           onPaste={handlePaste}
           onClick={() => setFocus(true)}
           onFocus={() => setFocus(true)}
           html={item.value}
           tagName="article"
+          tabIndex={0}
           suppressContentEditableWarning={true}
         />
         {!item.value && (

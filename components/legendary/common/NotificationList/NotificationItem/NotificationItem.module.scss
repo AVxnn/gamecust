@@ -63,6 +63,32 @@
       rect {
         fill: #c33f3f;
       }
+      path {
+        fill: #c33f3f;
+      }
+    }
+  }
+}
+
+.success {
+  .icon {
+    background-color: #3fc344;
+
+    .bg {
+      background-color: $const_main_text_color;
+      width: 26px;
+      height: 26px;
+      border-radius: 99px;
+
+      svg {
+        transform: rotate(45deg);
+        width: 26px;
+        height: 26px;
+      }
+
+      rect {
+        fill: #3fc344;
+      }
     }
   }
 }

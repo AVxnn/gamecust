@@ -4,6 +4,7 @@ import Tabs from "../../components/legendary/common/Tabs";
 import IconHandler from "../../components/legendary/common/PostPreview/common/IconHandler";
 import { Context } from "../../app/(pages)/layout";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { declOfNum } from "../../utils/declOfNum";
 
 const SearchHeader = ({ data }: any) => {
   const [active, setActive] = useState(0);
@@ -49,8 +50,8 @@ const SearchHeader = ({ data }: any) => {
             </div>
             <div className={styles.date}>
               {active == 0
-                ? `Найдено ${data?.posts?.length} результатов`
-                : `Найдено ${data?.users?.length} результатов`}
+                ? `${declOfNum(data?.posts?.length, ['Найден', 'Найдено', 'Найдено'])} ${data?.posts?.length}  ${declOfNum(data?.posts?.length, ['пост', 'поста', 'постов'])}`
+                : `${declOfNum(data?.users?.length, ['Найден', 'Найдено', 'Найдено'])} ${data?.users?.length} ${declOfNum(data?.users?.length, ['пользователь', 'пользователя', 'пользователей'])}`}
             </div>
             <ul ref={menuRef} className={styles.navigation}>
               {dataTagAccount &&
