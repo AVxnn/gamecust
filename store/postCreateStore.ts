@@ -41,8 +41,11 @@ export default class PostCreateStore {
   addItem(data: any, id = this.data.length) {
     if (this.data.length === id) {
       this.data.splice(id, 1, data);
+      console.log("first", id)
     } else {
-      this.data.splice(id + 1, 0, data);
+      this.data.splice(id + 0.5, 0, data);
+      this.sortArray(this.data);
+      console.log("second", id)
     }
     console.log("data", this.data, data, id);
   }

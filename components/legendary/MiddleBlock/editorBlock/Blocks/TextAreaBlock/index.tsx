@@ -29,6 +29,7 @@ const TextAreaBlock = ({ item, dragControls = null }: any) => {
   const { postCreateStore } = useContext(Context);
 
   const updateHandler = (value: any) => {
+    setFocus(true);
     const sanitizedHtml = DOMPurify.sanitize(value);
     postCreateStore.updateItem({ ...item, value: sanitizedHtml });
   };
@@ -43,10 +44,11 @@ const TextAreaBlock = ({ item, dragControls = null }: any) => {
 
   const handleClickOutside = (e: any) => {
     if (labelRef.current && !labelRef.current.contains(e.target)) {
-      console.log("wwwwwwww")
       hoverChange("off");
       setIsClicked(false);
       setFocus(false);
+    } else {
+      console.log(item.id)
     }
   };
 
@@ -58,36 +60,28 @@ const TextAreaBlock = ({ item, dragControls = null }: any) => {
   };
 
   const keyPress = (e: any) => {
+    document?.getElementById(`#id-${item.id + 1}`)?.focus();
     if (focus && item.value == "") {
       if (e.keyCode === 8 && item.type !== "h1") {
         postCreateStore.removeItem(item);
         setIsClicked(false);
-        const topElement = document.querySelector(`#id-${item.id - 1}`) as any;
-        if (topElement) {
-          topElement.tabIndex = -2;
-          topElement.focus();
-        }
-        inputText.current.focus();
       }
       if (e.keyCode === 9) {
         setIsClicked(true);
       }
     }
-    if (focus) {
-      console.log(focus)
-      if (e.keyCode === 13) {
-        setFocus(false);
-        const result = {
-          type: "text",
-          value: "",
-          stared: false,
-          unicalId: uuid(),
-          id: postCreateStore.data.length,
-        };
-        postCreateStore.addItem(result, item.id);
-        e.preventDefault();
-        return false;
-      }
+    if (focus && e.keyCode === 13) {
+      let newId = uuid()
+      const result = {
+        type: "text",
+        value: "",
+        stared: false,
+        unicalId: newId,
+        id: postCreateStore.data.length,
+      };
+      postCreateStore.addItem(result, item.id + 1);
+      e.preventDefault();
+      return false;
     }
   };
 
@@ -105,7 +99,6 @@ const TextAreaBlock = ({ item, dragControls = null }: any) => {
         const range = selection.getRangeAt(0); // Получаем первый Range в выделении
         const rect = range.getBoundingClientRect(); // Получаем координаты выделенного текста
         setPosPopup({ left: rect.left, top: rect.top });
-        console.log(`Left: ${rect.left}, Top: ${rect.top}`);
       } else {
         console.log("Текст не выделен.");
       }
@@ -117,6 +110,10 @@ const TextAreaBlock = ({ item, dragControls = null }: any) => {
   }, [selectedText]);
 
   useEffect(() => {
+    setFocus(true);
+  }, []);
+
+  useEffect(() => {
     document.addEventListener("keydown", keyPress);
     return () => {
       document.removeEventListener("keydown", keyPress);
@@ -124,19 +121,13 @@ const TextAreaBlock = ({ item, dragControls = null }: any) => {
   });
 
   useEffect(() => {
-    if (typeof document !== "undefined" && isClicked) {
-      document.addEventListener("click", (e: any) => {
-        handleClickOutside(e);
-      });
-      return document.removeEventListener("click", (e: any) => {
-        handleClickOutside(e);
-      });
-    }
+    document.addEventListener("click", (e: any) => handleClickOutside(e));
+    return document.removeEventListener("click", (e: any) => handleClickOutside(e));
   });
 
   useEffect(() => {
     inputText.current.focus();
-  }, [postCreateStore.data]);
+  }, []);
 
   return (
     <>

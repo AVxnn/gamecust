@@ -36,7 +36,6 @@ const DropDownEdit = observer(
       if (
         postCreateStore.data.filter((item) => item.stared === true).length <= 2
       ) {
-        console.log("addStar", item.id, postCreateStore.data);
         postCreateStore.updateItem({ ...item, stared: flag });
         setIsClicked(false);
       } else {
@@ -71,12 +70,17 @@ const DropDownEdit = observer(
         });
       }
     });
-
+    const handleDragStart = (event: any) => {
+      // Prevent the drag gesture from propagating up and triggering scroll
+      event.preventDefault();
+      event.stopPropagation();
+    };
     return (
       <>
         <div ref={labelRef} className={styles.toolbar}>
           <button
             onPointerDown={(event) => dragControls.start(event)}
+            onDragStart={handleDragStart}
             onClick={() => setIsClicked(!isClicked)}
             className={cn(styles.newForm, isClicked && styles.active)}
           >
