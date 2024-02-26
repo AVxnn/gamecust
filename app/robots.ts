@@ -18,6 +18,7 @@ export default function robots(): MetadataRoute.Robots {
           "/subs",
           "/settings",
         ],
+        
       },
     ],
     sitemap: `process.env.NEXTAUTH_URL/sitemap.xml`,

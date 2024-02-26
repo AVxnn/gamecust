@@ -1,0 +1,30 @@
+@import "/styles/variables.scss";
+
+.cont {
+    width: 100%;
+    padding: 0 16px;
+    box-sizing: border-box;
+    margin-bottom: 16px;
+    border-radius: 8px;
+    overflow-x: scroll;
+    background-color: $d_main_subbg_color;
+    display: none;
+
+    @media screen and (max-width: 1024px) {
+      display: block;
+    }
+    
+    @media screen and (max-width: 767px) {
+      padding: 0 8px;
+    }
+
+    .navigation {
+      display: flex;
+      gap: 16px;
+      padding: 0 8px;
+    }
+    
+    &::-webkit-scrollbar {
+      height: 0px; /* Ширина полосы прокрутки */
+    }
+  }

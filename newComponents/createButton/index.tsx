@@ -1,3 +1,5 @@
+"use client"
+
 import React, { useContext } from "react";
 import uuid from "react-uuid";
 import styles from "./createButton.module.scss";

@@ -13,6 +13,11 @@ export async function generateMetadata({ params }: any) {
       default: `${user.username} профиль`,
       template: `${user.username} %s`,
     },
+    robots: {
+      index: true,
+      follow: true,
+      nocache: true
+    },
   };
 }
 
