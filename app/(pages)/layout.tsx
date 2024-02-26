@@ -12,6 +12,7 @@ import NextAuthProvider from "../../features/provider/nextAuthProvider";
 import { observer } from "mobx-react-lite";
 import Head from "next/head";
 import { getPostListAll } from "../../features/new/getPostList/getPostList";
+import { Analytics } from "@vercel/analytics/react"
 
 interface State {
   mobxStore: MobxStore;
@@ -115,6 +116,7 @@ const LayoutPages = ({ children }: { children: React.ReactNode }) => {
             }}
           >
             {children}
+            <Analytics />
           </Context.Provider>
         </NextAuthProvider>
       </Provider>
