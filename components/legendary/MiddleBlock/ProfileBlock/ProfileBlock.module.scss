@@ -7,6 +7,10 @@
   background-color: $d_main_subbg_color;
   border-radius: 8px;
 
+  @media screen and (max-width: 787px) {
+  padding: 12px 16px;
+  }
+
   .mainBlocks {
     display: flex;
     flex-direction: column;

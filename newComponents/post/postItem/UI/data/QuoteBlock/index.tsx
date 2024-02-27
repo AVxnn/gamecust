@@ -10,11 +10,14 @@ const QuoteBlock = ({ item }: any) => {
         className={styles.inputText}
         dangerouslySetInnerHTML={{ __html: item.value }}
       ></p>
-      <span
-        key={item.author}
-        className={styles.inputAuthor}
-        dangerouslySetInnerHTML={{ __html: item.author }}
-      ></span>
+
+      {item.author && (
+        <span
+          key={item.author}
+          className={styles.inputAuthor}
+          dangerouslySetInnerHTML={{ __html: item.author }}
+        ></span>
+      )}
     </div>
   );
 };

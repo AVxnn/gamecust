@@ -10,8 +10,10 @@ const FollowButton = ({ data, changeSub }: any) => {
   const { mobxStore } = useContext(Context);
 
   const [hover, setHover] = useState(false);
-  console.log(data);
-  return data._id !== mobxStore.user.id ? (
+
+  return data._id === mobxStore.user.id ? (
+    <></>
+  ) : (
     <>
       {mobxStore?.user?.subscriptions?.filter((e) => e === data._id).length ? (
         <>
@@ -43,8 +45,6 @@ const FollowButton = ({ data, changeSub }: any) => {
         </>
       )}
     </>
-  ) : (
-    <></>
   );
 };
 

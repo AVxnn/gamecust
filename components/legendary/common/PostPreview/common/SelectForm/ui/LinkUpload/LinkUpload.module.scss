@@ -6,7 +6,7 @@
   margin-bottom: 8px;
 
   @media (max-width: 768px) {
-    padding: 0 32px 0 32px;
+    padding: 0 16px 0 16px;
   }
 
   .mediaBlock {
@@ -31,18 +31,18 @@
     padding: 18px 16px;
     justify-content: center;
     align-items: center;
-    background-color: $d_main_text_color;
+    background-color: $d_main_bg_color;
     border-radius: 8px;
     transition: all 0.1s ease-in-out;
 
     &:hover {
-      background-color: $d_main_text_hover_color;
+      background-color: $d_main_bg_color;
     }
 
     .link {
       width: 100%;
       font-size: 16px;
-      color: $d_main_bg_color;
+      color: $d_main_text_color;
       background-color: rgba(0, 0, 0, 0);
     }
   }

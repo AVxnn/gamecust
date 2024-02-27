@@ -46,9 +46,6 @@ const MobileMenu = () => {
       case "/search":
         setActive(1);
         break;
-      case "/editor/[...postId]":
-        setActive(2);
-        break;
       case "/notifications":
         setActive(3);
         break;
@@ -63,7 +60,7 @@ const MobileMenu = () => {
 
   return (
     <>
-      <div className={`${styles.mobileMenu} ${styles.pwa}`}>
+      <div className={`${styles.mobileMenu}`}>
         <Link
           onClick={() => setActive(0)}
           className={`${styles.link} ${active == 0 ? styles.active : ""}`}
@@ -77,15 +74,6 @@ const MobileMenu = () => {
           href={"/search"}
         >
           <Search />
-        </Link>
-        <Link
-          onClick={() => editorLink()}
-          className={`${styles.link} ${active == 2 ? styles.active : ""}`}
-          href={`/editor/${mobxStore?.user?.id}/${uuid()}-${
-            mobxStore?.user?.username
-          }`}
-        >
-          <PlusMenu />
         </Link>
         <Link
           onClick={() => setActive(3)}

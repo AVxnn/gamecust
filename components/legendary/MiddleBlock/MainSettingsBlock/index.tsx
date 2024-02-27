@@ -80,9 +80,6 @@ const MainSettingsBlock = () => {
   return (
     mobxStore.user && (
       <div className={styles.container}>
-        <div onClick={() => router.back()} className={styles.topBar}>
-          <Arrow />
-        </div>
         <TitleCard title={"Основные"} />
         <div className={styles.mainBlocks}>
           <div className={styles.first}>

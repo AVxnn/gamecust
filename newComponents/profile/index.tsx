@@ -12,7 +12,7 @@ import { Context } from "../../app/(pages)/layout";
 import BgProfilePopup from "../../components/legendary/common/bgProfilePopup";
 import FollowButton from "../../components/legendary/common/PostPreview/common/HeaderPost/followButton";
 import { createNotification } from "../../features/new/getNotifications/getNotifications";
-import Linkify from 'linkify-react';
+import Linkify from "linkify-react";
 import { declOfNum } from "../../utils/declOfNum";
 
 const CategoryHeader = ({ data }: any) => {
@@ -116,9 +116,9 @@ const CategoryHeader = ({ data }: any) => {
 
   const originalDate = new Date(data?.createdAt);
 
-  const options = { day: 'numeric', month: 'long', year: 'numeric' } as any;
+  const options = { day: "numeric", month: "long", year: "numeric" } as any;
 
-  const formattedDate = originalDate.toLocaleDateString('ru-RU', options);
+  const formattedDate = originalDate.toLocaleDateString("ru-RU", options);
 
   return (
     <>
@@ -144,17 +144,28 @@ const CategoryHeader = ({ data }: any) => {
                     <IconHandler user={data} />
                   </span>
                   <span className={styles.description}>
-                    <Linkify options={{target: "_blank"}}>{data?.description}</Linkify>
+                    <Linkify options={{ target: "_blank" }}>
+                      {data?.description}
+                    </Linkify>
                   </span>
                 </>
               )}
             </div>
             <div className={styles.headers}>
-              <span className={styles.subs}>
-                {data?.subscribers ? data.subscribers.length : 0} {declOfNum(data?.subscribers ? data.subscribers.length : 0, ['подписчик', 'подписчика', 'подписчиков'])}
-              </span>
+              {data?.subscribers && (
+                <span className={styles.subs}>
+                  {data?.subscribers?.length}{" "}
+                  {declOfNum(data?.subscribers ? data.subscribers.length : 0, [
+                    "подписчик",
+                    "подписчика",
+                    "подписчиков",
+                  ])}
+                </span>
+              )}
             </div>
-            <div className={styles.date}>На проекте с {formattedDate}</div>
+            {formattedDate != "Invalid Date" && (
+              <div className={styles.date}>На проекте с {formattedDate}</div>
+            )}
             <ul ref={menuRef} className={styles.navigation}>
               {dataTagAccount &&
                 dataTagAccount.map((item: any, index: number) => {

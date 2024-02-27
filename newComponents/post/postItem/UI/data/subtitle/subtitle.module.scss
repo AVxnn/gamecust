@@ -1,11 +1,10 @@
 @import "/styles/variables.scss";
 
 .subtitle {
-  font-size: 18px;
-  margin: 12px 0;
+  font-size: 20px;
+  margin: 16px 0 12px 0;
   line-height: 27px;
   color: $d_main_text_color;
   font-weight: 500;
   word-break: break-word;
-  white-space: pre-wrap;
 }

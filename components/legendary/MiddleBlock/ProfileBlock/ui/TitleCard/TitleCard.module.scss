@@ -7,6 +7,10 @@
   font-weight: 500;
   border-radius: 2px;
   margin-top: -1px;
+
+  @media screen and (max-width: 787px) {
+    font-size: 16px;
+  }
 }
 
 .topBar {
@@ -16,8 +20,8 @@
   gap: 12px;
   margin-bottom: 12px;
 
-  @media screen and (max-width: 720px) {
-    display: block;
+  @media screen and (max-width: 787px) {
+    gap: 6px;
   }
 
   .icon {
@@ -38,6 +42,16 @@
     &:hover {
       background-color: $d_main_bg_color;
     }
+
+    @media screen and (max-width: 720px) {
+      width: 28px;
+      height: 28px;
+
+      svg {
+        width: 28px;
+        height: 28px;
+      }
+    }
   }
 }
 
@@ -48,4 +62,10 @@
   background-color: $d_main_bg_color;
   color: $d_main_color;
   height: 1px; /* Толщина линии */
+
+
+  @media screen and (max-width: 787px) {
+    width: calc(100% + 32px);
+    margin-left: -16px;
+  }
 }

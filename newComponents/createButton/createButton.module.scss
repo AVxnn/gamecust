@@ -29,10 +29,12 @@
 
 .smallButton {
   display: none;
-  height: 40px;
+  height: 32px;
   justify-content: center;
+
+  border-radius: 8px;
   align-items: center;
-  width: 40px;
+  width: 32px;
   padding: 10px;
 
   svg {
