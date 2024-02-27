@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef, useState } from "react";
+import { useCallback, useContext, useEffect, useRef, useState } from "react";
 import styles from "./TextAreaBlock.module.scss";
 import DropDownForm from "../../../../common/PostPreview/common/Dropdowns/DropDownForm";
 import DropDownEdit from "../../../../common/PostPreview/common/Dropdowns/DropDownEdit";
@@ -29,7 +29,6 @@ const TextAreaBlock = ({ item, dragControls = null }: any) => {
   const { postCreateStore } = useContext(Context);
 
   const updateHandler = (value: any) => {
-    setFocus(true);
     const sanitizedHtml = DOMPurify.sanitize(value);
     postCreateStore.updateItem({ ...item, value: sanitizedHtml });
   };
@@ -48,7 +47,7 @@ const TextAreaBlock = ({ item, dragControls = null }: any) => {
       setIsClicked(false);
       setFocus(false);
     } else {
-      console.log(item.id)
+      console.log(item.id);
     }
   };
 
@@ -59,37 +58,58 @@ const TextAreaBlock = ({ item, dragControls = null }: any) => {
     }
   };
 
-  const keyPress = (e: any) => {
-    document?.getElementById(`#id-${item.id + 1}`)?.focus();
-    if (focus && item.value == "") {
-      if (e.keyCode === 8 && item.type !== "h1") {
-        postCreateStore.removeItem(item);
-        setIsClicked(false);
+  const keyPress = useCallback(
+    (e: any) => {
+      handleClickOutside(e);
+      if (focus && item.value == "") {
+        if (e.keyCode === 8 && item.type !== "h1") {
+          postCreateStore.removeItem(item);
+          setIsClicked(false);
+          document.getElementById(`id-${item.id - 1}`)?.focus();
+          const articleRef = document.getElementById(`id-${item.id - 1}`);
+          if (articleRef) {
+            const range = document.createRange();
+            const selection = window.getSelection() as any;
+            range.selectNodeContents(articleRef);
+            range.collapse(false); // Устанавливаем конечную точку
+            selection.removeAllRanges();
+            selection.addRange(range);
+            articleRef.focus();
+          }
+        }
+        if (e.keyCode === 9) {
+          setIsClicked(true);
+        }
       }
-      if (e.keyCode === 9) {
-        setIsClicked(true);
+      if (focus && e.keyCode === 13) {
+        let newId = uuid();
+        const result = {
+          type: "text",
+          value: "",
+          stared: false,
+          unicalId: newId,
+          id: postCreateStore.data.length,
+        };
+        postCreateStore.addItem(result, item.id);
+        e.preventDefault();
+        return false;
       }
-    }
-    if (focus && e.keyCode === 13) {
-      let newId = uuid()
-      const result = {
-        type: "text",
-        value: "",
-        stared: false,
-        unicalId: newId,
-        id: postCreateStore.data.length,
-      };
-      postCreateStore.addItem(result, item.id + 1);
-      e.preventDefault();
-      return false;
-    }
-  };
+      if (focus && e.keyCode === 9) {
+        if (isClicked) {
+          setIsClicked(false);
+        } else {
+          setIsClicked(true);
+        }
+      }
+    },
+    [focus, item, postCreateStore.data]
+  );
 
   // Функция отлавливающая вставленный текст
   const handlePaste = (e: any) => {
     e.preventDefault();
     const pastedText = e.clipboardData.getData("text/plain"); // Получаем вставленный текст
-    document.execCommand('insertText', false, pastedText);
+    document.execCommand("insertText", false, pastedText);
   };
 
   const getSelectedWordCoordinates = () => {
@@ -110,20 +130,18 @@ const TextAreaBlock = ({ item, dragControls = null }: any) => {
   }, [selectedText]);
 
   useEffect(() => {
-    setFocus(true);
-  }, []);
-
-  useEffect(() => {
     document.addEventListener("keydown", keyPress);
     return () => {
       document.removeEventListener("keydown", keyPress);
     };
-  });
+  }, [keyPress]);
 
   useEffect(() => {
     document.addEventListener("click", (e: any) => handleClickOutside(e));
-    return document.removeEventListener("click", (e: any) => handleClickOutside(e));
-  });
+    return document.removeEventListener("click", (e: any) =>
+      handleClickOutside(e)
+    );
+  }, []);
 
   useEffect(() => {
     inputText.current.focus();
@@ -149,8 +167,8 @@ const TextAreaBlock = ({ item, dragControls = null }: any) => {
           onClick={() => setFocus(true)}
           onFocus={() => setFocus(true)}
           html={item.value}
+          tabIndex={-1}
           tagName="article"
-          tabIndex={0}
           suppressContentEditableWarning={true}
         />
         {!item.value && (
@@ -159,23 +177,24 @@ const TextAreaBlock = ({ item, dragControls = null }: any) => {
           </span>
         )}
 
-        {hover && !item.value && item.type !== "h1" ? (
+        {(hover || focus) && !item.value && item.type !== "h1" ? (
           <DropDownForm
             dragControls={dragControls}
             hoverChange={hoverChange}
-            id={item.id}
             focus={focus}
             setFocus={setFocus}
             ref={popupRef}
+            tabIndex={0}
             setIsClicked={setIsClicked}
             isClicked={isClicked}
           />
         ) : null}
-        {hover && item.value && item.type !== "h1" ? (
+        {(hover || focus) && item.value && item.type !== "h1" ? (
           <DropDownEdit
             dragControls={dragControls}
             ref={popupRef}
             item={item}
+            tabIndex={0}
             setIsClicked={setIsClicked}
             isClicked={isClicked}
           />

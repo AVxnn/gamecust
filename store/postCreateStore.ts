@@ -35,25 +35,19 @@ export default class PostCreateStore {
 
   changeCategory(id: any) {
     this.category = id;
-    console.log(id);
   }
 
   addItem(data: any, id = this.data.length) {
     if (this.data.length === id) {
       this.data.splice(id, 1, data);
-      console.log("first", id)
     } else {
       this.data.splice(id + 0.5, 0, data);
       this.sortArray(this.data);
-      console.log("second", id)
     }
-    console.log("data", this.data, data, id);
   }
 
   sortArray(data: any) {
-    console.log(data);
     const result = sortIds(data);
-    console.log(result);
     this.data = result;
     return result;
   }
@@ -121,7 +115,6 @@ export default class PostCreateStore {
         viewsCount: 0,
       };
       const response = await CreatePostService.createPost(post);
-      await console.log("+", response);
     } catch (error: any) {
       console.log(error);
     }
@@ -130,7 +123,6 @@ export default class PostCreateStore {
   async deletePost(id: any) {
     try {
       const response = await CreatePostService.deletePost(id);
-      await console.log("+", response);
     } catch (error: any) {
       console.log(error);
     }
@@ -138,11 +130,9 @@ export default class PostCreateStore {
 
   async getPostId(id: any) {
     const response = await CreatePostService.getPost(id);
-    await console.log("+", response);
   }
 
   async reSavePost(user: any, data: any, postId: any) {
-    console.log(data);
     try {
       const post = {
         user: user.id,
@@ -161,14 +151,12 @@ export default class PostCreateStore {
         viewsCount: data.viewsCount || 0,
       };
       const response = await CreatePostService.reSavePost(post);
-      await console.log(response);
     } catch (error: any) {
       console.log(error);
     }
   }
 
   async updateData(user: any, data: any, postId: any, category: any, title: string) {
-    console.log(data);
     try {
       const post = {
         user: user.id,
@@ -178,7 +166,6 @@ export default class PostCreateStore {
         title: title
       };
       const response = await CreatePostService.updateData(post);
-      console.log(response);
     } catch (error: any) {
       console.log(error);
     }

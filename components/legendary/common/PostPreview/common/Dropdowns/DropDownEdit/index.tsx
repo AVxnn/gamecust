@@ -81,6 +81,7 @@ const DropDownEdit = observer(
           <button
             onPointerDown={(event) => dragControls.start(event)}
             onDragStart={handleDragStart}
+            tabIndex={0}
             onClick={() => setIsClicked(!isClicked)}
             className={cn(styles.newForm, isClicked && styles.active)}
           >
@@ -99,6 +100,7 @@ const DropDownEdit = observer(
                 {item.stared ? (
                   <div
                     onClick={() => staredHandler(false)}
+                    tabIndex={0}
                     className={styles.item}
                   >
                     <Star />
@@ -107,6 +109,7 @@ const DropDownEdit = observer(
                 ) : (
                   <div
                     onClick={() => staredHandler(true)}
+                    tabIndex={0}
                     className={styles.item}
                   >
                     <StarNotFill />
@@ -116,6 +119,7 @@ const DropDownEdit = observer(
                 {item.id !== 0 ? (
                   <div
                     onClick={() => MoveHandler("up")}
+                    tabIndex={0}
                     className={styles.item}
                   >
                     <ArrowTop />
@@ -125,13 +129,18 @@ const DropDownEdit = observer(
                 {item.id !== postCreateStore.data.length - 1 ? (
                   <div
                     onClick={() => MoveHandler("down")}
+                    tabIndex={0}
                     className={styles.item}
                   >
                     <ArrowBottom />
                     <p className={styles.text}>Сделать ниже</p>
                   </div>
                 ) : null}
-                <div onClick={() => deleteHandler()} className={styles.item}>
+                <div
+                  onClick={() => deleteHandler()}
+                  tabIndex={0}
+                  className={styles.item}
+                >
                   <Trash />
                   <p className={styles.text}>Удалить блок</p>
                 </div>

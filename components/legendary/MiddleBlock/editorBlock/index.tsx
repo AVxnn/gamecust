@@ -43,6 +43,7 @@ const EditorBlock = ({ post }: any) => {
   }, [mobxStore.user, postCreateStore]);
 
   const debouncedSave = useDebounce(saveHandler, 1000);
+  const debouncedSaveSecond = useDebounce(saveHandler, 4000);
 
   const keyPress = useCallback(() => {
     setPressKey(true);
@@ -81,7 +82,7 @@ const EditorBlock = ({ post }: any) => {
       let result = postCreateStore.sortArray(newList);
       const reorderedItems = [...result];
       setItems(reorderedItems);
-      saveHandler();
+      debouncedSaveSecond();
     },
     [mobxStore.user, postCreateStore]
   );
@@ -103,7 +104,7 @@ const EditorBlock = ({ post }: any) => {
   useEffect(() => {
     setItems(postCreateStore.data);
   }, [postCreateStore.data]);
-  
+
   return (
     <div className={styles.editor}>
       <ChangeAccount post={post} />
