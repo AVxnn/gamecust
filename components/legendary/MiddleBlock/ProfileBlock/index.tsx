@@ -9,6 +9,7 @@ import TitleCard from "./ui/TitleCard";
 import { Context } from "../../../../app/(pages)/layout";
 import { observer } from "mobx-react-lite";
 import TextArea from "./ui/TextArea";
+import StatusBarChanger from "./ui/StatusBarChanger";
 
 const ProfileBlock = () => {
   const { mobxStore } = useContext(Context);
@@ -62,6 +63,7 @@ const ProfileBlock = () => {
           value={description}
           setValue={setDescription}
         />
+        <StatusBarChanger />
         <NewDropMenu
           data={dataBlog}
           title={"Записи в блоге"}

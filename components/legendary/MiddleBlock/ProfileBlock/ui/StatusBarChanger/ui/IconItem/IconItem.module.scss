@@ -1,0 +1,70 @@
+@import "/styles/variables.scss";
+
+.icon {
+  padding: 7px;
+  border-radius: $br-14;
+  background-color: $d_main-second-color;
+  box-shadow: 0 4px 0 $d_main-downsecond-color;
+  cursor: pointer;
+
+  div {
+    width: 24px;
+    height: 24px;
+
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  &:active {
+    position: relative;
+    transform: translateY(4px);
+    box-shadow: 0 0px 0 $d_main-downsecond-color;
+    transition: all 0.1s ease;
+  }
+}
+
+.iconActive {
+  padding: 7px;
+  position: relative;
+  transform: translateY(4px);
+  border-radius: $br-14;
+  background-color: $d_main_color;
+  box-shadow: 0 0px 0 $d_main-downsecond-color;
+
+  div {
+    width: 24px;
+    height: 24px;
+
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  &:active {
+    position: relative;
+    transform: translateY(4px);
+    box-shadow: 0 0px 0 $d_main-downsecond-color;
+    transition: all 0.1s ease;
+  }
+}
+
+.iconDeactive {
+  padding: 7px;
+  border-radius: $br-14;
+  background-color: $d_main_bg_color;
+  box-shadow: 0 0px 0 $d_main-downsecond-color;
+  cursor: crosshair;
+
+  div {
+    width: 24px;
+    height: 24px;
+
+    svg {
+      width: 24px;
+      height: 24px;
+    }
+  }
+}

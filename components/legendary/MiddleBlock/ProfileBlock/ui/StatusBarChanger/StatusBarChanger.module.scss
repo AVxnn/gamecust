@@ -1,0 +1,16 @@
+@import "/styles/variables.scss";
+
+.statusBar {
+
+  .title {
+    color: $d_main_text_color;
+    font-size: 16px;
+    font-weight: 500;
+  }
+  .list {
+    margin: 16px 0 12px 0;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+}

@@ -1,0 +1,115 @@
+@import "/styles/variables.scss";
+
+.statusBar {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  cursor: pointer;
+  
+  .containerAvatar {
+    width: 42px;
+    height: 42px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 99px;
+    .avatar {
+      max-height: 42px;
+
+      img {
+        position: relative;
+        width: 42px;
+        height: 42px;
+        object-fit: cover;
+        border-radius: 99px;
+        cursor: pointer;
+        transition: all 0.1s ease-in-out;
+      }
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+  .info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 4px;
+    cursor: pointer;
+
+    .name {
+      display: flex;
+      align-items: center;
+      font-size: 16px;
+      margin-left: 8px;
+      color: $d_main_text_color;
+      font-weight: 500;
+      cursor: pointer;
+
+      &:hover {
+        color: $d_main_color;
+      }
+
+      svg {
+        margin-left: 8px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 16px;
+        height: 16px;
+      }
+    }
+    .username {
+      display: flex;
+      align-items: center;
+      font-size: 16px;
+      margin-left: 16px;
+      color: $d_main_subtext_color;
+      font-weight: 500;
+      cursor: pointer;
+
+      &:hover {
+        color: $d_main_color;
+      }
+
+      svg {
+        margin-left: 8px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 16px;
+        height: 16px;
+      }
+    }
+    .downinfo {
+      display: flex;
+      gap: 8px;
+
+      .title {
+        display: flex;
+        align-items: center;
+        font-size: 16px;
+        margin-left: 16px;
+        color: $d_main_subtext_color;
+        font-weight: 500;
+        cursor: pointer;
+      }
+      .date {
+        color: $d_main_subtext_color;
+        font-size: 12px;
+        margin-left: 8px;
+        cursor: pointer;
+      }
+      .title {
+        color: $d_main_text_color;
+        font-size: 12px;
+        margin-left: 8px;
+        cursor: pointer;
+
+        &:hover {
+          color: $d_main_color;
+        }
+      }
+    }
+  }
+}

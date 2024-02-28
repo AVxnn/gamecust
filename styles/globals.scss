@@ -46,6 +46,9 @@ body {
   --d_main_white_color: #ffffff;
   --d_main_white20_color: #f0f0f0;
   --d_main-Bg-color-hover: #ececec;
+
+  --d_main-second-color: #eaeaea;
+  --d_main-downsecond-color: #cbcbcb;
 }
 
 body[dark] {
@@ -76,6 +79,9 @@ body[dark] {
   --d_main_white_color: #161617;
   --d_main_white20_color: #232324;
   --d_main-Bg-color-hover: #232324;
+
+  --d_main-second-color: #303032;
+  --d_main-downsecond-color: #1c1c1d;
 }
 
 body[red] {
