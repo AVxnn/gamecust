@@ -8,7 +8,12 @@ import Arrow from "../../../../../../public/img/svg/Arrow";
 import { motion } from "framer-motion";
 import { Context } from "../../../../../../app/(pages)/layout";
 
-const SelectedBlockEditor = ({ posLeft, selectedText, item }: any) => {
+const SelectedBlockEditor = ({
+  restoreSelection,
+  posLeft,
+  selectedText,
+  item,
+}: any) => {
   const { postCreateStore } = useContext(Context);
 
   const [isLinkOpen, setIsLinkOpen] = useState(false);
@@ -75,6 +80,7 @@ const SelectedBlockEditor = ({ posLeft, selectedText, item }: any) => {
           <li
             onMouseDown={(evt) => {
               evt.preventDefault(); // Avoids loosing focus from the editable area
+              restoreSelection();
               document.execCommand("createLink", false, link); // Send the command to the browser
             }}
             className={styles.item}

@@ -42,8 +42,18 @@ export default class PostCreateStore {
       this.data.splice(id, 1, data);
     } else {
       this.data.splice(id + 0.5, 0, data);
-      this.sortArray(this.data);
     }
+    this.sortArray(this.data);
+  }
+
+  replaceItem(newItem: any, id = this.data.length) {
+    this.data = this.data.map((item) => {
+      if (item.id === id) {
+        // Заменяем существующий объект новым объектом
+        return newItem;
+      }
+      return item;
+    });
   }
 
   sortArray(data: any) {

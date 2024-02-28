@@ -85,6 +85,11 @@
       align-items: center;
       cursor: pointer;
       transition: all 0.1s ease-in-out;
+      &:focus-visible {
+        border-radius: 8px;
+        outline: none;
+        background-color: $d_main_bg_color;
+      }
 
       @media (max-width: 768px) {
         padding: 12px;
@@ -111,7 +116,7 @@
 
       .text {
         margin: 0;
-        font-size: 16px;
+        font-size: 14px;
         color: $d_main_text_color;
         font-weight: 400;
 

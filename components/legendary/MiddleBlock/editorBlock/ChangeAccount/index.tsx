@@ -69,6 +69,7 @@ const ChangeAccount = ({ post }: any) => {
             <Image
               layout={"fill"}
               src={`${currentCategory?.imagePath}`}
+              placeholder="blur"
               alt="ads"
             />
           </div>

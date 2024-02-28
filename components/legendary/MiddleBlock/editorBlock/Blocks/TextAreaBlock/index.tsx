@@ -15,6 +15,8 @@ const TextAreaBlock = ({ item, dragControls = null }: any) => {
   const labelRef = useRef<HTMLElement>(null) as any;
   const inputText = useRef<HTMLElement>(null) as any;
 
+  const selectedTextRef = useRef<HTMLElement>(null) as any;
+
   const [hover, setHover] = useState<boolean>(false);
   const [selectedText, setSelectedText] = useState<string>("");
 
@@ -31,6 +33,20 @@ const TextAreaBlock = ({ item, dragControls = null }: any) => {
   const updateHandler = (value: any) => {
     const sanitizedHtml = DOMPurify.sanitize(value);
     postCreateStore.updateItem({ ...item, value: sanitizedHtml });
+  };
+
+  const saveSelection = () => {
+    const selection = window.getSelection() as any;
+    if (selection.rangeCount > 0) {
+      selectedTextRef.current = selection.getRangeAt(0).cloneRange();
+    }
+  };
+
+  // Функция для восстановления выделенного текста
+  const restoreSelection = () => {
+    const selection = window.getSelection() as any;
+    selection.removeAllRanges();
+    selection.addRange(selectedTextRef.current);
   };
 
   const hoverChange = (type: any) => {
@@ -54,7 +70,14 @@ const TextAreaBlock = ({ item, dragControls = null }: any) => {
   const handleTextSelection = () => {
     if (document) {
       const text = document.getSelection()?.toString() as any;
+      saveSelection();
       setSelectedText(text);
+    }
+  };
+
+  const handlerFocus = () => {
+    if (inputText.current) {
+      setFocus(true);
     }
   };
 
@@ -90,7 +113,7 @@ const TextAreaBlock = ({ item, dragControls = null }: any) => {
           unicalId: newId,
           id: postCreateStore.data.length,
         };
-        postCreateStore.addItem(result, item.id);
+        postCreateStore.addItem(result, item.id + 0.5);
         e.preventDefault();
         return false;
       }
@@ -165,7 +188,7 @@ const TextAreaBlock = ({ item, dragControls = null }: any) => {
           onMouseDown={handleTextSelection}
           onPaste={handlePaste}
           onClick={() => setFocus(true)}
-          onFocus={() => setFocus(true)}
+          onFocus={() => handlerFocus()}
           html={item.value}
           tabIndex={-1}
           tagName="article"
@@ -185,6 +208,7 @@ const TextAreaBlock = ({ item, dragControls = null }: any) => {
             setFocus={setFocus}
             ref={popupRef}
             tabIndex={0}
+            id={item.id}
             setIsClicked={setIsClicked}
             isClicked={isClicked}
           />
@@ -195,6 +219,7 @@ const TextAreaBlock = ({ item, dragControls = null }: any) => {
             ref={popupRef}
             item={item}
             tabIndex={0}
+            id={item.id}
             setIsClicked={setIsClicked}
             isClicked={isClicked}
           />
@@ -205,6 +230,7 @@ const TextAreaBlock = ({ item, dragControls = null }: any) => {
         <SelectedBlockEditor
           ref={popupRef}
           posLeft={posPopup}
+          restoreSelection={restoreSelection}
           selectedText={selectedText}
           item={item}
         />

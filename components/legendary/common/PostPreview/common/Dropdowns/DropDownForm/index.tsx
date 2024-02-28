@@ -118,7 +118,7 @@ const DropDownForm = observer(
           id: postCreateStore.data.length - 1,
         };
       }
-      postCreateStore.addItem(result, id);
+      postCreateStore.replaceItem(result, id);
       setIsClicked(false);
       setFocus(false);
       hoverChange("off");
