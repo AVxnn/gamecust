@@ -1,0 +1,21 @@
+@import "/styles/variables.scss";
+
+.postItem {
+  width: 100%;
+  padding: 16px;
+  border: 1px solid $d_main_subtext_color;
+  border-radius: 14px;
+  margin: 16px 0;
+  background-color: $d_main_subbg_color;
+  box-sizing: border-box;
+
+  @media screen and (max-width: 767px) {
+    padding: 16px 16px;
+  }
+
+  .tags {
+    display: flex;
+    margin: 16px 0 4px 0;
+    gap: 12px;
+  }
+}

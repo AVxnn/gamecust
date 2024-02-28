@@ -12,6 +12,7 @@ import Link from "next/link";
 import Tag from "../../../components/legendary/common/Tag";
 import ListBlock from "./UI/data/listBlock";
 import QuoteBlock from "./UI/data/QuoteBlock";
+import GameCustPostBlock from "../../../components/legendary/common/PostPreview/common/SelectForm/ui/GameCustPostBlock";
 
 const PostItem = ({ data }: any) => {
   return (
@@ -32,7 +33,7 @@ const PostItem = ({ data }: any) => {
       ) : null}
       <Link href={`/post/${data.postId}`}>
         <section className={styles.mainInfo}>
-        <Title text={data?.title} />
+          <Title text={data?.title} />
           {data?.stared.map((item: any, index: number) => {
             if (item.type === "h2") {
               return <SubTitle key={index} text={item.value} />;
@@ -49,6 +50,8 @@ const PostItem = ({ data }: any) => {
                 return <ImagePost key={index} href={item?.href} />;
               } else if (item.typeMedia === "video") {
                 return <Video key={index} href={item?.href} />;
+              } else if (item.typeMedia === "gamecustpost") {
+                return <GameCustPostBlock key={index} link={item.href} />;
               }
             } else if (item.type === "br") {
               return <Br key={index} />;

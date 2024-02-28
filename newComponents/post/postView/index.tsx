@@ -22,6 +22,7 @@ import Description from "../postItem/UI/data/description";
 import Loading from "./loading";
 import ListBlock from "../postItem/UI/data/listBlock";
 import QuoteBlock from "../postItem/UI/data/QuoteBlock";
+import GameCustPostBlock from "../../../components/legendary/common/PostPreview/common/SelectForm/ui/GameCustPostBlock";
 
 const PostView = () => {
   const { uid } = useParams() as any;
@@ -110,6 +111,8 @@ const PostView = () => {
                 return <ImgPopup key={index} src={item?.href} />;
               } else if (item.typeMedia === "video") {
                 return <Video key={index} href={item.href} />;
+              } else if (item.typeMedia === "gamecustpost") {
+                return <GameCustPostBlock key={index} link={item.href} />;
               }
             } else if (item.type === "media") {
               return <ImgPopup key={index} src={item?.href} />;

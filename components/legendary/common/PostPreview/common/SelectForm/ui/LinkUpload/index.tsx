@@ -7,6 +7,7 @@ import InformationBlock from "../../../../../../MiddleBlock/editorBlock/Informat
 import ReactPlayer from "react-player";
 import Image from "next/image";
 import { Context } from "../../../../../../../../app/(pages)/layout";
+import GameCustPostBlock from "../GameCustPostBlock";
 
 const LinkUpload = observer(({ item, dragControls }: any) => {
   const popupRef = useRef<HTMLDivElement>(null);
@@ -24,8 +25,17 @@ const LinkUpload = observer(({ item, dragControls }: any) => {
     setLinkValue(link);
     let typeMedia = "video";
     let lastFour = link.substring(link.length - 3);
-    if (lastFour === "png" || lastFour === "jpg" || lastFour === "gif") {
+    if (
+      lastFour === "png" ||
+      lastFour === "jpg" ||
+      lastFour === "gif" ||
+      lastFour === "jpeg"
+    ) {
       typeMedia = "image";
+    }
+    const regex = /^https:\/\/www\.gamecust\.ru\/post\b/i;
+    if (regex.test(link)) {
+      typeMedia = "gamecustpost";
     }
     console.log(typeMedia);
 
@@ -84,16 +94,18 @@ const LinkUpload = observer(({ item, dragControls }: any) => {
         onMouseLeave={() => hoverChange("off")}
         className={styles.container}
       >
-        <div className={styles.linkBlock}>
-          <input
-            onChange={(e) => addLink(e.currentTarget.value)}
-            value={linkValue}
-            className={styles.link}
-            type="text"
-            placeholder="Вставь ссылку на картинку или видео YouTube"
-          />
-        </div>
-        {item.typeMedia == "video" && item.href ? (
+        {item.typeMedia == "gamecustpost" && item.href ? null : (
+          <div className={styles.linkBlock}>
+            <input
+              onChange={(e) => addLink(e.currentTarget.value)}
+              value={linkValue}
+              className={styles.link}
+              type="text"
+              placeholder="Вставь ссылку на картинку или видео YouTube"
+            />
+          </div>
+        )}
+        {item.typeMedia == "video" && item.href && (
           <div className={styles.mediaBlock}>
             <ReactPlayer
               className={styles.player}
@@ -101,12 +113,16 @@ const LinkUpload = observer(({ item, dragControls }: any) => {
               url={item?.href}
             />
           </div>
-        ) : item.typeMedia == "image" && item.href ? (
+        )}
+        {item.typeMedia == "image" && item.href && (
           <div className={styles.mediaBlock}>
             <Image layout={"fill"} src={item.href} alt="" />
           </div>
-        ) : (
-          ""
+        )}
+        {item.typeMedia == "gamecustpost" && item.href && (
+          <div className={styles.mediaBlock}>
+            <GameCustPostBlock link={item.href} />
+          </div>
         )}
         {(hover && !item.href) || (focus && !item.href) ? (
           <DropDownForm

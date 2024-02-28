@@ -63,10 +63,6 @@ const ConstructorBlocks = ({ data }: any) => {
           <Br item={data} dragControls={dragControls} />
         </Reorder.Item>
       );
-    case "h1":
-      return (
-        null
-      );
     case "h2":
       return (
         <Reorder.Item
