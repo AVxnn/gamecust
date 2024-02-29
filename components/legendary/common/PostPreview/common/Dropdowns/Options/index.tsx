@@ -3,6 +3,7 @@ import styles from "./Options.module.scss";
 import ListIcon from "../../../../../../../public/img/svg/listIcon";
 import { Context } from "../../../../../../../app/(pages)/layout";
 import { observer } from "mobx-react-lite";
+import Spoiler from "../../../../../../../public/img/svg/Spoiler";
 
 const Options = ({ item }: any) => {
   const { postCreateStore, notificationStore } = useContext(Context);

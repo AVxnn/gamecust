@@ -62,8 +62,6 @@ const TextAreaBlock = ({ item, dragControls = null }: any) => {
       hoverChange("off");
       setIsClicked(false);
       setFocus(false);
-    } else {
-      console.log(item.id);
     }
   };
 
@@ -80,10 +78,13 @@ const TextAreaBlock = ({ item, dragControls = null }: any) => {
       setFocus(true);
     }
   };
-
+  console.log(isClicked)
   const keyPress = useCallback(
     (e: any) => {
       handleClickOutside(e);
+      if (isClicked && e.keyCode === 8) {
+        return false;
+      }
       if (focus && item.value == "") {
         if (e.keyCode === 8 && item.type !== "h1") {
           postCreateStore.removeItem(item);
@@ -100,9 +101,10 @@ const TextAreaBlock = ({ item, dragControls = null }: any) => {
             articleRef.focus();
           }
         }
-        if (e.keyCode === 9) {
-          setIsClicked(true);
-        }
+      }
+      if (e.keyCode === 9) {
+        setIsClicked(true);
+        return false;
       }
       if (focus && e.keyCode === 13) {
         let newId = uuid();
@@ -125,7 +127,7 @@ const TextAreaBlock = ({ item, dragControls = null }: any) => {
         }
       }
     },
-    [focus, item, postCreateStore.data]
+    [focus, isClicked, item, postCreateStore]
   );
 
   // Функция отлавливающая вставленный текст
@@ -142,8 +144,6 @@ const TextAreaBlock = ({ item, dragControls = null }: any) => {
         const range = selection.getRangeAt(0); // Получаем первый Range в выделении
         const rect = range.getBoundingClientRect(); // Получаем координаты выделенного текста
         setPosPopup({ left: rect.left, top: rect.top });
-      } else {
-        console.log("Текст не выделен.");
       }
     }
   };
@@ -199,7 +199,6 @@ const TextAreaBlock = ({ item, dragControls = null }: any) => {
             Введи текст или нажми Tab
           </span>
         )}
-
         {(hover || focus) && !item.value && item.type !== "h1" ? (
           <DropDownForm
             dragControls={dragControls}

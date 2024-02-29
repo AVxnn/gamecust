@@ -121,7 +121,7 @@ const LinkUpload = observer(({ item, dragControls }: any) => {
         )}
         {item.typeMedia == "gamecustpost" && item.href && (
           <div className={styles.mediaBlock}>
-            <GameCustPostBlock link={item.href} />
+            <GameCustPostBlock item={item} />
           </div>
         )}
         {(hover && !item.href) || (focus && !item.href) ? (

@@ -36,22 +36,22 @@ const PostItem = ({ data }: any) => {
           <Title text={data?.title} />
           {data?.stared.map((item: any, index: number) => {
             if (item.type === "h2") {
-              return <SubTitle key={index} text={item.value} />;
+              return <SubTitle key={index} item={item} />;
             } else if (item.type === "text") {
-              return <Description key={index} text={item.value} />;
+              return <Description key={index} item={item} />;
             } else if (item.type === "list") {
               return <ListBlock key={index} item={item} />;
             } else if (item.type === "quote") {
               return <QuoteBlock key={index} item={item} />;
             } else if (item.type === "media") {
-              return <ImagePost key={index} href={item?.href} />;
+              return <ImagePost key={index} item={item} />;
             } else if (item.type === "link") {
               if (item.typeMedia === "image") {
-                return <ImagePost key={index} href={item?.href} />;
+                return <ImagePost key={index} item={item} />;
               } else if (item.typeMedia === "video") {
-                return <Video key={index} href={item?.href} />;
+                return <Video key={index} item={item} />;
               } else if (item.typeMedia === "gamecustpost") {
-                return <GameCustPostBlock key={index} link={item.href} />;
+                return <GameCustPostBlock key={index} item={item} />;
               }
             } else if (item.type === "br") {
               return <Br key={index} />;

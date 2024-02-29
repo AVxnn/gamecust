@@ -12,12 +12,13 @@ import Tag from "../../../../../Tag";
 import { getPost } from "../../../../../../../../features/new/getPost/getPost";
 import Title from "../../../../../../../../newComponents/post/postItem/UI/data/title";
 import GameCustPostHeader from "./ui/GameCustPostHeader";
+import Spoiler from "../../../../../../../../newComponents/post/postItem/UI/Spoiler";
 
-const GameCustPostBlock = ({ link }: any) => {
+const GameCustPostBlock = ({ item }: any) => {
   const [data, setData] = useState({}) as any;
-
+  console.log(item)
   const getData = async () => {
-    const url = new URL(link);
+    const url = new URL(item.href);
 
     const result = url.pathname.split("/").pop();
     const post = await getPost(result);
@@ -27,10 +28,10 @@ const GameCustPostBlock = ({ link }: any) => {
   };
 
   useEffect(() => {
-    if (link) {
+    if (item.href) {
       getData();
     }
-  }, [link]);
+  }, [item]);
 
   return (
     data?.title && (
@@ -54,20 +55,20 @@ const GameCustPostBlock = ({ link }: any) => {
             <Title text={data?.title} />
             {data?.stared.map((item: any, index: number) => {
               if (item.type === "h2") {
-                return <SubTitle key={index} text={item.value} />;
+                return <SubTitle key={index} item={item} />;
               } else if (item.type === "text") {
-                return <Description key={index} text={item.value} />;
+                return <Description key={index} item={item} />;
               } else if (item.type === "list") {
                 return <ListBlock key={index} item={item} />;
               } else if (item.type === "quote") {
                 return <QuoteBlock key={index} item={item} />;
               } else if (item.type === "media") {
-                return <ImagePost key={index} href={item?.href} />;
+                return <ImagePost key={index} item={item} />;
               } else if (item.type === "link") {
                 if (item.typeMedia === "image") {
-                  return <ImagePost key={index} href={item?.href} />;
+                  return <ImagePost key={index} item={item} />;
                 } else if (item.typeMedia === "video") {
-                  return <Video key={index} href={item?.href} />;
+                  return <Video key={index} item={item} />;
                 }
               } else if (item.type === "br") {
                 return <Br key={index} />;
@@ -75,6 +76,7 @@ const GameCustPostBlock = ({ link }: any) => {
             })}
           </section>
         </Link>
+        <Spoiler item={item}/>
       </div>
     )
   );

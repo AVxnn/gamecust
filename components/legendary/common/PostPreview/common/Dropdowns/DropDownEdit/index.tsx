@@ -11,6 +11,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Context } from "../../../../../../../app/(pages)/layout";
 import Options from "../Options";
 import { observer } from "mobx-react-lite";
+import Spoiler from "../../../../../../../public/img/svg/Spoiler";
 
 const DropDownEdit = observer(
   ({ item, setIsClicked, isClicked, dragControls }: any) => {
@@ -20,19 +21,16 @@ const DropDownEdit = observer(
     const { postCreateStore, notificationStore } = useContext(Context);
 
     const MoveHandler = (move: any) => {
-      console.log("move up", item);
       postCreateStore.MoveItem(item, move);
       setIsClicked(false);
     };
 
     const deleteHandler = () => {
-      console.log("deleted", item);
       postCreateStore.removeItem(item);
       setIsClicked(false);
     };
 
     const staredHandler = (flag: boolean) => {
-      postCreateStore.data.filter((item) => item.stared === true).length;
       if (
         postCreateStore.data.filter((item) => item.stared === true).length <= 2
       ) {
@@ -45,6 +43,12 @@ const DropDownEdit = observer(
           timeLife: 2500,
         });
       }
+    };
+
+    const spoilerHandler = (flag: boolean) => {
+      postCreateStore.updateItem({ ...item, spoiler: flag ? false : true });
+      setIsClicked(false);
+      console.log(postCreateStore.data)
     };
 
     const handleClickOutside = (e: any) => {
@@ -116,6 +120,18 @@ const DropDownEdit = observer(
                     <p className={styles.text}>Показать в ленте</p>
                   </div>
                 )}
+                {
+                  item.type !== 'br' && (
+                    <div
+                      onClick={() => spoilerHandler(item.spoiler)}
+                      tabIndex={0}
+                      className={styles.item}
+                    >
+                      <Spoiler />
+                      <p className={styles.text}>Спойлернуть</p>
+                    </div>
+                  )
+                }
                 {item.id !== 0 ? (
                   <div
                     onClick={() => MoveHandler("up")}

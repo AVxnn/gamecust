@@ -1,8 +1,9 @@
 import React from "react";
 import ReactPlayer from "react-player";
 import styles from "./video.module.scss";
+import Spoiler from "../../Spoiler";
 
-const Video = ({ href }: any) => {
+const Video = ({ item }: any) => {
   return (
     <div className={styles.mediaBlock}>
       <ReactPlayer
@@ -15,8 +16,9 @@ const Video = ({ href }: any) => {
         muted={true}
         lazy={true}
         playing={true}
-        url={href}
+        url={item?.href}
       />
+      <Spoiler item={item}/>
     </div>
   );
 };

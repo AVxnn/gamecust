@@ -1,0 +1,45 @@
+@import "/styles/variables.scss";
+
+.spoiler {
+  top: 0;
+  position: absolute;
+  left: -16px;
+  top: -8px;
+  width: calc(100% + 32px);
+  height: calc(100% + 16px);
+  backdrop-filter: $filter-blur;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .button {
+    background-color: $d_main_color;
+    color: $d_main_text_color;
+    outline: none;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    border: 0;
+    padding: 6px 12px;
+    border-radius: 99px;
+    cursor: pointer;
+    transition: all 0.1s ease;
+
+    svg {
+      width: 20px;
+      height: 20px;
+      
+      path {
+        fill: $d_main_text_color
+      }
+    }
+
+    &:hover {
+      background-color: $d_main_hover;
+    }
+    &:active {
+      background-color: $d_main_active;
+    }
+  }
+}
+

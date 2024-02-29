@@ -1,9 +1,14 @@
 @import "/styles/variables.scss";
 
-.description {
-  font-size: 16px;
-  color: $d_main_text_color;
-  font-weight: 500;
-  margin: 12px 0;
-  line-height: 1.35;
+.container {
+  position: relative;
+
+  .description {
+    font-size: 16px;
+    color: $d_main_text_color;
+    font-weight: 500;
+    margin: 12px 0;
+    z-index: -1;
+    line-height: 1.35;
+  }
 }

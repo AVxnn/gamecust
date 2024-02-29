@@ -5,6 +5,7 @@
   right: 0;
   top: 6px;
   right: 18px;
+  display: flex;
 
   .infoBlock {
     width: 24px;
@@ -32,5 +33,9 @@
       height: 18px;
       transition: all 0.2s ease-in-out;
     }
+  }
+
+  .spoiler {
+
   }
 }

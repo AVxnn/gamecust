@@ -99,23 +99,23 @@ const PostView = () => {
           <Title text={postData?.title} />
           {postData?.data?.map((item: any, index: number) => {
             if (item.type === "h2") {
-              return <SubTitle key={index} text={item.value} />;
+              return <SubTitle key={index} item={item} />;
             } else if (item.type === "text") {
-              return <Description key={index} text={item.value} />;
+              return <Description key={index} item={item} />;
             } else if (item.type === "list") {
               return <ListBlock key={index} item={item} />;
             } else if (item.type === "quote") {
               return <QuoteBlock key={index} item={item} />;
             } else if (item.type === "link") {
               if (item.typeMedia === "image") {
-                return <ImgPopup key={index} src={item?.href} />;
+                return <ImgPopup key={index} item={item} />;
               } else if (item.typeMedia === "video") {
-                return <Video key={index} href={item.href} />;
+                return <Video key={index} item={item} />;
               } else if (item.typeMedia === "gamecustpost") {
-                return <GameCustPostBlock key={index} link={item.href} />;
+                return <GameCustPostBlock key={index} item={item} />;
               }
             } else if (item.type === "media") {
-              return <ImgPopup key={index} src={item?.href} />;
+              return <ImgPopup key={index} item={item} />;
             } else if (item.type === "br") {
               return <Br key={index} />;
             }

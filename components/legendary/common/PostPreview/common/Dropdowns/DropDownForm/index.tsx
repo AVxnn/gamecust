@@ -4,16 +4,61 @@ import Heading from "../../../../../../../public/img/svg/Heading";
 import ImageIcon from "../../../../../../../public/img/svg/ImageIcon";
 import LinkIcon from "../../../../../../../public/img/svg/LinkIcon";
 import DotsIcon from "../../../../../../../public/img/svg/DotsIcon";
-import { useContext, useEffect, useRef } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import Plus from "../../../../../../../public/img/svg/Plus";
 import cn from "classnames";
 import { AnimatePresence, motion } from "framer-motion";
-import { observer } from "mobx-react";
+import { observer } from "mobx-react";0
 import uuid from "react-uuid";
 import { Context } from "../../../../../../../app/(pages)/layout";
 import ListIcon from "../../../../../../../public/img/svg/listIcon";
 import QuoteIcon from "../../../../../../../public/img/svg/quoteIcon";
-import CodeIcon from "../../../../../../../public/img/svg/CodeIcon";
+import Search from "../../../../../../../public/img/svg/Search";
+
+const itemsList = [
+  {
+    type: "text",
+    value: "Текст"
+  }, {
+    type: "h2",
+    value: "Заголовок"
+  }, {
+    type: "media",
+    value: "Фото или видео"
+  }, {
+    type: "link",
+    value: "Вставить"
+  }, {
+    type: "list",
+    value: "Список"
+  }, {
+    type: "br",
+    value: "Разделитель"
+  }, {
+    type: "quote",
+    value: "Цитата"
+  }
+]
+
+export const setIcon = (item: any) => {
+  switch (item) {
+    case "text":
+      return <Text />
+    case "h2":
+      return <Heading />
+    case "media":
+      return <ImageIcon />
+    case "link":
+      return <LinkIcon />
+    case "quote":
+      return <QuoteIcon />
+    case "list":
+      return <ListIcon />
+    case "br":
+      return <DotsIcon />
+  }
+  return null
+}
 
 const DropDownForm = observer(
   ({
@@ -28,6 +73,8 @@ const DropDownForm = observer(
     const labelRef = useRef<HTMLDivElement>(null);
 
     const { postCreateStore } = useContext(Context);
+    const [filterData, setFilterData] = useState(itemsList);
+    const [searchField, setSearchField] = useState("");
 
     const handleClickOutside = (e: any) => {
       if (isClicked) {
@@ -37,6 +84,15 @@ const DropDownForm = observer(
         }
       }
     };
+
+    const handleFilterItems = (e: any) => {
+      const lowerCaseInput = e.toLowerCase();
+      setSearchField(e)
+      setFilterData(itemsList.filter(block => {
+        const lowerCaseName = block.value.toLowerCase();
+        return lowerCaseName.includes(lowerCaseInput);
+      }))
+    }
 
     const createNewFormChange = (type: string) => {
       let result = {};
@@ -161,73 +217,38 @@ const DropDownForm = observer(
                 ref={popupRef}
                 className={styles.dropDownForm}
               >
-                <li
-                  tabIndex={0}
-                  onClick={() => createNewFormChange("text")}
-                  className={styles.item}
-                >
-                  <Text />
-                  <p className={styles.text}>Текст</p>
-                </li>
-                <li
-                  tabIndex={0}
-                  onClick={() => createNewFormChange("h2")}
-                  className={styles.item}
-                >
-                  <Heading />
-                  <p className={styles.text}>Заголовок</p>
-                </li>
-                <li
-                  tabIndex={0}
-                  onClick={() => createNewFormChange("media")}
-                  className={styles.item}
-                >
-                  <ImageIcon />
-                  <p className={styles.text}>Фото или видео</p>
-                </li>
-                <li
-                  tabIndex={0}
-                  onClick={() => createNewFormChange("link")}
-                  className={styles.item}
-                >
-                  <LinkIcon />
-                  <p className={styles.text}>Вставить</p>
-                </li>
-                <li
-                  tabIndex={0}
-                  onClick={() => createNewFormChange("list")}
-                  className={styles.item}
-                >
-                  <ListIcon />
-                  <p className={styles.text}>Список</p>
-                </li>
-                <li
-                  onBlur={() => onBlurHandler()}
-                  tabIndex={0}
-                  onClick={() => createNewFormChange("br")}
-                  className={styles.item}
-                >
-                  <DotsIcon />
-                  <p className={styles.text}>Разделитель</p>
-                </li>
-                <li
-                  onBlur={() => onBlurHandler()}
-                  tabIndex={0}
-                  onClick={() => createNewFormChange("quote")}
-                  className={styles.item}
-                >
-                  <QuoteIcon />
-                  <p className={styles.text}>Цитата</p>
-                </li>
-                {/* <li
-                  onBlur={() => onBlurHandler()}
-                  tabIndex={0}
-                  onClick={() => createNewFormChange("code")}
-                  className={styles.item}
-                >
-                  <CodeIcon />
-                  <p className={styles.text}>Код</p>
-                </li> */}
+                <div className={styles.search}>
+                  <div className={`${styles.containerInput}`}>
+                    <span className={styles.icon}><Search /></span>
+                    <input
+                      value={searchField}
+                      placeholder="Поиск..."
+                      tabIndex={0}
+                      onChange={(e: any) => handleFilterItems(e.target.value)}
+                      className={`${styles.search}`}
+                    />
+                  </div>
+                </div>
+                <div className={styles.divinet}></div>
+                <div className={styles.itemList}>
+                  {
+                    filterData.length > 1 ? filterData.map((item, index) => {
+                      return (
+                        <li
+                          key={item.type}
+                          tabIndex={0}
+                          onClick={() => createNewFormChange(item.type)}
+                          className={styles.item}
+                        >
+                          {setIcon(item.type)}
+                          <p className={styles.text}>{item.value}</p>
+                        </li>
+                      )
+                    }) : (
+                      <span className={styles.centerText}>Похоже пусто</span>
+                    )
+                  }
+                </div>
               </motion.div>
             ) : null}
           </AnimatePresence>

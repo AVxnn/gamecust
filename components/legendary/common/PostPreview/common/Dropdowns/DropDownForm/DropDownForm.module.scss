@@ -7,7 +7,7 @@
 
   @media (max-width: 768px) {
     top: auto;
-    left: 32px;
+    left: 16px;
     bottom: -28px;
     z-index: 2;
   }
@@ -61,6 +61,7 @@
     flex-direction: column;
     width: 190px;
     padding: 4px;
+    max-height: 280px;
     box-sizing: border-box;
     background-color: $d_main_subbg_color;
     box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.5);
@@ -74,8 +75,88 @@
       left: 0;
       width: 100%;
       padding: 8px;
+      max-height: 300px;
+      height: 100%;
       right: 0;
       bottom: 52px;
+    }
+
+    .divinet {
+      position: relative;
+      width: calc(100% + 8px);
+      margin: 4px 0;
+      height: 1px;
+      margin-left: -4px;
+      background-color: $d_main_bg_color;
+    }
+
+    .search {
+      width: 100%;
+
+      .containerInput {
+        display: flex;
+        gap: 8px;
+        padding: 8px;
+        width: 100%;
+        box-sizing: border-box;
+        align-items: center;
+
+        .icon {
+          width: 18px;
+          height: 18px;
+          
+          @media (max-width: 768px) {
+            width: 25px;
+            height: 25px;
+          }
+          svg {
+            width: 18px;
+            height: 18px;
+
+            @media (max-width: 768px) {
+              width: 25px;
+              height: 25px;
+            }
+
+            path {
+              fill: $d_main_text_color;
+            }
+          }
+        }
+        .search {
+          width: 100%;
+          font-size: 14px;
+          color: $d_main_text_color;
+          background-color: rgba(0, 0, 0, 0);
+
+          @media (max-width: 768px) {
+            font-size: 16px;
+          }
+        }
+      }
+    }
+
+    .centerText {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 0;
+      margin: 0;
+      font-size: 14px;
+      color: $d_main_text_color;
+      font-weight: 400;
+
+      @media (max-width: 768px) {
+        font-size: 16px;
+      }
+    }
+
+    .itemList {
+      overflow-y: scroll;
+
+      &::-webkit-scrollbar {
+        width: 2px;
+      }
     }
 
     .item {
@@ -106,6 +187,10 @@
       }
 
       path {
+        fill: $d_main_text_color;
+      }
+
+      circle{
         fill: $d_main_text_color;
       }
 

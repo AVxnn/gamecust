@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./QuoteBlock.module.scss";
+import Spoiler from "../../Spoiler";
 
 const QuoteBlock = ({ item }: any) => {
   return (
@@ -18,6 +19,7 @@ const QuoteBlock = ({ item }: any) => {
           dangerouslySetInnerHTML={{ __html: item.author }}
         ></span>
       )}
+      <Spoiler item={item}/>
     </div>
   );
 };

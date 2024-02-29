@@ -1,13 +1,17 @@
 import React from "react";
 import styles from "./description.module.scss"
+import Spoiler from "../../Spoiler";
 
-const Description = ({ text }: any) => {
+const Description = ({ item }: any) => {
   return (
-    <h2
-      key={text}
-      className={styles.description}
-      dangerouslySetInnerHTML={{ __html: text }}
-    ></h2>
+    <div className={styles.container}>
+      <h2
+        key={item.value}
+        className={styles.description}
+        dangerouslySetInnerHTML={{ __html: item.value }}
+      ></h2>
+      <Spoiler item={item}/>
+    </div>
   );
 };
 

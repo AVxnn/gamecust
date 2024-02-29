@@ -16,6 +16,8 @@ body {
 
   --border-radius-: #d5b5ff;
   --d_main_active: #a762ff;
+
+  --theme-filter-blur-light: blur(10px) contrast(100%) brightness(100%);
 }
 
 body {
@@ -60,7 +62,7 @@ body[dark] {
 
   --d_main_red: #f05353;
 
-  --d_main_bg_color: #161617;
+  --d_main_bg_color: #24292E;
 
   --d_main_subbg_color: #232324;
 

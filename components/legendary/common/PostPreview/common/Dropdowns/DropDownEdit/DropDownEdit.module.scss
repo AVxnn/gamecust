@@ -7,7 +7,7 @@
 
   @media (max-width: 768px) {
     top: auto;
-    left: 32px;
+    left: 16px;
     bottom: -28px;
     z-index: 2;
   }
@@ -97,6 +97,11 @@
       align-items: center;
       cursor: pointer;
       transition: all 0.1s ease-in-out;
+      &:focus-visible {
+        border-radius: 8px;
+        outline: none;
+        background-color: $d_main_bg_color;
+      }
 
       @media (max-width: 768px) {
         padding: 12px;
@@ -105,6 +110,7 @@
       svg {
         width: 22px;
         height: 22px;
+
         @media (max-width: 768px) {
           width: 25px;
           height: 25px;
@@ -115,6 +121,10 @@
         fill: $d_main_text_color;
       }
 
+      circle{
+        fill: $d_main_text_color;
+      }
+
       &:hover {
         border-radius: 8px;
         background-color: $d_main_bg_color;
@@ -122,8 +132,8 @@
 
       .text {
         margin: 0;
+        font-size: 14px;
         color: $d_main_text_color;
-        font-size: 16px;
         font-weight: 400;
 
         @media (max-width: 768px) {
