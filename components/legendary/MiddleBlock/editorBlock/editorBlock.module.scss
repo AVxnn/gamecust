@@ -15,11 +15,12 @@
 
   @media (max-width: 768px) {
     width: 100%;
+    position: absolute;
+    top: -22px;
     min-width: 0;
-    height: calc(100dvh - 120px);
-    padding: 12px 0;
-    margin-bottom: 50px;
-    margin-top: 42px;
+    height: 100dvh;;
+    margin: 0;
+    z-index: 222222;
   }
 
   ul {
