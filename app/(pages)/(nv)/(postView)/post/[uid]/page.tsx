@@ -13,7 +13,7 @@ export async function generateMetadata({ params }: any) {
     title: `${product.title}`,
     description: `${product.data.filter((e: any) => e.type == "text")[0]?.value}`,
     alternates: {
-      canonical: `https://gamecust.ru/post/${id}`
+      canonical: `https://gamecust.ru/post/${product.postId}`
     },
     robots: {
       index: true,
