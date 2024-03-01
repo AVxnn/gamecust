@@ -24,7 +24,8 @@
   margin: 0 0 0 20px;
   font-weight: 500;
   color: $d_main_text_color;
-  padding: 4px 0 4px 0;
+  line-height: 26px;
+  padding: 0px 0 4px 0;
   font-size: 16px;
 
   li {
@@ -38,6 +39,7 @@
   outline: none;
   resize: none;
   margin-left: 20px;
+  line-height: 26px;
   font-weight: 500;
   color: $d_main_text_color;
   padding: 4px 0 4px 0;

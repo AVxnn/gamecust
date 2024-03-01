@@ -5,11 +5,11 @@ import Spoiler from "../../Spoiler";
 const Description = ({ item }: any) => {
   return (
     <div className={styles.container}>
-      <h2
+      <p
         key={item.value}
         className={styles.description}
         dangerouslySetInnerHTML={{ __html: item.value }}
-      ></h2>
+      ></p>
       <Spoiler item={item}/>
     </div>
   );
