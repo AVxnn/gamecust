@@ -1,15 +1,15 @@
 "use client";
 
-import React, { memo, useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styles from "./postList.module.scss";
 import PostItem from "../postItem";
 import Empty from "../../../components/legendary/common/Empty";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Loading from "../postList/loading";
 import { Context } from "../../../app/(pages)/layout";
-import { observer } from "mobx-react-lite";
+import { observer } from "mobx-react-lite"; 
 
-const PostSubsList = memo(function PostSubsList({ fetchPosts }: any) {
+const PostSubsList = ({ fetchPosts }: any) => {
   const [hasMore, setHasMore] = useState(true);
 
   const { mobxStore } = useContext(Context);
@@ -63,6 +63,6 @@ const PostSubsList = memo(function PostSubsList({ fetchPosts }: any) {
   ) : (
     <></>
   );
-});
+};
 
 export default observer(PostSubsList);
