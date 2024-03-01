@@ -13,7 +13,6 @@ export const getSearch = async (value: any) => {
 };
 
 export const getSearchPosts = async (value: any, page: any) => {
-  console.log(page);
   try {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/api/search/posts/${page}/${value}`

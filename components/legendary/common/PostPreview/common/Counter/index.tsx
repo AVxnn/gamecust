@@ -25,7 +25,6 @@ const Counter = ({ data }: any) => {
       mobxStore.user.id,
       data
     )) as any;
-    console.log(result.data.likes);
     setIsLikes(result.data.likes);
   };
 

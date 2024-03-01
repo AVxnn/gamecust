@@ -42,8 +42,6 @@ const MediaUpload = observer(({ item, dragControls }: any) => {
     })
       .then((response) => response.text())
       .then((result) => {
-        console.log(result);
-
         postCreateStore.updateItem({ ...item, href: JSON.parse(result) });
       })
       .catch((error) => console.log("error", error));
@@ -105,7 +103,6 @@ const MediaUpload = observer(({ item, dragControls }: any) => {
   const handleDrag = function (e: any) {
     e.preventDefault();
     e.stopPropagation();
-    console.log("rere");
 
     if (e.type === "dragenter" || e.type === "dragover") {
       setDragActive(true);
@@ -137,7 +134,6 @@ const MediaUpload = observer(({ item, dragControls }: any) => {
     var formdata = new FormData();
     const regex = /([^/]+)\.(png|jpg|jpeg|gif)$/;
     const url = item.href.match(regex);
-    console.log(item.href);
     if (url) {
       formdata.append("pathUrl", url[0]);
       fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/file/deleteupload`, {

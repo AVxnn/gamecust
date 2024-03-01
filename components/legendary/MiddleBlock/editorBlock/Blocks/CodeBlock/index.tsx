@@ -29,7 +29,6 @@ const CodeBlock = ({ item, dragControls = null }: any) => {
   const { postCreateStore } = useContext(Context);
 
   const updateHandler = (value: any) => {
-    console.log(value);
     setFocus(true);
     const sanitizedHtml = DOMPurify.sanitize(value);
     postCreateStore.updateItem({ ...item, value: sanitizedHtml });
@@ -60,9 +59,7 @@ const CodeBlock = ({ item, dragControls = null }: any) => {
 
   const keyPress = (e: any) => {
     if (focus && item.value == "") {
-      console.log(e.keyCode);
       if (e.keyCode === 8 && item.type !== "h1") {
-        console.log("deleted", item);
         postCreateStore.removeItem(item);
         setIsClicked(false);
       }
@@ -86,9 +83,6 @@ const CodeBlock = ({ item, dragControls = null }: any) => {
         const range = selection.getRangeAt(0); // Получаем первый Range в выделении
         const rect = range.getBoundingClientRect(); // Получаем координаты выделенного текста
         setPosPopup({ left: rect.left, top: rect.top });
-        console.log(`Left: ${rect.left}, Top: ${rect.top}`);
-      } else {
-        console.log("Текст не выделен.");
       }
     }
   };

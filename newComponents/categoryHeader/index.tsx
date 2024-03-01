@@ -47,10 +47,9 @@ const CategoryHeader = () => {
     const newPosts = await res;
     setData(newPosts);
   };
-  console.log(isRoleHandler(mobxStore.user.id, uid), mobxStore.user.id, uid);
+
   useEffect(() => {
     if (isRoleHandler(mobxStore.user.id, uid)) {
-      console.log("есть доступ");
       setDataTagAccount([
         {
           title: "Статьи",
@@ -84,7 +83,7 @@ const CategoryHeader = () => {
   useEffect(() => {
     getFirstUser();
   }, []);
-  console.log(data);
+  
   return (
     <>
       <div className={styles.profileBlock}>

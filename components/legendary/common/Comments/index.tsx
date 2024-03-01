@@ -35,7 +35,6 @@ const Comments = ({ dataS, comments, getNewComments }: any) => {
   const changePage = (index: number) => {
     setActive(index);
   };
-  console.log(comments);
   const getComments = async () => {
     const comments = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/api/comment/getComments/${dataPost.postId}`
@@ -49,7 +48,6 @@ const Comments = ({ dataS, comments, getNewComments }: any) => {
 
   const createComment = async (event: any) => {
     event.preventDefault();
-    console.log(mobxStore.user);
     let commentsNow = await getCommentsId(mobxStore.user.id);
     if (
       commentsNow.length <= 3 ||

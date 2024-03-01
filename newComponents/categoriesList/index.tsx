@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { memo, useEffect, useState } from "react";
 import styles from "./categoriesList.module.scss";
 import Image from "next/image";
 import InfiniteScroll from "react-infinite-scroll-component";
@@ -6,7 +6,7 @@ import getCategories from "../../features/new/getCategories/getCategories";
 import Empty from "../../components/legendary/common/Empty";
 import Link from "next/link";
 
-const CategoriesList = () => {
+const CategoriesList = memo(function CategoriesList() {
   const [hasMore, setHasMore] = useState(true);
 
   const [categories, setCategories] = useState([]) as any;
@@ -22,7 +22,7 @@ const CategoriesList = () => {
     setCategories((post: any) => [...post, ...newPosts]);
     setPage(page + 1);
   };
-  console.log(categories);
+  
   const getFirstPosts = async () => {
     const res = await getCategories(0);
     const newPosts = await res;
@@ -62,6 +62,6 @@ const CategoriesList = () => {
       </InfiniteScroll>
     </div>
   );
-};
+});
 
 export default CategoriesList;

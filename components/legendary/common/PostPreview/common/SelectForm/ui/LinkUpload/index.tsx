@@ -37,7 +37,6 @@ const LinkUpload = observer(({ item, dragControls }: any) => {
     if (regex.test(link)) {
       typeMedia = "gamecustpost";
     }
-    console.log(typeMedia);
 
     postCreateStore.updateItem({ ...item, href: link, typeMedia: typeMedia });
   };

@@ -1,15 +1,13 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { memo, useEffect, useState } from "react";
 import styles from "./postList.module.scss";
-import { getPostList } from "../../../features/new/getPostList/getPostList";
 import PostItem from "../postItem";
 import Empty from "../../../components/legendary/common/Empty";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Loading from "./loading";
-import Loader from "../../loader";
 
-const PostList = ({ fetchPosts }: any) => {
+const PostList = memo(function PostList ({ fetchPosts }: any) {
   const [hasMore, setHasMore] = useState(true);
 
   const [posts, setPosts] = useState([]) as any;
@@ -55,6 +53,6 @@ const PostList = ({ fetchPosts }: any) => {
       ))}
     </InfiniteScroll>
   );
-};
+});
 
 export default PostList;

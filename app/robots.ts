@@ -5,7 +5,6 @@ export default function robots(): MetadataRoute.Robots {
     rules: [
       {
         userAgent: "*",
-        allow: "/",
         disallow: [
           "/account",
           "/settings",
@@ -21,6 +20,5 @@ export default function robots(): MetadataRoute.Robots {
         
       },
     ],
-    sitemap: `process.env.NEXTAUTH_URL/sitemap.xml`,
   };
 }

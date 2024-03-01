@@ -14,7 +14,6 @@ const SettingsNavigation = () => {
   const pathname = usePathname();
 
   const [active, setActive] = useState(null) as any;
-  console.log(pathname);
   useEffect(() => {
     switch (pathname) {
       case "/settings/profile":

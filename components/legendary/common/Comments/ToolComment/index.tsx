@@ -47,7 +47,6 @@ const ToolComment = ({ data, dataPost, getNewComments }: any) => {
           );
         }
       } else {
-        console.log("w");
         notificationStore.addItem({
           title: "Ваш лимит комментариев на сегодня закончился ;(",
           status: "error",

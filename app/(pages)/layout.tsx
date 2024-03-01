@@ -11,7 +11,6 @@ import { store } from "../../store/store";
 import NextAuthProvider from "../../features/provider/nextAuthProvider";
 import { observer } from "mobx-react-lite";
 import Head from "next/head";
-import { getPostListAll } from "../../features/new/getPostList/getPostList";
 import { Analytics } from "@vercel/analytics/react"
 
 interface State {
@@ -58,16 +57,6 @@ const LayoutPages = ({ children }: { children: React.ReactNode }) => {
     }
   });
 
-  const ge = async () => {
-    const response = await getPostListAll();
-
-    const postsEntries = response.map(({ postId }: any) => ({
-      url: `https://gamecust.ru/post/${postId}`,
-    }));
-    console.log(postsEntries);
-  };
-  ge();
-
   useEffect(() => {
     const checkHandler = async () => {
       if (localStorage.getItem("token")) {
@@ -85,6 +74,7 @@ const LayoutPages = ({ children }: { children: React.ReactNode }) => {
           rel="apple-touch-icon"
           sizes="120x120"
           href="/apple-touch-icon.png"
+          type="image/x-icon"
         />
         <link
           rel="icon"

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { Suspense, useContext, useEffect, useState } from "react";
+import React, { Suspense, memo, useContext, useEffect, useState } from "react";
 import Br from "../postItem/UI/data/br/br";
 import styles from "./postView.module.scss";
 import ImgPopup from "../../../components/legendary/common/ImgPopup";
@@ -24,7 +24,7 @@ import ListBlock from "../postItem/UI/data/listBlock";
 import QuoteBlock from "../postItem/UI/data/QuoteBlock";
 import GameCustPostBlock from "../../../components/legendary/common/PostPreview/common/SelectForm/ui/GameCustPostBlock";
 
-const PostView = () => {
+const PostView = memo(function PostView () {
   const { uid } = useParams() as any;
   const { scrollY } = useScroll();
 
@@ -86,7 +86,7 @@ const PostView = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [postData]);
-  console.log(postData);
+  
   if (!postData?.user.username) return <Loading />;
 
   return (
@@ -133,6 +133,6 @@ const PostView = () => {
       </div>
     </Suspense>
   );
-};
+});
 
 export default PostView;

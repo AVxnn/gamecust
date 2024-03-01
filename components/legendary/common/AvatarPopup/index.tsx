@@ -17,7 +17,6 @@ const AvatarPopup = ({ src }: any) => {
 
   const sendData = async (file: any, type: any) => {
     let files = file.currentTarget.files[0];
-    console.log("w" + mobxStore.user.avatarPath);
     if (
       mobxStore.user.avatarPath &&
       typeof mobxStore.user.avatarPath !== "string"
@@ -34,7 +33,6 @@ const AvatarPopup = ({ src }: any) => {
           redirect: "follow",
         })
           .then((response) => {
-            console.log(response);
           })
           .catch((error) => console.log("error", error));
       }
@@ -45,7 +43,6 @@ const AvatarPopup = ({ src }: any) => {
     var formdata = new FormData();
     formdata.append("image", files);
     formdata.append("id", "12312312312");
-    console.log(files);
     setAvatar(files);
     fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/file/uploadAvatar`, {
       method: "POST",
@@ -54,7 +51,6 @@ const AvatarPopup = ({ src }: any) => {
     })
       .then((response) => response.text())
       .then((result) => {
-        console.log(JSON.parse(result));
         resave(JSON.parse(result));
       })
       .catch((error) => console.log("error", error));

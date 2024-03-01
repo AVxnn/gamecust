@@ -31,7 +31,6 @@ const RegistrationForm = () => {
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
-      console.log(values);
       mobxStore.registration(values.name, values.email, values.password);
       popupHandlers.authPopupClose();
     },

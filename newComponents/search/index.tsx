@@ -61,7 +61,6 @@ const SearchComponent = () => {
   const debouncedSave = useDebounce(saveHandler, 500);
 
   const handleClickOutside = (e: any) => {
-    console.log("work");
     if (
       labelRef.current &&
       !labelRef.current.contains(e.target) &&
@@ -75,7 +74,6 @@ const SearchComponent = () => {
 
   const linkEnter = (key: any) => {
     if (isFocus) {
-      console.log(value);
       router.push(`/search/result?query=${value}`);
       setIsOpen(false);
       setIsFocus(false);

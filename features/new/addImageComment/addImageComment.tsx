@@ -5,7 +5,6 @@ export const addImageComment = async (files: any) => {
     var formdata = new FormData();
     formdata.append("image", files);
     formdata.append("id", "12312312312");
-    console.log(files);
     return fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/file/uploadComment`, {
       method: "POST",
       body: formdata,
@@ -13,7 +12,6 @@ export const addImageComment = async (files: any) => {
     })
       .then((response) => response.text())
       .then((result) => {
-        console.log(JSON.parse(result));
         if (JSON.parse(result) === 'Произошла непредвиденная ошибка') {
           return '';
         }

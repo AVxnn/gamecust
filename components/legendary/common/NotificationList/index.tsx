@@ -8,7 +8,6 @@ import { Context } from "../../../../app/(pages)/layout";
 
 const NotificationList = () => {
   const { notificationStore } = useContext(Context);
-  console.log(notificationStore.store);
   return (
     <>
       <div className={styles.notificationList}>

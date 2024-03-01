@@ -9,7 +9,6 @@ const AccountDrop = ({ data }: any) => {
   const { postCreateStore, mobxStore } = useContext(Context);
 
   const changeProfile = (id: any) => {
-    console.log(id);
     postCreateStore.changeCategory(id);
   };
 

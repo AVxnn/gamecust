@@ -6,7 +6,6 @@ import { checkColor, getExp, getNextColor } from "../componentColors/checkColor"
 
 const LvlPopup = ({ data }: any) => {
   const [open, setOpen] = useState(false);
-  console.log(data);
   return (
     <div>
       <span 

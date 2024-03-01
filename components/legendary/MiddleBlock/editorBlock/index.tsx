@@ -10,12 +10,11 @@ import ToolBar from "./ToolBar";
 import ChangeAccount from "./ChangeAccount";
 import ConstructorBlocks from "./ConstructorBlocks";
 import { observer } from "mobx-react";
-import { Reorder, useDragControls } from "framer-motion";
+import { Reorder } from "framer-motion";
 import useDebounce from "../../../../features/Hooks/useDebounce";
 import uuid from "react-uuid";
 import { Context } from "../../../../app/(pages)/layout";
 import { useParams } from "next/navigation";
-import TextAreaBlock from "./Blocks/TextAreaBlock";
 import TitleBlock from "./Blocks/TitleBlock";
 
 const EditorBlock = ({ post }: any) => {
@@ -56,7 +55,7 @@ const EditorBlock = ({ post }: any) => {
         !postCreateStore.data[postCreateStore?.data?.length - 1].value &&
         postCreateStore.data[postCreateStore?.data?.length - 1].type == "text"
       ) {
-        console.log("noWork");
+        
       } else {
         let res = {
           type: "text",
@@ -97,7 +96,6 @@ const EditorBlock = ({ post }: any) => {
   }, [keyPress]);
 
   useEffect(() => {
-    console.log("save");
     keyPress();
   }, []);
 

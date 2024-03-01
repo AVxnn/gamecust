@@ -11,7 +11,6 @@ const TopUsers = () => {
 
   const getUsers = async () => {
     setUsers(await getTopUsers());
-    console.log(users, await getTopUsers());
   };
 
   useEffect(() => {

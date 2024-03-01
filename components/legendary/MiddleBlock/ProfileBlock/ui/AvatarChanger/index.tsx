@@ -12,7 +12,6 @@ const AvatarChanger = ({ setValue }: any) => {
 
   const sendData = (file: any, type: any) => {
     let files = file.currentTarget.files[0];
-    console.log("w" + mobxStore.user.avatarPath);
     if (mobxStore.user.avatarPath) {
       const regex = /\/(?:[^/]*\/){3}(.+)/;
       const link = mobxStore.user.avatarPath as any;
@@ -36,7 +35,6 @@ const AvatarChanger = ({ setValue }: any) => {
     formdata.append("image", files);
     formdata.append("id", "12312312312");
     setAvatar(files);
-    console.log(files);
     fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/file/uploadAvatar`, {
       method: "POST",
       body: formdata,
@@ -44,7 +42,6 @@ const AvatarChanger = ({ setValue }: any) => {
     })
       .then((response) => response.text())
       .then((result) => {
-        console.log(JSON.parse(result));
         setValue(JSON.parse(result));
       })
       .catch((error) => console.log("error", error));

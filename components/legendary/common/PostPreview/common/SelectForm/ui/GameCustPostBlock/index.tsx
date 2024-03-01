@@ -16,7 +16,6 @@ import Spoiler from "../../../../../../../../newComponents/post/postItem/UI/Spoi
 
 const GameCustPostBlock = ({ item }: any) => {
   const [data, setData] = useState({}) as any;
-  console.log(item)
   const getData = async () => {
     const url = new URL(item.href);
 

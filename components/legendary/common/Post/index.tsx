@@ -11,7 +11,6 @@ import { useMotionValueEvent, useScroll } from "framer-motion";
 
 const Post = ({ post, comments }: any) => {
   const { scrollY } = useScroll();
-  console.log(comments);
 
   const [userData, setUserData] = useState() as any;
 
@@ -55,7 +54,6 @@ const Post = ({ post, comments }: any) => {
       </section>
       <section className={styles.mainInfo}>
         {post?.data?.map((item: any, index: number) => {
-          console.log(item);
           if (item.type === "h1") {
             return (
               <h1

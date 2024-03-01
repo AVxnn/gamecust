@@ -4,11 +4,9 @@ import React, { useContext, useEffect, useState } from "react";
 import styles from "./Drafts.module.scss";
 import DraftItem from "./DraftItem";
 import Empty from "../../../common/Empty";
-import { useRouter } from "next/router";
 import { observer } from "mobx-react-lite";
 import InfiniteScroll from "react-infinite-scroll-component";
 import Loading from "../../../../../newComponents/post/postList/loading";
-import isRoleHandler from "../../../../../features/isRoleHandler";
 import { Context } from "../../../../../app/(pages)/layout";
 
 const Drafts = ({ fetchPosts }: any) => {

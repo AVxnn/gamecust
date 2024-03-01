@@ -12,7 +12,6 @@ export const addExpUser = async (id: any, value: any) => {
     })
       .then((response) => response.text())
       .then((result) => {
-        console.log(JSON.parse(result));
         if (JSON.parse(result) === 'Произошла непредвиденная ошибка') {
           return '';
         }
@@ -36,7 +35,6 @@ export const removeExpUser = async (id: any, value: any) => {
     })
       .then((response) => response.text())
       .then((result) => {
-        console.log(JSON.parse(result));
         if (JSON.parse(result) === 'Произошла непредвиденная ошибка') {
           return '';
         }

@@ -49,7 +49,7 @@ const EditBlock = ({ postId }: any) => {
       });
     }
   });
-  console.log(mobxStore.user);
+  
   return (
     <div
       ref={Button}

@@ -6,7 +6,6 @@ import ContentEditable from "react-contenteditable";
 import { Context } from "../../../../../../app/(pages)/layout";
 
 const TitleBlock = ({ item }: any) => {
-  console.log(item)
   const popupRef = useRef<HTMLDivElement>(null);
   const labelRef = useRef<HTMLElement>(null) as any;
   const inputText = useRef<HTMLElement>(null) as any;
@@ -49,9 +48,6 @@ const TitleBlock = ({ item }: any) => {
         const range = selection.getRangeAt(0); // Получаем первый Range в выделении
         const rect = range.getBoundingClientRect(); // Получаем координаты выделенного текста
         setPosPopup({ left: rect.left, top: rect.top });
-        console.log(`Left: ${rect.left}, Top: ${rect.top}`);
-      } else {
-        console.log("Текст не выделен.");
       }
     }
   };

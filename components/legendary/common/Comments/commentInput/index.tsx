@@ -58,14 +58,12 @@ const CommentInput = ({
       const url = reader.result;
       setImageURL(url);
     };
-    console.log(imageURL, files);
     reader.readAsDataURL(files);
   };
 
   const handleDrag = function (e: any) {
     e.preventDefault();
     e.stopPropagation();
-    console.log("rere");
 
     if (e.type === "dragenter" || e.type === "dragover") {
       setDragActive(true);

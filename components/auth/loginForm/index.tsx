@@ -25,7 +25,6 @@ const LoginForm = () => {
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
-      console.log(values);
       mobxStore.login(values.email, values.password);
       popupHandlers.authPopupClose();
     },

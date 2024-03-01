@@ -28,7 +28,6 @@ const NewDropMenu = ({ data, title, value, setValue} : any) => {
             })
         }
     })
-    console.log(data.filter((e : any) => e.type == value));
     
     return (
         <>

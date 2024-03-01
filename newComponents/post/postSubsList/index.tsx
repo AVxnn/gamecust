@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useContext, useEffect, useState } from "react";
+import React, { memo, useContext, useEffect, useState } from "react";
 import styles from "./postList.module.scss";
 import PostItem from "../postItem";
 import Empty from "../../../components/legendary/common/Empty";
@@ -9,7 +9,7 @@ import Loading from "../postList/loading";
 import { Context } from "../../../app/(pages)/layout";
 import { observer } from "mobx-react-lite";
 
-const PostSubsList = ({ fetchPosts }: any) => {
+const PostSubsList = memo(function PostSubsList({ fetchPosts }: any) {
   const [hasMore, setHasMore] = useState(true);
 
   const { mobxStore } = useContext(Context);
@@ -39,7 +39,6 @@ const PostSubsList = ({ fetchPosts }: any) => {
   };
 
   useEffect(() => {
-    console.log(mobxStore.user.id);
     if (mobxStore.user.id) {
       getFirstPosts();
     }
@@ -64,6 +63,6 @@ const PostSubsList = ({ fetchPosts }: any) => {
   ) : (
     <></>
   );
-};
+});
 
 export default observer(PostSubsList);

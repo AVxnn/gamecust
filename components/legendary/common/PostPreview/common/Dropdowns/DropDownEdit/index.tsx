@@ -48,7 +48,6 @@ const DropDownEdit = observer(
     const spoilerHandler = (flag: boolean) => {
       postCreateStore.updateItem({ ...item, spoiler: flag ? false : true });
       setIsClicked(false);
-      console.log(postCreateStore.data)
     };
 
     const handleClickOutside = (e: any) => {

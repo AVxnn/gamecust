@@ -10,7 +10,6 @@ import Close from "../../../../public/img/svg/close";
 import { deleteNotification } from "../../../../features/new/getNotifications/getNotifications";
 
 export const CheckIcon = ({ status }: any) => {
-  console.log(status);
   switch (status) {
     case "like":
       return (
@@ -48,7 +47,6 @@ export const CheckIcon = ({ status }: any) => {
 
 const NotificationItem = ({ item }: any) => {
   const [hover, setHover] = useState(false);
-  console.log(item);
   const deleteNtf = () => {
     deleteNotification(item._id);
   };

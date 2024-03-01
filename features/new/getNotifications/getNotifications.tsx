@@ -88,7 +88,6 @@ export const getNotificationList = async (id: any, page: any) => {
     return axios
       .request(config)
       .then((response) => {
-        console.log(JSON.stringify(response.data));
         return response.data;
       })
       .catch((error) => {

@@ -17,7 +17,6 @@ const BgProfilePopup = ({ src }: any) => {
 
   const sendData = async (file: any, type: any) => {
     let files = file.currentTarget.files[0];
-    console.log("w" + mobxStore.user.bgPath);
     if (mobxStore.user.bgPath) {
       const regex = /\/(?:[^/]*\/){3}(.+)/;
       const link = mobxStore.user.bgPath as any;
@@ -40,7 +39,6 @@ const BgProfilePopup = ({ src }: any) => {
     var formdata = new FormData();
     formdata.append("image", files);
     formdata.append("id", "12312312312");
-    console.log(files);
     setAvatar(files);
     fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/file/uploadAvatar`, {
       method: "POST",
@@ -49,7 +47,6 @@ const BgProfilePopup = ({ src }: any) => {
     })
       .then((response) => response.text())
       .then((result) => {
-        console.log(JSON.parse(result));
         resave(JSON.parse(result));
       })
       .catch((error) => console.log("error", error));
