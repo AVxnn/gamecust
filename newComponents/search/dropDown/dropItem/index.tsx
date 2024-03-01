@@ -33,7 +33,7 @@ const DropItem = ({ item, type, handlerLink }: any) => {
       <div className={`${styles.iconBlock} ${styles.pen}`}>
         <Pen type={1} />
       </div>
-      <p className={styles.text}>{item.data[0].value}</p>
+      <p className={styles.text}>{item.title}</p>
       <div className={styles.views}>
         <Eye />
         <span className={styles.title}>{item.viewsCount}</span>
