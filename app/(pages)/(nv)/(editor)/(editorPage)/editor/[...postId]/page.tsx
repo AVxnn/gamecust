@@ -47,7 +47,14 @@ const PageEditor = () => {
     if (post.data?.length > 0) {
       postCreateStore.updateArray(post.data);
     } else {
-      postCreateStore.updateArray([]);
+      postCreateStore.updateArray([
+        {
+          type: "text",
+          value: "",
+          unicalId: uuid(),
+          id: postCreateStore.data.length,
+        },
+      ]);
       postCreateStore.updateTitle("");
     }
     console.log(postCreateStore.postId, postCreateStore.data);
