@@ -49,7 +49,7 @@ const EditBlock = ({ postId }: any) => {
       });
     }
   });
-  
+
   return (
     <div
       ref={Button}
@@ -65,9 +65,9 @@ const EditBlock = ({ postId }: any) => {
       <AnimatePresence initial={false} mode="wait">
         {isDropOpen && (
           <motion.div
-            exit={{ opacity: 0 }}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            exit={{ opacity: 0, top: 54 }}
+            initial={{ opacity: 0, top: 54 }}
+            animate={{ opacity: 1, top: 30 }}
             ref={popupRef}
             className={styles.dropMenu}
           >

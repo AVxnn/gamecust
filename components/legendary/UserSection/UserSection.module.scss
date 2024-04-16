@@ -80,7 +80,7 @@
   position: absolute;
   width: 300px;
   background-color: $d_main_subbg_color;
-  border-radius: 8px;
+  border-radius: $br-14;
   right: 16px;
   display: flex;
   flex-direction: column;
@@ -107,7 +107,7 @@
     display: flex;
     align-items: center;
     gap: 12px;
-    border-radius: 8px;
+    border-radius: 8px$br-14;
     padding: 10px 10px;
     transition: all 0.1s ease-in-out;
 

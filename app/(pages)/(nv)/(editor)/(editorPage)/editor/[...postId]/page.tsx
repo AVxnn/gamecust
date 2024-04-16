@@ -11,14 +11,26 @@ const PageEditor = () => {
   const [post, setPost] = useState([]) as any;
   const { mobxStore, postCreateStore, notificationStore } = useContext(Context);
   const { postId } = useParams() as any;
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
   const getFirstPosts = async (page = 0) => {
     const data = await getPost(decodeURIComponent(postId[1]));
-    console.log(data);
     if (data) {
       setPost(data);
     }
   };
+
+  useEffect(() => {
+    async function checkRole() {
+      if (!!mobxStore.user.id) {
+        setLoading(true)
+      } else {
+        router.push('/');
+      }
+    }
+    checkRole();
+  }, [mobxStore.user, router]);
 
   useEffect(() => {
     getFirstPosts();
@@ -47,11 +59,11 @@ const PageEditor = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [postId]);
 
-  return (
+  return loading ? (
     <>
       <EditorBlock post={post} />
     </>
-  );
+  ) : (<></>);
 };
 
 export default PageEditor;

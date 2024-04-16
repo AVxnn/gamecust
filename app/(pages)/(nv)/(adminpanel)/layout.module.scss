@@ -1,9 +1,11 @@
+@import "/styles/variables.scss";
+
 .layout {
   position: relative;
   max-width: 1256px;
   width: 100%;
   gap: 50px;
-  margin: 272px 0 0 0;
+  margin: 16px 0 0 0;
   justify-content: center;
   align-items: flex-start;
   display: flex;
@@ -13,7 +15,6 @@
   }
   @media screen and (max-width: 1024px) {
     max-width: 976px;
-    margin-top: 182px;
   }
   @media screen and (max-width: 980px) {
     max-width: 640px;
@@ -23,8 +24,9 @@
     max-width: 220px;
     width: 100%;
     display: flex;
+    top: 76px;
+    position: sticky;
     flex-direction: column;
-    margin-top: 16px;
     gap: 32px;
     align-items: center;
 
@@ -41,17 +43,18 @@
     width: 100%;
     display: flex;
     align-items: center;
+    padding-bottom: 60px;
     flex-direction: column;
-    gap: 16px;
     justify-content: center;
   }
 
   .rightColumn {
     max-width: 296px;
     width: 100%;
-    margin-top: 16px;
     display: flex;
     flex-direction: column;
+    top: -500px;
+    position: sticky;
     gap: 16px;
     justify-content: flex-end;
 

@@ -1,8 +1,6 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import styles from "./UserSection.module.scss";
 import Arrow from "../../../public/img/svg/Arrow";
-import Edit from "../../../public/img/svg/Edit";
-import Notification from "../Notification";
 import Image from "next/image";
 import Link from "next/link";
 import Cog from "../../../public/img/svg/Cog";
@@ -19,6 +17,7 @@ import Mark from "../../../public/img/svg/Mark";
 import Premium from "../../../public/img/svgIcons/Premium";
 import Popup from "reactjs-popup";
 import PremiumSettingsBlock from "../MiddleBlock/PremiumSettingsBlock";
+import Bug from "../../../public/img/svg/Bug";
 
 const UserSection = () => {
   const [theme, setTheme] = useState(localStorage.getItem("Theme"));
@@ -106,9 +105,9 @@ const UserSection = () => {
         <AnimatePresence initial={false} mode="wait">
           {dropMenu && (
             <motion.div
-              exit={{ opacity: 0 }}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
+              exit={{ opacity: 0, top: 70 }}
+              initial={{ opacity: 0, top: 70 }}
+              animate={{ opacity: 1, top: 50 }}
               ref={popupRef}
               className={styles.menu}
             >
@@ -169,6 +168,16 @@ const UserSection = () => {
                   <p className={styles.text}>Черновики</p>
                 </div>
               </Link>
+              {mobxStore.user.roles.includes("admin") && (
+                <Link href={"/adminpanel"}>
+                  <div onClick={() => closePopup()} className={styles.userMenu}>
+                    <div className={styles.bgAvatar}>
+                      <Bug />
+                    </div>
+                    <p className={styles.text}>Админ панель</p>
+                  </div>
+                </Link>
+              )}
               <Link href={"/settings"}>
                 <div onClick={() => closePopup()} className={styles.userMenu}>
                   <div className={styles.bgAvatar}>

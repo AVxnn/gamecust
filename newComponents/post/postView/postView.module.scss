@@ -6,10 +6,10 @@
   box-sizing: border-box;
   flex-direction: column;
   background-color: $d_main_subbg_color;
-  border-radius: 8px;
+  border-radius: $br-14;
   margin-bottom: 64px;
   padding: 16px 24px;
-  
+
   @media (max-width: 768px) {
     height: auto;
     padding: 16px;

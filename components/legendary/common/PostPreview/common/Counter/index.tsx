@@ -13,19 +13,23 @@ import { createNotification } from "../../../../../../features/new/getNotificati
 const Counter = ({ data }: any) => {
   const [isLikes, setIsLikes] = useState(data.likes);
 
-  const { mobxStore, postCreateStore } = useContext(Context);
+  const { mobxStore, postCreateStore, popupHandlers } = useContext(Context);
 
   const openPost = async () => {
-    if (!isRoleHandler(data.user._id, mobxStore.user.id)) {
-      addExpUser(data.userId, 25);
-    } else if (!isRoleHandler(data.user._id, mobxStore.user.id)) {
-      removeExpUser(data.user._id, 25);
+    if (mobxStore?.user?.email) {
+      if (!isRoleHandler(data.user._id, mobxStore.user.id)) {
+        addExpUser(data.userId, 25);
+      } else if (!isRoleHandler(data.user._id, mobxStore.user.id)) {
+        removeExpUser(data.user._id, 25);
+      }
+      const result = (await postCreateStore.likePost(
+        mobxStore.user.id,
+        data
+      )) as any;
+      setIsLikes(result.data.likes);
+    } else {
+      popupHandlers.authPopupOpen();
     }
-    const result = (await postCreateStore.likePost(
-      mobxStore.user.id,
-      data
-    )) as any;
-    setIsLikes(result.data.likes);
   };
 
   return (

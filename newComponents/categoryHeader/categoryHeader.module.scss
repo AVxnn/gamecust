@@ -1,7 +1,7 @@
 @import "/styles/variables.scss";
 
 .profileBlock {
-  border-radius: 0 0 8px 8px;
+  border-radius: 0 0 $br-14 $br-14;
   width: 100%;
   background-color: $d_main_subbg_color;
 
@@ -13,7 +13,7 @@
     position: absolute;
     background-color: $d_main_text_color;
     overflow: hidden;
-    border-radius: 0 0 8px 8px;
+    border-radius: $br-14;
 
     img {
       object-fit: cover;
@@ -28,7 +28,7 @@
     margin-top: -80px;
     width: 120px;
     left: 24px;
-    
+
     @media (max-width: 768px) {
       margin-top: -70px;
       width: 120px;
@@ -139,7 +139,6 @@
         align-items: center;
         margin-bottom: 4px;
 
-        
         .subs {
           color: $d_main_subtext_color;
         }

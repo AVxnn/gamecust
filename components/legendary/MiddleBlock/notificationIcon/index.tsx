@@ -67,9 +67,9 @@ const NotificationIcon = () => {
       <AnimatePresence initial={false} mode="wait">
         {dropMenu && (
           <motion.div
-            exit={{ opacity: 0 }}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            exit={{ opacity: 0, top: 84 }}
+            initial={{ opacity: 0, top: 84 }}
+            animate={{ opacity: 1, top: 64 }}
             ref={popupRef}
             className={styles.dropdown}
           >

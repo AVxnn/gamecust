@@ -31,7 +31,7 @@ const Header = () => {
             </div>
           </div>
           <div className={styles.rightColumn}>
-            {mobxStore.user.email ? (
+            {mobxStore?.user?.email ? (
               <div className={styles.gap}>
                 <NotificationIcon />
                 <UserSection />
