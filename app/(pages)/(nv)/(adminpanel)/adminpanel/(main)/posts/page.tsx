@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
+import AllPosts from "../../../../../../../components/adminPanel/AllPosts";
 
 const AdminPosts = () => {
   return (
-    <div>Post Moderation</div>
-  )
-}
+    <div>
+      <AllPosts />
+    </div>
+  );
+};
 
-export default AdminPosts
+export default AdminPosts;
