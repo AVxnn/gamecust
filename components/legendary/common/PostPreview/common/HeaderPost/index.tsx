@@ -33,6 +33,22 @@ function Preloader() {
     </ContentLoader>
   );
 }
+function PreloaderCategory() {
+  return (
+    <ContentLoader
+      height={24}
+      width={24}
+      style={{ borderRadius: "99px" }}
+      speed={2}
+      backgroundColor={"#333"}
+      foregroundColor={"#999"}
+      viewBox="0 0 70 70"
+    >
+      {/* Only SVG shapes */}
+      <rect x="0" y="0" rx="5" ry="5" width="70" height="70" />
+    </ContentLoader>
+  );
+}
 
 const HeaderPost = ({ data, fixed }: any) => {
   const { mobxStore, popupHandlers, notificationStore } = useContext(Context);
@@ -97,7 +113,7 @@ const HeaderPost = ({ data, fixed }: any) => {
                     className={styles.categoryAvatar}
                     src={`${data.category.imagePath}`}
                     wrapper={React.createFactory("div")}
-                    preloader={Preloader}
+                    preloader={PreloaderCategory}
                   ></ImageLoader>
                 </Link>
               </div>

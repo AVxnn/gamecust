@@ -40,7 +40,7 @@ const Item = ({ comments, data, dataPost, getNewComments }: any) => {
               {data.image &&
                 data.image !== "Произошла непредвиденная ошибка" && (
                   <div className={styles.img}>
-                    <ImgPopup src={data.image} />
+                    <ImgPopup item={{ href: data.image }} />
                   </div>
                 )}
             </div>
