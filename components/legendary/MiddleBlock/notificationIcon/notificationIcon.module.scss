@@ -24,6 +24,7 @@
     }
 
     svg {
+      transition: all 0.2s ease;
       path {
         fill: $d_main_text_color;
       }
@@ -43,6 +44,12 @@
       color: #ffffff;
       border-radius: $br-14;
       background-color: #f05353;
+    }
+  }
+
+  .activeicon {
+    svg {
+      transform: rotate(25deg);
     }
   }
 

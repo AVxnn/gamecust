@@ -59,7 +59,6 @@ export const deleteNotification = async (id: any) => {
 
 export const getNotification = async (id: any) => {
   try {
-    let noticifationId = uuid();
     let config = {
       method: "get",
       maxBodyLength: Infinity,

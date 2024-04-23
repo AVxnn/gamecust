@@ -9,29 +9,35 @@ export async function generateMetadata({ params }: any) {
   // fetch data
   const product = await getPost(id);
 
-  return {
-    title: `${product.title}`,
-    description: `${product.data.filter((e: any) => e.type == "text")[0]?.value}`,
-    alternates: {
-      canonical: `https://gamecust.ru/post/${product.postId}`
-    },
-    robots: {
-      index: true,
-      follow: true,
-      nocache: true
-    },
-    openGraph: {
-      title: `${product.title}`,
-      description: `${product.data.filter((e: any) => e.type == "text")[0]?.value}`,
-      url: `https://gamecust.ru/post/${product.postId}`,
-      siteName: "GameCust",
-      images: [
-        {
-          url: product.data.filter((e: any) => e.type == "media")[0]?.href,
-        },
-      ],
-    },
-  };
+  if (product) {
+    return {
+      title: `${product.title ? product.title : "Название поста"}`,
+      description: `${
+        product.data.filter((e: any) => e.type == "text")[0]?.value
+      }`,
+      alternates: {
+        canonical: `https://gamecust.ru/post/${product.postId}`,
+      },
+      robots: {
+        index: true,
+        follow: true,
+        nocache: true,
+      },
+      openGraph: {
+        title: `${product.title ? product.title : "Название поста"}`,
+        description: `${
+          product.data.filter((e: any) => e.type == "text")[0]?.value
+        }`,
+        url: `https://gamecust.ru/post/${product.postId}`,
+        siteName: "GameCust",
+        images: [
+          {
+            url: product.data.filter((e: any) => e.type == "media")[0]?.href,
+          },
+        ],
+      },
+    };
+  }
 }
 
 const PostPage = () => {

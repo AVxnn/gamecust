@@ -1,0 +1,29 @@
+@import "/styles/variables.scss";
+
+.main {
+  width: 100%;
+  padding: 24px 14px;
+  margin-top: 16px;
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background-color: $d_main_subbg_color;
+  border-radius: $br-14;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 10px;
+    position: relative;
+
+    .title {
+      font-size: 18px;
+      font-weight: bold;
+      margin: 0;
+      color: $d_main_text_color;
+    }
+  }
+}

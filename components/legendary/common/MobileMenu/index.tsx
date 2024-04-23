@@ -78,7 +78,7 @@ const MobileMenu = () => {
         <Link
           onClick={() => setActive(3)}
           className={`${styles.link} ${active == 3 ? styles.active : ""}`}
-          href={"/"}
+          href={"/notifications"}
         >
           <Bell />
         </Link>

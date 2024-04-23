@@ -145,6 +145,7 @@
         }
         .description {
           font-size: 14px;
+          word-break: break-all;
           color: $d_main_text_color;
         }
       }

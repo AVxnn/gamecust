@@ -6,6 +6,7 @@ import Link from "next/link";
 import NotificationItem from "../notificationItem";
 import { getNotification } from "../../../../features/new/getNotifications/getNotifications";
 import { Context } from "../../../../app/(pages)/layout";
+import Empty from "../../common/Empty";
 
 const NotificationIcon = () => {
   const { mobxStore } = useContext(Context);
@@ -59,10 +60,14 @@ const NotificationIcon = () => {
       <div
         onClick={() => setDropMenu(!dropMenu)}
         ref={labelRef}
-        className={styles.icon}
+        className={`${styles.icon} ${dropMenu && styles.activeicon}`}
       >
         <Bell />
-        {data.length >= 1 && <div className={styles.value}>{data.length}</div>}
+        {data.filter((e: any) => e.viewed === false).length >= 1 && (
+          <div className={styles.value}>
+            {data.filter((e: any) => e.viewed === false).length}
+          </div>
+        )}
       </div>
       <AnimatePresence initial={false} mode="wait">
         {dropMenu && (
@@ -81,16 +86,18 @@ const NotificationIcon = () => {
               </Link>
             </div>
             <div className={styles.list}>
-              {data.length >= 1 ? (
-                data.map((item: any, index: number) => {
-                  if (index <= 5) {
-                    return <NotificationItem key={index} item={item} />;
-                  } else {
-                    return null;
-                  }
-                })
+              {data.filter((e: any) => e.viewed === false).length >= 1 ? (
+                data
+                  .filter((e: any) => e.viewed === false)
+                  .map((item: any, index: number) => {
+                    if (index <= 5) {
+                      return <NotificationItem key={index} item={item} />;
+                    } else {
+                      return null;
+                    }
+                  })
               ) : (
-                <>Похоже у вас нет уведомлений</>
+                <Empty text="Похоже у вас нет уведомлений" />
               )}
             </div>
           </motion.div>

@@ -33,12 +33,16 @@ const DraftItem = ({ data, getMorePost }: any) => {
           )}
         </div>
         <div className={styles.mainInfo}>
-          <h2
-            className={styles.title}
-            dangerouslySetInnerHTML={{
-              __html: data.title,
-            }}
-          ></h2>
+          {data.title ? (
+            <h2
+              className={styles.title}
+              dangerouslySetInnerHTML={{
+                __html: data.title,
+              }}
+            ></h2>
+          ) : (
+            <h2 className={styles.title}>Введите название поста</h2>
+          )}
           <div className={styles.bottomInfo}>
             <span className={styles.date}>
               {formatDistanceStrict(+data.publishedDate, Date.now(), {
