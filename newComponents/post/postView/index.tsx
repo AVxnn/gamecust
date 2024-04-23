@@ -23,8 +23,9 @@ import Loading from "./loading";
 import ListBlock from "../postItem/UI/data/listBlock";
 import QuoteBlock from "../postItem/UI/data/QuoteBlock";
 import GameCustPostBlock from "../../../components/legendary/common/PostPreview/common/SelectForm/ui/GameCustPostBlock";
+import Empty from "../../../components/legendary/common/Empty";
 
-const PostView = memo(function PostView () {
+const PostView = memo(function PostView() {
   const { uid } = useParams() as any;
   const { scrollY } = useScroll();
 
@@ -86,7 +87,7 @@ const PostView = memo(function PostView () {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [postData]);
-  
+
   if (!postData?.user.username) return <Loading />;
 
   return (

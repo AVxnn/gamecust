@@ -1,25 +1,21 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import styles from "./Comments.module.scss";
-import Smile from "../../../../public/img/svg/Smile";
-import ImageAdd from "../../../../public/img/svg/ImageAdd";
-import Button from "../Button";
 import Tabs from "../Tabs";
-import TextareaAutosize from "react-textarea-autosize";
 import Item from "./Item";
-import uuid from "react-uuid";
 import { observer } from "mobx-react";
 import { Context } from "../../../../app/(pages)/layout";
 import CommentInput from "./commentInput";
 import { addImageComment } from "../../../../features/new/addImageComment/addImageComment";
 import getCommentsId from "../../../../features/new/getCommentsId/getCommentsId";
+import Empty from "../Empty";
 
 const list = [
   {
     title: "Все комментарии",
   },
-  {
-    title: "Только авторские",
-  },
+  // {
+  //   title: "Только авторские",
+  // },
 ];
 
 const Comments = ({ dataS, comments, getNewComments }: any) => {
@@ -105,6 +101,7 @@ const Comments = ({ dataS, comments, getNewComments }: any) => {
         })}
       </ul>
       <div className={styles.listComments}>
+        {dataComments.length <= 0 && <Empty text="Напиши первый комментарий" />}
         {dataComments
           .filter((item: any) => !item.receiver)
           ?.map((item: any, index: number) => {

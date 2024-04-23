@@ -23,22 +23,9 @@
 
         .images {
           position: relative;
-          border: 3px solid #F2C94C;
-          width: 32px;
+          width: 38px;
           overflow: hidden;
-          height: 32px;
-          border-radius: 99px;
-        }
-
-        .number {
-          position: absolute;
-          font-size: 9px;
-          bottom: 0px;
-          right: 0px;
-          background-color: #F2C94C;
-          padding: 2px 4px;
-          font-weight: 700;
-          color: #FFFFFF;
+          height: 38px;
           border-radius: 99px;
         }
       }
@@ -52,17 +39,26 @@
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-        
+
+        svg {
+          margin-left: 8px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 16px;
+          height: 16px;
+        }
+
         span {
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
-          max-width: 115px;
+          max-width: 164px;
         }
 
         &:hover {
           color: $d_main_hover;
-        } 
+        }
 
         svg {
           margin-left: 4px;
@@ -89,7 +85,7 @@
         rect {
           fill: $d_main_bg_color;
         }
-      } 
+      }
     }
     .rating {
       display: flex;

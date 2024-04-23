@@ -10,6 +10,7 @@ import {
 } from "../../../../../newComponents/componentColors/checkColor";
 import Link from "next/link";
 import bgimage from "../../../../../public/img/bgimage.png";
+import IconHandler from "../../../common/PostPreview/common/IconHandler";
 
 const UserItem = ({ data, index, get, set }: any) => {
   const [anim, setAnim] = useState(false);
@@ -30,19 +31,14 @@ const UserItem = ({ data, index, get, set }: any) => {
               >
                 <Image layout={"fill"} src={data.avatarPath} alt="ads" />
               </div>
-              <span
-                style={{ backgroundColor: checkColor(data.level).color }}
-                className={styles.number}
-              >
-                {checkLevel(data.exp)?.lvl}
-              </span>
             </div>
             <span className={styles.name}>
-              <span>{data.username}</span> <CheckIcon />
+              <span>{data.username}</span>
+              <IconHandler className={styles.icon} user={data} />
             </span>
           </div>
         </Link>
-        {data.level >= 0 ? (
+        {/* {data.level >= 0 ? (
           <span className={styles.rating}>
             <Trand /> {data.exp}
           </span>
@@ -50,7 +46,7 @@ const UserItem = ({ data, index, get, set }: any) => {
           <span className={styles.add}>
             <Plus />
           </span>
-        )}
+        )} */}
       </header>
 
       <div className={styles.images}>
