@@ -11,9 +11,11 @@ import { Context } from "../../../../../app/(pages)/layout";
 import CommentInput from "../commentInput";
 import { addImageComment } from "../../../../../features/new/addImageComment/addImageComment";
 import getCommentsId from "../../../../../features/new/getCommentsId/getCommentsId";
+import Like from "../../../../../public/img/svg/Like";
 
 const ToolComment = ({ data, dataPost, getNewComments }: any) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isLikes, setIsLikes] = useState(data.likes);
 
   const [value, setValue] = useState("");
   const [image, setImage] = useState();
@@ -59,10 +61,51 @@ const ToolComment = ({ data, dataPost, getNewComments }: any) => {
     }
   };
 
+  const openPost = async () => {
+    // if (mobxStore?.user?.email) {
+    //   if (!isRoleHandler(data.user._id, mobxStore.user.id)) {
+    //     addExpUser(data.userId, 25);
+    //   } else if (!isRoleHandler(data.user._id, mobxStore.user.id)) {
+    //     removeExpUser(data.user._id, 25);
+    //   }
+    //   const result = (await postCreateStore.likePost(
+    //     mobxStore.user.id,
+    //     data
+    //   )) as any;
+    //   setIsLikes(result.data.likes);
+    // } else {
+    //   popupHandlers.authPopupOpen();
+    // }
+  };
+
   return (
     <>
       <section className={styles.toolComment}>
         <div className={styles.leftBlock}>
+          <div onClick={() => openPost()} className={styles.counter}>
+            {!isLikes.filter((user: any) => user.user === mobxStore.user.id)
+              .length ? (
+              <div className={styles.like}>
+                <Like
+                  type={
+                    !isLikes.filter(
+                      (user: any) => user.user === mobxStore.user.id
+                    ).length
+                  }
+                />
+              </div>
+            ) : (
+              <div className={styles.liked}>
+                <Like
+                  type={
+                    !isLikes.filter(
+                      (user: any) => user.user === mobxStore.user.id
+                    ).length
+                  }
+                />
+              </div>
+            )}
+          </div>
           <div className={styles.views}>
             <span onClick={() => setIsOpen(!isOpen)} className={styles.text}>
               Ответить

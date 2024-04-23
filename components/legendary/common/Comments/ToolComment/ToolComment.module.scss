@@ -14,7 +14,7 @@
   &:hover {
     background-color: $d_main_subbg_color;
     border: 1px solid $d_main_color;
-    box-shadow: 0 0 2px 3px rgba(#9E5BF0, 0.2);
+    box-shadow: 0 0 2px 3px rgba(#9e5bf0, 0.2);
   }
 
   input {
@@ -22,7 +22,7 @@
     overflow-y: hidden;
     margin-bottom: 8px;
     width: 100%;
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
     color: $d_main_text_color;
     background-color: rgba(0, 0, 0, 0);
     font-weight: 500;
@@ -54,7 +54,7 @@
           background-color: $d_main_bg_color;
         }
       }
-      
+
       svg {
         cursor: pointer;
 
@@ -78,8 +78,80 @@
     display: flex;
     gap: 16px;
     align-items: center;
-    .views {
 
+    .counter {
+      display: flex;
+      position: relative;
+      align-items: center;
+      height: 16px;
+      width: 16px;
+      gap: 6px;
+      cursor: pointer;
+      transition: all 0.1s ease-in-out;
+
+      &:hover {
+        .like,
+        .liked {
+          background-color: $d_main_bg_color;
+          svg {
+            path {
+              fill: #f05353;
+            }
+          }
+        }
+        .title {
+          color: #f05353;
+        }
+      }
+
+      .like {
+        width: 16px;
+        height: 16px;
+        cursor: pointer;
+        padding: 4px;
+        border-radius: 16px;
+        background-color: $d_main_subbg_color;
+        transition: all 0.1s ease-in-out;
+
+        svg {
+          width: 16px;
+          height: 16px;
+          path {
+            fill: $d_main_text_color;
+          }
+        }
+      }
+
+      .liked {
+        width: 16px;
+        height: 16px;
+        cursor: pointer;
+        padding: 4px;
+        border-radius: 16px;
+        background-color: $d_main_subbg_color;
+        transition: all 0.1s ease-in-out;
+
+        svg {
+          width: 16px;
+          height: 16px;
+          path {
+            fill: #f05353;
+          }
+        }
+      }
+
+      .title {
+        font-size: 15px;
+        font-weight: 500;
+        color: $d_main_text_color;
+      }
+
+      .dropmenu {
+        position: absolute;
+      }
+    }
+
+    .views {
       .text {
         font-size: 14px;
         font-weight: 500;
@@ -156,5 +228,4 @@
       }
     }
   }
-
 }

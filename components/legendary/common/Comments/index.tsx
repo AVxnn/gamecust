@@ -76,7 +76,7 @@ const Comments = ({ dataS, comments, getNewComments }: any) => {
       });
     }
   };
-
+  let valueItem = 0;
   return (
     <>
       <CommentInput
@@ -110,6 +110,7 @@ const Comments = ({ dataS, comments, getNewComments }: any) => {
                 getNewComments={getNewComments}
                 comments={comments}
                 key={index}
+                value={valueItem}
                 data={item}
                 dataPost={dataPost}
               />

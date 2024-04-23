@@ -19,6 +19,7 @@
 
   .topBlock {
     position: relative;
+    height: 100%;
     display: flex;
     gap: 12px;
   }
@@ -26,7 +27,7 @@
   .rightInfo {
     width: 100%;
     display: flex;
-    margin-top: 5px;
+    margin-top: 3px;
     flex-direction: column;
     gap: 2px;
 
@@ -93,6 +94,17 @@
 
   .replyComments {
     margin-left: -30px;
+
+    .showMore {
+      color: $d_main_color;
+      cursor: pointer;
+      margin-left: 30px;
+      margin-top: 8px;
+
+      &:hover {
+        color: $d_main_hover;
+      }
+    }
   }
 
   .comment
@@ -105,30 +117,53 @@
     .rightInfo
     > .replyComments
     .comment
-    .rightInfo
-    > .replyComments
-    .comment
     .rightInfo {
     .replyComments {
       margin-left: -57px;
+      .comment .topBlock .avatar .line {
+        width: 2px;
+        padding-right: 32px;
+        border-left: none;
+        height: calc(100% - 68px);
+        background-color: $d_main_subbg_color;
+        transition: all 0.1s ease;
+        user-select: none;
+
+        &:hover {
+          border-left: none;
+        }
+      }
     }
   }
 
   .avatar {
-    position: relative;
     width: 45px;
-    height: 45px;
     min-width: 45px;
-    min-height: 45px;
     max-width: 45px;
-    max-height: 45px;
     border-radius: 99px;
 
-    img {
+    .container {
+      position: relative;
+      border-radius: 99px;
+      overflow: hidden;
       object-fit: cover;
       width: 45px;
       height: 45px;
       border-radius: 99px;
+    }
+  }
+
+  .line {
+    width: 2px;
+    padding-right: 24px;
+    border-left: 1px solid $d_main_subbg_glass_color;
+    height: calc(100% - 54px);
+    background-color: $d_main_subbg_color;
+    transition: all 0.1s ease;
+    cursor: pointer;
+
+    &:hover {
+      border-left: 1px solid $d_main_color;
     }
   }
 }
