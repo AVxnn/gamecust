@@ -1,0 +1,59 @@
+@import "/styles/variables.scss";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  .title {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0;
+    color: $d_main_text_color;
+  }
+
+  .content {
+    display: flex;
+    justify-content: space-between;
+    .round {
+      width: 46px;
+      height: 46px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      cursor: pointer;
+      svg {
+        display: none;
+      }
+    }
+    .roundActive {
+      svg {
+        display: flex;
+        width: 32px;
+        height: 32px;
+        path {
+          fill: $const_main_text_color;
+        }
+      }
+    }
+  }
+}
+
+.red {
+  background-color: #f91841;
+}
+.blue {
+  background-color: #1d9bf0;
+}
+.yellow {
+  background-color: #ffd400;
+}
+.purple {
+  background-color: #7856ff;
+}
+.orange {
+  background-color: #ff7a00;
+}
+.green {
+  background-color: #00ba7c;
+}

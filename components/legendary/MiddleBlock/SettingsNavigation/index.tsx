@@ -8,6 +8,7 @@ import Pacman from "../../../../public/img/svg/Pacman";
 import Gift from "../../../../public/img/svg/Gift";
 import { usePathname, useRouter } from "next/navigation";
 import Cog from "../../../../public/img/svg/Cog";
+import Bell from "../../../../public/img/svg/bell";
 
 const SettingsNavigation = () => {
   const router = useRouter();
@@ -64,6 +65,21 @@ const SettingsNavigation = () => {
                 <Cog type={0} />
               </div>
               <p className={styles.userName}>Основные</p>
+              <div className={styles.arrow}>
+                <Arrow />
+              </div>
+            </div>
+          </Link>
+          <Link
+            onClick={() => setActive(2)}
+            className={`${styles.item} ${active == 2 ? styles.active : ""}`}
+            href={`/settings/notifications`}
+          >
+            <div className={styles.userMenu}>
+              <div className={`${styles.bgAvatar} ${styles.orange}`}>
+                <Bell />
+              </div>
+              <p className={styles.userName}>Уведомления</p>
               <div className={styles.arrow}>
                 <Arrow />
               </div>

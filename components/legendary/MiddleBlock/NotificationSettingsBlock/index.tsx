@@ -1,46 +1,39 @@
 import React, { useContext, useEffect, useState } from "react";
-import styles from "./MainSettingsBlock.module.scss";
+import styles from "./NotificationSettingsBlock.module.scss";
+import { useRouter } from "next/navigation";
+import Arrow from "../../../../public/img/svg/Arrow";
 import NewInput from "../ProfileBlock/ui/NewInput";
-import PremiumBlock from "./ui/PremiumBlock";
 import Link from "next/link";
 import NewDropMenu from "../ProfileBlock/ui/NewDropMenu";
 import { observer } from "mobx-react-lite";
 import TitleCard from "../ProfileBlock/ui/TitleCard";
 import { Context } from "../../../../app/(pages)/layout";
-import ChangeColorTheme from "./ui/ChangeColorTheme";
-import ChangeColorBackground from "./ui/ChangeColorBackground";
+import Check from "../../../ui/Check";
 
-const MainSettingsBlock = () => {
+const NotificationSettingsBlock = () => {
+  const router = useRouter();
+
   const { mobxStore } = useContext(Context);
 
   const [email, setEmail] = useState(mobxStore?.user?.email);
+  const [mainColor, setMainColor] = useState();
 
   const saveHandler = () => {
     mobxStore.reSaveUser({ id: mobxStore.user.id });
   };
 
-  useEffect(() => {
-    setEmail(mobxStore.user.email);
-  }, [mobxStore.user]);
-
   return (
     mobxStore.user && (
       <div className={styles.container}>
-        <TitleCard title={"Основные"} />
+        <TitleCard title={"Уведомления"} />
         <div className={styles.mainBlocks}>
           <div className={styles.first}>
-            <NewInput
-              title={"Почта и пароль"}
-              value={email}
-              setValue={setEmail}
-            />
-            <Link href={"/settings/main"} className={styles.changePassword}>
-              Изменить пароль
-            </Link>
+            <p className={styles.title}>Уведомления на сайте</p>
+            <Check text="Ответы на мои комментарии" />
+            <Check text="Новые сообщения" />
+            <Check text="Новые подписчики" />
+            <Check text="Оценки постов и комментариев" />
           </div>
-          <ChangeColorBackground />
-          <ChangeColorTheme />
-          <PremiumBlock />
           <button onClick={() => saveHandler()} className={styles.buttonCustom}>
             Сохранить
           </button>
@@ -50,4 +43,4 @@ const MainSettingsBlock = () => {
   );
 };
 
-export default observer(MainSettingsBlock);
+export default observer(NotificationSettingsBlock);

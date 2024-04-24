@@ -27,7 +27,7 @@ const AccountBlock = () => {
   }, []);
 
   const changeThemeHandler = () => {
-    changeTheme();
+    changeTheme(localStorage.getItem("Theme"));
     setTheme(localStorage.getItem("Theme") === ("dark" as any));
   };
   return (

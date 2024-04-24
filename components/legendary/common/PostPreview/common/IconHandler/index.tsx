@@ -3,7 +3,7 @@ import Premium from "../../../../../../public/img/svgIcons/Premium";
 import Artist from "../../../../../../public/img/svgIcons/Artist";
 import Moderator from "../../../../../../public/img/svgIcons/Moderator";
 import Ghost from "../../../../../../public/img/svgIcons/Ghost";
-import Heart from "../../../../../../public/img/svg/Heart";
+import HeartPink from "../../../../../../public/img/svg/HeartPink";
 
 const IconHandler = ({ user }: any) => {
   const changeHandler = () => {
@@ -17,7 +17,7 @@ const IconHandler = ({ user }: any) => {
       case "halloween":
         return <Ghost />;
       case "heart":
-        return <Heart />;
+        return <HeartPink />;
     }
   };
 

@@ -23,10 +23,6 @@ body {
 body {
   transition: background 0.1s ease-in-out;
   background-color: #f0f0f0;
-  --d_main_color: #6339dc;
-  --d_main_hover: #4b2bac;
-  --d_main_active: #3a1e90;
-
   --d_main_red: #f05353;
 
   --d_main_bg_color: #f0f0f0;
@@ -44,7 +40,7 @@ body {
   --d_main_subtext_active_color: #999999;
 
   --d_main_gray_color: #888888;
-  --d_main_black_color: #24292e;
+  --d_main_black_color: #131314;
   --d_main_white_color: #ffffff;
   --d_main_white20_color: #f0f0f0;
   --d_main-Bg-color-hover: #ececec;
@@ -55,16 +51,12 @@ body {
 
 body[dark] {
   transition: background 0.1s ease-in-out;
-  background-color: #161617;
-  --d_main_color: #6339dc;
-  --d_main_hover: #4b2bac;
-  --d_main_active: #3a1e90;
-
+  background-color: #131314;
   --d_main_red: #f05353;
 
-  --d_main_bg_color: #24292E;
+  --d_main_bg_color: #131314;
 
-  --d_main_subbg_color: #232324;
+  --d_main_subbg_color: #1c1c1f;
 
   --d_main_subbg_glass_color: rgba(136, 136, 136, 0.1);
 
@@ -87,27 +79,39 @@ body[dark] {
 }
 
 body[red] {
-  --d_main_color: #f05b5b;
-  --d_main_hover: #ffb5b5;
-  --d_main_active: #ff6262;
-}
-
-body[pink] {
-  --d_main_color: #f05b94;
-  --d_main_hover: #ffb5de;
-  --d_main_active: #ff62b8;
-}
-
-body[green] {
-  --d_main_color: #60f05b;
-  --d_main_hover: #beffb5;
-  --d_main_active: #62ff6a;
+  --d_main_color: #f91841;
+  --d_main_hover: #d61538;
+  --d_main_active: #ad102c;
 }
 
 body[blue] {
-  --d_main_color: #5d5bf0;
-  --d_main_hover: #b5bcff;
-  --d_main_active: #626cff;
+  --d_main_color: #1d9bf0;
+  --d_main_hover: #1b8edb;
+  --d_main_active: #1679bc;
+}
+
+body[yellow] {
+  --d_main_color: #ffd400;
+  --d_main_hover: #dcb700;
+  --d_main_active: #b89900;
+}
+
+body {
+  --d_main_color: #7856ff;
+  --d_main_hover: #6548d6;
+  --d_main_active: #533cb0;
+}
+
+body[orange] {
+  --d_main_color: #ff7a00;
+  --d_main_hover: #cf6300;
+  --d_main_active: #a75000;
+}
+
+body[green] {
+  --d_main_color: #00ba7c;
+  --d_main_hover: #009462;
+  --d_main_active: #007951;
 }
 
 ::-webkit-scrollbar {
@@ -285,7 +289,11 @@ a:active {
 }
 
 .popup-content {
-  width: auto !important;
+  width: 480px !important;
   background: none !important;
   border: none !important;
+
+  @media screen and (max-width: 660px) {
+    width: 100% !important;
+  }
 }

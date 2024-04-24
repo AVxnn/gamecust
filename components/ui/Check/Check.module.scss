@@ -1,0 +1,37 @@
+@import "/styles/variables.scss";
+
+.container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  .input {
+  }
+}
+
+.container input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+.container input[type="checkbox"]:checked {
+  background-color: $d_main_color;
+  border-color: $d_main_color;
+  border: 2px solid $d_main_active !important;
+}
+
+.container input[type="checkbox"]:checked + label {
+  color: $d_main_text_color;
+}
+
+.container label {
+  font-size: 16px;
+  cursor: pointer;
+  color: $d_main_text_color;
+}

@@ -136,6 +136,31 @@
     }
   }
 
+  .comment
+    .rightInfo
+    > .replyComments
+    .comment
+    .rightInfo
+    > .replyComments
+    .comment
+    .rightInfo {
+    .replyComments {
+      .comment .topBlock .avatar .line {
+        width: 2px;
+        padding-right: 32px;
+        border-left: none;
+        height: calc(100% - 68px);
+        background-color: $d_main_subbg_color;
+        transition: all 0.1s ease;
+        user-select: none;
+
+        &:hover {
+          border-left: none;
+        }
+      }
+    }
+  }
+
   .avatar {
     width: 45px;
     min-width: 45px;

@@ -31,7 +31,7 @@ const UserSection = () => {
   const Button = useRef<HTMLDivElement>(null);
 
   const changeThemeHandler = () => {
-    changeTheme();
+    changeTheme(localStorage.getItem("Theme"));
     setTheme(localStorage.getItem("Theme") as any);
   };
 

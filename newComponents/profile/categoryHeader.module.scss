@@ -151,13 +151,25 @@
       }
 
       .headers {
-        display: flex;
+        display: none;
         gap: 24px;
         align-items: center;
         margin-bottom: 4px;
 
+        @media (max-width: 980px) {
+          display: flex;
+          align-items: center;
+          margin: 0;
+          gap: 24px;
+        }
+
         .subs {
           color: $d_main_subtext_color;
+          cursor: pointer;
+
+          span {
+            color: $d_main_text_color;
+          }
         }
       }
       .date {

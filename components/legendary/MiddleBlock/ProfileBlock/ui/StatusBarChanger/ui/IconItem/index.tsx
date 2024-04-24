@@ -6,7 +6,7 @@ const IconItem = ({ item, setActiveIcon, currentIcon }: any) => {
   return (
     <div
       onClick={() => setActiveIcon(item)}
-      className={`${currentIcon === item ? styles.iconActive : styles.icon}`}
+      className={`${styles.icon} ${currentIcon === item && styles.iconActive}`}
     >
       <IconHandler user={{ iconActive: item }} />
     </div>

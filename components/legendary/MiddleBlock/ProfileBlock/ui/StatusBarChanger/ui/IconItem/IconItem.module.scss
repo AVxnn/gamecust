@@ -8,8 +8,11 @@
   cursor: pointer;
 
   div {
-    width: 24px;
-    height: 24px;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     svg {
       width: 24px;
@@ -33,16 +36,6 @@
   background-color: $d_main_color;
   box-shadow: 0 0px 0 $d_main-downsecond-color;
 
-  div {
-    width: 24px;
-    height: 24px;
-
-    svg {
-      width: 24px;
-      height: 24px;
-    }
-  }
-
   &:active {
     position: relative;
     transform: translateY(4px);
@@ -57,14 +50,4 @@
   background-color: $d_main_bg_color;
   box-shadow: 0 0px 0 $d_main-downsecond-color;
   cursor: crosshair;
-
-  div {
-    width: 24px;
-    height: 24px;
-
-    svg {
-      width: 24px;
-      height: 24px;
-    }
-  }
 }

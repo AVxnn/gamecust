@@ -31,8 +31,8 @@ const PostItem = ({ data }: any) => {
           })}
         </section>
       ) : null}
-      <Link href={`/post/${data.postId}`}>
-        <section className={styles.mainInfo}>
+      <section className={styles.mainInfo}>
+        <Link href={`/post/${data.postId}`}>
           <Title text={data?.title} />
           {data?.stared.map((item: any, index: number) => {
             if (item.type === "h2") {
@@ -48,17 +48,22 @@ const PostItem = ({ data }: any) => {
             } else if (item.type === "link") {
               if (item.typeMedia === "image") {
                 return <ImagePost key={index} item={item} />;
-              } else if (item.typeMedia === "video") {
-                return <Video key={index} item={item} />;
-              } else if (item.typeMedia === "gamecustpost") {
-                return <GameCustPostBlock key={index} item={item} />;
               }
             } else if (item.type === "br") {
               return <Br key={index} />;
             }
           })}
-        </section>
-      </Link>
+        </Link>
+        {data?.stared.map((item: any, index: number) => {
+          if (item.type === "link") {
+            if (item.typeMedia === "video") {
+              return <Video key={index} item={item} />;
+            } else if (item.typeMedia === "gamecustpost") {
+              return <GameCustPostBlock key={index} item={item} />;
+            }
+          }
+        })}
+      </section>
       <div className={styles.toolBarContainer}>
         <Toolbar data={data} />
       </div>

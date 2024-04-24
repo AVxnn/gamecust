@@ -8,6 +8,7 @@ import { observer } from "mobx-react-lite";
 import { formatDistanceStrict } from "date-fns";
 import { ru } from "date-fns/locale";
 import { Context } from "../../../../../../app/(pages)/layout";
+import Eye from "../../../../../../public/img/svg/Eye";
 
 const DraftItem = ({ data, getMorePost }: any) => {
   const { mobxStore, postCreateStore } = useContext(Context);
@@ -23,16 +24,24 @@ const DraftItem = ({ data, getMorePost }: any) => {
   };
 
   return (
-    <Link href={`/editor/${mobxStore.user.id}/${data.postId}`}>
-      <div className={styles.draft}>
-        <div className={styles.image}>
+    <div className={styles.draft}>
+      <div className={styles.image}>
+        <Link
+          className={styles.link}
+          href={`/editor/${mobxStore.user.id}/${data.postId}`}
+        >
           {image ? (
             <Image layout={"fill"} src={image} alt={""} />
           ) : (
             <div className={styles.noImage}></div>
           )}
-        </div>
-        <div className={styles.mainInfo}>
+        </Link>
+      </div>
+      <div className={styles.mainInfo}>
+        <Link
+          className={styles.link}
+          href={`/editor/${mobxStore.user.id}/${data.postId}`}
+        >
           {data.title ? (
             <h2
               className={styles.title}
@@ -43,22 +52,30 @@ const DraftItem = ({ data, getMorePost }: any) => {
           ) : (
             <h2 className={styles.title}>Введите название поста</h2>
           )}
-          <div className={styles.bottomInfo}>
-            <span className={styles.date}>
-              {formatDistanceStrict(+data.publishedDate, Date.now(), {
-                addSuffix: false,
-                locale: ru,
-              })}{" "}
-              назад
-            </span>
+        </Link>
+        <div className={styles.bottomInfo}>
+          <span className={styles.date}>
+            {formatDistanceStrict(+data.publishedDate, Date.now(), {
+              addSuffix: false,
+              locale: ru,
+            })}{" "}
+            назад
+          </span>
+          <div className={styles.iconCont}>
             <div onClick={(e) => deleteHandler(e)} className={styles.delete}>
               <Trash />
-              <p>Удалить черновик</p>
             </div>
+            <Link
+              href={`/post/${data.postId}`}
+              target={"_blank"}
+              className={styles.delete}
+            >
+              <Eye />
+            </Link>
           </div>
         </div>
       </div>
-    </Link>
+    </div>
   );
 };
 

@@ -14,9 +14,13 @@ import FollowButton from "../../components/legendary/common/PostPreview/common/H
 import { createNotification } from "../../features/new/getNotifications/getNotifications";
 import Linkify from "linkify-react";
 import { declOfNum } from "../../utils/declOfNum";
+import SubscribersPopup from "../../components/legendary/RightBlock/Subscribers/SubscribersPopup";
+import SubscriptionsPopup from "../../components/legendary/RightBlock/Subscriptions/SubscriptionsPopup";
 
 const CategoryHeader = ({ data }: any) => {
   const [active, setActive] = useState(0);
+  const [isOpen, setIsOpen] = useState(false);
+  const [isOpenS, setIsOpenS] = useState(false);
   const [dataTagAccount, setDataTagAccount] = useState([
     {
       title: "Статьи",
@@ -153,8 +157,8 @@ const CategoryHeader = ({ data }: any) => {
             </div>
             <div className={styles.headers}>
               {data?.subscribers && (
-                <span className={styles.subs}>
-                  {data?.subscribers?.length}{" "}
+                <span onClick={() => setIsOpen(true)} className={styles.subs}>
+                  <span>{data?.subscribers?.length} </span>
                   {declOfNum(data?.subscribers ? data.subscribers.length : 0, [
                     "подписчик",
                     "подписчика",
@@ -162,6 +166,25 @@ const CategoryHeader = ({ data }: any) => {
                   ])}
                 </span>
               )}
+              <SubscribersPopup
+                setIsOpen={setIsOpen}
+                isOpen={isOpen}
+                data={data}
+              />
+              {data?.subscriptions && (
+                <span onClick={() => setIsOpenS(true)} className={styles.subs}>
+                  <span>{data?.subscriptions?.length} </span>
+                  {declOfNum(
+                    data?.subscriptions ? data.subscriptions.length : 0,
+                    ["подписок", "подписки", "подписок"]
+                  )}
+                </span>
+              )}
+              <SubscriptionsPopup
+                setIsOpen={setIsOpenS}
+                isOpen={isOpenS}
+                data={data}
+              />
             </div>
             {formattedDate != "Invalid Date" && (
               <div className={styles.date}>На проекте с {formattedDate}</div>
