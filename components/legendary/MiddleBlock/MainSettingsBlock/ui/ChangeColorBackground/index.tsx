@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useEffect, useState } from "react";
 import styles from "./ChangeColorBackground.module.scss";
 import Check from "../../../../../../public/img/svg/Check";
@@ -15,12 +17,18 @@ let colors = [
 ];
 
 const ChangeColorBackground = () => {
-  const [theme, setTheme] = useState(localStorage.getItem("Theme"));
+  const [theme, setTheme] = useState() as any;
 
   const changeThemeHandler = (value: any) => {
     changeTheme(value);
     setTheme(value);
   };
+
+  useEffect(() => {
+    if (localStorage.getItem("Theme")) {
+      setTheme(localStorage.getItem("Theme"));
+    }
+  }, [])
 
   return (
     <div className={styles.container}>

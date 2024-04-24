@@ -1,3 +1,5 @@
+"use client"
+
 import React, { useEffect, useState } from "react";
 import styles from "./ChangeColorTheme.module.scss";
 import Check from "../../../../../../public/img/svg/Check";
