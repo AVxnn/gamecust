@@ -4,6 +4,7 @@ export interface IUser {
   email: string;
   premium: boolean;
   description: string;
+  website: string;
   username: string;
   isActivated: boolean;
   iconActive: string;

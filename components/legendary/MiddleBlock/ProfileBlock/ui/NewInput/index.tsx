@@ -27,8 +27,10 @@ const NewInput = ({
             value={value}
             onChange={(e) => changeHandler(e.currentTarget.value)}
           />
-          {maxValue !== 128 ? (
-            <span className={styles.maxValue}>{maxValue - value?.length}</span>
+          {maxValue && maxValue !== 128 ? (
+            <span className={styles.maxValue}>
+              {maxValue - (value ? value?.length : 0)}
+            </span>
           ) : (
             ""
           )}

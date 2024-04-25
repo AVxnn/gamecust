@@ -7,6 +7,7 @@ import { Context } from "../../../../app/(pages)/layout";
 import { observer } from "mobx-react-lite";
 import { useParams } from "next/navigation";
 import isRoleHandler from "../../../../features/isRoleHandler";
+import Skeleton from "react-loading-skeleton";
 
 const AvatarPopup = ({ src }: any) => {
   const [isHover, setIsHover] = useState(false) as any;
@@ -32,8 +33,7 @@ const AvatarPopup = ({ src }: any) => {
           body: formdataDelete,
           redirect: "follow",
         })
-          .then((response) => {
-          })
+          .then((response) => {})
           .catch((error) => console.log("error", error));
       }
     }
@@ -72,14 +72,9 @@ const AvatarPopup = ({ src }: any) => {
           onMouseLeave={() => setIsHover(false)}
           className={styles.containerAvatar}
         >
-          {!src && avatar ? (
+          {!src ? (
             <div className={styles.avatar}>
-              <Image
-                className={styles.imageCont}
-                layout={"fill"}
-                src={URL.createObjectURL(avatar)}
-                alt={""}
-              />
+              <Skeleton width={130} height={130} />
             </div>
           ) : (
             <div className={styles.avatar}>

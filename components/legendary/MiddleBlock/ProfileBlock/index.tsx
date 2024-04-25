@@ -12,9 +12,10 @@ import TextArea from "./ui/TextArea";
 import StatusBarChanger from "./ui/StatusBarChanger";
 
 const ProfileBlock = () => {
-  const { mobxStore } = useContext(Context);
+  const { mobxStore, notificationStore } = useContext(Context);
 
   const [username, setUsername] = useState(mobxStore.user.username);
+  const [website, setWebsite] = useState(mobxStore.user.website);
   const [description, setDescription] = useState(mobxStore.user.description);
   const [avatarPath, setAvatarPath] = useState(mobxStore.user.avatarPath);
   const [privateBlog, setPrivate] = useState(mobxStore.user.private) as any;
@@ -23,9 +24,15 @@ const ProfileBlock = () => {
     mobxStore.reSaveUser({
       id: mobxStore.user.id,
       username: username,
+      website: website,
       avatarPath: avatarPath,
       description: description,
       private: privateBlog,
+    });
+    notificationStore.addItem({
+      title: "Изменения сохранены",
+      status: "success",
+      timeLife: 2500,
     });
   };
 
@@ -40,13 +47,23 @@ const ProfileBlock = () => {
     },
   ];
   useEffect(() => {
-    if (mobxStore.user.email) {
+    if (mobxStore.user.id) {
       setUsername(mobxStore.user.username);
       setDescription(mobxStore.user.description);
       setAvatarPath(mobxStore.user.avatarPath);
+      setWebsite(mobxStore.user.website);
       setPrivate(mobxStore.user.private);
     }
-  }, [mobxStore.user]);
+  }, [
+    mobxStore,
+    mobxStore.user,
+    mobxStore.user.avatarPath,
+    mobxStore.user.description,
+    mobxStore.user.id,
+    mobxStore.user.private,
+    mobxStore.user.username,
+    mobxStore.user.website,
+  ]);
 
   return mobxStore.user.email ? (
     <div className={styles.container}>
@@ -62,6 +79,12 @@ const ProfileBlock = () => {
           title={"Описание к блогу"}
           value={description}
           setValue={setDescription}
+        />
+        <NewInput
+          title={"Веб-сайт"}
+          value={website}
+          setValue={setWebsite}
+          maxValue={100}
         />
         <StatusBarChanger />
         <NewDropMenu

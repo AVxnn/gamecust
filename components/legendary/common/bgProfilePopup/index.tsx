@@ -7,6 +7,7 @@ import { Context } from "../../../../app/(pages)/layout";
 import isRoleHandler from "../../../../features/isRoleHandler";
 import { useParams } from "next/navigation";
 import bgimage from "../../../../public/img/bgimage.png";
+import Skeleton from "react-loading-skeleton";
 
 const BgProfilePopup = ({ src }: any) => {
   const [isHover, setIsHover] = useState(false) as any;
@@ -51,6 +52,7 @@ const BgProfilePopup = ({ src }: any) => {
       })
       .catch((error) => console.log("error", error));
     mobxStore.deleteAvatar({ pathUrl: mobxStore.user.bgPath });
+    setAvatar("");
   };
 
   const resave = (result: any) => {
@@ -68,19 +70,16 @@ const BgProfilePopup = ({ src }: any) => {
           onMouseLeave={() => setIsHover(false)}
           className={styles.containerAvatar}
         >
-          {avatar ? (
+          {src ? (
             <div className={styles.avatar}>
               <Image
-                className={styles.imageCont}
                 layout={"fill"}
-                src={URL.createObjectURL(avatar)}
-                alt={""}
+                src={avatar || src || bgimage}
+                alt={"bg"}
               />
             </div>
           ) : (
-            <div className={styles.avatar}>
-              <Image layout={"fill"} src={src || bgimage} alt={"bg"} />
-            </div>
+            <Skeleton width={"100%"} height={"100%"} />
           )}
         </div>
         {isRoleHandler(path.uid, mobxStore.user.id) && (

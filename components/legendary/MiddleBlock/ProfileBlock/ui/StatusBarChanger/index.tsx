@@ -5,8 +5,21 @@ import IconItem from "./ui/IconItem";
 import { Context } from "../../../../../../app/(pages)/layout";
 
 const StatusBarChanger = () => {
-  const { mobxStore } = useContext(Context);
+  const { mobxStore, notificationStore } = useContext(Context);
   const [activeIcon, setActiveIcon] = useState(mobxStore.user.iconActive);
+
+  const saveHandler = (value: any) => {
+    setActiveIcon(value);
+    mobxStore.changeIcon({
+      id: mobxStore.user.id,
+      iconActive: value,
+    });
+    notificationStore.addItem({
+      title: "Иконка изменена",
+      status: "success",
+      timeLife: 2500,
+    });
+  };
 
   return (
     <div className={styles.statusBar}>
@@ -18,7 +31,7 @@ const StatusBarChanger = () => {
             return (
               <Fragment key={item}>
                 <IconItem
-                  setActiveIcon={setActiveIcon}
+                  setActiveIcon={saveHandler}
                   currentIcon={activeIcon}
                   item={item}
                 />

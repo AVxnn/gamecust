@@ -126,7 +126,21 @@ export default class MobxStore {
     try {
       const response = await AuthService.reSaveUser(data);
       console.log(await response.data.user);
-      this.setUser((await response.data.user) as any);
+      this.setUser(await response.data.user);
+      return response;
+    } catch (error: any) {
+      console.log(error.response?.data?.message);
+    }
+  }
+
+  async changeIcon(data: any) {
+    try {
+      console.log(data);
+      const response = await AuthService.changeIcon(data);
+      this.setUser({
+        ...this.user,
+        iconActive: String(response?.data?.user?.iconActive),
+      });
       return response;
     } catch (error: any) {
       console.log(error.response?.data?.message);

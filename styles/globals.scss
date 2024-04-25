@@ -114,6 +114,45 @@ body[green] {
   --d_main_active: #007951;
 }
 
+.react-loading-skeleton {
+  --animation-duration: 1.5s;
+  --animation-direction: normal;
+  --pseudo-element-display: block;
+  background-color: var(--d_main_bg_color);
+  width: 100%;
+  border-radius: 0.25rem;
+  display: inline-flex;
+  line-height: 1;
+  position: relative;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  overflow: hidden;
+}
+
+.react-loading-skeleton::after {
+  content: " ";
+  display: var(--pseudo-element-display);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-image: linear-gradient(
+    90deg,
+    var(--d_main_bg_color),
+    var(--d_main_subbg_color),
+    var(--d_main_bg_color)
+  );
+  transform: translateX(-100%);
+  animation-name: react-loading-skeleton;
+  animation-direction: var(--animation-direction);
+  animation-duration: var(--animation-duration);
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
 ::-webkit-scrollbar {
   width: 14px;
 }
@@ -295,5 +334,14 @@ a:active {
 
   @media screen and (max-width: 660px) {
     width: 100% !important;
+  }
+}
+
+@keyframes react-loading-skeleton {
+  0% {
+    transform: translateX(-110%);
+  }
+  100% {
+    transform: translateX(110%);
   }
 }

@@ -1,5 +1,6 @@
 "use client";
 
+import Skeleton from "react-loading-skeleton";
 import { useParams, usePathname, useRouter } from "next/navigation";
 import React, { useContext, useEffect, useRef, useState } from "react";
 import styles from "./categoryHeader.module.scss";
@@ -16,6 +17,9 @@ import Linkify from "linkify-react";
 import { declOfNum } from "../../utils/declOfNum";
 import SubscribersPopup from "../../components/legendary/RightBlock/Subscribers/SubscribersPopup";
 import SubscriptionsPopup from "../../components/legendary/RightBlock/Subscriptions/SubscriptionsPopup";
+import Link from "next/link";
+import LinkIcon from "../../public/img/svg/LinkIcon";
+import Calendary from "../../public/img/svg/calendary";
 
 const CategoryHeader = ({ data }: any) => {
   const [active, setActive] = useState(0);
@@ -141,22 +145,32 @@ const CategoryHeader = ({ data }: any) => {
           </div>
           <div className={styles.left}>
             <div className={styles.rightMobile}>
-              {data && (
+              {data.username ? (
                 <>
                   <span className={styles.name}>
                     {data?.username}
                     <IconHandler user={data} />
                   </span>
-                  <span className={styles.description}>
-                    <Linkify options={{ target: "_blank" }}>
-                      {data?.description}
-                    </Linkify>
-                  </span>
                 </>
+              ) : (
+                <Skeleton
+                  width={320}
+                  height={29}
+                  style={{ marginBottom: 12 }}
+                />
+              )}
+              {data.description ? (
+                <span className={styles.description}>
+                  <Linkify options={{ target: "_blank" }}>
+                    {data?.description}
+                  </Linkify>
+                </span>
+              ) : (
+                <Skeleton width={280} style={{ marginBottom: 16 }} />
               )}
             </div>
             <div className={styles.headers}>
-              {data?.subscribers && (
+              {data?.subscribers?.length > 0 ? (
                 <span onClick={() => setIsOpen(true)} className={styles.subs}>
                   <span>{data?.subscribers?.length} </span>
                   {declOfNum(data?.subscribers ? data.subscribers.length : 0, [
@@ -165,13 +179,15 @@ const CategoryHeader = ({ data }: any) => {
                     "подписчиков",
                   ])}
                 </span>
+              ) : (
+                <Skeleton />
               )}
               <SubscribersPopup
                 setIsOpen={setIsOpen}
                 isOpen={isOpen}
                 data={data}
               />
-              {data?.subscriptions && (
+              {data?.subscriptions?.length > 0 ? (
                 <span onClick={() => setIsOpenS(true)} className={styles.subs}>
                   <span>{data?.subscriptions?.length} </span>
                   {declOfNum(
@@ -179,6 +195,8 @@ const CategoryHeader = ({ data }: any) => {
                     ["подписок", "подписки", "подписок"]
                   )}
                 </span>
+              ) : (
+                <Skeleton />
               )}
               <SubscriptionsPopup
                 setIsOpen={setIsOpenS}
@@ -186,8 +204,22 @@ const CategoryHeader = ({ data }: any) => {
                 data={data}
               />
             </div>
-            {formattedDate != "Invalid Date" && (
-              <div className={styles.date}>На проекте с {formattedDate}</div>
+            {data.website ? (
+              <Link href={data.website} className={styles.link}>
+                <LinkIcon />
+                {data.website.replace("https://", "")
+                  ? data.website.replace("https://", "")
+                  : ""}
+              </Link>
+            ) : (
+              ""
+            )}
+            {formattedDate != "Invalid Date" ? (
+              <div className={styles.date}>
+                <Calendary /> Регистрация: {formattedDate}
+              </div>
+            ) : (
+              <Skeleton width={300} />
             )}
             <ul ref={menuRef} className={styles.navigation}>
               {dataTagAccount &&

@@ -27,7 +27,7 @@ const LayoutPages = ({ children }: { children: React.ReactNode }) => {
       const res = await getUserId(uid);
       const newPosts = await res;
       if (!newPosts._id) {
-        router.push("/")
+        router.push("/");
       }
       setData(newPosts);
     }
@@ -46,10 +46,8 @@ const LayoutPages = ({ children }: { children: React.ReactNode }) => {
           <CreateButton />
         </div>
         <div className={styles.middleColumn}>
-          <Suspense fallback={<Loader />}>
-            <Profile data={data} />
-            {children}
-          </Suspense>
+          <Profile data={data} />
+          {children}
         </div>
         <div className={styles.rightColumn}>
           <Subscribers data={data} />

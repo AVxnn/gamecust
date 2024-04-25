@@ -6,6 +6,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: 14px;
+  overflow: hidden;
   height: 100%;
 
   .containerAvatar {
@@ -19,6 +21,11 @@
     width: 100%;
     gap: 8;
     overflow: hidden;
+
+    span {
+      width: 100%;
+      line-height: 0;
+    }
   }
 
   .camera {

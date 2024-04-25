@@ -11,9 +11,7 @@
     left: 0;
     top: -256px;
     position: absolute;
-    background-color: $d_main_text_color;
     overflow: hidden;
-    border-radius: $br-14;
 
     img {
       object-fit: cover;
@@ -73,6 +71,17 @@
         }
       }
     }
+  }
+
+  .link {
+    display: flex;
+    align-items: center;
+    svg {
+      path {
+        fill: $d_main_subtext_color;
+      }
+    }
+    gap: 6px;
   }
 
   .info {
@@ -174,6 +183,17 @@
       }
       .date {
         color: $d_main_subtext_color;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+
+        svg {
+          width: 20px;
+          height: 20px;
+          path {
+            fill: $d_main_subtext_color;
+          }
+        }
       }
       .navigation {
         display: flex;
