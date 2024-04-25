@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useContext, useEffect, useState } from "react";
 import styles from "./MainSettingsBlock.module.scss";
 import NewInput from "../ProfileBlock/ui/NewInput";
@@ -34,7 +36,7 @@ const MainSettingsBlock = () => {
               value={email}
               setValue={setEmail}
             />
-            <Link href={"/settings/main"} className={styles.changePassword}>
+            <Link href={"/"} className={styles.changePassword}>
               Изменить пароль
             </Link>
           </div>
