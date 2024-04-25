@@ -1,12 +1,12 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import styles from "./registrationForm.module.scss";
 import InputCustom from "../../legendary/common/PostPreview/common/InputCustom";
 import * as yup from "yup";
 import { useFormik } from "formik";
 import { Context } from "../../../app/(pages)/layout";
 
-const RegistrationForm = () => {
-  const { mobxStore, popupHandlers } = useContext(Context);
+const RegistrationForm = ({ setSteps }: any) => {
+  const { mobxStore, popupHandlers, notificationStore } = useContext(Context);
 
   const validationSchema = yup.object({
     name: yup
@@ -30,9 +30,26 @@ const RegistrationForm = () => {
       password: "",
     },
     validationSchema: validationSchema,
-    onSubmit: (values) => {
-      mobxStore.registration(values.name, values.email, values.password);
-      popupHandlers.authPopupClose();
+    onSubmit: async (values) => {
+      const data = await mobxStore.registration(
+        values.name,
+        values.email,
+        values.password
+      );
+      if (data?.errors === "Пользователь с таким Email не найден") {
+        notificationStore.addItem({
+          title: "Пользователь не найден",
+          status: "error",
+          timeLife: 2500,
+        });
+        return;
+      }
+      notificationStore.addItem({
+        title: "Вы успешно зарегистрировались!",
+        status: "success",
+        timeLife: 2500,
+      });
+      setSteps(3);
     },
   });
 

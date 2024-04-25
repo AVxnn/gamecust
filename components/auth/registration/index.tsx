@@ -13,7 +13,7 @@ import { motion } from "framer-motion";
 import RegistrationForm from "../registrationForm";
 import Arrow from "../../../public/img/svg/Arrow";
 
-const Registration = ({ setAuth }: any) => {
+const Registration = ({ setSteps }: any) => {
   const { status, data: session } = useSession();
   const [isEmail, setIsEmail] = useState(false);
 
@@ -22,71 +22,67 @@ const Registration = ({ setAuth }: any) => {
   };
 
   return (
-    <div className={styles.registration}>
-      <div className={styles.leftBlock}>
-        <Image layout="fill" src={bg} alt={"background Auth"} />
-      </div>
-      <div className={styles.rightBlock}>
-        <div className={styles.container}>
-          <div className={styles.mLogo}>
-            <Gamecust />
-          </div>
-          <h6 className={styles.title}>Регистрация аккаунта</h6>
-          {!isEmail && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className={styles.buttonList}
-            >
-              <button
-                onClick={() => signIn("discord")}
-                className={`${styles.buttonAuth} ${styles.discord}`}
-              >
-                <div className={styles.div}>
-                  <Discord />
-                  <span>Discord</span>
-                </div>
-              </button>
-              <button
-                onClick={() => openEmailPassword()}
-                className={styles.buttonAuth}
-              >
-                <div className={`${styles.div} ${styles.mail}`}>
-                  <Mail />
-                  <span>Почта</span>
-                </div>
-              </button>
-              <button
-                onClick={() => signIn("google")}
-                className={styles.buttonAuth}
-              >
-                <div className={styles.div}>
-                  <Google />
-                  <span>Google</span>
-                </div>
-              </button>
-            </motion.div>
-          )}
-          {isEmail && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-            >
-              <div onClick={() => openEmailPassword()} className={styles.back}>
-                <Arrow /> Назад
-              </div>
-              <RegistrationForm />
-            </motion.div>
-          )}
-          <span className={styles.text}>
-            Есть аккаунт?{" "}
-            <span onClick={() => setAuth(false)} className={styles.link}>
-              Войти
-            </span>
-          </span>
+    <div className={styles.rightBlock}>
+      <div className={styles.container}>
+        <div className={styles.mLogo}>
+          <Gamecust />
         </div>
+        <h6 className={styles.title}>Регистрация аккаунта</h6>
+        {!isEmail && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className={styles.buttonList}
+          >
+            <button
+              onClick={() => signIn("discord")}
+              className={`${styles.buttonAuth} ${styles.discord}`}
+            >
+              <div className={styles.div}>
+                <Discord />
+                <span>Discord</span>
+              </div>
+            </button>
+            <button
+              onClick={() => openEmailPassword()}
+              className={styles.buttonAuth}
+            >
+              <div className={`${styles.div} ${styles.mail}`}>
+                <Mail />
+                <span>Почта</span>
+              </div>
+            </button>
+            <button
+              onClick={() => signIn("google")}
+              className={styles.buttonAuth}
+            >
+              <div className={styles.div}>
+                <Google />
+                <span>Google</span>
+              </div>
+            </button>
+          </motion.div>
+        )}
+        {isEmail && (
+          <motion.div
+            style={{ width: "100%" }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <div onClick={() => openEmailPassword()} className={styles.back}>
+              <Arrow /> Назад
+            </div>
+            <RegistrationForm setSteps={setSteps} />
+          </motion.div>
+        )}
+        <span className={styles.text}>
+          Есть аккаунт?{" "}
+          <span onClick={() => setSteps(2)} className={styles.link}>
+            Войти
+          </span>
+        </span>
       </div>
     </div>
   );

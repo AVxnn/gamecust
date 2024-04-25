@@ -15,7 +15,11 @@
   }
 
   .container {
+    height: 100%;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
     @media (max-width: 768px) {
       display: flex;
@@ -23,6 +27,12 @@
       align-items: center;
     }
 
+    .show {
+      display: block;
+      @media (max-width: 768px) {
+        display: none;
+      }
+    }
     .mLogo {
       display: none;
       width: 110px;
@@ -42,11 +52,30 @@
       }
     }
 
-    .title {
-      font-size: 24px;
-      font-weight: 700;
-      margin: 0 0 32px 0;
-      color: $d_main_text_color;
+    .info {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      svg {
+        width: 56px;
+        height: 56px;
+        path {
+          fill: $d_main_text_color;
+        }
+      }
+      .title {
+        font-size: 24px;
+        font-weight: 700;
+        margin: 8px 0 16px 0;
+        text-align: center;
+        color: $d_main_text_color;
+      }
+      .subtitle {
+        font-size: 16px;
+        margin: 0;
+        text-align: center;
+        color: $d_main_subtext_color;
+      }
     }
 
     .back {
@@ -71,20 +100,23 @@
     }
 
     .buttonList {
+      position: relative;
+      bottom: 0;
       display: flex;
       flex-direction: column;
       gap: 18px;
-      margin-bottom: 32px;
       width: 100%;
 
-      .buttonAuth {
+      .button {
         position: relative;
         padding: 14px 16px;
         border: 0;
+        font-size: 16px;
+        color: $const_main_text_color;
         height: 50px;
         outline: none;
         border-radius: 8px;
-        background-color: $d_main_subbg_color;
+        background-color: $d_main_color;
         box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.5);
         cursor: pointer;
         transition: all 0.1s ease-in-out;

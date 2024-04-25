@@ -6,7 +6,7 @@ import { useFormik } from "formik";
 import { Context } from "../../../app/(pages)/layout";
 
 const LoginForm = () => {
-  const { mobxStore, popupHandlers } = useContext(Context);
+  const { mobxStore, popupHandlers, notificationStore } = useContext(Context);
   const validationSchema = yup.object({
     email: yup
       .string()
@@ -24,15 +24,28 @@ const LoginForm = () => {
       password: "",
     },
     validationSchema: validationSchema,
-    onSubmit: (values) => {
-      mobxStore.login(values.email, values.password);
+    onSubmit: async (values) => {
+      const data = await mobxStore.login(values.email, values.password);
+      if (data?.errors === "Пользователь с таким Email не найден") {
+        notificationStore.addItem({
+          title: "Пользователь не найден",
+          status: "error",
+          timeLife: 2500,
+        });
+        return;
+      }
+      notificationStore.addItem({
+        title: "Вы успешно вошли в аккаунт!",
+        status: "success",
+        timeLife: 2500,
+      });
       popupHandlers.authPopupClose();
     },
   });
 
   return (
     <>
-      <form onSubmit={formik.handleSubmit}>
+      <form className={styles.form} onSubmit={formik.handleSubmit}>
         <InputCustom
           id="email"
           name="email"

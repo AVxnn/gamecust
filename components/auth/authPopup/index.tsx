@@ -1,17 +1,19 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import styles from "./authPopup.module.scss";
 import Image from "next/image";
 import { observer } from "mobx-react";
+import bg from "../../../public/img/auth/bg.png";
 import Login from "../login";
 import Registration from "../registration";
 import Close from "../../../public/img/svg/close";
 import { AnimatePresence, motion } from "framer-motion";
 import { Context } from "../../../app/(pages)/layout";
+import AuthEmailCode from "../AuthEmailCode";
 
 const AuthPopup = () => {
   const labelRef = useRef<HTMLElement>(null) as any;
   const { popupHandlers } = useContext(Context);
-  const [auth, setAuth] = useState(false);
+  const [steps, setSteps] = useState(2);
 
   const closePopup = () => {
     popupHandlers.authPopupClose();
@@ -36,13 +38,16 @@ const AuthPopup = () => {
               <div onClick={closePopup} className={styles.close}>
                 <Close />
               </div>
-              <AnimatePresence>
-                {auth ? (
-                  <Registration setAuth={setAuth} />
-                ) : (
-                  <Login setAuth={setAuth} />
-                )}
-              </AnimatePresence>
+              <div className={styles.auth}>
+                <div className={styles.leftBlock}>
+                  <Image layout="fill" src={bg} alt={"background Auth"} />
+                </div>
+                <AnimatePresence>
+                  {steps === 1 && <Registration setSteps={setSteps} />}
+                  {steps === 2 && <Login setSteps={setSteps} />}
+                  {steps === 3 && <AuthEmailCode setSteps={setSteps} />}
+                </AnimatePresence>
+              </div>
             </div>
           </motion.div>
         )}

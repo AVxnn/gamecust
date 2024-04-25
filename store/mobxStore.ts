@@ -30,16 +30,15 @@ export default class MobxStore {
   async login(email: string, password: string) {
     try {
       const response = await AuthService.login(email, password);
-      console.log(response);
 
-      if (response.data !== undefined) {
+      if (response?.data?.errors !== "Пользователь с таким Email не найден") {
         localStorage.setItem("token", response.data.accessToken);
         this.setAuth(true);
         this.setUser(response.data.user);
         return response.data;
       }
+      return response.data;
     } catch (error: any) {
-      console.log(error.response?.data?.message);
       return error.response?.data?.message;
     }
   }
@@ -52,9 +51,13 @@ export default class MobxStore {
         password
       );
       console.log(response, username, email, password);
-      localStorage.setItem("token", response.data.accessToken);
-      this.setAuth(true);
-      this.setUser(response.data.user);
+      if (response?.data?.errors !== "") {
+        localStorage.setItem("token", response.data.accessToken);
+        this.setAuth(true);
+        this.setUser(response.data.user);
+        return response.data;
+      }
+      return response.data;
     } catch (error: any) {
       console.log(error.response?.data?.message);
     }

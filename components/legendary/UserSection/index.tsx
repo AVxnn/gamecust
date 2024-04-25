@@ -36,8 +36,8 @@ const UserSection = () => {
   };
 
   const logOut = () => {
+    localStorage.removeItem("token");
     mobxStore.logout();
-    router.push("/");
   };
 
   const popupRef = useRef<HTMLDivElement>(null);
