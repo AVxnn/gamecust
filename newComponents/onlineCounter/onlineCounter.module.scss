@@ -1,0 +1,16 @@
+@import "/styles/variables.scss";
+
+
+.counter {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--d_main_subtext_color);
+  .circle {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: chartreuse;
+    box-shadow: 0 0 2px 0 chartreuse;
+  }
+}

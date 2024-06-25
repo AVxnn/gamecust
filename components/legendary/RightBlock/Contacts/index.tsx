@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import React, { useState } from "react";
 import styles from "./Contacts.module.scss";
@@ -7,6 +7,7 @@ import Discord from "../../../../public/img/auth/discord";
 import Telegram from "../../../../public/img/svg/telegram";
 import Popup from "reactjs-popup";
 import PremiumSettingsBlock from "../../MiddleBlock/PremiumSettingsBlock";
+import OnlineCounter from "../../../../newComponents/onlineCounter";
 
 const Contacts = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -31,6 +32,7 @@ const Contacts = () => {
         <Link href={"/copyright"}>Правообладателям</Link>
         <Link href={"/agreement"}>Пользовательское соглашение</Link>
         <Link href={"/privacy"}>Политика конфиденциальности</Link>
+        <OnlineCounter />
       </div>
     </>
   );

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styles from "./header.module.scss";
 import Logotype from "../../components/legendary/common/Logotype";
 import SearchComponent from "../search";
@@ -8,6 +8,7 @@ import { observer } from "mobx-react-lite";
 import { Context } from "../../app/(pages)/layout";
 import CreateButton from "../createButton";
 import NotificationIcon from "../../components/legendary/MiddleBlock/notificationIcon";
+import OnlineCounter from "../onlineCounter";
 
 const Header = () => {
   const { mobxStore } = useContext(Context);
