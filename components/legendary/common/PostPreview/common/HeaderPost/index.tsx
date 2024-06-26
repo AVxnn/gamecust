@@ -99,7 +99,7 @@ const HeaderPost = ({ data, fixed }: any) => {
   }, [mobxStore?.user?.subscriptions]);
 
   return (
-    <header className={`${styles.header} ${fixed ? styles.fixed : null}`}>
+    <header className={styles.header}>
       <div className={styles.leftBlock}>
         <Link href={`/profile/${data?.user._id}`}>
           {data.category ? (

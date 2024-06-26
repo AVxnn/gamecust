@@ -1,18 +1,19 @@
-"use client"
+"use client";
 
-import { useRouter } from 'next/navigation'
-import React, { useEffect } from 'react'
+import { usePathname, useRouter } from "next/navigation";
+import React, { useEffect } from "react";
 
 const NotFoundPage = () => {
-    const router = useRouter()
+  const router = useRouter();
+  const path = usePathname();
+  console.log(path);
+  useEffect(() => {
+    if (path !== "/api") {
+      router.push("/");
+    }
+  }, []);
 
-    useEffect(() => {
-        router.push("/");
-    }, [])
+  return <div></div>;
+};
 
-  return (
-    <div></div>
-  )
-}
-
-export default NotFoundPage
+export default NotFoundPage;

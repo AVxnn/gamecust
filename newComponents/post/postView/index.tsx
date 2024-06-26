@@ -91,9 +91,7 @@ const PostView = memo(function PostView() {
 
   return (
     <Suspense fallback={<Loading />}>
-      <div
-        className={`${styles.postContainer} ${isfixed ? styles.fixed : null}`}
-      >
+      <div className={styles.postContainer}>
         <HeaderPost data={postData} fixed={isfixed} scrollY={scrollY} />
         <section className={styles.mainInfo}>
           <Title text={postData?.title} />
