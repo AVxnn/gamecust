@@ -16,6 +16,8 @@ import Follow from "../../../../../../public/img/svg/follow";
 import FollowButton from "./followButton";
 import { addExpUser } from "../../../../../../features/new/expInterface/expInterface";
 import { createNotification } from "../../../../../../features/new/getNotifications/getNotifications";
+import { formatDate } from "../../../../../../utils/formatDate";
+import { formatDateMinutes } from "../../../../../../utils/formatDateMinutes";
 
 function Preloader() {
   return (
@@ -53,6 +55,7 @@ function PreloaderCategory() {
 const HeaderPost = ({ data, fixed }: any) => {
   const { mobxStore, popupHandlers, notificationStore } = useContext(Context);
   const [subscribe, setSubscribe] = useState(false);
+  const [hovered, setHovered] = useState(false);
 
   const changeSub = async () => {
     if (!mobxStore.user.email) {
@@ -125,11 +128,16 @@ const HeaderPost = ({ data, fixed }: any) => {
                   <Link href={`/category/${data.category._id}`}>
                     <span className={styles.title}>{data.category.title}</span>
                   </Link>
-                  <span className={styles.date}>
-                    {formatDistance(+data?.publishedDate, Date.now(), {
-                      addSuffix: true,
-                      locale: ru,
-                    })}
+                  <span
+                    onMouseEnter={() => setHovered(true)}
+                    onMouseLeave={() => setHovered(false)}
+                    className={styles.date}
+                  >
+                    {hovered ? (
+                      <>{formatDateMinutes(+data?.publishedDate)}</>
+                    ) : (
+                      <>{formatDate(+data?.publishedDate)}</>
+                    )}
                   </span>
                 </div>
               </div>
@@ -149,11 +157,16 @@ const HeaderPost = ({ data, fixed }: any) => {
                   {data?.user.username} <IconHandler user={data.user} />
                 </span>
                 <div className={styles.downinfo}>
-                  <span className={styles.date}>
-                    {formatDistance(+data?.publishedDate, Date.now(), {
-                      addSuffix: true,
-                      locale: ru,
-                    })}
+                  <span
+                    onMouseEnter={() => setHovered(true)}
+                    onMouseLeave={() => setHovered(false)}
+                    className={styles.date}
+                  >
+                    {hovered ? (
+                      <>{formatDateMinutes(+data?.publishedDate)}</>
+                    ) : (
+                      <>{formatDate(+data?.publishedDate)}</>
+                    )}
                   </span>
                 </div>
               </div>

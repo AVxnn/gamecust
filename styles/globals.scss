@@ -13,11 +13,16 @@ body {
   transition: all 0.2s ease-in-out;
   display: flex;
   justify-content: center;
+  flex-direction: column;
 
   --border-radius-: #d5b5ff;
   --d_main_active: #a762ff;
 
   --theme-filter-blur-light: blur(10px) contrast(100%) brightness(100%);
+
+  .adsComponent_ads__kugCP {
+    display: none;
+  }
 }
 
 body {
@@ -113,6 +118,25 @@ body[green] {
   --d_main_hover: #009462;
   --d_main_active: #007951;
 }
+
+
+body[ads] {
+  .header_header__kQhLA {
+    margin-top: 200px;
+
+    @media screen and (max-width: 1024px) {
+      margin-top: 0;
+    }
+  }
+  .adsComponent_ads__kugCP {
+    display: flex;
+
+    @media screen and (max-width: 1024px) {
+      display: none;
+    }
+  }
+}
+
 
 .react-loading-skeleton {
   --animation-duration: 1.5s;

@@ -23,8 +23,10 @@
     max-width: 220px;
     width: 100%;
     display: flex;
-    flex-direction: column;
+    top: 76px;
     margin-top: 16px;
+    position: sticky;
+    flex-direction: column;
     gap: 32px;
     align-items: center;
 

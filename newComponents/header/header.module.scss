@@ -3,7 +3,8 @@
 .header {
   display: flex;
   width: 100%;
-  position: fixed;
+  position: sticky;
+  top: 0;
   align-items: center;
   justify-content: center;
   background-color: var(--d_main_subbg_glass_color);

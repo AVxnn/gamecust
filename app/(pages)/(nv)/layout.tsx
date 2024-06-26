@@ -9,6 +9,7 @@ import { useSession } from "next-auth/react";
 import { Context } from "../layout";
 import { observer } from "mobx-react-lite";
 import NotificationList from "../../../components/legendary/common/NotificationList";
+import AdsComponent from "../../../newComponents/adsComponent";
 
 const LayoutPages = ({ children }: { children: React.ReactNode }) => {
   const { status, data: session } = useSession() as any;
@@ -46,6 +47,7 @@ const LayoutPages = ({ children }: { children: React.ReactNode }) => {
     <>
       <AuthPopup />
       <Header />
+      <AdsComponent />
       <NotificationList />
       <div className={styles.layout}>
         <div className={styles.container}>{children}</div>

@@ -22,6 +22,10 @@
     gap: 8;
     overflow: hidden;
 
+    .avatar img {
+      object-position: 50% 50%;
+    }
+
     span {
       width: 100%;
       line-height: 0;
