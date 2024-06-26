@@ -6,10 +6,10 @@ import { Context } from "../../app/(pages)/layout";
 const OnlineCounter = () => {
   const { mobxStore } = useContext(Context);
   const [online, setOnline] = useState([]) as any;
-
+  console.log(mobxStore.user.id);
   useEffect(() => {
     if (mobxStore.user) {
-      socket.emit("addNewUser", mobxStore.user.id);
+      socket.emit("addNewUser", localStorage.getItem("localToken"));
       socket.on("getOnlineUsers", (res) => {
         setOnline(res);
       });
