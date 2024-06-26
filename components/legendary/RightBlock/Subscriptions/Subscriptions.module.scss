@@ -74,3 +74,18 @@
     gap: 12px;
   }
 }
+
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.borderR {
+  border-radius: 99px;
+}
+
+.rounded {
+  border-radius: 99px;
+}

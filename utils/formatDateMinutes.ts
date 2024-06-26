@@ -3,5 +3,5 @@ import { format } from "date-fns";
 export const formatDateMinutes = (timestamp: number) => {
   const date = new Date(timestamp);
 
-  return format(date, 'HH:MM');
+  return format(date, 'HH:mm');
 }

@@ -6,8 +6,8 @@ import DraftItem from "./DraftItem";
 import Empty from "../../../common/Empty";
 import { observer } from "mobx-react-lite";
 import InfiniteScroll from "react-infinite-scroll-component";
-import Loading from "../../../../../newComponents/post/postList/loading";
 import { Context } from "../../../../../app/(pages)/layout";
+import Loading from "./loading";
 
 const Drafts = ({ fetchPosts }: any) => {
   const [hasMore, setHasMore] = useState(true);

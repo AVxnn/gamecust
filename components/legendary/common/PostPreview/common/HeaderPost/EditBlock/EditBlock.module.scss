@@ -2,8 +2,12 @@
 
 .container {
   position: absolute;
-  right: 0;
+  right: 24px;
   top: 6px;
+
+  @media screen and (max-width: 769px) {
+    right: 16px;
+  }
 
   .button {
     display: flex;

@@ -12,7 +12,7 @@ export const formatDate = (timestamp: number) => {
 
   if (daysDifference < 1) {
     // Если разница меньше одного дня, выводим разницу во времени (например, "2 часа")
-    return formatDistanceToNow(date, { addSuffix: false });
+    return formatDistanceToNow(date, { addSuffix: false, locale: ru });
   } else if (yearsDifference < 1) {
     // Если разница больше одного дня, но меньше одного года, выводим дату в формате "D MMMM"
     return format(date, 'd MMMM', { locale: ru});

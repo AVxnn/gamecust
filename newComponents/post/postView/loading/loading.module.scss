@@ -4,7 +4,7 @@
   width: 100%;
   display: flex;
   flex-direction: column;
-  height: 900px;
+  margin-bottom: 16px;
   gap: 16px;
 }
 
@@ -13,7 +13,7 @@
   background-color: $d_main_subbg_color;
   padding: 12px 24px;
   box-sizing: border-box;
-  border-radius: 8px;
+  border-radius: 14px;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -29,12 +29,7 @@
       gap: 12px;
       justify-content: flex-start;
 
-      .ava {
-        width: 40px;
-        height: 40px;
-        background-color: $d_main_bg_color;
-        border-radius: 99px;
-      }
+      
       .info {
         width: 80px;
         height: 40px;
@@ -72,27 +67,37 @@
 
   .toolbar {
     display: flex;
+    width: 100%;
     justify-content: space-between;
     .left {
-      width: 30%;
-      height: 40px;
-      background-color: $d_main_bg_color;
-      border-radius: 8px;
     }
     .right {
-      width: 30%;
-      height: 40px;
-      background-color: $d_main_bg_color;
-      border-radius: 8px;
     }
 
     .commentinput {
-      width: 100%;
-      height: 80px;
-      background-color: $d_main_bg_color;
-      border-radius: 8px;
     }
   }
   
   
+}
+
+.rounded {
+  border-radius: 99px;
+}
+
+.borderR {
+  border-radius: 14px;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 4px;
 }

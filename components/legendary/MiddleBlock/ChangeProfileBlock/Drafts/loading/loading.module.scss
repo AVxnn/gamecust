@@ -15,7 +15,7 @@
   box-sizing: border-box;
   border-radius: 14px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 16px;
 
   .header {
@@ -48,6 +48,7 @@
   .info {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     gap: 16px;
     width: 100%;
 
