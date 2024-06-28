@@ -16,6 +16,7 @@ import Pen from "../../../../public/img/svg/Pen";
 import { Context } from "../../../../app/(pages)/layout";
 import changeTheme from "../../../../features/ChangeTheme";
 import { AnimatePresence, motion } from "framer-motion";
+import OnlineCounter from "../../../../newComponents/onlineCounter";
 
 const AccountBlock = () => {
   const [theme, setTheme] = useState() as any;
@@ -27,7 +28,7 @@ const AccountBlock = () => {
   }, []);
 
   const changeThemeHandler = () => {
-    changeTheme(localStorage.getItem("Theme"));
+    changeTheme(localStorage.getItem("Theme") === "dark" ? "white" : "dark");
     setTheme(localStorage.getItem("Theme") === ("dark" as any));
   };
   return (
@@ -150,6 +151,9 @@ const AccountBlock = () => {
           </Link>
         )}
       </motion.div>
+      <div className={styles.online}>
+        <OnlineCounter />
+      </div>
     </AnimatePresence>
   );
 };
