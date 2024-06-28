@@ -55,7 +55,10 @@ const NotificationItem = ({ item }: any) => {
     <div
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
-      className={styles.notification}
+      onClick={() => deleteNtf()}
+      className={`${styles.notification} ${
+        !item.viewed ? styles.viewed : null
+      }`}
     >
       <div className={styles.mainBlock}>
         <div className={styles.avatar}>

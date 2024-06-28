@@ -19,7 +19,7 @@
     border: 1px solid $d_main_subbg_color;
     transition: all 0.1s ease-in-out;
     border: 1px solid $d_main_color;
-    box-shadow: 0 0 2px 3px rgba(#9e5bf0, 0.2);
+    box-shadow: 0 0 2px 3px $d_main_dropshadow;;
 
     .header {
       display: flex;

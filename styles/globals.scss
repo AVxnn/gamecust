@@ -80,25 +80,31 @@ body[dark] {
   --d_main-Bg-color-hover: #232324;
 
   --d_main-second-color: #303032;
-  --d_main-downsecond-color: #1c1c1d;
+  --d_main-downsecond-color: #131314;
 }
 
 body[red] {
   --d_main_color: #f91841;
   --d_main_hover: #d61538;
   --d_main_active: #ad102c;
+  
+  --d_main_dropshadow: rgba(214, 21, 56, 0.2);
 }
 
 body[blue] {
   --d_main_color: #1d9bf0;
   --d_main_hover: #1b8edb;
   --d_main_active: #1679bc;
+  
+  --d_main_dropshadow: rgba(27, 142, 219, 0.2);
 }
 
 body[yellow] {
   --d_main_color: #ffd400;
   --d_main_hover: #dcb700;
   --d_main_active: #b89900;
+  
+  --d_main_dropshadow: rgba(220, 183, 0, 0.2);
 }
 
 body {
@@ -111,12 +117,16 @@ body[orange] {
   --d_main_color: #ff7a00;
   --d_main_hover: #cf6300;
   --d_main_active: #a75000;
+  
+  --d_main_dropshadow: rgba(207, 99, 0, 0.2);
 }
 
 body[green] {
   --d_main_color: #00ba7c;
   --d_main_hover: #009462;
   --d_main_active: #007951;
+  
+  --d_main_dropshadow: rgba(0, 148, 98, 0.2);
 }
 
 

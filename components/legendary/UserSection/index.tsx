@@ -30,8 +30,8 @@ const UserSection = () => {
 
   const Button = useRef<HTMLDivElement>(null);
 
-  const changeThemeHandler = () => {
-    changeTheme(localStorage.getItem("Theme"));
+  const changeThemeHandler = (theme: any) => {
+    changeTheme(localStorage.getItem("Theme") === "dark" ? "white" : "dark");
     setTheme(localStorage.getItem("Theme") as any);
   };
 
@@ -186,7 +186,7 @@ const UserSection = () => {
                   <p className={styles.text}>Настройки</p>
                 </div>
               </Link>
-              <Link onClick={() => changeThemeHandler()} href={"#"}>
+              <Link onClick={() => changeThemeHandler(theme)} href={"#"}>
                 <div className={styles.userMenu}>
                   <div className={styles.bgAvatar}>
                     {theme === "white" ? <Sun /> : <Moon />}

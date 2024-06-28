@@ -36,13 +36,13 @@
       &:hover {
         background-color: $d_main_subbg_color;
         border: 1px solid $d_main_color;
-        box-shadow: 0 0 2px 3px rgba(#9e5bf0, 0.2);
+        box-shadow: 0 0 2px 3px $d_main_dropshadow;;
       }
 
       &:focus {
         background-color: $d_main_subbg_color;
         border: 1px solid $d_main_color;
-        box-shadow: 0 0 2px 3px rgba(#9e5bf0, 0.2);
+        box-shadow: 0 0 2px 3px $d_main_dropshadow;;
       }
     }
 

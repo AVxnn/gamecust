@@ -8,21 +8,15 @@ import Dots from "../../../../public/img/svg/Dots";
 import Mail from "../../../../public/img/auth/mail";
 import Cog from "../../../../public/img/svg/Cog";
 import { ViewNotifications } from "../../../../features/new/Notification/ViewNotifications/ViewNotifications";
+import { useRouter } from "next/navigation";
 
 const NotificationSettingDrop = () => {
   const [isDropOpen, setIsDropOpen] = useState<boolean>(false);
   const Button = useRef<HTMLDivElement>(null);
+  const { push } = useRouter();
 
-  const { mobxStore, postCreateStore, notificationStore } = useContext(Context);
+  const { mobxStore, notificationStore } = useContext(Context);
 
-  const deleteHandler = (e: any) => {
-    e.preventDefault();
-    notificationStore.addItem({
-      title: "Пост удален",
-      status: "success",
-      timeLife: 2500,
-    });
-  };
   const viewHandler = async (e: any) => {
     e.preventDefault();
     notificationStore.addItem({
@@ -86,7 +80,10 @@ const NotificationSettingDrop = () => {
               <Mail />
               <span>Прочитать все уведомления</span>
             </div>
-            <div onClick={(e) => deleteHandler(e)} className={styles.dropItem}>
+            <div
+              onClick={(e) => push("/settings/notifications")}
+              className={styles.dropItem}
+            >
               <Cog />
               <span>Настройки уведомлений</span>
             </div>

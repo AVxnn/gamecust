@@ -16,7 +16,6 @@ const NotificationList = () => {
 
   const getMorePost = async () => {
     const res = await getNotificationList(mobxStore.user.id, page);
-    console.log(res);
     const newPosts = await res;
 
     if (newPosts.length <= 10) {
