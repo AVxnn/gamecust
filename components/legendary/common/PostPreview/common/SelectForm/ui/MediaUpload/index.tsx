@@ -31,6 +31,8 @@ const MediaUpload = observer(({ item, dragControls }: any) => {
     }
     if (type === "paste") {
       files = file;
+    } else {
+      return false;
     }
     var formdata = new FormData();
     formdata.append("image", files);
@@ -114,10 +116,12 @@ const MediaUpload = observer(({ item, dragControls }: any) => {
   function handlePaste(e: any) {
     const items = (e.clipboardData || e.originalEvent.clipboardData).items;
 
-    for (let i = 0; i < items.length; i++) {
-      if (items[i].type.indexOf("image") !== -1) {
-        const file = items[i].getAsFile();
-        sendData(file, "paste");
+    if (!item?.href) {
+      for (let i = 0; i < items.length; i++) {
+        if (items[i].type.indexOf("image") !== -1) {
+          const file = items[i].getAsFile();
+          sendData(file, "paste");
+        }
       }
     }
   }
@@ -128,7 +132,7 @@ const MediaUpload = observer(({ item, dragControls }: any) => {
       document.removeEventListener("paste", handlePaste);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [item]);
 
   const deleteImage = () => {
     var formdata = new FormData();
