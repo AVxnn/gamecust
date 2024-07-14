@@ -41,6 +41,7 @@
     "next-auth": "^4.24.5",
     "next-seo": "^6.5.0",
     "next-sitemap": "^4.2.3",
+    "next-themes": "^0.3.0",
     "path": "^0.12.7",
     "react": "18.2.0",
     "react-content-loader": "^6.2.0",

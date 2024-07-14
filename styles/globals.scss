@@ -8,7 +8,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Roboto", sans-serif;
-  background-color: $d_main_white20_color;
+  background-color: var(--d_main_bg_color_body);
   box-sizing: border-box;
   transition: all 0.2s ease-in-out;
   display: flex;
@@ -25,9 +25,7 @@ body {
   }
 }
 
-body {
-  transition: background 0.1s ease-in-out;
-  background-color: #f0f0f0;
+:root {
   --d_main_red: #f05353;
 
   --d_main_bg_color: #f0f0f0;
@@ -52,11 +50,11 @@ body {
 
   --d_main-second-color: #eaeaea;
   --d_main-downsecond-color: #cbcbcb;
+
+  --d_main_bg_color_body: #f0f0f0;
 }
 
-body[dark] {
-  transition: background 0.1s ease-in-out;
-  background-color: #131314;
+[data-theme="dark"] {
   --d_main_red: #f05353;
 
   --d_main_bg_color: #131314;
@@ -81,13 +79,15 @@ body[dark] {
 
   --d_main-second-color: #303032;
   --d_main-downsecond-color: #131314;
+
+  --d_main_bg_color_body: #131314;
 }
 
 body[red] {
   --d_main_color: #f91841;
   --d_main_hover: #d61538;
   --d_main_active: #ad102c;
-  
+
   --d_main_dropshadow: rgba(214, 21, 56, 0.2);
 }
 
@@ -95,7 +95,7 @@ body[blue] {
   --d_main_color: #1d9bf0;
   --d_main_hover: #1b8edb;
   --d_main_active: #1679bc;
-  
+
   --d_main_dropshadow: rgba(27, 142, 219, 0.2);
 }
 
@@ -103,7 +103,7 @@ body[yellow] {
   --d_main_color: #ffd400;
   --d_main_hover: #dcb700;
   --d_main_active: #b89900;
-  
+
   --d_main_dropshadow: rgba(220, 183, 0, 0.2);
 }
 
@@ -117,7 +117,7 @@ body[orange] {
   --d_main_color: #ff7a00;
   --d_main_hover: #cf6300;
   --d_main_active: #a75000;
-  
+
   --d_main_dropshadow: rgba(207, 99, 0, 0.2);
 }
 
@@ -125,10 +125,9 @@ body[green] {
   --d_main_color: #00ba7c;
   --d_main_hover: #009462;
   --d_main_active: #007951;
-  
+
   --d_main_dropshadow: rgba(0, 148, 98, 0.2);
 }
-
 
 body[ads] {
   .header_header__kQhLA {
@@ -146,7 +145,6 @@ body[ads] {
     }
   }
 }
-
 
 .react-loading-skeleton {
   --animation-duration: 1.5s;

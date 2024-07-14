@@ -18,9 +18,10 @@ import Premium from "../../../public/img/svgIcons/Premium";
 import Popup from "reactjs-popup";
 import PremiumSettingsBlock from "../MiddleBlock/PremiumSettingsBlock";
 import Bug from "../../../public/img/svg/Bug";
+import { useTheme } from "next-themes";
 
 const UserSection = () => {
-  const [theme, setTheme] = useState(localStorage.getItem("Theme"));
+  const { theme, setTheme } = useTheme();
 
   const router = useRouter();
 
@@ -30,9 +31,15 @@ const UserSection = () => {
 
   const Button = useRef<HTMLDivElement>(null);
 
-  const changeThemeHandler = (theme: any) => {
-    changeTheme(localStorage.getItem("Theme") === "dark" ? "white" : "dark");
-    setTheme(localStorage.getItem("Theme") as any);
+  const changeThemeHandler = () => {
+    console.log(theme);
+    if (theme == "light") {
+      localStorage.setItem("Theme", "white");
+      setTheme("dark");
+    } else {
+      localStorage.setItem("Theme", "dark");
+      setTheme("light");
+    }
   };
 
   const logOut = () => {
@@ -186,7 +193,7 @@ const UserSection = () => {
                   <p className={styles.text}>Настройки</p>
                 </div>
               </Link>
-              <Link onClick={() => changeThemeHandler(theme)} href={"#"}>
+              <Link onClick={() => changeThemeHandler()} href={"#"}>
                 <div className={styles.userMenu}>
                   <div className={styles.bgAvatar}>
                     {theme === "white" ? <Sun /> : <Moon />}
