@@ -17,19 +17,21 @@ import { Context } from "../../../../app/(pages)/layout";
 import changeTheme from "../../../../features/ChangeTheme";
 import { AnimatePresence, motion } from "framer-motion";
 import OnlineCounter from "../../../../newComponents/onlineCounter";
+import { useTheme } from "next-themes";
 
 const AccountBlock = () => {
-  const [theme, setTheme] = useState() as any;
+  const { theme, setTheme } = useTheme();
 
   const { mobxStore, popupHandlers } = useContext(Context);
 
-  useEffect(() => {
-    setTheme(localStorage.getItem("Theme") !== "dark");
-  }, []);
-
   const changeThemeHandler = () => {
-    changeTheme(localStorage.getItem("Theme") === "dark" ? "white" : "dark");
-    setTheme(localStorage.getItem("Theme") === ("dark" as any));
+    if (theme == "light") {
+      localStorage.setItem("Theme", "white");
+      setTheme("dark");
+    } else {
+      localStorage.setItem("Theme", "dark");
+      setTheme("light");
+    }
   };
   return (
     <AnimatePresence initial={false} mode="wait">

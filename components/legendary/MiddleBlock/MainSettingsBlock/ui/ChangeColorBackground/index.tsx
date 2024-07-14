@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./ChangeColorBackground.module.scss";
 import Check from "../../../../../../public/img/svg/Check";
 import changeTheme from "../../../../../../features/ChangeTheme";
+import { useTheme } from "next-themes";
 
 let colors = [
   {
@@ -17,18 +18,16 @@ let colors = [
 ];
 
 const ChangeColorBackground = () => {
-  const [theme, setTheme] = useState() as any;
+  const { theme, setTheme } = useTheme();
 
   const changeThemeHandler = (value: any) => {
-    changeTheme(value);
-    setTheme(value);
-  };
-
-  useEffect(() => {
-    if (localStorage.getItem("Theme")) {
-      setTheme(localStorage.getItem("Theme"));
+    console.log(theme);
+    if (value == "white") {
+      setTheme("light");
+    } else {
+      setTheme("dark");
     }
-  }, [])
+  };
 
   return (
     <div className={styles.container}>
