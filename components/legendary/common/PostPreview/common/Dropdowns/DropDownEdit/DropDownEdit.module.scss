@@ -4,6 +4,7 @@
   position: absolute;
   top: 4px;
   left: 18px;
+  z-index: 1000;
 
   @media (max-width: 768px) {
     top: auto;
