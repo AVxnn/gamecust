@@ -25,15 +25,15 @@ const MediaUpload = observer(({ item, dragControls }: any) => {
     let files;
     if (type === "input") {
       files = file.currentTarget.files[0];
-    }
-    if (type === "drag") {
+    } else if (type === "drag") {
       files = file.dataTransfer.files[0];
-    }
-    if (type === "paste") {
+    } else if (type === "paste") {
       files = file;
     } else {
       return false;
     }
+
+    console.log(files);
     var formdata = new FormData();
     formdata.append("image", files);
     formdata.append("id", "12312312312");
